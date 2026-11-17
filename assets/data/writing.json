@@ -1,9 +1,14 @@
 {
-  "_readme": "One entry per piece, wherever it lives. Newest first is automatic. 'featured': true pins it to the top. 'draft': true hides it. Threads must match a key in 'threads'.",
+  "_readme": "One entry per piece, wherever it lives. Newest first is automatic. 'featured': true pins it to the top. 'draft': true hides it. Threads must match a key in 'threads'. Optional per item: 'dek' (one line), 'image' {src, alt, credit}. Threads may carry 'art' used when an item has no image.",
   "threads": {
     "framing-the-cosmos": {
       "label": "Framing the Cosmos",
-      "blurb": "How iconic space photographs shape what we believe."
+      "blurb": "How iconic space photographs shape what we believe.",
+      "art": {
+        "src": "assets/img/preview/diamond-ring.jpg",
+        "alt": "The diamond ring moment of a total solar eclipse.",
+        "credit": "Thread image by Rami Daud, not from the essay itself."
+      }
     },
     "midlife-survivors": {
       "label": "Midlife Survivors",
@@ -15,7 +20,12 @@
     },
     "photography": {
       "label": "Photography",
-      "blurb": "Notes and roundups from behind the camera."
+      "blurb": "Notes and roundups from behind the camera.",
+      "art": {
+        "src": "assets/img/preview/star-trails.jpg",
+        "alt": "Star trails above a weather vane.",
+        "credit": "Thread image by Rami Daud."
+      }
     },
     "research": {
       "label": "Research",
@@ -327,7 +337,8 @@
       "type": "Guide",
       "url": "guides/prompt-to-publish/",
       "tags": [],
-      "featured": true
+      "featured": true,
+      "dek": "What these tools are, how to direct them, how to verify them, and how to know when to put them down."
     },
     {
       "date": "",
@@ -346,7 +357,8 @@
       "venue": "ramidaud.com",
       "thread": "ai-practice",
       "type": "Workshop kit",
-      "tags": []
+      "tags": [],
+      "dek": "A 90-minute session for communication teams. Pairs generate a mock expert interview, hold it to the same standard as any quoted material, and leave with a plan for verifying every claim."
     }
   ]
 }
