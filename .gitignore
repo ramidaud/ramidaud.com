@@ -1,0 +1,24 @@
+# Secrets
+.env
+*.env
+.env.*
+
+# Dependencies and builds (for Astro later)
+node_modules/
+dist/
+
+# OS and editor
+.DS_Store
+Thumbs.db
+.vscode/
+
+# Raw and project files stay in ramidaud-source, never here
+*.psd
+*.psb
+*.tif
+*.tiff
+*.dng
+*.nef
+*.cr2
+*.drp
+*.mov
