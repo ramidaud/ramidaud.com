@@ -1,105 +1,297 @@
 <!doctype html>
-<html lang="en" data-base="">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Rami Daud · Human-first AI for communication teams</title>
-  <meta name="description" content="Rami Daud helps communications teams adopt AI with judgment, grounded in 20 years of photography and video.">
+  <meta name="description" content="Rami Daud helps communication teams use AI without losing the human in the story. A visuals-first storyteller using AI and real data to craft new story experiences.">
+  <meta name="theme-color" content="#efebe2">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/site.css">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="assets/img/preview/corona.jpg">
+  <link rel="stylesheet" href="assets/css/e1.css">
 </head>
 <body>
+<div class="page">
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <header class="site-header">
-    <div class="wrap">
-      <a class="site-name" href="./">Rami Daud</a>
-      <nav class="site-nav" aria-label="Main">
-        <a href="#work">Work</a>
-        <a href="guides/">Guides</a>
-        <a href="writing/">Writing</a>
-        <a href="#photos">Photography</a>
-        <a href="cv/">About</a>
-      </nav>
-    </div>
+  <header class="site-head">
+    <a class="brand" href="./">Rami Daud</a>
+    <button type="button" class="menu-btn" aria-expanded="false" aria-controls="mainnav">Menu</button>
+    <nav id="mainnav" class="nav" aria-label="Main">
+      <a href="#work">Work</a>
+      <a href="guides/">Guides</a>
+      <a href="writing/">Writing</a>
+      <a href="#frames">Photography</a>
+      <a href="cv/">About</a>
+    </nav>
+    <button type="button" class="btn-prov btn-prov--top" data-prov-toggle aria-pressed="false">[ Show provenance ]</button>
   </header>
+  <div class="strip label"><span>Air-to-ground voice transcription</span><span>RD-2026 · Tape 1/1 · Kent, Ohio</span></div>
 
-  <main id="main">
-    <div class="hero hero--image">
-      <!-- Placeholder export (1090 px). Replace with 2400 px final; keep the same file name. -->
-      <img class="hero__img" src="assets/img/hero-corona.jpg" width="1090" height="720"
-           alt="A total solar eclipse: the Moon's dark disk ringed by the white streamers of the Sun's corona against a dark gray sky."
-           fetchpriority="high">
-      <div class="hero__text wrap">
-        <p class="label">Photographer · Communicator · AI adoption</p>
-        <h1>I help communication teams use AI without losing the human in the story.</h1>
-        <p class="subline">Senior Photographer and informal AI lead, Kent State University Communications and Marketing. Formerly Digital Imaging Specialist, NASA Glenn Research Center. MS candidate, Emerging Media and Technology.</p>
-        <p class="hero__actions">
-          <a class="button button--primary" href="#work">See the work</a>
-          <a class="button" href="cv/">About and CV</a>
-        </p>
-      </div>
-      <!-- Later: swap the img for a muted, looping eclipse video with this image as its poster. -->
-    </div>
+  <main id="main" class="bento-wrap">
+    <div class="grid">
 
-    <section id="work">
-      <div class="wrap">
-        <p class="label">Selected work</p>
-        <h2>Four ways I put new tools in service of the story</h2>
-        <div class="cards">
-          <article class="card">
-            <p class="label">01 · AI adoption</p>
-            <h3>The Lightroom archive workflow</h3>
-            <p>Claude checks and strengthens metadata across the UCM photo archive. A photographer reviews every change before it reaches PhotoShelter.</p>
-          </article>
-          <article class="card">
-            <p class="label">02 · Responsible use</p>
-            <h3><a href="guides/">Training communicators</a></h3>
-            <p>A 90-minute workshop where communicators test AI-generated quotes against a four-point editorial standard, and Prompt to Publish, a field guide to AI for university communicators.</p>
-          </article>
-          <article class="card">
-            <p class="label">03 · Storytelling</p>
-            <h3>Framing the Cosmos</h3>
-            <p>Essays on how iconic space photographs shaped public belief, from Earthrise to the Artemis II eclipse image.</p>
-          </article>
-          <article class="card">
-            <p class="label">04 · Experimentation</p>
-            <h3>Midlife Survivors and Gaussian splatting</h3>
-            <p>How I test new tools in public, with every AI contribution credited and every synthetic shot labeled.</p>
-          </article>
+      <!-- Hero -->
+      <section class="card s-hero" aria-labelledby="hero-h" style="--i:0s;--d:0s">
+        <div class="inner">
+          <div class="face front paper hero">
+            <span class="hero-light" aria-hidden="true"></span>
+            <p class="transcript">
+              <span class="t">00 00 03</span><span class="cc">CC</span><span>Say again your role, over.</span>
+              <span class="t">00 00 07</span><span class="rd">RD</span><span class="typing-flag" aria-hidden="true">transmitting…</span>
+            </p>
+            <p class="hero-mini"><b>CC</b> Say again your role, over.</p>
+            <h1 id="hero-h" class="headline" data-typed>
+              <span class="sr-only">I help communication teams use AI without losing the human in the story.</span>
+              <span class="typed-wrap" aria-hidden="true"><span class="typed-ghost">I help communication teams use AI <i>without losing</i> the human in the story.</span><span class="typed-live"></span></span>
+            </h1>
+            <p class="subhead">A visuals-first storyteller, using AI and real data to craft story experiences audiences haven't had before.</p>
+            <div class="hero-foot">
+              <p>Senior Photographer and informal AI lead at Kent State. Four years at NASA Glenn. Twenty years deciding what is true in a picture.</p>
+              <div class="btn-row">
+                <a class="btn btn--solid" href="#work">Open the case files</a>
+                <a class="btn" href="#test">Take the quote test</a>
+              </div>
+            </div>
+          </div>
+          <div class="face back">
+            <span class="label">How this was made</span>
+            <p><b>HEADLINE</b> Six options drafted with Claude. Rami chose this one.</p>
+            <p><b>SECOND LINE</b> Written with Claude from Rami's direction.</p>
+            <p><b>BIO</b> Facts from Rami's CV.</p>
+            <p><b>DESIGN</b> Designed and coded with Claude. Every change reviewed and published by Rami.</p>
+            <p><b>TRACKING</b> None. No analytics, no cookies.</p>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section id="writing">
-      <div class="wrap">
-        <p class="label">Latest writing</p>
-        <h2>Essays, devlogs and field notes</h2>
-        <ol class="latest" data-latest-writing></ol>
-        <p class="section-link"><a href="writing/">Everything I've written →</a></p>
-      </div>
-    </section>
+      <!-- Eclipse frame -->
+      <figure class="card s-photo" style="--i:.08s;--d:.05s;margin:0">
+        <div class="inner">
+          <div class="face front filmbg photo">
+            <img src="assets/img/preview/corona.jpg" width="1090" height="720" alt="The Sun's corona streaming around the Moon during totality, Aug. 21, 2017.">
+            <figcaption class="caption-row"><span>Frame 01 · Totality</span><span>2017</span></figcaption>
+          </div>
+          <div class="face back back--film">
+            <span class="label">From the original file</span>
+            <p>DATE · Aug. 21, 2017</p>
+            <p>CAMERA · Nikon D750</p>
+            <p>EXPOSURE · 1/5 s · ISO 320</p>
+            <p>EDITED · Photoshop CC 2017</p>
+            <p>AI · None. That version had no generative tools.</p>
+          </div>
+        </div>
+      </figure>
 
-    <section id="photos">
-      <div class="wrap">
-        <p class="label">Photography</p>
-        <h2>Twenty years behind the camera</h2>
-        <!-- TODO Nov 22: 12 to 15 photos from assets/img/photos, each with alt text -->
+      <!-- Quote test -->
+      <section id="test" class="card s-test" aria-labelledby="test-h" style="--i:.14s;--d:.1s">
+        <div class="inner">
+          <div class="face front dark test">
+            <span class="label" style="color:var(--red-light)">Test · 30 seconds</span>
+            <h2 id="test-h">Which one did a person actually say?</h2>
+            <button type="button" class="qbtn" data-real="false" aria-pressed="false"><span class="qlabel">A<span class="qverdict" aria-live="polite"></span></span>"Our training empowers everyday community members to recognize the warning signs early and connect people with the support they need."</button>
+            <button type="button" class="qbtn" data-real="true" aria-pressed="false"><span class="qlabel">B<span class="qverdict" aria-live="polite"></span></span>"Noticing someone who just doesn't seem to be themselves, or maybe they're suddenly tearful."</button>
+            <details class="answer">
+              <summary>Show the answer</summary>
+              <p><b data-result style="color:var(--on-dark)">B is real.</b> Deric Kenne, Ph.D., said it to <a href="https://www.kent.edu/magazine/issue/2025/02/awareness-action-transforming-community-behavioral-health">Kent State Magazine</a>. A was generated by AI for this test. Polish is what these tools produce best. <a href="guides/checking-ai-quotes/">Run this with your team</a>.</p>
+            </details>
+          </div>
+          <div class="face back" style="background:#2a2620">
+            <span class="label">Sources</span>
+            <p>QUOTE B · Deric Kenne, Ph.D., Kent State Magazine, Feb. 25, 2025. Story by Jen Lennon, photographs by Rami Daud.</p>
+            <p>QUOTE A · Generated by Claude for this test. Labeled as generated wherever it appears.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Case files: a grid on desktop, a swipeable deck on phones -->
+      <div class="cases" id="work" role="group" aria-label="Case files">
+        <a class="card s-case1" href="work/lightroom-archive/" style="--i:.2s;--d:.15s">
+          <span class="inner">
+            <span class="face front paper">
+              <span class="card-tab"><span class="label">Case file 01 · Adoption</span><span class="label">In progress</span></span>
+              <span class="front-pad">
+                <span class="card-title">The Lightroom archive workflow</span>
+                <span class="card-text">Claude suggests. A photographer decides. Nothing reaches PhotoShelter without a human review.</span>
+                <span class="chips"><span class="chip">Lightroom</span><span class="arrow" aria-hidden="true">→</span><span class="chip">Claude</span><span class="arrow" aria-hidden="true">→</span><span class="chip chip--gate">Human gate</span><span class="arrow" aria-hidden="true">→</span><span class="chip">PhotoShelter</span></span>
+              </span>
+              <span class="ghost" aria-hidden="true">01</span>
+            </span>
+            <span class="face back">
+              <span class="label">How this was made</span>
+              Summary drafted with Claude from Rami's notes. Scale ("thousands of images") from Rami. Time saved: not measured yet.
+            </span>
+          </span>
+        </a>
+
+        <a class="card s-guides" href="guides/" style="--i:.26s;--d:.2s">
+          <span class="inner">
+            <span class="face front paper">
+              <span class="card-tab"><span class="label">Case file 02 · Guides</span><span class="label">Free</span></span>
+              <span class="front-pad">
+                <span class="card-title">Prompt to Publish</span>
+                <span class="card-text">A field guide for university communicators, and a 90-minute workshop kit on checking AI-generated quotes.</span>
+                <span class="label">Read the guide →</span>
+              </span>
+              <span class="ghost" aria-hidden="true">02</span>
+            </span>
+            <span class="face back">
+              <span class="label">How this was made</span>
+              First written as Kent State graduate coursework. Portions drafted with AI, then verified, restructured and rewritten by Rami.
+            </span>
+          </span>
+        </a>
+
+        <a class="card s-cosmos" href="writing/#framing-the-cosmos" style="--i:.32s;--d:.25s">
+          <span class="inner">
+            <span class="face front filmbg cosmos">
+              <img src="assets/img/preview/diamond-ring.jpg" width="1600" height="1068" loading="lazy" alt="The diamond ring moment of a total solar eclipse.">
+              <span class="front-pad">
+                <span class="label" style="color:var(--gold)">Case file 03 · Storytelling</span>
+                <span class="card-title">Framing the Cosmos</span>
+                <span class="card-text">How iconic space photographs shaped what the public believes, and why that matters more as pictures get easier to fake.</span>
+              </span>
+            </span>
+            <span class="face back back--film">
+              <span class="label">Diamond ring</span>
+              Capture data is not embedded in this copy. Date, camera and edits to come from the original.
+            </span>
+          </span>
+        </a>
+
+        <a class="card s-splat" href="https://midlifesurvivors.com/devlog/14-achievement-unlocked-gaussian-splatting/" style="--i:.38s;--d:.3s">
+          <span class="inner">
+            <span class="face front filmbg">
+              <span class="splat">
+                <img class="base" src="assets/img/preview/green-bank.jpg" width="1086" height="724" loading="lazy" alt="Green Bank Telescope at dawn.">
+                <img class="dots" src="assets/img/preview/green-bank.jpg" width="1086" height="724" loading="lazy" alt="" aria-hidden="true">
+              </span>
+              <span class="front-pad">
+                <span class="label" style="color:var(--gold)">Case file 04 · Experiments</span>
+                <span class="big-num">369 → 1.8M</span>
+                <span class="label" style="color:#b9b1a0">Photographs → Gaussian splats</span>
+              </span>
+            </span>
+            <span class="face back back--film">
+              <span class="label">Honest label</span>
+              The dot effect on hover is a CSS illustration, not a real splat render. The real test: 369 Nikon frames, COLMAP, about 1.8 million splats, finished in Blender and Resolve.
+            </span>
+          </span>
+        </a>
       </div>
-    </section>
+      <p class="swipe-hint label" aria-hidden="true">Swipe · 01 02 03 04</p>
+
+      <!-- Numbers -->
+      <section class="card s-nums" aria-label="By the numbers" style="--i:.44s;--d:.35s">
+        <div class="inner">
+          <div class="face front paper nums">
+            <div><b>20</b><span>Years behind the camera</span></div>
+            <div><b>7</b><span>NASA Images of the Day</span></div>
+            <div><b>2</b><span>Guides for teams</span></div>
+            <div><b>22</b><span>Pieces of writing</span></div>
+          </div>
+          <div class="face back">
+            <span class="label">Sources</span>
+            <p>Rami's records. Award and Image of the Day links to be added. Writing count from the site's own index.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Mission log -->
+      <section class="card s-log" aria-labelledby="log-h" style="--i:.5s;--d:.4s">
+        <div class="inner">
+          <div class="face front paper log">
+            <h2 id="log-h">Mission log · latest</h2>
+            <ol data-latest data-base="">
+              <li><a href="guides/checking-ai-quotes/"><span class="when">2026 11 17 · Workshop kit</span><span class="what">Checking AI-generated quotes</span></a></li>
+              <li><a href="https://midlifesurvivors.com/devlog/14-achievement-unlocked-gaussian-splatting/"><span class="when">2026 11 11 · Devlog</span><span class="what">Achievement Unlocked: Gaussian Splatting.</span></a></li>
+              <li><a href="https://ramidaud.substack.com/p/the-loneliest-photograph-ever-taken"><span class="when">2026 04 10 · Essay</span><span class="what">The Loneliest Photograph Ever Taken</span></a></li>
+            </ol>
+          </div>
+          <div class="face back">
+            <span class="label">Source</span>
+            <p>Titles and dates from the site's writing index, which mirrors Substack and the devlog. Written by Rami.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- CV -->
+      <a class="card s-cv" href="cv/" style="--i:.56s;--d:.45s">
+        <span class="inner">
+          <span class="face front paper paper--ink" style="padding:22px;justify-content:space-between;gap:16px">
+            <span class="label" style="color:var(--red)">The full record</span>
+            <span class="card-title" style="font-size:27px;line-height:1.12">Newsroom intern, NASA Glenn, Kent State. Month by month.</span>
+            <span class="btn btn--solid" style="align-self:start;min-height:44px">About and CV</span>
+          </span>
+          <span class="face back">
+            <span class="label">Source</span>
+            Dates from Rami's LinkedIn export, matched to his resume.
+          </span>
+        </span>
+      </a>
+
+      <!-- Latest dispatch: always the newest piece, with art that fits it -->
+      <a class="card s-latest" href="guides/checking-ai-quotes/" data-latest-feature data-base="" style="--i:.6s;--d:.5s">
+        <span class="inner">
+          <span class="face front paper paper--ink feature">
+            <span class="feature-art art--quote" data-art aria-hidden="true">
+              <span class="art-glyph">&ldquo;&rdquo;</span>
+              <span class="art-note">A or B?</span>
+            </span>
+            <span class="feature-body">
+              <span class="label feature-kicker" data-kicker>Latest dispatch · 2026 11 17 · Workshop kit</span>
+              <span class="feature-title" data-title>Checking AI-generated quotes</span>
+              <span class="card-text" data-dek>A 90-minute session for communication teams. Pairs generate a mock expert interview, hold it to the same standard as any quoted material, and leave with a plan for verifying every claim.</span>
+              <span class="feature-meta label"><span data-venue>ramidaud.com</span> · <span data-thread>AI in practice</span></span>
+              <span class="btn btn--solid" style="align-self:start">Read it</span>
+            </span>
+          </span>
+          <span class="face back">
+            <span class="label">How this card works</span>
+            <p>It always shows the newest entry in the site's writing index, wherever the piece lives.</p>
+            <p data-art-credit><b>ART</b> Typeset for this card. No image used.</p>
+          </span>
+        </span>
+      </a>
+
+      <!-- Selected frames -->
+      <section id="frames" class="card s-sheet" aria-labelledby="frames-h" style="--i:.66s;--d:.55s">
+        <div class="inner">
+          <div class="face front filmbg">
+            <div class="sheet-head">
+              <h2 id="frames-h">Selected frames</h2>
+              <span class="label" style="color:var(--gold)">Full photography pages coming soon</span>
+            </div>
+            <div class="sheet" tabindex="0" role="region" aria-label="Selected photographs">
+              <figure><img src="assets/img/preview/remove-before-flight.jpg" width="1355" height="1600" loading="lazy" alt="A red Remove Before Flight tag hanging from foil-wrapped spacecraft hardware at NASA Glenn."><figcaption>NASA Glenn</figcaption></figure>
+              <figure><img src="assets/img/preview/ksu-aurora.jpg" width="1086" height="724" loading="lazy" alt="Northern lights over the Kent State University plaza at night."><figcaption>Aurora · 2024</figcaption></figure>
+              <figure><img src="assets/img/preview/star-trails.jpg" width="1086" height="723" loading="lazy" alt="Star trails circling the North Star above a silhouetted weather vane."><figcaption>Star trails · 2018</figcaption></figure>
+              <figure><img src="assets/img/preview/fog-milky-way.jpg" width="998" height="786" loading="lazy" alt="The Milky Way over a fog-covered field with a lone bench."><figcaption>Fog · 2018</figcaption></figure>
+              <figure><img src="assets/img/preview/students.jpg" width="1086" height="724" loading="lazy" alt="Students walking on campus in autumn light."><figcaption>Campus · 2024</figcaption></figure>
+              <figure><img src="assets/img/preview/green-bank.jpg" width="1086" height="724" loading="lazy" alt="The Green Bank radio telescope at dawn."><figcaption>Green Bank · 2016</figcaption></figure>
+            </div>
+          </div>
+          <div class="face back back--film">
+            <span class="label">Capture data</span>
+            <p>Each frame's camera, exposure and edit history is read from its original file. Frames without embedded data will say so on their own page.</p>
+          </div>
+        </div>
+      </section>
+
+    </div>
   </main>
 
-  <footer class="site-footer" id="contact">
-    <div class="wrap">
-      <!-- TODO: confirm email and LinkedIn URL -->
-      <a href="mailto:EMAIL_TODO">Email</a>
-      <a href="LINKEDIN_TODO">LinkedIn</a>
-      <a href="https://ramidaud.substack.com">Substack</a>
-      <p>© <span data-year>2026</span> Rami Daud</p>
-    </div>
+  <footer class="site-foot">
+    <a href="mailto:EMAIL_TODO">Email</a>
+    <a href="LINKEDIN_TODO">LinkedIn</a>
+    <a href="https://ramidaud.substack.com">Substack</a>
+    <span>© <span data-year>2026</span> Rami Daud · Built with Claude, published by a person</span>
   </footer>
-  <script src="assets/js/site.js" defer></script>
+
+  <div class="prov-dock"><button type="button" class="btn-prov" data-prov-toggle aria-pressed="false">[ Show provenance ]</button></div>
+</div>
+<script src="assets/js/e1.js" defer></script>
 </body>
 </html>

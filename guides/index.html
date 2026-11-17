@@ -5,54 +5,61 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Guides · Rami Daud</title>
   <meta name="description" content="Practical guides and workshop kits for communication teams using AI responsibly.">
+  <meta name="theme-color" content="#efebe2">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/css/site.css">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/e1.css">
+  <link rel="stylesheet" href="../assets/css/e1-pages.css">
 </head>
 <body>
+<div class="page">
   <a class="skip-link" href="#main">Skip to content</a>
-  <header class="site-header">
-    <div class="wrap">
-      <a class="site-name" href="../">Rami Daud</a>
-      <nav class="site-nav" aria-label="Main">
-        <a href="../#work">Work</a>
-        <a href="./" aria-current="page">Guides</a>
-        <a href="../writing/">Writing</a>
-        <a href="../#photos">Photography</a>
-        <a href="../cv/">About</a>
-      </nav>
-    </div>
+  <header class="site-head">
+    <a class="brand" href="../">Rami Daud</a>
+    <button type="button" class="menu-btn" aria-expanded="false" aria-controls="mainnav">Menu</button>
+    <nav id="mainnav" class="nav" aria-label="Main">
+      <a href="../#work">Work</a>
+      <a href="../guides/" aria-current="page">Guides</a>
+      <a href="../writing/">Writing</a>
+      <a href="../#frames">Photography</a>
+      <a href="../cv/">About</a>
+    </nav>
+    <button type="button" class="btn-prov btn-prov--top" data-prov-toggle aria-pressed="false">[ Show provenance ]</button>
   </header>
-  <main id="main" class="wrap">
-    <div class="page-intro">
-      <p class="label">Guides</p>
-      <h1>Tools for teams adopting AI</h1>
-      <p class="subline">Free, practical material for communication teams: how to direct these tools, how to check what they produce, and how to train people to do both. Use them, adapt them, run them with your own team.</p>
+  <div class="strip label"><span>Field manuals · free to use</span><span>2 guides · updated Nov 2026</span></div>
+
+  <main id="main">
+    <div class="wrap page-hero">
+      <p class="label kicker">Guides</p>
+      <h1>Tools for teams <i>adopting AI</i></h1>
+      <p class="lede">How to direct these tools, how to check what they produce, and how to train people to do both. Use them, adapt them, run them with your own team.</p>
     </div>
-    <section>
-      <div class="cards">
-        <article class="card">
-          <p class="label">Field guide · 25 min read</p>
-          <h3><a href="prompt-to-publish/">Prompt to Publish</a></h3>
-          <p>What these tools are, how to direct them, how to verify them, and how to know when to put them down. Includes the Prompt Architecture Blueprint, a three-step verification protocol and eight principles.</p>
-        </article>
-        <article class="card">
-          <p class="label">Workshop kit · 90 minutes</p>
-          <h3><a href="checking-ai-quotes/">Checking AI-generated quotes</a></h3>
-          <p>A facilitator-ready session where pairs test an AI-generated interview against a four-point editorial standard and leave with a verification plan for every claim.</p>
-        </article>
-      </div>
-    </section>
+    <div class="wrap guide-cards">
+      <a class="index-card" href="prompt-to-publish/" style="min-height:260px">
+        <span class="label">Field guide · about 25 minutes</span>
+        <span class="t" style="font-size:44px">Prompt to Publish</span>
+        <span class="d" style="font-size:16px">What these tools are, how to direct them, how to verify them, and how to know when to put them down. Includes the Prompt Architecture Blueprint, a three-step verification protocol and eight principles.</span>
+        <span class="label" style="margin-top:auto;color:var(--ink)">Read the guide →</span>
+      </a>
+      <a class="index-card" href="checking-ai-quotes/" style="min-height:260px">
+        <span class="label">Workshop kit · 90 minutes</span>
+        <span class="t" style="font-size:44px">Checking AI-generated quotes</span>
+        <span class="d" style="font-size:16px">A facilitator-ready session where pairs test an AI-generated interview against a four-point editorial standard and leave with a verification plan for every claim.</span>
+        <span class="label" style="margin-top:auto;color:var(--ink)">Open the kit →</span>
+      </a>
+    </div>
   </main>
-  <footer class="site-footer" id="contact">
-    <div class="wrap">
-      <a href="mailto:EMAIL_TODO">Email</a>
-      <a href="LINKEDIN_TODO">LinkedIn</a>
-      <a href="https://ramidaud.substack.com">Substack</a>
-      <p>© <span data-year>2026</span> Rami Daud</p>
-    </div>
+
+  <footer class="site-foot">
+    <a href="mailto:EMAIL_TODO">Email</a>
+    <a href="LINKEDIN_TODO">LinkedIn</a>
+    <a href="https://ramidaud.substack.com">Substack</a>
+    <span>© <span data-year>2026</span> Rami Daud · Built with Claude, published by a person</span>
   </footer>
-  <script src="../assets/js/site.js" defer></script>
+  <aside class="prov-panel" aria-label="How this page was made"><span class="label">How this page was made</span><p>Both guides began as Kent State graduate coursework. Portions were drafted with AI, then verified, restructured and rewritten by Rami. Page designed and coded with Claude.</p></aside>
+  <div class="prov-dock"><button type="button" class="btn-prov" data-prov-toggle aria-pressed="false">[ Show provenance ]</button></div>
+</div>
+<script src="../assets/js/e1.js" defer></script>
 </body>
 </html>

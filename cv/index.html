@@ -3,133 +3,178 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>About and CV · Rami Daud</title>
-  <meta name="description" content="Career, awards and education for Rami Daud.">
+  <title>About · Rami Daud</title>
+  <meta name="description" content="Rami Daud is a photographer working at the intersection of visual storytelling, science communication and documentary photography.">
+  <meta name="theme-color" content="#efebe2">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../assets/css/site.css">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/e1.css">
+  <link rel="stylesheet" href="../assets/css/e1-pages.css">
 </head>
 <body>
+<div class="page">
   <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-head">
+    <a class="brand" href="../">Rami Daud</a>
+    <button type="button" class="menu-btn" aria-expanded="false" aria-controls="mainnav">Menu</button>
+    <nav id="mainnav" class="nav" aria-label="Main">
+      <a href="../#work">Work</a>
+      <a href="../guides/">Guides</a>
+      <a href="../writing/">Writing</a>
+      <a href="../#frames">Photography</a>
+      <a href="../cv/" aria-current="page">About</a>
+    </nav>
+    <button type="button" class="btn-prov btn-prov--top" data-prov-toggle aria-pressed="false">[ Show provenance ]</button>
+  </header>
+  <div class="strip label"><span>Personnel file · RD</span><span>Bio · Recognition · NASA · Record · Contact</span></div>
 
-  <header class="site-header">
-    <div class="wrap">
-      <a class="site-name" href="../">Rami Daud</a>
-      <nav class="site-nav" aria-label="Main">
-        <a href="../#work">Work</a>
-        <a href="../guides/">Guides</a>
-        <a href="../writing/">Writing</a>
-        <a href="../#photos">Photography</a>
-        <a href="./" aria-current="page">About</a>
+  <main id="main">
+    <div class="wrap page-hero">
+      <p class="label kicker">About</p>
+      <h1>Much of my work is driven by <i>curiosity</i></h1>
+      <p class="lede">About how people learn, how discoveries happen, and how images shape the way we understand the world.</p>
+      <nav class="subnav" aria-label="On this page">
+        <a href="#bio">Bio</a><a href="#recognition">Recognition</a><a href="#nasa">NASA Image of the Day</a><a href="#publications">Publications</a><a href="#record">Full record</a><a href="#contact">Contact</a>
       </nav>
     </div>
-  </header>
 
-  <main id="main" class="wrap">
-    <div class="hero">
-      <p class="label">About</p>
-      <h1>Rami Daud</h1>
-      <p>Rami Daud is a photographer and communicator who helps teams put new tools in service of the story. As Senior Photographer in University Communications and Marketing at Kent State University, he documents student life, research and university history, runs the team's digital asset workflow, and serves as its informal AI lead. Before Kent State he was a Digital Imaging Specialist at NASA Glenn Research Center, covering Artemis and Commercial Crew, and seven of his photographs ran as NASA Image of the Day. His work has earned APEX, Communicator and ADDY awards. He writes Framing the Cosmos and is completing an MS in Emerging Media and Technology.</p>
-      <!-- TODO: resume PDF in downloads/ -->
-      <p><a href="../downloads/Rami-Daud-Resume.pdf">Download resume (PDF)</a></p>
+    <div class="wrap cv-grid" id="bio">
+      <div class="about-bio">
+        <p>I'm a photographer working at the intersection of visual storytelling, science communication, and documentary photography. I'm currently a Senior Photographer in University Communications and Marketing at Kent State University, where I create images that document campus life in all its range: student life, athletics, scientific research, portraits, and the institutional moments that mark a university's history. The work often unfolds in fast-moving environments, and it asks me to find clarity in complexity while paying attention to the human details that make complicated subjects feel accessible.</p>
+        <p>Before Kent State, I worked as a Digital Imaging Specialist at NASA's Glenn Research Center, where I supported photography and multimedia coverage of the Artemis program, SpaceX and Commercial Crew hardware testing, and a wide range of research and engineering initiatives. I helped plan and execute visual coverage for the 2017 "Eclipse Across America" initiative, documenting the historic total solar eclipse as part of NASA's nationwide public engagement effort. During that time, I was also involved in the agency's early experimentation with emerging social media platforms, serving as one of NASA's representatives producing content for Instagram's IGTV during its beta phase.</p>
+        <p>That experience shaped how I think about photography as a tool for public understanding. Watching imagery bridge the gap between complex technical work and a general audience, and seeing how the right photograph can make something abstract feel immediate and real, reinforced what I've come to believe about the medium: photographs are most powerful when they invite curiosity rather than simply document facts.</p>
+        <p>Across all of my work, whether I'm photographing a researcher in the lab, a student finding their footing, or a shared moment on campus, I'm trying to make the same kind of image: one that encourages someone to look a little more closely at the world around them.</p>
+        <p>I'm currently completing a research project examining the intersection of photography and the public understanding of science.</p>
+      </div>
+      <aside class="bio-card" aria-label="At a glance">
+        <p class="label kicker" style="margin:0">At a glance</p>
+        <dl style="display:grid;grid-template-columns:110px minmax(0,1fr);gap:10px 14px;padding:0;margin:12px 0 0;font-family:var(--mono);font-size:13px">
+            <dt style="color:var(--red)">NOW</dt><dd style="margin:0">Senior Photographer, Kent State UCM</dd>
+            <dt style="color:var(--red)">BEFORE</dt><dd style="margin:0">Digital Imaging Specialist, NASA Glenn</dd>
+            <dt style="color:var(--red)">CAMERA</dt><dd style="margin:0">20+ years</dd>
+            <dt style="color:var(--red)">NASA</dt><dd style="margin:0">7 Images of the Day</dd>
+            <dt style="color:var(--red)">STUDYING</dt><dd style="margin:0">MS, Emerging Media and Technology</dd>
+          </dl>
+        <div class="btn-row" style="margin-top:18px"><a class="btn btn--solid" href="../downloads/Rami-Daud-Resume.pdf">Download resume</a><a class="btn" href="#contact">Get in touch</a></div>
+      </aside>
     </div>
 
-    <section>
-      <h2>Experience</h2>
-      <ol class="timeline">
-        <li>
-          <span class="dates">08/2019 to present</span>
-          <h3>Senior Photographer</h3>
-          <p class="org">University Communications and Marketing, Kent State University · Kent, Ohio</p>
-          <p>Produces photography, video, audio and motion graphics that advance the university's strategic priorities, working with designers, writers and marketing strategists. Runs the team's digital asset workflow in PhotoShelter, Airtable and Lightroom Classic, supervises student photographers, and serves as the team's informal AI lead.</p>
-        </li>
-        <li>
-          <span class="dates">07/2015 to 08/2019</span>
-          <h3>Photographer IV / Digital Imaging Specialist</h3>
-          <p class="org">NASA Glenn Research Center · Cleveland, Ohio</p>
-          <p>Documentary, scientific, portrait, architectural, aerial and studio photography for Artemis and Commercial Crew programs. Managed digital assets, metadata and archives, and handled imagery under PII, SBU and ITAR rules. Seven photographs ran as NASA Image of the Day.</p>
-        </li>
-        <li>
-          <span class="dates">01/2003 to present</span>
-          <h3>Owner and Photographer</h3>
-          <p class="org">Rami Daud Photography Inc.</p>
-          <p>Freelance assignments for clients including the Associated Press, AFP, Cleveland Magazine and The Toledo Blade.</p>
-        </li>
-        <li>
-          <span class="dates">08/2012 to 08/2015</span>
-          <h3>Event Specialist and Photographer</h3>
-          <p class="org">The Standard, Wedding and Events Group · Pittsburgh</p>
-          <p>Documentary and location-lit portrait coverage of weddings and events.</p>
-        </li>
-        <li>
-          <span class="dates">11/2010 to 08/2011</span>
-          <h3>Photography Intern</h3>
-          <p class="org">The Youngstown Vindicator</p>
-          <p>News, sports, features and portraits in stills and video. Ran the photo desk several nights a week, preparing staff and wire images for print and online.</p>
-        </li>
-        <li>
-          <span class="dates">05/2006 to 12/2008</span>
-          <h3>Photography Intern</h3>
-          <p class="org">Medina County Gazette</p>
-          <p>Introduced multimedia production to a stills-only newsroom and built a multimedia site featured by the National Press Photographers Association. Extended from a three-month internship to a two-year position.</p>
-        </li>
-        <li>
-          <!-- TODO: start and end months -->
-          <span class="dates">2007 to 2008</span>
-          <h3>Assistant to the University Photographer</h3>
-          <p class="org">Kent State University</p>
-          <p>Digital asset management, film scanning, retouching and metadata for the university photo archive.</p>
-        </li>
-      </ol>
+    <section class="band" id="recognition" aria-labelledby="rec-h">
+      <div class="wrap">
+        <div class="band-head">
+          <div><p class="label kicker">Recognition</p><h2 id="rec-h">Awards</h2></div>
+          <p>Some of the projects I've contributed to have been recognized through national photography, media, and science communication awards.</p>
+        </div>
+        <div class="award-groups">
+          <div class="award-group">
+            <h3>NASA recognition</h3>
+            <ul>
+              <li><b>NASA Honor Award for Group Achievement</b><span>Planning and execution of NASA's nationwide 2017 Solar Eclipse broadcast event</span></li>
+              <li><b>NASA Significant Achievement Award</b><span>Social media project Reinventing the Wheel</span></li>
+              <li><b>NASA Glenn Center Operations Directorate Peer Achievement Award</b><span>Operational excellence and teamwork</span></li>
+              <li><b>NASA Videographer of the Year Award (Team)</b><span>Production category, 2nd place</span></li>
+            </ul>
+          </div>
+          <div class="award-group">
+            <h3>Professional media and communication</h3>
+            <ul>
+              <li><b>Communicator Award of Excellence</b><span>Digital Media · Reinventing the Wheel</span></li>
+              <li><b>APEX Grand Award for Electronic Media</b><span>Reinventing the Wheel</span></li>
+              <li><b>APEX Awards of Excellence</b><span>Science communication and digital storytelling projects including Meet the Makers, #BeAnAstronaut, and Baseball in the Ballistic Impact Lab</span></li>
+              <li><b>Silver ADDY Award</b><span>Still Photography (Color) · Portrait of Kent State University President Todd Diacon for Kent State Magazine</span></li>
+            </ul>
+          </div>
+          <div class="award-group">
+            <h3>Kent State collaborative work</h3>
+            <p class="lead-in">Campaigns produced through Kent State University's Division of University Communications and Marketing have received national recognition in the Educational Advertising Awards, including honors for:</p>
+            <ul>
+              <li><b>Kent State University Student Viewbook</b><span>Best of Show</span></li>
+              <li><b>Kent State Digital Magazine</b></li>
+              <li><b>Social media and digital storytelling campaigns</b></li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section>
-      <h2>Teaching and talks</h2>
-      <ol class="timeline">
-        <li>
-          <span class="dates">11/2026</span>
-          <h3><a href="../guides/checking-ai-quotes/">Checking AI-generated quotes</a></h3>
-          <p class="org">Professional development workshop designed for university communications staff</p>
-          <p>A 90-minute session, designed in ENGR 61095, in which communicators check an AI-generated interview against a four-point editorial standard and write a verification plan for every flagged claim.</p>
-        </li>
-        <li>
-          <span class="dates">2026</span>
-          <h3><a href="../guides/prompt-to-publish/">Prompt to Publish</a></h3>
-          <p class="org">Field guide to AI for university communicators</p>
-          <p>How these tools work, how to direct them, how to verify them, and when to put them down.</p>
-        </li>
-        <li>
-          <!-- TODO: talk title -->
-          <span class="dates">06/2026</span>
-          <h3>UPAA Symposium</h3>
-          <p class="org">University Photographers' Association of America</p>
-        </li>
-      </ol>
+    <section class="band" id="nasa" aria-labelledby="nasa-h">
+      <div class="wrap">
+        <div class="band-head">
+          <div><p class="label kicker">Selected features</p><h2 id="nasa-h">NASA Image of the Day</h2></div>
+          <p>Several of my photographs created while working with NASA Glenn Research Center were selected as NASA "Image of the Day" features on NASA.gov. They document research, testing, and astronomical events while highlighting the visual power of scientific exploration.</p>
+        </div>
+        <ol class="iotd">
+          <li><div><h3>A Celestial Diamond Ring: Nature's Gift to Humanity</h3><p>The Moon completely obscures the Sun during the total solar eclipse of August 21, 2017. Captured from Jefferson City, Missouri, the image reveals the Sun's faint outer corona, a phenomenon visible only during totality.</p></div><a class="out" href="https://www.nasa.gov/image-article/celestial-diamond-ring-natures-gift-humanity/">View on NASA.gov<span class="sr-only">: A Celestial Diamond Ring: Nature's Gift to Humanity</span> →</a></li>
+          <li><div><h3>Electric Propulsion Testing at NASA Glenn</h3><p>A beam of ionized particles glows within a vacuum test chamber during electric propulsion testing at NASA Glenn Research Center. Ion propulsion systems generate thrust by accelerating charged particles, offering highly efficient propulsion for deep-space missions.</p></div><a class="out" href="https://www.nasa.gov/image-article/thruster-next-generation-spacecraft-undergoes-testing-glenn/">View on NASA.gov<span class="sr-only">: Electric Propulsion Testing at NASA Glenn</span> →</a></li>
+          <li><div><h3>Aircraft Propulsion Model in NASA Wind Tunnel</h3><p>Inside the 8' x 6' wind tunnel at NASA Glenn, engineers recently tested a fan and inlet design, commonly called a propulsor.</p></div><a class="out" href="https://www.nasa.gov/aeronautics/reduce-fuel-burn-with-a-dose-of-bli/">View on NASA.gov<span class="sr-only">: Aircraft Propulsion Model in NASA Wind Tunnel</span> →</a></li>
+          <li><div><h3>Super Blood Moon Lunar Eclipse</h3><p>The Moon passes through Earth's shadow during a total lunar eclipse, glowing red as sunlight filters through Earth's atmosphere. Often called a "blood moon," this phenomenon occurs when scattered red wavelengths of sunlight illuminate the lunar surface.</p></div><a class="out" href="https://www.nasa.gov/image-article/supermoon-lunar-eclipse/">View on NASA.gov<span class="sr-only">: Super Blood Moon Lunar Eclipse</span> →</a></li>
+          <li><div><h3>NASA Blasts Orion Service Module with Giant Horns</h3><p>Technicians prepare a full-scale test article of Orion's European Service Module for environmental testing at NASA Glenn Research Center. These tests help ensure that spacecraft systems can survive the harsh mechanical and acoustic conditions of spaceflight.</p></div><a class="out" href="https://www.nasa.gov/image-article/nasa-blasts-orion-service-module-with-giant-horns/">View on NASA.gov<span class="sr-only">: NASA Blasts Orion Service Module with Giant Horns</span> →</a></li>
+          <li><div><h3>Evaluating the Noise of Future Aircraft</h3><p>To address the expected noise levels of future aircraft, NASA's Commercial Supersonic Technology project is already developing technologies focused on reducing the noise produced by an aircraft's engine exhaust.</p></div><a class="out" href="https://www.nasa.gov/image-article/evaluating-noise-of-future-aircraft/">View on NASA.gov<span class="sr-only">: Evaluating the Noise of Future Aircraft</span> →</a></li>
+          <li><div><h3>Probing the Plume</h3><p>Hall thrusters create thrust by ionizing propellant with electrons trapped in a magnetic field at the open end of the thruster and accelerating the ionized propellant with an electric field.</p></div><a class="out" href="https://www.nasa.gov/image-article/probing-plume/">View on NASA.gov<span class="sr-only">: Probing the Plume</span> →</a></li>
+        </ol>
+      </div>
     </section>
 
-    <section>
-      <h2>Education</h2>
-      <ol class="timeline">
-        <li><span class="dates">In progress</span><h3>MS, Emerging Media and Technology</h3><p>Kent State University</p></li>
-        <li><span class="dates">05/2026</span><h3>Bachelor of Integrated Studies</h3><p>Kent State University</p></li>
-      </ol>
+    <section class="band" id="publications" aria-labelledby="pub-h">
+      <div class="wrap">
+        <div class="band-head"><div><p class="label kicker">Publications</p><h2 id="pub-h">Peer-reviewed</h2></div></div>
+        <article class="pub">
+          <div>
+            <p class="label kicker" style="margin:0">Journal of Archaeological Science: Reports · Volume 37 · 2021</p>
+            <h3>The Nelson stone tool cache, North-Central Ohio, U.S.A.: Assessing its cultural affiliation</h3>
+            <p>Credited as an author on this peer-reviewed article, I contributed to a project examining the Nelson stone tool cache discovered in Mount Vernon, Ohio. The study compares 164 bifaces with Clovis and post-Clovis caches and incorporates geochemical, ochre, and microwear analyses to better understand the assemblage's cultural affiliation.</p>
+          </div>
+          <div style="align-self:end"><a class="btn btn--solid" href="https://www.sciencedirect.com/science/article/pii/S2352409X2100184X">View on ScienceDirect</a></div>
+        </article>
+      </div>
     </section>
 
-    <section>
-      <h2>Awards</h2>
-      <!-- TODO: carry over the awards list from the current About page -->
+    <section class="band" id="record" aria-labelledby="record-h">
+      <div class="wrap">
+        <div class="band-head"><div><p class="label kicker">Full record</p><h2 id="record-h">Experience, teaching and education</h2></div><p>Month and year for every role, matched to my resume.</p></div>
+        <div class="cv-section"><h2>Experience</h2><ol class="timeline">
+          <li><span class="dates">08/2019 to present</span><div><h3>Senior Photographer</h3><p class="org">University Communications and Marketing, Kent State University · Kent, Ohio</p><p>Produces photography, video, audio and motion graphics that advance the university's strategic priorities, working with designers, writers and marketing strategists. Runs the team's digital asset workflow in PhotoShelter, Airtable and Lightroom Classic, supervises student photographers, and serves as the team's informal AI lead.</p></div></li>
+          <li><span class="dates">07/2015 to 08/2019</span><div><h3>Photographer IV / Digital Imaging Specialist</h3><p class="org">NASA Glenn Research Center · Cleveland, Ohio</p><p>Photography and multimedia for Artemis, SpaceX and Commercial Crew hardware testing, and research and engineering initiatives. Planned and executed coverage for the 2017 Eclipse Across America initiative. One of NASA's representatives producing content for Instagram's IGTV during its beta. Seven photographs ran as NASA Image of the Day.</p></div></li>
+          <li><span class="dates">01/2003 to present</span><div><h3>Owner and Photographer</h3><p class="org">Rami Daud Photography Inc.</p><p>Freelance assignments for clients including the Associated Press, AFP, Cleveland Magazine and The Toledo Blade.</p></div></li>
+          <li><span class="dates">08/2012 to 08/2015</span><div><h3>Event Specialist and Photographer</h3><p class="org">The Standard, Wedding and Events Group · Pittsburgh</p><p>Documentary and location-lit portrait coverage of weddings and events.</p></div></li>
+          <li><span class="dates">11/2010 to 08/2011</span><div><h3>Photography Intern</h3><p class="org">The Youngstown Vindicator</p><p>News, sports, features and portraits in stills and video. Ran the photo desk several nights a week.</p></div></li>
+          <li><span class="dates">05/2006 to 12/2008</span><div><h3>Photography Intern</h3><p class="org">Medina County Gazette</p><p>Introduced multimedia production to a stills-only newsroom and built a multimedia site featured by the National Press Photographers Association. Extended from a three-month internship to a two-year position.</p></div></li>
+          <li><span class="dates">2007 to 2008</span><div><h3>Assistant to the University Photographer</h3><p class="org">Kent State University</p><p>Digital asset management, film scanning, retouching and metadata for the university photo archive.</p></div></li>
+        </ol></div>
+        <div class="cv-section"><h2>Teaching and talks</h2><ol class="timeline">
+          <li><span class="dates">11/2026</span><div><h3><a href="../guides/checking-ai-quotes/">Checking AI-generated quotes</a></h3><p class="org">Workshop kit · designed for university communications staff</p><p>A 90-minute session, designed in ENGR 61095, in which communicators check an AI-generated interview against a four-point editorial standard.</p></div></li>
+          <li><span class="dates">2026</span><div><h3><a href="../guides/prompt-to-publish/">Prompt to Publish</a></h3><p class="org">Field guide for university communicators</p><p>How these tools work, how to direct them, how to verify them, and when to put them down.</p></div></li>
+          <li><span class="dates">06/2026</span><div><h3>UPAA Symposium panel</h3><p class="org">AI and university photography · Ann Arbor, Michigan</p></div></li>
+        </ol></div>
+        <div class="cv-section"><h2>Education</h2><ol class="timeline">
+          <li><span class="dates">In progress</span><div><h3>MS, Emerging Media and Technology</h3><p class="org">Kent State University</p><p>Completing a research project on photography and the public understanding of science.</p></div></li>
+          <li><span class="dates">05/2026</span><div><h3>Bachelor of Integrated Studies</h3><p class="org">Kent State University</p></div></li>
+        </ol></div>
+      </div>
+    </section>
+
+    <section class="band contact-band" id="contact" aria-labelledby="contact-h">
+      <div class="wrap">
+        <div class="band-head">
+          <div><p class="label" style="color:var(--red-light)">Contact</p><h2 id="contact-h">Let's talk</h2></div>
+          <p>If you'd like to collaborate, discuss a project, or simply get in touch, feel free to reach out. I'm always interested in conversations about photography, science communication, and visual storytelling.</p>
+        </div>
+        <div class="btn-row"><a class="btn btn--solid" href="mailto:EMAIL_TODO">Email me</a><a class="btn" href="LINKEDIN_TODO">LinkedIn</a><a class="btn" href="https://ramidaud.substack.com">Substack</a></div>
+        <p class="fine" style="color:#b9b1a0">All content © 2026 Rami Daud Photography unless otherwise noted. Images and video taken for NASA fall under NASA's media guidelines.</p>
+      </div>
     </section>
   </main>
 
-  <footer class="site-footer" id="contact">
-    <div class="wrap">
-      <a href="mailto:EMAIL_TODO">Email</a>
-      <a href="LINKEDIN_TODO">LinkedIn</a>
-      <a href="https://ramidaud.substack.com">Substack</a>
-      <p>© <span data-year>2026</span> Rami Daud</p>
-    </div>
+  <footer class="site-foot">
+    <a href="mailto:EMAIL_TODO">Email</a>
+    <a href="LINKEDIN_TODO">LinkedIn</a>
+    <a href="https://ramidaud.substack.com">Substack</a>
+    <span>© <span data-year>2026</span> Rami Daud · Built with Claude, published by a person</span>
   </footer>
-  <script src="../assets/js/site.js" defer></script>
+  <aside class="prov-panel" aria-label="How this page was made"><span class="label">How this page was made</span><p>Bio, awards, NASA features and publication text are Rami's own, carried over from the previous ramidaud.com About page with em dashes replaced. Dates from Rami's LinkedIn export. Layout coded with Claude.</p></aside>
+  <div class="prov-dock"><button type="button" class="btn-prov" data-prov-toggle aria-pressed="false">[ Show provenance ]</button></div>
+</div>
+<script src="../assets/js/e1.js" defer></script>
 </body>
 </html>

@@ -173,6 +173,32 @@
     }).catch(() => {});
   }
 
+  // ---------- Copy buttons on prompt blocks ----------
+  document.querySelectorAll('.copy-block').forEach(block => {
+    const pre = block.querySelector('pre');
+    if (!pre || !navigator.clipboard) return;
+    const btn = document.createElement('button');
+    btn.type = 'button'; btn.className = 'copy-btn'; btn.textContent = 'Copy';
+    btn.addEventListener('click', async () => {
+      try { await navigator.clipboard.writeText(pre.textContent.trim()); btn.textContent = 'Copied'; }
+      catch (e) { btn.textContent = 'Select and copy'; }
+      setTimeout(() => { btn.textContent = 'Copy'; }, 1600);
+    });
+    block.appendChild(btn);
+  });
+
+  // ---------- Table of contents follows the reader ----------
+  const tocLinks = document.querySelectorAll('.toc a[href^="#"]');
+  if (tocLinks.length && 'IntersectionObserver' in window) {
+    const map = new Map([...tocLinks].map(a => [a.getAttribute('href').slice(1), a]));
+    const io = new IntersectionObserver(entries => entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      tocLinks.forEach(a => a.removeAttribute('aria-current'));
+      const a = map.get(e.target.id); if (a) a.setAttribute('aria-current', 'true');
+    }), { rootMargin: '-20% 0px -70% 0px' });
+    map.forEach((_, id) => { const el = document.getElementById(id); if (el) io.observe(el); });
+  }
+
   // ---------- Footer year ----------
   document.querySelectorAll('[data-year]').forEach(el => { el.textContent = new Date().getFullYear(); });
 })();

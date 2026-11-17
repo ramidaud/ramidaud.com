@@ -5,44 +5,44 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Prompt to Publish · A field guide to AI for communicators · Rami Daud</title>
   <meta name="description" content="What generative AI tools are, how to direct them, how to verify them, and how to know when to put them down. A field guide for university communicators.">
+  <meta name="theme-color" content="#efebe2">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../../assets/css/site.css">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/e1.css">
+  <link rel="stylesheet" href="../../assets/css/e1-pages.css">
 </head>
 <body>
+<div class="page">
   <a class="skip-link" href="#main">Skip to content</a>
-
-  <header class="site-header">
-    <div class="wrap">
-      <a class="site-name" href="../../">Rami Daud</a>
-      <nav class="site-nav" aria-label="Main">
-        <a href="../../#work">Work</a>
-        <a href="../" aria-current="page">Guides</a>
-        <a href="../../writing/">Writing</a>
-        <a href="../../#photos">Photography</a>
-        <a href="../../cv/">About</a>
-      </nav>
-    </div>
+  <header class="site-head">
+    <a class="brand" href="../../">Rami Daud</a>
+    <button type="button" class="menu-btn" aria-expanded="false" aria-controls="mainnav">Menu</button>
+    <nav id="mainnav" class="nav" aria-label="Main">
+      <a href="../../#work">Work</a>
+      <a href="../../guides/" aria-current="page">Guides</a>
+      <a href="../../writing/">Writing</a>
+      <a href="../../#frames">Photography</a>
+      <a href="../../cv/">About</a>
+    </nav>
+    <button type="button" class="btn-prov btn-prov--top" data-prov-toggle aria-pressed="false">[ Show provenance ]</button>
   </header>
-
+  <div class="strip label"><span>Field guide · Prompt to Publish</span><span>6 parts · glossary · references</span></div>
   <main id="main">
-    <div class="guide-hero">
-      <div class="wrap">
-        <p class="label">Field guide · AI in practice</p>
+    <div class="wrap page-hero">
+        <p class="label kicker">Field guide · AI in practice</p>
         <h1>Prompt to Publish</h1>
-        <p class="subline">A field guide to AI for university communicators. What these tools are, how to direct them, how to verify them, and how to know when to put them down.</p>
-        <div class="guide-meta meta">
+        <p class="lede">A field guide to AI for university communicators. What these tools are, how to direct them, how to verify them, and how to know when to put them down.</p>
+        <div class="meta-row label">
           <span>Rami Daud</span>
           <span>2026</span>
           <span>About 25 minutes to read</span>
         </div>
         <div class="button-row">
-          <a class="button button--primary" href="#quick-start">Start with the one-page version</a>
-          <a class="button" href="../../downloads/Rami-Daud_Prompt-to-Publish.pdf" download>Download the designed PDF (39 pages)</a>
-          <a class="button" href="../checking-ai-quotes/">Run the companion workshop</a>
+          <a class="btn btn--solid" href="#quick-start">Start with the one-page version</a>
+          <a class="btn" href="../../downloads/Rami-Daud_Prompt-to-Publish.pdf" download>Download the designed PDF (39 pages)</a>
+          <a class="btn" href="../checking-ai-quotes/">Run the companion workshop</a>
         </div>
-      </div>
     </div>
 
     <div class="wrap guide-layout">
@@ -454,8 +454,8 @@ Constraints: [style rules, what it must not invent, what to flag]</pre>
             <li>Professional context: UPAA Symposium panel, June 2026, Ann Arbor, Michigan.</li>
           </ul>
           <div class="button-row no-print">
-            <button type="button" class="button" onclick="window.print()">Print or save as PDF</button>
-            <a class="button" href="../checking-ai-quotes/">Next: Checking AI-generated quotes</a>
+            <button type="button" class="btn" onclick="window.print()">Print or save as PDF</button>
+            <a class="btn" href="../checking-ai-quotes/">Next: Checking AI-generated quotes</a>
           </div>
         </section>
 
@@ -463,14 +463,15 @@ Constraints: [style rules, what it must not invent, what to flag]</pre>
     </div>
   </main>
 
-  <footer class="site-footer" id="contact">
-    <div class="wrap">
-      <a href="mailto:EMAIL_TODO">Email</a>
-      <a href="LINKEDIN_TODO">LinkedIn</a>
-      <a href="https://ramidaud.substack.com">Substack</a>
-      <p>© <span data-year>2026</span> Rami Daud</p>
-    </div>
+  <footer class="site-foot">
+    <a href="mailto:EMAIL_TODO">Email</a>
+    <a href="LINKEDIN_TODO">LinkedIn</a>
+    <a href="https://ramidaud.substack.com">Substack</a>
+    <span>© <span data-year>2026</span> Rami Daud · Built with Claude, published by a person</span>
   </footer>
-  <script src="../../assets/js/site.js" defer></script>
+  <aside class="prov-panel" aria-label="How this page was made"><span class="label">How this page was made</span><p>Written by Rami as Kent State graduate coursework. Portions drafted with AI, then verified, restructured and rewritten by Rami. Kent State internal details generalized for a public audience. Web layout coded with Claude.</p></aside>
+  <div class="prov-dock"><button type="button" class="btn-prov" data-prov-toggle aria-pressed="false">[ Show provenance ]</button></div>
+</div>
+<script src="../../assets/js/e1.js" defer></script>
 </body>
 </html>
