@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prompt to Publish · A field guide to AI for communicators · Rami Daud</title>
+  <meta name="description" content="What generative AI tools are, how to direct them, how to verify them, and how to know when to put them down. A field guide for university communicators.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/site.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="site-name" href="../../">Rami Daud</a>
+      <nav class="site-nav" aria-label="Main">
+        <a href="../../#work">Work</a>
+        <a href="../" aria-current="page">Guides</a>
+        <a href="../../writing/">Writing</a>
+        <a href="../../#photos">Photography</a>
+        <a href="../../cv/">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="guide-hero">
+      <div class="wrap">
+        <p class="label">Field guide · AI in practice</p>
+        <h1>Prompt to Publish</h1>
+        <p class="subline">A field guide to AI for university communicators. What these tools are, how to direct them, how to verify them, and how to know when to put them down.</p>
+        <div class="guide-meta meta">
+          <span>Rami Daud</span>
+          <span>2026</span>
+          <span>About 25 minutes to read</span>
+        </div>
+        <div class="button-row">
+          <a class="button button--primary" href="#quick-start">Start with the one-page version</a>
+          <a class="button" href="../checking-ai-quotes/">Run the companion workshop</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="wrap guide-layout">
+      <nav class="toc" aria-label="In this guide">
+        <ol>
+          <li><a href="#quick-start"><span class="num">00</span>Quick start</a></li>
+          <li><a href="#understanding"><span class="num">01</span>Understanding AI</a></li>
+          <li><a href="#why"><span class="num">02</span>Why this matters now</a></li>
+          <li><a href="#craft"><span class="num">03</span>The craft</a></li>
+          <li><a href="#workshop"><span class="num">04</span>The workshop</a></li>
+          <li><a href="#judgment"><span class="num">05</span>Judgment</a></li>
+          <li><a href="#policy"><span class="num">06</span>Building a policy</a></li>
+          <li><a href="#glossary"><span class="num">+</span>Glossary</a></li>
+          <li><a href="#references"><span class="num">+</span>References</a></li>
+        </ol>
+      </nav>
+
+      <div class="guide-body">
+
+        <section id="quick-start">
+          <p class="part-label">If you read nothing else</p>
+          <h2>The whole guide on one page</h2>
+          <p>Copy it. Pin it up. Everything after this section explains why it works.</p>
+
+          <h3>Build every prompt from four parts</h3>
+          <div class="grid-4">
+            <div class="tile"><p class="q">Who is the AI writing as?</p><h4>Role</h4><p>Sets register, vocabulary and audience in one move.</p></div>
+            <div class="tile"><p class="q">What can it not guess?</p><h4>Context</h4><p>Names, facts and materials it has no way to know.</p></div>
+            <div class="tile"><p class="q">What is the deliverable?</p><h4>Task</h4><p>Format, length and components.</p></div>
+            <div class="tile"><p class="q">What are the boundaries?</p><h4>Constraints</h4><p>Style rules, prohibitions, what it must not invent.</p></div>
+          </div>
+
+          <h3>Verify in three steps, every time</h3>
+          <ol class="steps">
+            <li><strong>Source check.</strong> No openable source, no confirmed claim.</li>
+            <li><strong>Claim isolation.</strong> Highlight every number, name, date, title and quote.</li>
+            <li><strong>Independent confirmation.</strong> Check against sources the AI did not give you.</li>
+          </ol>
+          <p class="pull">The more confident it sounds, the more it deserves checking. Polish is not proof.</p>
+
+          <h3>The eight principles</h3>
+          <ol class="principles">
+            <li>Use AI to support judgment, not replace it.</li>
+            <li>Never confuse fluency with accuracy.</li>
+            <li>Protect private and personally identifying information.</li>
+            <li>Do not fabricate institutional reality.</li>
+            <li>Verify claims according to their potential harm.</li>
+            <li>Disclose synthetic content when audiences could be misled.</li>
+            <li>Preserve authentic voice and representation.</li>
+            <li>The person publishing the work owns the result.</li>
+          </ol>
+          <p class="pull">Direction going in. Doubt coming out. Everything in between is technique.</p>
+        </section>
+
+        <section id="understanding">
+          <p class="part-label">Part one</p>
+          <h2>Understanding AI</h2>
+          <p><em>You cannot calibrate trust in a tool you cannot describe.</em></p>
+
+          <h3>What these tools actually are</h3>
+          <p>Artificial intelligence is not one thing. It is a family of techniques for getting computers to do tasks that normally require human judgment. The AI in your phone's autocorrect, the AI that flags a fraudulent charge, and the AI drafting your story are different technologies with different failure modes.</p>
+          <p>This guide concerns the newest branch: generative AI, systems that produce new text, images, audio and video rather than sorting or scoring what already exists. Inside it sit large language models, the engine behind ChatGPT, Claude, Gemini and Copilot.</p>
+          <p class="def"><b>large language model (LLM)</b> A system trained on massive text collections to predict plausible language.</p>
+          <p class="pull">The system that writes your draft has no concept of true. It has a concept of likely.</p>
+
+          <h3>The mental model that matters: prediction, not retrieval</h3>
+          <div class="grid-3">
+            <div class="tile"><p class="q">01</p><p>A large language model is a prediction engine. It learns the statistical patterns of language, then generates the most plausible next words given everything that came before.</p></div>
+            <div class="tile"><p class="q">02</p><p>It does not inherently retrieve verified facts. It generates from a compressed statistical impression of its training data, unless it is connected to search, uploaded documents or another retrieval system.</p></div>
+            <div class="tile"><p class="q">03</p><p>That is why the same system can draft a beautiful paragraph and invent a citation with identical confidence. Fluency and accuracy come from the same mechanism, so one cannot vouch for the other.</p></div>
+          </div>
+
+          <h3>Seventy years in one page</h3>
+          <p>The overnight revolution was seventy years in the making, with two winters in the middle.</p>
+          <div class="table-wrap">
+            <table class="data">
+              <tbody>
+                <tr><td>1950</td><td>Alan Turing asks whether machines can think and proposes the imitation game.</td></tr>
+                <tr><td>1956</td><td>The Dartmouth workshop coins the term artificial intelligence.</td></tr>
+                <tr><td>1966</td><td>ELIZA, the first chatbot, fools users with pattern-matched therapy scripts.</td></tr>
+                <tr><td>1970s</td><td>The first AI winter: promises outrun hardware and funding collapses.</td></tr>
+                <tr><td>1980s</td><td>Expert systems boom in industry, then bust. The second winter.</td></tr>
+                <tr><td>1997</td><td>IBM's Deep Blue defeats world chess champion Garry Kasparov.</td></tr>
+                <tr><td>2012</td><td>AlexNet starts the deep learning era. Neural networks finally have the data and compute they need.</td></tr>
+                <tr><td>2016</td><td>AlphaGo defeats Lee Sedol at Go, a game long thought safe from machines.</td></tr>
+                <tr><td>2017</td><td>The transformer architecture is published. It becomes the T in GPT.</td></tr>
+                <tr><td>2022</td><td>ChatGPT reaches 100 million users in two months, a record for consumer applications at the time.</td></tr>
+                <tr><td>2024 to 2026</td><td>Multimodal systems, AI Overviews and early agentic AI move the question from what it can make to what we should let it do.</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>Two lessons hide in this timeline. Capability arrives in sudden jumps after long quiet periods, and every boom has carried predictions that aged badly. Hold both.</p>
+
+          <h3>What comes next, honestly</h3>
+          <p>Predictions about AI age like milk. Open questions age like wine. These are the tensions worth tracking.</p>
+          <div class="grid-2">
+            <div class="tile"><h4>Agentic AI</h4><p>Systems that take multi-step actions rather than answering single prompts. Who checks work that no person saw midstream? Picture an assistant that drafts the pitch, assembles the source list and files the photo request as one chain, with a person reviewing only the end product.</p></div>
+            <div class="tile"><h4>Search is being rewritten</h4><p>Generative engine optimization is emerging alongside SEO as AI Overviews absorb search traffic. When a parent asks a chatbot which universities offer a program, whether yours appears depends on how clearly your pages state it.</p></div>
+            <div class="tile"><h4>Regulation is unsettled</h4><p>As of 2026, the EU regulates AI through a risk-based framework while the prevailing US federal posture emphasizes acceleration. Institutional policy cannot wait for the law to settle.</p></div>
+            <div class="tile"><h4>The authenticity counterweight</h4><p>Provenance is becoming a technical discipline: edit-history logging, metadata and rights signals, file-level tagging. Newer professional cameras can attach a tamper-evident capture and edit log to every frame.</p></div>
+            <div class="tile"><h4>Content creation is decentralizing</h4><p>Faculty and departments can now generate podcasts, videos and articles without contacting a communications office. Off-the-shelf tools can turn a research paper into a passable two-voice podcast in an afternoon.</p></div>
+          </div>
+          <p class="pull">Lead with standards, or inherit the cleanup.</p>
+        </section>
+
+        <section id="why">
+          <p class="part-label">Part two</p>
+          <h2>Why this matters now</h2>
+          <p><em>The tools arrived before the training did.</em></p>
+          <p>University communications teams adopted generative AI quickly, unevenly and without a shared playbook. Staff use it daily to draft stories, caption images and repurpose content, while the standards for that use still live mostly in individual judgment.</p>
+
+          <h3>Three conditions make this urgent</h3>
+          <div class="grid-3">
+            <div class="tile"><h4>Adoption runs ahead of governance</h4><p>Verification practices vary desk to desk.</p></div>
+            <div class="tile"><h4>University content carries institutional liability</h4><p>A hallucinated statistic in an enrollment story is a different kind of error than one in a dinner recipe.</p></div>
+            <div class="tile"><h4>Trust grows through structure</h4><p>Trust in AI grows through structured, hands-on development, not unstructured exposure.</p></div>
+          </div>
+          <p class="pull">Standards that live in individual judgment are not standards yet.</p>
+
+          <h3>What practitioners are asking</h3>
+          <p>This guide was shaped by a professional panel on AI and university photography at the UPAA Symposium in June 2026, with colleagues from Michigan, Missouri S&amp;T, Arizona State and commercial freelance practice. The questions that came up again and again:</p>
+          <ul>
+            <li>Will AI support our work, or be used to eliminate positions?</li>
+            <li>How do we protect authenticity in stories about real students and faculty?</li>
+            <li>When does AI use require disclosure?</li>
+            <li>Who is accountable when AI-generated content is wrong?</li>
+          </ul>
+
+          <h3>What this guide teaches</h3>
+          <ol class="steps">
+            <li><strong>Construct</strong> structured prompts with the four-part Prompt Architecture Blueprint, measured by a simple before-and-after revision count.</li>
+            <li><strong>Evaluate</strong> AI-generated content for accuracy with a three-step verification protocol before anything reaches publication.</li>
+            <li><strong>Identify</strong> the credibility illusion by comparing responses to neutral, directive and emotionally framed prompts.</li>
+            <li><strong>Assess</strong> ethical, legal, authenticity and disclosure risks, and decide when AI should assist, when human review is required, and when AI should not be used.</li>
+          </ol>
+
+          <p class="note"><strong>How this guide was made.</strong> In the spirit of the disclosure standards it teaches: the Prompt Architecture Blueprint began as a working tool I built for colleagues in a university communications office, and this guide is its first formal write-up, first produced as graduate coursework at Kent State. Portions were drafted with AI assistance, then verified, restructured and rewritten by me.</p>
+        </section>
+
+        <section id="craft">
+          <p class="part-label">Part three</p>
+          <h2>The craft</h2>
+
+          <h3>The working model</h3>
+          <ul>
+            <li>These systems predict plausible language. They do not retrieve verified facts.</li>
+            <li>Fluency and accuracy are produced independently. Confidence is not accuracy.</li>
+            <li>Hallucination is not a defect one patch removes. It comes from the same predictive mechanism that produces fluent language, though retrieval, stronger models and verification can reduce the risk.</li>
+          </ul>
+          <div class="grid-2">
+            <div class="tile"><p class="q">Failure mode one</p><h4>Overtrust</h4><p>It sounds right, so it is.</p></div>
+            <div class="tile"><p class="q">Failure mode two</p><h4>Undertrust</h4><p>It is dangerous, so never.</p></div>
+          </div>
+          <p>The goal is calibrated trust: use AI where it creates real value, verify according to risk, and decline to use it when authenticity, privacy or institutional credibility would be compromised.</p>
+
+          <h3 id="blueprint">The Prompt Architecture Blueprint</h3>
+          <p>Four parts, every prompt. The framework also works as a standardized prompt intake form for a team.</p>
+          <div class="grid-2">
+            <div class="tile"><p class="q">Who is the AI writing as?</p><h4>Role</h4><p>A role sets register, vocabulary and audience assumptions in one move.</p></div>
+            <div class="tile"><p class="q">What can it not guess?</p><h4>Context</h4><p>Names, facts, relationships and materials the model has no way to know. Context is where hallucination gets starved.</p></div>
+            <div class="tile"><p class="q">What exactly is the deliverable?</p><h4>Task</h4><p>Format, length, components. Vague tasks return vague drafts.</p></div>
+            <div class="tile"><p class="q">What are the boundaries?</p><h4>Constraints</h4><p>Style rules, prohibitions, things it must not invent. Constraints are where institutional risk gets fenced.</p></div>
+          </div>
+          <p>The more precise the constraints, the fewer revision cycles the draft needs. Precision up front is also lighter on the planet, a point Part five returns to.</p>
+          <div class="copy-block">
+            <pre>Role: [who the AI writes as, and for which audience]
+Context: [names, facts and materials it cannot know]
+Task: [the exact deliverable: format, length, parts]
+Constraints: [style rules, what it must not invent, what to flag]</pre>
+          </div>
+
+          <h3>The gallery: weak and strong, side by side</h3>
+          <p>Frameworks tell. Examples teach. Five real communications tasks, each run both ways.</p>
+
+          <h4>1 · The feature story</h4>
+          <div class="compare">
+            <div class="weak"><p class="tag">WEAK</p><p class="prompt">Write a story about the aquatic ecology lab.</p><p class="result">Generic prose, invented atmosphere, a fabricated quote from an unnamed student, no sense of audience. Twenty minutes of cleanup.</p></div>
+            <div class="strong"><p class="tag">STRONG</p><p class="prompt">You are a senior writer for a university news site writing for alumni and prospective families. Context: the university's aquatic ecology lab hosts undergraduate researchers; the story subject is a junior biology major; the piece runs alongside three photos. Task: a 400-word feature draft with a headline and two subhead options. Constraints: no superlatives about the university, no invented quotes, AP style, do not state research findings the source material does not contain.</p><p class="result">The draft arrives in register, at length, and quote-free where no quotes were supplied. The remaining work is voice, not triage.</p></div>
+          </div>
+
+          <h4>2 · The caption set</h4>
+          <div class="compare">
+            <div class="weak"><p class="tag">WEAK</p><p class="prompt">Write a fun Instagram caption for this rocket photo.</p><p class="result">Exclamation points, a rocket emoji, and a claim the launch "broke records," which nobody said.</p></div>
+            <div class="strong"><p class="tag">STRONG</p><p class="prompt">Role: social media writer for a university account with a warm, wry voice. Context: photo shows the liquid-fueled rocketry team conducting a cold-weather field test; students pictured have signed releases; no launch occurred, this is instrumentation work. Task: three caption options under 125 characters plus five hashtag suggestions. Constraints: no achievement claims, no emoji, do not name students.</p><p class="result">The model cannot invent a triumph, because the constraint forbids claims and the context says what actually happened.</p></div>
+          </div>
+
+          <h4>3 · The summary</h4>
+          <div class="compare">
+            <div class="weak"><p class="tag">WEAK</p><p class="prompt">Summarize this press release.</p><p class="result">A competent summary that quietly promotes the study's hoped-for outcome into a finding.</p></div>
+            <div class="strong"><p class="tag">STRONG</p><p class="prompt">Role: newsletter editor for internal university staff. Context: the attached announcement describes a grant awarded to study X; results do not exist yet. Task: a 150-word item, one quote retained verbatim from the provided text. Constraints: describe the research as beginning, not concluding; every number must appear in the source; flag anything you were unsure about below the draft.</p><p class="result">Requiring every number to trace to the source turns the model from author into summarizer. The flag request makes uncertainty visible instead of smoothing it over.</p></div>
+          </div>
+
+          <h4>4 · The shot list</h4>
+          <div class="compare">
+            <div class="weak"><p class="tag">WEAK</p><p class="prompt">Give me a shot list for an accreditation story.</p><p class="result">A plausible, generic list that misses everything specific to the visit.</p></div>
+            <div class="strong"><p class="tag">STRONG</p><p class="prompt">Role: photo editor planning documentary coverage. Context: three-day site visit; the college requests emphasis on student-faculty interaction in the new simulation lab; two reviewers have declined to be photographed. Task: a shot list of 12 setups ordered by schedule, each with location, subjects and a one-line rationale. Constraints: nothing staged to look like instruction that is not occurring; note where releases are required.</p><p class="result">The no-staging constraint is the authenticity standard from Part five, written into the prompt itself.</p></div>
+          </div>
+
+          <h4>5 · The image generation request</h4>
+          <div class="compare">
+            <div class="weak"><p class="tag">WEAK</p><p class="prompt">Make an image of diverse students in a science lab.</p><p class="result">Stock-adjacent synthetic people, representation flattened to a template, and an image one forward away from being mistaken for documentation.</p></div>
+            <div class="strong"><p class="tag">STRONG</p><p class="prompt">Role: illustrator creating clearly stylized concept art for an internal slide, not for external use. Context: the slide discusses a proposed lab renovation. Task: one illustration in a flat, graphic, obviously non-photographic style. Constraints: no photorealism, no recognizable individuals, label output as AI-generated in the file name.</p><p class="result">Style constraints keep synthetic imagery visibly synthetic. The file-name label makes the disclosure travel with the asset.</p></div>
+          </div>
+          <p class="pull">Ethics can be written into the prompt.</p>
+
+          <h3>How does AI bluff?</h3>
+          <p>No detector catches everything. Pattern recognition catches a lot.</p>
+          <div class="grid-3">
+            <div class="tile"><p class="q">01</p><h4>Unverifiable precision</h4><p>Suspiciously specific statistics with no source attached. Precision is not provenance.</p></div>
+            <div class="tile"><p class="q">02</p><h4>The invented citation</h4><p>Real journal, real-sounding authors, page numbers and all. Always resolve the DOI.</p></div>
+            <div class="tile"><p class="q">03</p><h4>Uniform confidence</h4><p>Human experts hedge unevenly; models hedge evenly or not at all. A draft with no uncertainty anywhere did not weigh any.</p></div>
+            <div class="tile"><p class="q">04</p><h4>Studies-show syndrome</h4><p>"Research consistently shows" followed by nothing checkable.</p></div>
+            <div class="tile"><p class="q">05</p><h4>The agreeable mirror</h4><p>The output adopts your framing, including your errors. Ask for the strongest case against your own premise as a stress test.</p></div>
+            <div class="tile"><p class="q">06</p><h4>Stale facts, fresh tone</h4><p>Confident present-tense claims about roles, prices and policies that change. Anything time-sensitive gets verified by default.</p></div>
+          </div>
+
+          <h3>The credibility illusion</h3>
+          <p>The heart of this guide is a finding from my own course research. Three prompts on the same topic, one neutral, one directive and one emotionally framed, went to the same AI model in separate conversations. The results inverted expectation: the neutral prompt produced the most confident, least qualified response, the emotionally framed prompt produced the most careful one, and none of the three cited a single source.</p>
+          <div class="table-wrap">
+            <table class="data">
+              <thead><tr><th>Prompt framing</th><th>Sounds authoritative</th><th>Epistemic care</th><th>Sources cited</th></tr></thead>
+              <tbody>
+                <tr><td>Neutral</td><td>Highest</td><td>Lowest</td><td>0</td></tr>
+                <tr><td>Directive</td><td>Middle</td><td>Middle</td><td>0</td></tr>
+                <tr><td>Emotionally framed</td><td>Lowest</td><td>Highest</td><td>0</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>Checking against institutional guidance and survey research surfaced what even the most careful response missed, including 2025 survey data on 760 adult learners showing 56 percent were more likely to trust institutions cited in Google AI Overviews. That complicates the simple story that AI erodes trust.</p>
+          <p class="def"><b>credibility illusion</b> The gap between how authoritative an AI response sounds and how much epistemic work it actually did.</p>
+          <p>The test takes ten minutes with three prompts and one model, and anyone on a team can replicate it.</p>
+
+          <h3 id="protocol">The three-step verification protocol</h3>
+          <ol class="steps">
+            <li><strong>Source check.</strong> Ask where each factual claim came from. If the AI cannot point to a source you can open, treat the claim as unconfirmed.</li>
+            <li><strong>Claim isolation.</strong> Pull every checkable statement out of the draft: numbers, names, dates, titles, rankings, quotes. Highlight them. A claim you have not isolated is a claim you have not checked.</li>
+            <li><strong>Independent confirmation.</strong> Confirm against sources that did not come from the AI. Rank them: institutional guidance and survey data outrank commentary. Two AI tools agreeing is not confirmation.</li>
+          </ol>
+          <p class="pull">The more authoritative an output sounds, the more verification it deserves.</p>
+        </section>
+
+        <section id="workshop">
+          <p class="part-label">Part four</p>
+          <h2>The workshop</h2>
+          <p><em>Ninety minutes, most of it in participants' hands.</em> Hands-on and discussion blocks fill 65 of the 90 minutes.</p>
+          <ol class="agenda">
+            <li><time>0:00 to 0:10</time><div><h4>The hook</h4><p>Two AI answers to the same question, one confident and wrong, one hedged and right. The room votes before knowing which is which.</p></div></li>
+            <li><time>0:10 to 0:25</time><div><h4>How these tools work</h4><p>Prediction versus retrieval, calibrated trust, and the credibility illusion reveal.</p></div></li>
+            <li><time>0:25 to 0:45</time><div><h4>Hands-on one: rebuild your prompt</h4><p>Participants bring one current draft or task and rebuild its prompt with the Blueprint, comparing before and after.</p></div></li>
+            <li><time>0:45 to 1:00</time><div><h4>Hands-on two: the seeded-error drill</h4><p>Participants hunt for three planted errors, obvious, plausible and subtle, in an AI-drafted university story.</p></div></li>
+            <li><time>1:00 to 1:15</time><div><h4>The spectrum and scenarios</h4><p>Small groups place tasks on the risk spectrum, then work through one publish-or-don't scenario.</p></div></li>
+            <li><time>1:15 to 1:30</time><div><h4>Reflection and handoff</h4><p>Exit ticket naming one workflow change for this week. The one-page references go home with everyone.</p></div></li>
+          </ol>
+
+          <h3>The AI use spectrum</h3>
+          <div class="spectrum">
+            <div><p class="q tile-q meta">Lower-risk assistance</p><ul><li>Brainstorming headlines</li><li>Building shot lists</li><li>Reformatting approved text</li><li>Generating interview questions</li></ul></div>
+            <div><p class="meta">Moderate-risk assistance</p><ul><li>Drafting story copy</li><li>Summarizing source material</li><li>Drafting captions</li><li>Repurposing content</li></ul></div>
+            <div><p class="meta">Higher-risk use</p><ul><li>Generating fictional students</li><li>Fabricating campus scenes</li><li>Altering documentary reality</li><li>Publishing unverified claims</li></ul></div>
+          </div>
+          <p>As representational or institutional risk rises, verification, approval and disclosure requirements rise with it.</p>
+
+          <h3>Three scenarios for small groups</h3>
+          <div class="grid-3">
+            <div class="tile"><h4>The fabricated caption</h4><p>An AI caption states a student's major, hometown and program. Two details were inferred, not provided. What must be verified? Who owns the correction? Is it publishable after revision? Does it need disclosure?</p></div>
+            <div class="tile"><h4>The synthetic campus image</h4><p>A department requests a generated photo of diverse students in a lab because no photography exists. Could viewers believe it is real? Does a label fix it? Is synthetic imagery appropriate for recruitment at all?</p></div>
+            <div class="tile"><h4>The efficiency request</h4><p>A manager proposes generating large volumes of social content to save staff time. What does efficient mean here? Which tasks automate safely? Which still need a person?</p></div>
+          </div>
+
+          <h3>How learning gets measured</h3>
+          <ul>
+            <li><strong>Pre and post survey:</strong> five items tracking confidence and knowledge.</li>
+            <li><strong>Performance artifact:</strong> every participant leaves with one rebuilt prompt and one verified draft from their real workload, plus a before-and-after revision count.</li>
+            <li><strong>Exit ticket:</strong> one named workflow change within the week.</li>
+            <li><strong>30-day follow-up:</strong> actual adoption, which feeds the case for scaling.</li>
+          </ul>
+          <p class="note">Want a deeper session on one skill? <a href="../checking-ai-quotes/">Checking AI-generated quotes</a> is a companion 90-minute workshop built entirely around verification.</p>
+        </section>
+
+        <section id="judgment">
+          <p class="part-label">Part five</p>
+          <h2>Judgment</h2>
+
+          <h3>Privacy and student stories</h3>
+          <p>Three layers, kept honest:</p>
+          <ul>
+            <li><strong>Law.</strong> FERPA governs education records and does not always reach marketing content.</li>
+            <li><strong>Policy.</strong> Whatever your office formally adopts, which this guide is meant to help build.</li>
+            <li><strong>This guide's recommendation.</strong> Do not enter student PII, health information, protected academic-record details or other restricted institutional data into an AI tool unless the use is authorized, the tool is approved for that data, and any required consent has been obtained. Consent to the story itself remains a separate ethical expectation.</li>
+          </ul>
+          <p>Know which layer you are standing on before anything gets pasted.</p>
+
+          <h3>Accuracy and institutional liability</h3>
+          <p>Rankings, research findings, accreditation and outcomes are claims with legal and reputational weight. Because of the credibility illusion, the most dangerous errors arrive in the most convincing packaging.</p>
+
+          <h3>Disclosure and authenticity are different questions</h3>
+          <div class="grid-2">
+            <div class="tile"><p class="q">Disclosure asks</p><p>Have we told the audience how this was made?</p></div>
+            <div class="tile"><p class="q">Authenticity asks</p><p>Even with disclosure, is this an appropriate representation of the institution?</p></div>
+          </div>
+          <p><strong>A proposed working standard:</strong> AI-assisted drafting that a person has verified and rewritten needs no public disclosure. AI-generated content published substantially unedited must be disclosed. AI-generated imagery is always disclosed. This is a starting position for discussion, not settled policy.</p>
+          <p>Disclosure is not a magic ethical disinfectant. A photograph carries an implied claim that something existed in front of the camera. University photography often works as documentation, and prospective students read our images as evidence. The field's cautionary examples are real: a university billboard whose diverse student cast attended other schools, and an alumni newsletter that ran a real photograph through AI, cartooned everyone in it, and reached 77,000 inboxes.</p>
+          <p class="def"><b>provenance</b> The documented origin and edit history of a piece of content. It establishes how something was made, not that an image depicts reality truthfully. In photography it is increasingly machine-readable.</p>
+          <p>Provenance is becoming infrastructure. Cameras that log capture and edit history, file-level metadata, and rights signals are turning authenticity from a value into a documentable property, where platforms choose to honor those signals. Communicators who adopt provenance practices early will hold the receipts everyone soon wants.</p>
+
+          <h3>When not to use AI</h3>
+          <p>The most important AI skill nobody teaches. Some assignments are wrong for these tools, full stop.</p>
+          <div class="grid-2">
+            <div class="tile"><h4>Documentary reality</h4><p>News photography, event coverage, anything presented as a record of what happened. Generation and heavy synthetic editing end the claim to documentation.</p></div>
+            <div class="tile"><h4>Unconsented personal stories</h4><p>A student's health, family circumstances or academic record do not enter a model unless the use is authorized, the tool is approved for that data, and every required consent, including consent to the story itself, has been obtained.</p></div>
+            <div class="tile"><h4>Crisis communications</h4><p>Speed, pressure, institutional stakes and hallucination risk are the worst possible combination. AI should not originate crisis facts, official positions or safety instructions. Accountable people write and approve the final language.</p></div>
+            <div class="tile"><h4>Legal, accreditation and compliance language</h4><p>Text with regulatory consequences gets drafted and reviewed by the people accountable for it.</p></div>
+            <div class="tile"><h4>Anything you cannot verify</h4><p>If no source exists to check a claim against, the claim does not publish. This is not an AI rule. AI just industrialized the temptation.</p></div>
+          </div>
+
+          <h3>The honest cost of saying no</h3>
+          <p>It would be dishonest to pretend declining is free. A freelancer on the UPAA panel put it plainly: refuse a client's AI request once, and you may never be hired again. At many institutions, pressure to adopt AI increasingly comes from senior leadership. So the skill is not blanket refusal. It is knowing which uses are worth spending professional capital to push back on, and having the verification and authenticity language to make that case credibly.</p>
+          <p class="pull">The judgment call happens at a single desk, where one person decides what publishes.</p>
+
+          <h3>Equity and representation</h3>
+          <p>Generative systems trained mostly on Western, English-language data flatten the voices least represented in that data. Default AI voice is not neutral voice. Representation is a verification item alongside facts.</p>
+
+          <h3>Environmental cost</h3>
+          <p>By common estimates, a generative AI query draws roughly five times the electricity of a conventional web search, and data center cooling uses about two liters of water per kilowatt-hour. Estimates vary by model and infrastructure, but the direction is not in dispute. The argument is not against use. It is for intentional use, which the Blueprint already encourages: better outputs in fewer attempts.</p>
+        </section>
+
+        <section id="policy">
+          <p class="part-label">Part six</p>
+          <h2>Building a policy</h2>
+          <p><em>This is not a policy. It is the load-bearing questions any good one has to answer.</em></p>
+
+          <h3>Start from stated values</h3>
+          <p>Where institutional leadership has articulated a stance on AI, anchor the policy to it. A policy that puts leadership's own language into practice is a policy leadership can adopt. Arizona State offers one model, having named its computing school for augmented intelligence. Where no stated position exists yet, the policy process itself is the right occasion to ask leadership for one.</p>
+
+          <h3>Eight questions a working policy must answer</h3>
+          <div class="grid-2">
+            <div class="tile"><p class="q">01</p><h4>Scope</h4><p>Which tools, which teams, which content types? A policy that covers everything governs nothing.</p></div>
+            <div class="tile"><p class="q">02</p><h4>Risk-to-review mapping</h4><p>Adopt the spectrum. As representational and institutional risk rises, so do verification, approval and disclosure. Write the approval path for each tier, with names attached.</p></div>
+            <div class="tile"><p class="q">03</p><h4>Disclosure tiers</h4><p>When is AI assistance silent, when is it credited, when is content labeled synthetic? The working standard in Part five is a starting draft.</p></div>
+            <div class="tile"><p class="q">04</p><h4>Data and tool vetting</h4><p>Which tools retain pasted content for training? Who maintains the approved list? What never gets pasted anywhere, regardless of tool?</p></div>
+            <div class="tile"><p class="q">05</p><h4>Provenance and metadata standards</h4><p>Decide now how imagery is tagged: capture history, edit logging, AI-training opt-outs. Cheap to adopt early, expensive to retrofit.</p></div>
+            <div class="tile"><p class="q">06</p><h4>Training and literacy</h4><p>Policy without training is shelfware. The workshop in Part four is a ready-made onboarding unit, repeatable team by team.</p></div>
+            <div class="tile"><p class="q">07</p><h4>Review cadence and ownership</h4><p>Name an owner. Set a review date measured in months, not years. The tools will lap an annual policy.</p></div>
+            <div class="tile"><p class="q">08</p><h4>The escalation path</h4><p>Where does a staff member take a judgment call the policy does not cover? If the answer is nowhere, the policy will be worked around.</p></div>
+          </div>
+          <p class="pull">Policy sets the floor. Literacy sets the ceiling.</p>
+
+          <h3>Rolling it out</h3>
+          <div class="table-wrap">
+            <table class="data">
+              <tbody>
+                <tr><td>Format</td><td>A 90-minute hybrid workshop, repeatable for each content team.</td></tr>
+                <tr><td>Pilot</td><td>One team first, revise, then scale.</td></tr>
+                <tr><td>Materials</td><td>The workshop deck, a handout, the verification protocol, the Blueprint template and the principles as standalone one-pagers.</td></tr>
+                <tr><td>Cost</td><td>Minimal. Tools are already licensed or free, and facilitation and follow-up use existing staff time.</td></tr>
+                <tr><td>Follow-up</td><td>A 30-day adoption survey and optional office hours.</td></tr>
+                <tr><td>Next in the series</td><td>Image generation standards, then AI-assisted digital asset management.</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>From prompt to publish</h3>
+          <p>The easy version of AI training teaches people where the buttons are. This guide aims at something more durable: a shared standard of practice that lets a communications team move faster without publishing carelessly, built on a framework its members already recognize and a finding they can test themselves in ten minutes.</p>
+          <p>Prompting is only the beginning. Verification, disclosure, privacy, authenticity, provenance and human accountability are the skills that carry an AI-assisted draft safely from prompt to publish.</p>
+          <p class="pull">AI can help us work faster. Our responsibility is to make sure that speed does not outrun truth, authenticity or judgment.</p>
+        </section>
+
+        <section id="glossary">
+          <p class="part-label">Reference</p>
+          <h2>Glossary</h2>
+          <dl class="glossary">
+            <dt>agentic AI</dt><dd>Systems that plan and carry out multi-step tasks with limited human involvement between steps.</dd>
+            <dt>AI Overviews</dt><dd>Generated summaries at the top of search results, increasingly the first thing prospects read about an institution.</dd>
+            <dt>artificial intelligence</dt><dd>The family of techniques for performing tasks that normally require human judgment.</dd>
+            <dt>calibrated trust</dt><dd>Trust proportioned to evidence and risk. The corrective to overtrust and undertrust alike.</dd>
+            <dt>credibility illusion</dt><dd>The gap between how authoritative an AI response sounds and how much epistemic work it did.</dd>
+            <dt>epistemic</dt><dd>Relating to knowledge and how carefully it is handled.</dd>
+            <dt>fine-tuning</dt><dd>Additional training that specializes a general model for a narrower task or voice.</dd>
+            <dt>generative AI</dt><dd>Systems that produce new text, images, audio or video rather than classifying existing content.</dd>
+            <dt>GEO</dt><dd>Generative engine optimization: shaping content so AI systems cite and summarize it accurately.</dd>
+            <dt>hallucination</dt><dd>A fluent, plausible statement generated without factual basis.</dd>
+            <dt>large language model (LLM)</dt><dd>A system trained on massive text collections to predict plausible language.</dd>
+            <dt>machine learning</dt><dd>Techniques that learn patterns from data rather than following hand-written rules.</dd>
+            <dt>multimodal</dt><dd>A model that works across text, images, audio and video in one system.</dd>
+            <dt>prompt framing</dt><dd>The tone and stance a request carries. Framing changes how carefully the answer handles knowledge.</dd>
+            <dt>provenance</dt><dd>The documented origin and edit history of content. In photography, increasingly machine-readable.</dd>
+            <dt>token</dt><dd>The word-fragment unit a language model actually reads and predicts.</dd>
+            <dt>training data</dt><dd>The text and images a model learned its patterns from. The source of both its fluency and its blind spots.</dd>
+            <dt>transformer</dt><dd>The 2017 architecture behind modern language models.</dd>
+          </dl>
+        </section>
+
+        <section id="references">
+          <p class="part-label">Reference</p>
+          <h2>References</h2>
+          <ul class="refs">
+            <li>Birhane, A. (2020). Algorithmic colonization of Africa. <i>SCRIPTed, 17</i>(2), 389 to 409.</li>
+            <li>Daud, R. (2026). Prompt framing and the credibility illusion: A comparison analysis. MDJ 61001 course study, Kent State University.</li>
+            <li>European Parliament. (2024). EU Artificial Intelligence Act.</li>
+            <li>Fernández-Batanero, J. M., et al. (2022). Digital competences for teacher professional development. <i>European Journal of Teacher Education, 45</i>(4), 513 to 531.</li>
+            <li>Guedon, C. (2025, October 13). AI search and student trust. Search Influence.</li>
+            <li>Nazaretsky, T., et al. (2022). Teachers' trust in AI-powered educational technology. <i>British Journal of Educational Technology, 53</i>(4), 914 to 931.</li>
+            <li>NIST. (2023). AI Risk Management Framework. (2024). Generative AI Profile.</li>
+            <li>Perry, E., &amp; Booth, J. (2024). The practices of professional development facilitators. <i>Professional Development in Education, 50</i>(1), 144 to 156.</li>
+            <li>UNESCO. (2021). Recommendation on the Ethics of Artificial Intelligence.</li>
+            <li>UPCEA. (2025, October 24). Adult learner survey on AI search behavior.</li>
+            <li>White House. (2025). America's AI Action Plan.</li>
+            <li>Zewe, A. (2025). Explained: Generative AI's environmental impact. <i>MIT News</i>.</li>
+            <li>Professional context: UPAA Symposium panel, June 2026, Ann Arbor, Michigan.</li>
+          </ul>
+          <div class="button-row no-print">
+            <button type="button" class="button" onclick="window.print()">Print or save as PDF</button>
+            <a class="button" href="../checking-ai-quotes/">Next: Checking AI-generated quotes</a>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer" id="contact">
+    <div class="wrap">
+      <a href="mailto:EMAIL_TODO">Email</a>
+      <a href="LINKEDIN_TODO">LinkedIn</a>
+      <a href="https://ramidaud.substack.com">Substack</a>
+      <p>© <span data-year>2026</span> Rami Daud</p>
+    </div>
+  </footer>
+  <script src="../../assets/js/site.js" defer></script>
+</body>
+</html>

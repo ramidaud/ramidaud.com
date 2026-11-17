@@ -320,14 +320,14 @@
       "tags": []
     },
     {
-      "date": "2026-11-24",
-      "title": "Prompt to Publish: a field guide for teams exploring AI",
+      "date": "2026-11-17",
+      "title": "Prompt to Publish: a field guide to AI for university communicators",
       "venue": "ramidaud.com",
       "thread": "ai-practice",
       "type": "Guide",
-      "url": "downloads/Prompt-to-Publish.pdf",
-      "draft": true,
-      "tags": []
+      "url": "guides/prompt-to-publish/",
+      "tags": [],
+      "featured": true
     },
     {
       "date": "",
@@ -337,6 +337,15 @@
       "type": "Paper",
       "url": "",
       "draft": true,
+      "tags": []
+    },
+    {
+      "date": "2026-11-17",
+      "title": "Checking AI-generated quotes: a 90-minute workshop kit",
+      "url": "guides/checking-ai-quotes/",
+      "venue": "ramidaud.com",
+      "thread": "ai-practice",
+      "type": "Workshop kit",
       "tags": []
     }
   ]
