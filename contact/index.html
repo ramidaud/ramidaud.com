@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact · Rami Daud</title>
+  <meta name="description" content="Get in touch with Rami Daud about AI adoption, workshops, photography, writing or speaking.">
+  <meta name="theme-color" content="#efebe2">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/e1.css">
+  <link rel="stylesheet" href="../assets/css/e1-pages.css">
+</head>
+<body>
+<div class="page">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-head">
+    <a class="brand" href="../">Rami Daud</a>
+    <button type="button" class="menu-btn" aria-expanded="false" aria-controls="mainnav">Menu</button>
+    <nav id="mainnav" class="nav" aria-label="Main">
+      <a href="../#work">Work</a>
+      <a href="../guides/">Guides</a>
+      <a href="../writing/">Writing</a>
+      <a href="../#frames">Photography</a>
+      <a href="../cv/">About</a>
+      <a href="../contact/" aria-current="page">Contact</a>
+    </nav>
+    <button type="button" class="btn-prov btn-prov--top" data-prov-toggle aria-pressed="false">[ Show provenance ]</button>
+  </header>
+  <div class="strip label"><span>Contact</span><span>Kent, Ohio · Eastern time</span></div>
+  <main id="main">
+    <section class="page-hero wrap">
+      <p class="kicker">Contact</p>
+      <h1>Let's <i>talk</i></h1>
+      <p class="lede">Collaborations, workshops, photo assignments, or a question about how your team is using AI. Send a note here or reach me directly.</p>
+    </section>
+
+    <section class="wrap contact-grid">
+      <form class="contact-form" id="contact-form" action="https://formsubmit.co/ramidaud@me.com" method="POST" novalidate>
+        <p class="label form-label">Message · all fields required unless marked</p>
+        <div class="form-errors" id="form-errors" tabindex="-1" hidden></div>
+        <div class="field">
+          <label for="cf-name">Name</label>
+          <input id="cf-name" name="name" type="text" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label for="cf-email">Email</label>
+          <input id="cf-email" name="email" type="email" autocomplete="email" required aria-describedby="cf-email-hint">
+          <p class="hint" id="cf-email-hint">So I can write back. It isn't shared or added to a list.</p>
+        </div>
+        <div class="field">
+          <label for="cf-org">Organization <span class="opt">(optional)</span></label>
+          <input id="cf-org" name="organization" type="text" autocomplete="organization">
+        </div>
+        <fieldset class="field topics">
+          <legend>What's this about?</legend>
+          <div class="chips">
+            <label><input type="radio" name="topic" value="AI adoption or workshop" checked><span>AI adoption or workshop</span></label>
+            <label><input type="radio" name="topic" value="Photography or video"><span>Photography or video</span></label>
+            <label><input type="radio" name="topic" value="Writing or speaking"><span>Writing or speaking</span></label>
+            <label><input type="radio" name="topic" value="Something else"><span>Something else</span></label>
+          </div>
+        </fieldset>
+        <div class="field">
+          <label for="cf-msg">Message</label>
+          <textarea id="cf-msg" name="message" rows="7" required></textarea>
+        </div>
+        <input type="hidden" name="_subject" value="New message from ramidaud.com">
+        <input type="hidden" name="_template" value="table">
+        <div class="hp" aria-hidden="true"><label for="cf-honey">Leave this empty</label><input id="cf-honey" type="text" name="_honey" tabindex="-1" autocomplete="off"></div>
+        <div class="form-foot">
+          <button type="submit" class="btn btn--solid">Send message</button>
+          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+        </div>
+      </form>
+
+      <aside class="contact-aside" aria-label="Other ways to reach me">
+        <div class="index-card">
+          <p class="label">Direct</p>
+          <ul class="elsewhere">
+            <li><span>Email</span><a href="mailto:ramidaud@me.com">ramidaud@me.com</a></li>
+            <li><span>LinkedIn</span><a href="https://www.linkedin.com/in/ramidaudphoto/" rel="me">in/ramidaudphoto</a></li>
+            <li><span>Instagram</span><a href="https://www.instagram.com/ramidaud/" rel="me">@ramidaud</a></li>
+          </ul>
+        </div>
+        <div class="index-card">
+          <p class="label">Reading</p>
+          <ul class="elsewhere">
+            <li><span>Substack</span><a href="https://ramidaud.substack.com/" rel="me">Framing the Cosmos</a></li>
+            <li><span>Game</span><a href="https://midlifesurvivors.com/">Midlife Survivors</a></li>
+            <li><span>Here</span><a href="../writing/">All writing</a></li>
+          </ul>
+        </div>
+        <p class="fine">The form is delivered by FormSubmit straight to my inbox. Nothing you send is stored on this site.</p>
+      </aside>
+    </section>
+  </main>
+
+  <footer class="site-foot">
+    <a href="mailto:ramidaud@me.com">Email</a>
+    <a href="../contact/">Contact form</a>
+    <a href="https://www.linkedin.com/in/ramidaudphoto/" rel="me">LinkedIn</a>
+    <a href="https://www.instagram.com/ramidaud/" rel="me">Instagram</a>
+    <a href="https://ramidaud.substack.com/" rel="me">Substack</a>
+    <a href="https://midlifesurvivors.com/">Midlife Survivors</a>
+    <span>© <span data-year>2026</span> Rami Daud · Built with Claude, published by a person</span>
+  </footer>
+  <aside class="prov-panel" aria-label="How this page was made"><span class="label">How this page was made</span><p>Form layout and validation coded with Claude. Messages are relayed by FormSubmit to Rami’s inbox; this site stores nothing.</p></aside>
+  <div class="prov-dock"><button type="button" class="btn-prov" data-prov-toggle aria-pressed="false">[ Show provenance ]</button></div>
+</div>
+<script src="../assets/js/e1.js" defer></script>
+<script src="../assets/js/contact.js" defer></script>
+</body>
+</html>
