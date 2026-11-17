@@ -37,7 +37,7 @@
     </section>
 
     <section class="wrap contact-grid">
-      <form class="contact-form" id="contact-form" action="https://formsubmit.co/ramidaud@me.com" method="POST" novalidate>
+      <form class="contact-form" id="contact-form" action="https://api.web3forms.com/submit" method="POST" data-mailto="ramidaud@me.com" novalidate>
         <p class="label form-label">Message · all fields required unless marked</p>
         <div class="form-errors" id="form-errors" tabindex="-1" hidden></div>
         <div class="field">
@@ -66,9 +66,10 @@
           <label for="cf-msg">Message</label>
           <textarea id="cf-msg" name="message" rows="7" required></textarea>
         </div>
-        <input type="hidden" name="_subject" value="New message from ramidaud.com">
-        <input type="hidden" name="_template" value="table">
-        <div class="hp" aria-hidden="true"><label for="cf-honey">Leave this empty</label><input id="cf-honey" type="text" name="_honey" tabindex="-1" autocomplete="off"></div>
+        <input type="hidden" name="access_key" value="">
+        <input type="hidden" name="subject" value="New message from ramidaud.com">
+        <input type="hidden" name="from_name" value="ramidaud.com contact form">
+        <div class="hp" aria-hidden="true"><label for="cf-honey">Leave this empty</label><input id="cf-honey" type="checkbox" name="botcheck" tabindex="-1" autocomplete="off"></div>
         <div class="form-foot">
           <button type="submit" class="btn btn--solid">Send message</button>
           <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
@@ -92,7 +93,7 @@
             <li><span>Here</span><a href="../writing/">All writing</a></li>
           </ul>
         </div>
-        <p class="fine">The form is delivered by FormSubmit straight to my inbox. Nothing you send is stored on this site.</p>
+        <p class="fine">The form is delivered by Web3Forms straight to my inbox. Nothing you send is stored on this site.</p>
       </aside>
     </section>
   </main>
@@ -106,7 +107,7 @@
     <a href="https://midlifesurvivors.com/">Midlife Survivors</a>
     <span>© <span data-year>2026</span> Rami Daud · Built with Claude, published by a person</span>
   </footer>
-  <aside class="prov-panel" aria-label="How this page was made"><span class="label">How this page was made</span><p>Form layout and validation coded with Claude. Messages are relayed by FormSubmit to Rami’s inbox; this site stores nothing.</p></aside>
+  <aside class="prov-panel" aria-label="How this page was made"><span class="label">How this page was made</span><p>Form layout and validation coded with Claude. Messages are relayed by Web3Forms to Rami’s inbox; this site stores nothing.</p></aside>
   <div class="prov-dock"><button type="button" class="btn-prov" data-prov-toggle aria-pressed="false">[ Show provenance ]</button></div>
 </div>
 <script src="../assets/js/e1.js" defer></script>

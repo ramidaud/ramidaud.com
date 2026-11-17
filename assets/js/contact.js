@@ -1,12 +1,14 @@
-/* Contact form: inline validation, then sends through FormSubmit's AJAX endpoint.
-   Without JS the form posts normally to FormSubmit. */
+/* Contact form: inline validation, then sends through Web3Forms with a time limit.
+   If the service has no key yet, is down, or times out, it falls back to the
+   visitor's email app with the message filled in. */
 (function () {
   var form = document.getElementById('contact-form');
   if (!form) return;
   var status = document.getElementById('form-status');
   var summary = document.getElementById('form-errors');
   var btn = form.querySelector('button[type=submit]');
-  var endpoint = form.action.replace('formsubmit.co/', 'formsubmit.co/ajax/');
+  var to = form.getAttribute('data-mailto');
+  var key = form.elements.access_key ? form.elements.access_key.value.trim() : '';
   var checks = [
     ['cf-name', function (v) { return v.trim() ? '' : 'Enter your name.'; }],
     ['cf-email', function (v) { return !v.trim() ? 'Enter your email address.' : (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) ? '' : 'Enter an email address like name@example.com.'); }],
@@ -40,6 +42,19 @@
     return errors;
   }
 
+  function mailtoHref() {
+    var f = form.elements;
+    var topic = (form.querySelector('input[name=topic]:checked') || {}).value || '';
+    var body = f.message.value + '\n\n' + f.name.value + (f.organization.value ? ', ' + f.organization.value : '') + '\n' + f.email.value;
+    return 'mailto:' + to + '?subject=' + encodeURIComponent('ramidaud.com: ' + topic) + '&body=' + encodeURIComponent(body);
+  }
+
+  function fallback(lead) {
+    btn.disabled = false;
+    status.className = 'form-status is-bad';
+    status.innerHTML = lead + ' <a href="' + mailtoHref() + '">Send it from your email app instead</a>, already filled in.';
+  }
+
   checks.forEach(function (c) {
     var input = document.getElementById(c[0]);
     input.addEventListener('blur', function () { if (input.hasAttribute('aria-invalid')) setError(input, c[1](input.value)); });
@@ -56,29 +71,29 @@
       return;
     }
     summary.hidden = true;
-    if (form.elements._honey.value) return;
+    if (form.elements.botcheck && form.elements.botcheck.checked) return;
+    if (!key) { window.location.href = mailtoHref(); status.className = 'form-status'; status.textContent = 'Opening your email app with your message filled in.'; return; }
+
     btn.disabled = true;
     status.className = 'form-status';
     status.textContent = 'Sending…';
-    fetch(endpoint, { method: 'POST', headers: { Accept: 'application/json' }, body: new FormData(form) })
+    var ctl = 'AbortController' in window ? new AbortController() : null;
+    var timer = setTimeout(function () { if (ctl) ctl.abort(); }, 15000);
+    fetch(form.action, { method: 'POST', headers: { Accept: 'application/json' }, body: new FormData(form), signal: ctl ? ctl.signal : undefined })
       .then(function (r) { return r.json().catch(function () { return {}; }).then(function (d) { return { ok: r.ok, d: d }; }); })
       .then(function (res) {
-        if (res.ok && String(res.d.success) === 'true') {
+        clearTimeout(timer);
+        if (res.ok && res.d.success) {
           form.classList.add('sent');
           status.className = 'form-status is-ok';
           status.textContent = 'Sent. Thank you, I’ll be in touch.';
           form.reset();
           btn.textContent = 'Message sent';
-        } else if (/activat/i.test(res.d.message || '')) {
-          btn.disabled = false;
-          status.className = 'form-status is-bad';
-          status.textContent = 'This form is waiting to be activated. Please email ramidaud@me.com for now.';
-        } else { throw new Error(res.d.message || 'failed'); }
+        } else { fallback('That didn’t go through.'); }
       })
-      .catch(function () {
-        btn.disabled = false;
-        status.className = 'form-status is-bad';
-        status.innerHTML = 'That didn’t go through. Try again, or email <a href="mailto:ramidaud@me.com">ramidaud@me.com</a>.';
+      .catch(function (err) {
+        clearTimeout(timer);
+        fallback(err && err.name === 'AbortError' ? 'The form service isn’t answering.' : 'That didn’t go through.');
       });
   });
 })();
