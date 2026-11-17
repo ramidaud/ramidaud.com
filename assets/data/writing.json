@@ -1,0 +1,343 @@
+{
+  "_readme": "One entry per piece, wherever it lives. Newest first is automatic. 'featured': true pins it to the top. 'draft': true hides it. Threads must match a key in 'threads'.",
+  "threads": {
+    "framing-the-cosmos": {
+      "label": "Framing the Cosmos",
+      "blurb": "How iconic space photographs shape what we believe."
+    },
+    "midlife-survivors": {
+      "label": "Midlife Survivors",
+      "blurb": "Building a game with AI as a collaborator, credited version by version."
+    },
+    "ai-practice": {
+      "label": "AI in practice",
+      "blurb": "Responsible AI for communication teams: guides, talks and case notes."
+    },
+    "photography": {
+      "label": "Photography",
+      "blurb": "Notes and roundups from behind the camera."
+    },
+    "research": {
+      "label": "Research",
+      "blurb": "Academic and scholarly work."
+    }
+  },
+  "items": [
+    {
+      "date": "2026-11-11",
+      "title": "Achievement Unlocked: Gaussian Splatting.",
+      "url": "https://midlifesurvivors.com/devlog/14-achievement-unlocked-gaussian-splatting/",
+      "venue": "Devlog",
+      "thread": "midlife-survivors",
+      "type": "Devlog",
+      "tags": [
+        "14"
+      ],
+      "featured": true
+    },
+    {
+      "date": "2026-11-07",
+      "title": "Music is one of the most important side characters.",
+      "url": "https://midlifesurvivors.com/devlog/13-side-characters/",
+      "venue": "Devlog",
+      "thread": "midlife-survivors",
+      "type": "Devlog",
+      "tags": [
+        "13"
+      ]
+    },
+    {
+      "date": "2026-11-06",
+      "title": "Restless. Also, who's actually playing?",
+      "url": "https://midlifesurvivors.com/devlog/12-everyone-is-in-the-game/",
+      "venue": "Devlog",
+      "thread": "midlife-survivors",
+      "type": "Devlog",
+      "tags": [
+        "12"
+      ]
+    },
+    {
+      "date": "2026-11-04",
+      "title": "This is starting to feel real.",
+      "url": "https://midlifesurvivors.com/devlog/10-version-two/",
+      "venue": "Devlog",
+      "thread": "midlife-survivors",
+      "type": "Devlog",
+      "tags": [
+        "10"
+      ],
+      "also": [
+        {
+          "venue": "Substack",
+          "url": "https://ramidaud.substack.com/p/10-version-two"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-04",
+      "title": "If that's where community is, that's where I want to be.",
+      "url": "https://midlifesurvivors.com/devlog/11-where-community-is/",
+      "venue": "Devlog",
+      "thread": "midlife-survivors",
+      "type": "Devlog",
+      "tags": [
+        "11"
+      ],
+      "also": [
+        {
+          "venue": "Substack",
+          "url": "https://ramidaud.substack.com/p/11-where-community-is"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-03",
+      "title": "My friends work here now.",
+      "url": "https://midlifesurvivors.com/devlog/09-my-friends-work-here-now/",
+      "venue": "Devlog",
+      "thread": "midlife-survivors",
+      "type": "Devlog",
+      "tags": [
+        "09"
+      ],
+      "also": [
+        {
+          "venue": "Substack",
+          "url": "https://ramidaud.substack.com/p/09-my-friends-work-here-now"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-02",
+      "title": "I got promoted four times before lunch.",
+      "url": "https://midlifesurvivors.com/devlog/08-promoted-four-times/",
+      "venue": "Devlog",
+      "thread": "midlife-survivors",
+      "type": "Devlog",
+      "tags": [
+        "08"
+      ],
+      "also": [
+        {
+          "venue": "Substack",
+          "url": "https://ramidaud.substack.com/p/08-promoted-four-times"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-01",
+      "title": "The office has seen a few restructurings.",
+      "url": "https://midlifesurvivors.com/devlog/03-office-with-some-history/",
+      "venue": "Devlog",
+      "thread": "midlife-survivors",
+      "type": "Devlog",
+      "tags": [
+        "03"
+      ],
+      "also": [
+        {
+          "venue": "Substack",
+          "url": "https://ramidaud.substack.com/p/03-office-with-some-history"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-01",
+      "title": "I could beat my own game standing still. So I hired a robot.",
+      "url": "https://midlifesurvivors.com/devlog/04-midlife-is-hard/",
+      "venue": "Devlog",
+      "thread": "midlife-survivors",
+      "type": "Devlog",
+      "tags": [
+        "04"
+      ],
+      "also": [
+        {
+          "venue": "Substack",
+          "url": "https://ramidaud.substack.com/p/04-midlife-is-hard"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-01",
+      "title": "There's a coffee button now. It feels weird.",
+      "url": "https://midlifesurvivors.com/devlog/05-buy-the-dev-a-coffee/",
+      "venue": "Devlog",
+      "thread": "midlife-survivors",
+      "type": "Devlog",
+      "tags": [
+        "05"
+      ],
+      "also": [
+        {
+          "venue": "Substack",
+          "url": "https://ramidaud.substack.com/p/05-buy-the-dev-a-coffee"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-01",
+      "title": "The office got bigger. Somebody lost a binder.",
+      "url": "https://midlifesurvivors.com/devlog/06-the-office-got-bigger/",
+      "venue": "Devlog",
+      "thread": "midlife-survivors",
+      "type": "Devlog",
+      "tags": [
+        "06"
+      ],
+      "also": [
+        {
+          "venue": "Substack",
+          "url": "https://ramidaud.substack.com/p/06-the-office-got-bigger"
+        }
+      ]
+    },
+    {
+      "date": "2026-11-01",
+      "title": "My office got jokes. Then my enemies got smarter.",
+      "url": "https://midlifesurvivors.com/devlog/07-around-the-desk/",
+      "venue": "Devlog",
+      "thread": "midlife-survivors",
+      "type": "Devlog",
+      "tags": [
+        "07"
+      ],
+      "also": [
+        {
+          "venue": "Substack",
+          "url": "https://ramidaud.substack.com/p/07-around-the-desk"
+        }
+      ]
+    },
+    {
+      "date": "2026-10-31",
+      "title": "The office has people in it now. And they walk.",
+      "url": "https://midlifesurvivors.com/devlog/02-three-different-strides/",
+      "venue": "Devlog",
+      "thread": "midlife-survivors",
+      "type": "Devlog",
+      "tags": [
+        "02"
+      ],
+      "also": [
+        {
+          "venue": "Substack",
+          "url": "https://ramidaud.substack.com/p/02-three-different-strides"
+        }
+      ]
+    },
+    {
+      "date": "2026-10-30",
+      "title": "I've never made a game. Here's a green dollar sign chasing a square.",
+      "url": "https://midlifesurvivors.com/devlog/01-never-made-a-game/",
+      "venue": "Devlog",
+      "thread": "midlife-survivors",
+      "type": "Devlog",
+      "tags": [
+        "01"
+      ],
+      "also": [
+        {
+          "venue": "Substack",
+          "url": "https://ramidaud.substack.com/p/01-never-made-a-game"
+        }
+      ]
+    },
+    {
+      "date": "2026-05-06",
+      "title": "My Favorite Photos from April",
+      "dek": "Fire, water, waders, and a fashion show.",
+      "url": "https://ramidaud.substack.com/p/my-favorite-photos-from-april",
+      "venue": "Substack",
+      "thread": "photography",
+      "type": "Photo roundup",
+      "tags": []
+    },
+    {
+      "date": "2026-04-10",
+      "title": "The Loneliest Photograph Ever Taken",
+      "url": "https://ramidaud.substack.com/p/the-loneliest-photograph-ever-taken",
+      "venue": "Substack",
+      "thread": "framing-the-cosmos",
+      "type": "Essay",
+      "tags": [
+        "Pale Blue Dot"
+      ]
+    },
+    {
+      "date": "2026-04-07",
+      "title": "From Space Photo to Environmental Movement in 16 Months",
+      "url": "https://ramidaud.substack.com/p/from-space-photo-to-environmental",
+      "venue": "Substack",
+      "thread": "framing-the-cosmos",
+      "type": "Essay",
+      "tags": [
+        "Earthrise"
+      ]
+    },
+    {
+      "date": "2026-03-15",
+      "title": "The Accidental Masterpiece: How Earthrise Happened",
+      "url": "https://ramidaud.substack.com/p/the-accidental-masterpiece-how-earthrise",
+      "venue": "Substack",
+      "thread": "framing-the-cosmos",
+      "type": "Essay",
+      "tags": [
+        "Earthrise"
+      ]
+    },
+    {
+      "date": "2026-03-10",
+      "title": "What I Found When I Started Paying Attention",
+      "url": "https://ramidaud.substack.com/p/what-i-found-when-i-started-paying",
+      "venue": "Substack",
+      "thread": "photography",
+      "type": "Essay",
+      "tags": []
+    },
+    {
+      "date": "2026-03-08",
+      "title": "The Photograph That Changed Nothing (And Everything)",
+      "url": "https://ramidaud.substack.com/p/framing-the-cosmos",
+      "venue": "Substack",
+      "thread": "framing-the-cosmos",
+      "type": "Essay",
+      "tags": [
+        "Earthrise"
+      ],
+      "featured": true,
+      "dek": "Earthrise became a symbol of planetary unity. Its power came from re-scripting feeling before it delivered an argument."
+    },
+    {
+      "date": "2026-06-01",
+      "title": "UPAA Symposium talk (title TBD)",
+      "venue": "Talk",
+      "thread": "ai-practice",
+      "type": "Talk",
+      "url": "",
+      "draft": true,
+      "tags": []
+    },
+    {
+      "date": "2026-11-24",
+      "title": "Prompt to Publish: a field guide for teams exploring AI",
+      "venue": "ramidaud.com",
+      "thread": "ai-practice",
+      "type": "Guide",
+      "url": "downloads/Prompt-to-Publish.pdf",
+      "draft": true,
+      "tags": []
+    },
+    {
+      "date": "",
+      "title": "Journal of Archaeological Science co-authorship (citation TBD)",
+      "venue": "Journal",
+      "thread": "research",
+      "type": "Paper",
+      "url": "",
+      "draft": true,
+      "tags": []
+    }
+  ]
+}

@@ -145,3 +145,35 @@ section { padding-block: clamp(2.5rem, 7vw, 5rem); border-bottom: 1px solid var(
     margin-top: 2rem;
   }
 }
+
+/* Writing page */
+.page-intro { padding-block: clamp(3rem, 8vw, 5rem) 1rem; }
+.featured-writing { border-bottom: 0; padding-bottom: 1rem; }
+.card h3 a { text-decoration: none; }
+.card h3 a:hover { color: var(--accent); }
+.meta { font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-faint); }
+.index-head { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; flex-wrap: wrap; }
+.count { font-family: var(--font-mono); font-size: 0.9rem; color: var(--text-faint); }
+.filters { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.chip {
+  font: inherit; font-size: 0.85rem; cursor: pointer;
+  background: transparent; color: var(--text-soft);
+  border: 1px solid var(--line); padding: 0.35rem 0.8rem;
+}
+.chip span { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-faint); margin-left: 0.25rem; }
+.chip[aria-pressed="true"] { border-color: var(--accent); color: var(--text); background: var(--accent-soft); }
+.thread-blurb { color: var(--text-soft); min-height: 1.6em; margin-top: 1rem; }
+.year { font-family: var(--font-mono); font-size: 0.85rem; color: var(--accent); letter-spacing: 0.08em; margin: 2rem 0 0.5rem; }
+.writing-list { list-style: none; margin: 0; padding: 0; }
+.writing-list li { display: grid; grid-template-columns: 4.5rem 1fr; gap: 1rem; padding-block: 0.9rem; border-top: 1px solid var(--line); }
+.writing-list time { font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-faint); padding-top: 0.2rem; }
+.writing-list .title { font-family: var(--font-serif); font-size: 1.2rem; text-decoration: none; display: block; }
+.writing-list .title:hover { color: var(--accent); }
+.writing-list .meta a { color: var(--text-faint); }
+
+/* Home: latest writing strip */
+.latest { list-style: none; margin: 1.5rem 0 0; padding: 0; display: grid; gap: var(--space); grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); }
+.latest li { border-top: 2px solid var(--accent); padding-top: 0.75rem; }
+.latest a { font-family: var(--font-serif); font-size: 1.15rem; text-decoration: none; }
+.section-link { margin-top: 1.5rem; }
+.card .label { font-size: 0.75rem; color: var(--accent); }
