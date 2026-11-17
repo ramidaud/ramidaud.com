@@ -50,9 +50,13 @@
             </h1>
             <p class="subhead">A visuals-first storyteller, using AI and real data to craft story experiences audiences haven't had before.</p>
             <div class="hero-foot">
-              <p>Senior Photographer and informal AI lead at Kent State. Four years at NASA Glenn. Twenty years deciding what is true in a picture.</p>
+              <dl class="proof">
+                <div><dt>Now</dt><dd>Senior Photographer and informal AI lead, Kent State communications</dd></div>
+                <div><dt>Before</dt><dd>Four years at NASA Glenn, seven Images of the Day</dd></div>
+                <div><dt>Teaching</dt><dd>A field guide and a workshop kit for communicators</dd></div>
+              </dl>
               <div class="btn-row">
-                <a class="btn btn--solid" href="#work">Open the case files</a>
+                <a class="btn btn--solid" href="#work">See the evidence</a>
                 <a class="btn" href="#test">Take the quote test</a>
               </div>
             </div>
@@ -61,7 +65,7 @@
             <span class="label">How this was made</span>
             <p><b>HEADLINE</b> Six options drafted with Claude. Rami chose this one.</p>
             <p><b>SECOND LINE</b> Written with Claude from Rami's direction.</p>
-            <p><b>BIO</b> Facts from Rami's CV.</p>
+            <p><b>PROOF LINE</b> Facts from Rami's CV.</p>
             <p><b>DESIGN</b> Designed and coded with Claude. Every change reviewed and published by Rami.</p>
             <p><b>TRACKING</b> None. No analytics, no cookies.</p>
           </div>
@@ -87,6 +91,90 @@
         </div>
       </figure>
 
+      <!-- Proof areas -->
+      <header class="s-proofhead proof-head">
+        <p class="label" style="color:var(--red)">Case files</p>
+        <h2>What I would bring to a communications team</h2>
+        <p class="proof-keys"><span>01 Adopt</span><span>02 Train</span><span>03 Explain</span><span>04 Evaluate</span></p>
+      </header>
+
+      <!-- Case files: a grid on desktop, a swipeable deck on phones -->
+      <div class="cases" id="work" role="group" aria-label="Case files">
+        <a class="card s-case1" href="work/lightroom-archive/" style="--i:.2s;--d:.15s">
+          <span class="inner">
+            <span class="face front paper">
+              <span class="card-tab"><span class="label">01 · Adopt</span><span class="label">In progress</span></span>
+              <span class="front-pad">
+                <span class="card-title">The Lightroom archive workflow</span>
+                <span class="card-text">Claude suggests. A photographer decides. Nothing reaches PhotoShelter without a human review.</span>
+                <span class="chips"><span class="chip">Lightroom</span><span class="arrow" aria-hidden="true">→</span><span class="chip">Claude</span><span class="arrow" aria-hidden="true">→</span><span class="chip chip--gate">Human gate</span><span class="arrow" aria-hidden="true">→</span><span class="chip">PhotoShelter</span></span>
+              </span>
+              <span class="ghost" aria-hidden="true">01</span>
+            </span>
+            <span class="face back">
+              <span class="label">How this was made</span>
+              Summary drafted with Claude from Rami's notes. Scale ("thousands of images") from Rami. Time saved: not measured yet.
+            </span>
+          </span>
+        </a>
+
+        <a class="card s-guides" href="guides/checking-ai-quotes/" style="--i:.26s;--d:.2s">
+          <span class="inner">
+            <span class="face front paper">
+              <span class="card-tab"><span class="label">02 · Train</span><span class="label">Designed</span></span>
+              <span class="front-pad">
+                <span class="card-title">Checking AI-generated quotes</span>
+                <span class="card-text">A 90-minute workshop: communicators check an AI-written interview against a four-point standard, then write a verification plan. Paired with <span class="u">Prompt to Publish</span>, a field guide for the whole team.</span>
+                <span class="chips"><span class="chip">Objectives</span><span class="chip">Live exercise</span><span class="chip">Standard</span><span class="chip">Exit check</span></span>
+              </span>
+              <span class="ghost" aria-hidden="true">02</span>
+            </span>
+            <span class="face back">
+              <span class="label">How this was made</span>
+              Designed as Kent State graduate coursework (ENGR 61095). Not yet delivered, so no attendance or feedback numbers. Portions drafted with AI, then verified and rewritten by Rami.
+            </span>
+          </span>
+        </a>
+
+        <a class="card s-cosmos" href="work/eclipse-2017/" style="--i:.32s;--d:.25s">
+          <span class="inner">
+            <span class="face front filmbg cosmos">
+              <img src="assets/img/preview/diamond-ring.jpg" width="1600" height="1068" loading="lazy" alt="The diamond ring moment of a total solar eclipse.">
+              <span class="front-pad">
+                <span class="label" style="color:var(--gold)">03 · Explain</span>
+                <span class="card-title">Eclipse Across America</span>
+                <span class="card-text">NASA, Aug. 21, 2017. One event, a national audience, and a team that had a single chance to get the picture and the story right.</span>
+              </span>
+            </span>
+            <span class="face back back--film">
+              <span class="label">Sources</span>
+              NASA Group Achievement Award citation and NASA.gov Image of the Day. Capture data is not embedded in this web copy of the photo.
+            </span>
+          </span>
+        </a>
+
+        <a class="card s-splat" href="https://midlifesurvivors.com/devlog/14-achievement-unlocked-gaussian-splatting/" style="--i:.38s;--d:.3s">
+          <span class="inner">
+            <span class="face front filmbg">
+              <span class="splat">
+                <img class="base" src="assets/img/preview/green-bank.jpg" width="1086" height="724" loading="lazy" alt="Green Bank Telescope at dawn.">
+                <img class="dots" src="assets/img/preview/green-bank.jpg" width="1086" height="724" loading="lazy" alt="" aria-hidden="true">
+              </span>
+              <span class="front-pad">
+                <span class="label" style="color:var(--gold)">04 · Evaluate</span>
+                <span class="big-num">369 → 1.8M</span>
+                <span class="label" style="color:#b9b1a0">Photographs → Gaussian splats</span>
+              </span>
+            </span>
+            <span class="face back back--film">
+              <span class="label">Honest label</span>
+              The dot effect on hover is a CSS illustration, not a real splat render. The real test: 369 Nikon frames, COLMAP, about 1.8 million splats, finished in Blender and Resolve.
+            </span>
+          </span>
+        </a>
+      </div>
+      <p class="swipe-hint label" aria-hidden="true">Swipe · 01 02 03 04</p>
+
       <!-- Quote test -->
       <section id="test" class="card s-test" aria-labelledby="test-h" style="--i:.14s;--d:.1s">
         <div class="inner">
@@ -108,82 +196,6 @@
         </div>
       </section>
 
-      <!-- Case files: a grid on desktop, a swipeable deck on phones -->
-      <div class="cases" id="work" role="group" aria-label="Case files">
-        <a class="card s-case1" href="work/lightroom-archive/" style="--i:.2s;--d:.15s">
-          <span class="inner">
-            <span class="face front paper">
-              <span class="card-tab"><span class="label">Case file 01 · Adoption</span><span class="label">In progress</span></span>
-              <span class="front-pad">
-                <span class="card-title">The Lightroom archive workflow</span>
-                <span class="card-text">Claude suggests. A photographer decides. Nothing reaches PhotoShelter without a human review.</span>
-                <span class="chips"><span class="chip">Lightroom</span><span class="arrow" aria-hidden="true">→</span><span class="chip">Claude</span><span class="arrow" aria-hidden="true">→</span><span class="chip chip--gate">Human gate</span><span class="arrow" aria-hidden="true">→</span><span class="chip">PhotoShelter</span></span>
-              </span>
-              <span class="ghost" aria-hidden="true">01</span>
-            </span>
-            <span class="face back">
-              <span class="label">How this was made</span>
-              Summary drafted with Claude from Rami's notes. Scale ("thousands of images") from Rami. Time saved: not measured yet.
-            </span>
-          </span>
-        </a>
-
-        <a class="card s-guides" href="guides/" style="--i:.26s;--d:.2s">
-          <span class="inner">
-            <span class="face front paper">
-              <span class="card-tab"><span class="label">Case file 02 · Guides</span><span class="label">Free</span></span>
-              <span class="front-pad">
-                <span class="card-title">Prompt to Publish</span>
-                <span class="card-text">A field guide for university communicators, and a 90-minute workshop kit on checking AI-generated quotes.</span>
-                <span class="label">Read the guide →</span>
-              </span>
-              <span class="ghost" aria-hidden="true">02</span>
-            </span>
-            <span class="face back">
-              <span class="label">How this was made</span>
-              First written as Kent State graduate coursework. Portions drafted with AI, then verified, restructured and rewritten by Rami.
-            </span>
-          </span>
-        </a>
-
-        <a class="card s-cosmos" href="writing/#framing-the-cosmos" style="--i:.32s;--d:.25s">
-          <span class="inner">
-            <span class="face front filmbg cosmos">
-              <img src="assets/img/preview/diamond-ring.jpg" width="1600" height="1068" loading="lazy" alt="The diamond ring moment of a total solar eclipse.">
-              <span class="front-pad">
-                <span class="label" style="color:var(--gold)">Case file 03 · Storytelling</span>
-                <span class="card-title">Framing the Cosmos</span>
-                <span class="card-text">How iconic space photographs shaped what the public believes, and why that matters more as pictures get easier to fake.</span>
-              </span>
-            </span>
-            <span class="face back back--film">
-              <span class="label">Diamond ring</span>
-              Capture data is not embedded in this copy. Date, camera and edits to come from the original.
-            </span>
-          </span>
-        </a>
-
-        <a class="card s-splat" href="https://midlifesurvivors.com/devlog/14-achievement-unlocked-gaussian-splatting/" style="--i:.38s;--d:.3s">
-          <span class="inner">
-            <span class="face front filmbg">
-              <span class="splat">
-                <img class="base" src="assets/img/preview/green-bank.jpg" width="1086" height="724" loading="lazy" alt="Green Bank Telescope at dawn.">
-                <img class="dots" src="assets/img/preview/green-bank.jpg" width="1086" height="724" loading="lazy" alt="" aria-hidden="true">
-              </span>
-              <span class="front-pad">
-                <span class="label" style="color:var(--gold)">Case file 04 · Experiments</span>
-                <span class="big-num">369 → 1.8M</span>
-                <span class="label" style="color:#b9b1a0">Photographs → Gaussian splats</span>
-              </span>
-            </span>
-            <span class="face back back--film">
-              <span class="label">Honest label</span>
-              The dot effect on hover is a CSS illustration, not a real splat render. The real test: 369 Nikon frames, COLMAP, about 1.8 million splats, finished in Blender and Resolve.
-            </span>
-          </span>
-        </a>
-      </div>
-      <p class="swipe-hint label" aria-hidden="true">Swipe · 01 02 03 04</p>
 
       <!-- Numbers -->
       <section class="card s-nums" aria-label="By the numbers" style="--i:.44s;--d:.35s">
@@ -196,7 +208,7 @@
           </div>
           <div class="face back">
             <span class="label">Sources</span>
-            <p>Rami's records. Award and Image of the Day links to be added. Writing count from the site's own index.</p>
+            <p>Rami's records. Image of the Day links are on the About page. Writing count from the site's own index.</p>
           </div>
         </div>
       </section>
@@ -264,7 +276,7 @@
           <div class="face front filmbg">
             <div class="sheet-head">
               <h2 id="frames-h">Selected frames</h2>
-              <span class="label" style="color:var(--gold)">Full photography pages coming soon</span>
+              <span class="label" style="color:var(--gold)">Six frames · 2016 to 2024</span>
             </div>
             <div class="sheet" tabindex="0" role="region" aria-label="Selected photographs">
               <figure><img src="assets/img/preview/remove-before-flight.jpg" width="1355" height="1600" loading="lazy" alt="A red Remove Before Flight tag hanging from foil-wrapped spacecraft hardware at NASA Glenn."><figcaption>NASA Glenn</figcaption></figure>
@@ -277,7 +289,7 @@
           </div>
           <div class="face back back--film">
             <span class="label">Capture data</span>
-            <p>Each frame's camera, exposure and edit history is read from its original file. Frames without embedded data will say so on their own page.</p>
+            <p>Captions and years from Rami's archive. These are resized web copies; capture data stays with the originals.</p>
           </div>
         </div>
       </section>

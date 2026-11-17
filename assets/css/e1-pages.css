@@ -251,3 +251,10 @@ fieldset.field { border: 0; padding: 0; }
 .elsewhere a { color: var(--ink); overflow-wrap: anywhere; }
 @container (max-width: 820px) { .contact-grid { grid-template-columns: minmax(0, 1fr); } }
 .award-group li .yr { display: block; font-style: normal; font-family: var(--mono); font-size: 11px; letter-spacing: .08em; color: var(--red); margin-bottom: 2px; }
+.case-photo { margin: 40px 0 0; background: var(--film); padding: 12px 12px 10px; }
+.case-photo img { width: 100%; }
+.case-photo .caption-row { padding-top: 10px; flex-wrap: wrap; }
+.criteria { margin: 10px 0 12px; padding-left: 18px; }
+.criteria li { margin: 6px 0; }
+.criteria li::marker { color: var(--red); }
+.case-photo { max-width: 980px; }
