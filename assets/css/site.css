@@ -177,3 +177,6 @@ section { padding-block: clamp(2.5rem, 7vw, 5rem); border-bottom: 1px solid var(
 .latest a { font-family: var(--font-serif); font-size: 1.15rem; text-decoration: none; }
 .section-link { margin-top: 1.5rem; }
 .card .label { font-size: 0.75rem; color: var(--accent); }
+.timeline .org { color: var(--text-soft); margin-bottom: 0.4rem; }
+.timeline li > p:not(.org) { color: var(--text-soft); font-size: 0.98rem; }
+.timeline h3 { margin: 0.25rem 0; }
