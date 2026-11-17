@@ -69,6 +69,10 @@
           status.textContent = 'Sent. Thank you, I’ll be in touch.';
           form.reset();
           btn.textContent = 'Message sent';
+        } else if (/activat/i.test(res.d.message || '')) {
+          btn.disabled = false;
+          status.className = 'form-status is-bad';
+          status.textContent = 'This form is waiting to be activated. Please email ramidaud@me.com for now.';
         } else { throw new Error(res.d.message || 'failed'); }
       })
       .catch(function () {

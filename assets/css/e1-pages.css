@@ -250,3 +250,4 @@ fieldset.field { border: 0; padding: 0; }
 .elsewhere li span { font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-faint); }
 .elsewhere a { color: var(--ink); overflow-wrap: anywhere; }
 @container (max-width: 820px) { .contact-grid { grid-template-columns: minmax(0, 1fr); } }
+.award-group li .yr { display: block; font-style: normal; font-family: var(--mono); font-size: 11px; letter-spacing: .08em; color: var(--red); margin-bottom: 2px; }
