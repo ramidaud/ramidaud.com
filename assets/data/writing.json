@@ -34,6 +34,51 @@
   },
   "items": [
     {
+      "date": "2026-11-16",
+      "title": "A little jealous.",
+      "url": "https://midlifesurvivors.com/devlog/?post=18-a-little-jealous",
+      "venue": "Devlog",
+      "thread": "midlife-survivors",
+      "type": "Devlog",
+      "tags": [
+        "18"
+      ],
+      "featured": true
+    },
+    {
+      "date": "2026-11-16",
+      "title": "Lost in the chaos.",
+      "url": "https://midlifesurvivors.com/devlog/?post=17-lost-in-the-chaos",
+      "venue": "Devlog",
+      "thread": "midlife-survivors",
+      "type": "Devlog",
+      "tags": [
+        "17"
+      ]
+    },
+    {
+      "date": "2026-11-16",
+      "title": "Little jokes with legs.",
+      "url": "https://midlifesurvivors.com/devlog/?post=16-little-jokes-with-legs",
+      "venue": "Devlog",
+      "thread": "midlife-survivors",
+      "type": "Devlog",
+      "tags": [
+        "16"
+      ]
+    },
+    {
+      "date": "2026-11-16",
+      "title": "A little slice of home.",
+      "url": "https://midlifesurvivors.com/devlog/?post=15-a-little-slice-of-home",
+      "venue": "Devlog",
+      "thread": "midlife-survivors",
+      "type": "Devlog",
+      "tags": [
+        "15"
+      ]
+    },
+    {
       "date": "2026-11-11",
       "title": "Achievement Unlocked: Gaussian Splatting.",
       "url": "https://midlifesurvivors.com/devlog/14-achievement-unlocked-gaussian-splatting/",
@@ -42,8 +87,7 @@
       "type": "Devlog",
       "tags": [
         "14"
-      ],
-      "featured": true
+      ]
     },
     {
       "date": "2026-11-07",
