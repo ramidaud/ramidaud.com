@@ -416,9 +416,37 @@ h3.sub { font-family: var(--mono); font-weight: 500; font-size: 11px; letter-spa
 .gamecard { background: var(--ink); color: var(--paper); display: grid; align-content: center; justify-items: start; padding: var(--s5); gap: 0; min-height: 320px; font-family: var(--serif); font-size: clamp(44px, 5vw, 76px); line-height: .9; }
 .gamecard i { font-style: normal; font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); margin-top: var(--s3); }
 #pj-game .glance { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+.ftc-hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: var(--s5); align-items: start; }
+.ftc-reel { margin: 0; display: grid; gap: 6px; }
+.ftc-reel video { display: block; width: 100%; height: auto; background: #000; border: 1px solid var(--rule); }
+.ftc-reel figcaption { font-family: var(--mono); font-size: 10.5px; letter-spacing: .06em; color: var(--ink-2); }
+.ftc-intro { display: grid; gap: var(--s3); align-content: start; }
+.ftc-intro p { margin: 0; }
+.ftc-essays { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: var(--s5); align-items: start; }
+.ftc-essays blockquote { margin: 0; font-family: var(--serif); font-size: 26px; line-height: 1.2; border-left: 2px solid var(--red); padding-left: var(--s3); }
+.astro-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s4); }
+.astro { margin: 0; display: grid; gap: 8px; align-content: start; }
+.astro img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; background: #000; border: 1px solid var(--rule); transition: filter .3s; }
+.astro a:hover img { filter: brightness(1.12); }
+.astro figcaption { display: grid; gap: 2px; font-size: 13.5px; color: var(--ink-2); }
+.astro figcaption b { font-family: var(--serif); font-weight: 400; font-size: 22px; color: var(--ink); line-height: 1.1; }
+.astro figcaption .mono { font-size: 10.5px; letter-spacing: .06em; }
+.steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid var(--rule); border-left: 1px solid var(--rule); counter-reset: st; }
+.steps li { counter-increment: st; padding: var(--s3); border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); display: grid; gap: 4px; }
+.steps li b { font-family: var(--serif); font-weight: 400; font-size: 24px; }
+.steps li b::before { content: counter(st, decimal-leading-zero); font-family: var(--mono); font-size: 10.5px; color: var(--red); margin-right: 8px; vertical-align: middle; }
+.steps li span { font-size: 14px; color: var(--ink-2); }
+.credit-block { border: 1px solid var(--ink); padding: var(--s4) var(--s5); display: grid; gap: var(--s2); margin-top: var(--s4); }
+.credit-block h3 { font-family: var(--mono); font-weight: 500; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--red); margin: 0; }
+.credit-block p { margin: 0; font-size: 16px; max-width: 70ch; }
+.ftc-more { display: grid; grid-template-columns: minmax(0, .6fr) minmax(0, 1.4fr); gap: var(--s5); align-items: start; margin-top: var(--s4); }
+.ftc-next { display: grid; gap: var(--s3); }
+.ftc-next p { margin: 0; font-size: 15px; }
+.ftc-next p a { color: var(--red); }
 .bigline { font-family: var(--serif); font-size: 26px; line-height: 1.25; margin: 0; max-width: 34ch; }
 @media (max-width: 1100px) {
   .guides2, .qa, .rooms { grid-template-columns: 1fr; }
+  .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .rooms { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .frames2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .wlist li { grid-template-columns: 96px minmax(0, 1fr); }
@@ -427,6 +455,10 @@ h3.sub { font-family: var(--mono); font-weight: 500; font-size: 11px; letter-spa
 }
 @media (max-width: 760px) {
   .rooms { grid-template-columns: 1fr; }
+  .ftc-hero, .ftc-essays, .ftc-more { grid-template-columns: 1fr; }
+  .astro-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s3); }
+  .steps { grid-template-columns: 1fr; }
+  .ftc-reel.tall { max-width: 300px; }
   .cases.one .case { grid-template-columns: 1fr; }
   .cases.one .case .case-img { grid-row: auto; margin: calc(var(--s5) * -1) calc(var(--s5) * -1) 0; border-right: 0; border-bottom: 1px solid var(--rule); aspect-ratio: 16 / 10; }
   .gamecard { min-height: 200px; }
@@ -546,7 +578,7 @@ h3.sub { font-family: var(--mono); font-weight: 500; font-size: 11px; letter-spa
         <span class="src">Sources: NASA Apollo Lunar Surface Journal; Hasselblad; NPR, July 2019. Generic drawings, not a portrait or a product replica.</span>
         <div class="btns">
           <a class="btn" href="#camera"><svg viewBox="0 0 34 26" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="7" y="7" width="15" height="15" rx="1.5"/><rect x="2" y="8" width="5" height="13"/><rect x="9" y="3" width="11" height="4"/><circle cx="27" cy="14.5" r="5"/><path d="M22 11.5h1.5M22 17.5h1.5"/></svg>Back to the camera</a>
-          <a class="btn solid" href="#writing">Read the essays</a>
+          <a class="btn solid" href="#cosmos">Open the project</a>
         </div>
       </div>
 
@@ -650,8 +682,8 @@ h3.sub { font-family: var(--mono); font-weight: 500; font-size: 11px; letter-spa
       <h3>Framing <em>the</em> Cosmos</h3>
       <p>How iconic space photographs shape what we believe. On Earthrise: “Its power came from re-scripting feeling before it delivered an argument.”</p>
       <ul class="essays"><li><span class="mono">Apr 10, 2026</span><a class="t" href="https://ramidaud.substack.com/p/the-loneliest-photograph-ever-taken" target="_blank" rel="noopener">The Loneliest Photograph Ever Taken<span class="sr"> (opens in a new window)</span></a></li><li><span class="mono">Apr 7, 2026</span><a class="t" href="https://ramidaud.substack.com/p/from-space-photo-to-environmental" target="_blank" rel="noopener">From Space Photo to Environmental Movement in 16 Months<span class="sr"> (opens in a new window)</span></a></li><li><span class="mono">Mar 15, 2026</span><a class="t" href="https://ramidaud.substack.com/p/the-accidental-masterpiece-how-earthrise" target="_blank" rel="noopener">The Accidental Masterpiece: How Earthrise Happened<span class="sr"> (opens in a new window)</span></a></li><li><span class="mono">Mar 8, 2026</span><a class="t" href="https://ramidaud.substack.com/p/framing-the-cosmos" target="_blank" rel="noopener">The Photograph That Changed Nothing (And Everything)<span class="sr"> (opens in a new window)</span></a></li></ul>
-      <p class="nownext"><b>Now</b> Observing with a Seestar smart telescope: making the kind of images the essays study. Log to come. I have made one of these images before: <a href="../work/eclipse-2017/">Eclipse Across America</a>.</p>
-      <div class="btns"><a class="btn solid" href="#framing-the-cosmos">Open the project</a><a class="btn" href="https://ramidaud.substack.com/" target="_blank" rel="noopener">Substack<span class="sr"> (opens in a new window)</span></a></div>
+      <p class="nownext"><b>Now</b> Since Oct. 23, 2026, running a rented Seestar S30 Pro in Texas from Ohio. Six finished deep-sky images so far, from Andromeda to the Witch Head.</p>
+      <div class="btns"><a class="btn solid" href="#cosmos">Open the project</a><a class="btn" href="https://ramidaud.substack.com/" target="_blank" rel="noopener">Substack<span class="sr"> (opens in a new window)</span></a></div>
     </div>
   </article>
   <article class="feature mono-feature" id="pj-game" data-fx="rise" style="--i:3">
@@ -665,6 +697,63 @@ h3.sub { font-family: var(--mono); font-weight: 500; font-size: 11px; letter-spa
     </div>
   </article>
   <p class="small-src">Full project pages for both are in progress. Every essay and devlog entry is on the <a href="#writing">Writing</a> sheet.</p>
+</section>
+<section class="sheet" id="s-cosmos" data-sec="cosmos" aria-labelledby="cosmosTitle">
+  <div class="sheet-head" data-fx="slide">
+    <div class="sheet-no"><b>Sheet 03A</b><span class="label">Projects · Framing the Cosmos · Part 03, Lens</span></div>
+    <h2 id="cosmosTitle" tabindex="-1">Framing <em>the</em> Cosmos</h2>
+    <p>How iconic space photographs shape what we believe, and, since October, what it takes to make one.</p>
+  </div>
+  <div class="ftc-hero">
+    <figure class="ftc-reel" data-fx="iris">
+      <video class="autoloop" src="../assets/astro/m31-flyin.mp4" poster="../assets/astro/m31-flyin-poster.jpg" muted loop playsinline preload="metadata" aria-label="A slow push through a field of stars toward the Andromeda Galaxy, ending on the finished photo." width="720" height="900"></video>
+      <figcaption>Andromeda, 1,012 x 30 s. Fly-in effect added in post.</figcaption>
+    </figure>
+    <div class="ftc-intro" data-fx="rise" style="--i:2">
+      <span class="partref"><i>03</i>Project 01 · since March 2026</span>
+      <p class="bigline">The project started as essays about other people's photographs. Now it includes my own.</p>
+      <p>The essays ask how pictures like Earthrise changed what the public believed. Since Oct. 23, 2026, I have also been making deep-sky images with a rented ZWO Seestar S30 Pro at Starfront Observatories near Rockwood, Texas, under Bortle 1 skies, run remotely from Kent, Ohio. No backyard, no telescope of my own, no travel.</p>
+      <dl class="glance"><div><dt>Essays</dt><dd>4 on Substack</dd></div><div><dt>First night</dt><dd>Oct 23, 2026</dd></div><div><dt>Finished images</dt><dd>6 deep-sky, 1 Moon composite</dd></div><div><dt>Longest stack</dt><dd>8 h 26 min, Andromeda</dd></div></dl>
+    </div>
+  </div>
+
+  <h3 class="sub" data-fx="rise">The essays</h3>
+  <div class="ftc-essays" data-fx="rise" style="--i:1">
+    <blockquote>On Earthrise: “Its power came from re-scripting feeling before it delivered an argument.”</blockquote>
+    <ul class="essays"><li><span class="mono">Apr 10, 2026</span><a class="t" href="https://ramidaud.substack.com/p/the-loneliest-photograph-ever-taken" target="_blank" rel="noopener">The Loneliest Photograph Ever Taken<span class="sr"> (opens in a new window)</span></a></li><li><span class="mono">Apr 7, 2026</span><a class="t" href="https://ramidaud.substack.com/p/from-space-photo-to-environmental" target="_blank" rel="noopener">From Space Photo to Environmental Movement in 16 Months<span class="sr"> (opens in a new window)</span></a></li><li><span class="mono">Mar 15, 2026</span><a class="t" href="https://ramidaud.substack.com/p/the-accidental-masterpiece-how-earthrise" target="_blank" rel="noopener">The Accidental Masterpiece: How Earthrise Happened<span class="sr"> (opens in a new window)</span></a></li><li><span class="mono">Mar 8, 2026</span><a class="t" href="https://ramidaud.substack.com/p/framing-the-cosmos" target="_blank" rel="noopener">The Photograph That Changed Nothing (And Everything)<span class="sr"> (opens in a new window)</span></a></li></ul>
+  </div>
+
+  <h3 class="sub" data-fx="rise">The night sky, from 1,100 miles away</h3>
+  <div class="astro-grid"><figure class="astro" data-fx="develop" style="--i:0"><a href="../assets/astro/m31-andromeda-lg.jpg"><img src="../assets/astro/m31-andromeda.jpg" alt="Andromeda Galaxy photographed with a small telescope, a tilted golden-white disk with dark dust lanes, two small companion galaxies nearby, and a bright blue star near the top, on a dense field of stars." loading="lazy" width="1080" height="1350"></a><figcaption><b>Andromeda Galaxy</b> <span class="mono">M31</span><span>about 2.54 million light-years</span><span class="mono">1,012 x 30 s · 8 h 26 min over three nights</span></figcaption></figure><figure class="astro" data-fx="develop" style="--i:1"><a href="../assets/astro/m42-orion-lg.jpg"><img src="../assets/astro/m42-orion.jpg" alt="The Orion Nebula photographed with a small telescope, a bright pink and white cloud of gas with a brilliant core of a few stars, a smaller nebula above it, and faint reddish-brown dust across a field of stars." loading="lazy" width="1080" height="1350"></a><figcaption><b>Orion Nebula</b> <span class="mono">M42</span><span>about 1,344 light-years</span><span class="mono">380 x 20 s · 2 h 7 min in one night</span></figcaption></figure><figure class="astro" data-fx="develop" style="--i:2"><a href="../assets/astro/ic1805-heart-lg.jpg"><img src="../assets/astro/ic1805-heart.jpg" alt="The Heart Nebula photographed with a small telescope, a large ring of glowing red hydrogen gas shaped roughly like a heart, with a small cluster of stars near its center and a brighter red knot at the upper right." loading="lazy" width="1080" height="1350"></a><figcaption><b>Heart Nebula</b> <span class="mono">IC 1805</span><span>about 7,500 light-years</span><span class="mono">443 x 20 s · 2 h 28 min in one night</span></figcaption></figure><figure class="astro" data-fx="develop" style="--i:3"><a href="../assets/astro/ngc1499-california-lg.jpg"><img src="../assets/astro/ngc1499-california.jpg" alt="The California Nebula photographed with a small telescope, a long band of red hydrogen gas running diagonally with fine wispy structure along its upper edge, on a dark field of faint stars." loading="lazy" width="1080" height="1350"></a><figcaption><b>California Nebula</b> <span class="mono">NGC 1499</span><span>about 1,000 light-years</span><span class="mono">202 x 30 s · 1 h 41 min, a two-night mosaic</span></figcaption></figure><figure class="astro" data-fx="develop" style="--i:4"><a href="../assets/astro/ic2118-witch-head-lg.jpg"><img src="../assets/astro/ic2118-witch-head.jpg" alt="The Witch Head Nebula photographed with a small telescope, a faint blue-gray cloud of dust shaped like a profile with a pointed nose and chin, on a field of many stars with one bright blue-white star at the right." loading="lazy" width="1080" height="1350"></a><figcaption><b>Witch Head Nebula</b> <span class="mono">IC 2118</span><span>about 900 light-years, lit by Rigel</span><span class="mono">310 x 30 s · 2 h 35 min over two nights</span></figcaption></figure><figure class="astro" data-fx="develop" style="--i:5"><a href="../assets/astro/m33-triangulum-lg.jpg"><img src="../assets/astro/m33-triangulum.jpg" alt="Triangulum Galaxy photographed with a small telescope, a face-on spiral with pale blue arms and a soft pink-white core near the center of a star field." loading="lazy" width="1080" height="1350"></a><figcaption><b>Triangulum Galaxy</b> <span class="mono">M33</span><span>about 2.9 million light-years</span><span class="mono">294 x 30 s · 2 h 27 min in one night</span></figcaption></figure></div>
+  <p class="small-src">Every deep-sky image: stacked in Siril, color calibrated against Gaia star data. Exposure is given as frames x seconds, then total time. Telescope time from <a href="https://starfront.space/" target="_blank" rel="noopener">Starfront Observatories<span class="sr"> (opens in a new window)</span></a>.</p>
+
+  <h3 class="sub" data-fx="rise">How a night works</h3>
+  <ol class="steps" data-fx="rise" style="--i:1">
+    <li><b>Plan</b><span>Check the roof, weather and Moon. A bright Moon means emission nebulae with the light-pollution filter; dark nights are for galaxies.</span></li>
+    <li><b>Capture</b><span>A plan in the Seestar app runs the targets unattended, saving every 10 to 30 second frame.</span></li>
+    <li><b>Stack</b><span>Hundreds of frames are aligned and combined in Siril, then color calibrated against Gaia star data.</span></li>
+    <li><b>Finish</b><span>A gentle stretch, then tone and crop in Lightroom Classic.</span></li>
+    <li><b>Fly-in</b><span>The photo's own stars are set at depth in Blender and a camera pushes in, ending on the real still. Always labeled.</span></li>
+    <li><b>Publish</b><span>Captions with distance, exposure and sources, and alt text for every image.</span></li>
+  </ol>
+
+  <section class="credit-block" data-fx="rise" aria-labelledby="whoTitle">
+    <h3 id="whoTitle">Who did what</h3>
+    <p>I chose the targets, the framing and every aesthetic call. Claude did the research, the scheduling math and the checklists for each night, and ran most of the stacking in Siril on my Mac while I reviewed and chose between versions. I processed the Heart Nebula myself with Claude coaching. The fly-in tool was built with Claude for this project.</p>
+  </section>
+
+  <div class="ftc-more">
+    <figure class="ftc-reel tall" data-fx="develop">
+      <video src="../assets/astro/four-nebulae-reel.mp4" poster="../assets/astro/four-nebulae-poster.jpg" controls muted playsinline preload="none" width="720" height="1280" aria-label="Four Nebulae reel: fly-ins to the Heart, Witch Head, California and Orion nebulae, each with a data card."></video>
+      <figcaption>Four Nebulae reel, 65 s. Fly-in effect added in post.</figcaption>
+    </figure>
+    <div class="ftc-next">
+      <h3 class="sub">Connected work</h3>
+      <p><b>I have made one of these images before.</b> In 2017 I was the sole photographer on NASA Glenn's coverage of the total eclipse, and the diamond ring ran as NASA Image of the Day. <a href="../work/eclipse-2017/">Eclipse Across America</a></p>
+      <p><b>Where the camera came from.</b> The camera drawing on this site is based on the lunar-surface cameras of the Apollo era. <a href="#framing-the-cosmos">See the Apollo scene</a></p>
+      <div class="btns"><a class="btn solid" href="https://ramidaud.substack.com/" target="_blank" rel="noopener">Read on Substack<span class="sr"> (opens in a new window)</span></a><a class="btn" href="#writing">All writing</a><a class="btn" href="#projects">Back to Projects</a></div>
+    </div>
+  </div>
 </section>
 <section class="sheet" id="s-writing" data-sec="writing" aria-labelledby="writingTitle">
   <div class="sheet-head" data-fx="slide">
@@ -796,6 +885,7 @@ h3.sub { font-family: var(--mono); font-weight: 500; font-size: 11px; letter-spa
   var SECTIONS = {
     practice: { name: "AI in Practice", no: "02", parts: ["archive", "guide", "splat"] },
     projects: { name: "Projects", no: "03", parts: ["cosmos", "game"] },
+    cosmos: { name: "Framing the Cosmos", no: "03", parts: ["cosmos"], parent: "projects", label: "03A" },
     writing: { name: "Writing", no: "04", parts: ["field"] },
     photography: { name: "Photography", no: "05", parts: ["photo"] },
     about: { name: "About", no: "06", parts: ["about"] },
@@ -806,7 +896,7 @@ h3.sub { font-family: var(--mono); font-weight: 500; font-size: 11px; letter-spa
   var THREADS = [
     { n: "01", id: "archive", part: "Film magazine", sec: "practice", title: "Lightroom archive", long: "Lightroom archive workflow", latest: "Case file published: thousands of images worked through", date: "2026-11-17", status: "In progress" },
     { n: "02", id: "guide", part: "Finder hood", sec: "practice", title: "Prompt to Publish", long: "Prompt to Publish", latest: "Workshop kit: Checking AI-generated quotes", date: "2026-11-17", status: "Active" },
-    { n: "03", id: "cosmos", part: "Lens", sec: "projects", title: "Framing the Cosmos", long: "Framing the Cosmos", latest: "Part 4: The Loneliest Photograph Ever Taken", date: "2026-04-10", status: "Active", href: "#framing-the-cosmos" },
+    { n: "03", id: "cosmos", part: "Lens", sec: "cosmos", title: "Framing the Cosmos", long: "Framing the Cosmos", latest: "Part 4: The Loneliest Photograph Ever Taken", date: "2026-04-10", status: "Active", href: "#framing-the-cosmos" },
     { n: "04", id: "photo", part: "Shutter release grip", sec: "photography", title: "Photography", long: "Photography", latest: "My Favorite Photos from April", date: "2026-05-06", status: "In progress" },
     { n: "05", id: "field", part: "Réseau plate", sec: "writing", title: "Field Notes", long: "Field Notes and research", latest: "Nelson stone tool cache paper, 2021; Field Notes in development", date: "2026-11-17", status: "In progress" },
     { n: "06", id: "game", part: "Motor drive", sec: "projects", title: "Midlife Survivors", long: "Midlife Survivors", latest: "Memo 14: Achievement Unlocked, Gaussian Splatting", date: "2026-11-11", status: "Active" },
@@ -877,11 +967,11 @@ h3.sub { font-family: var(--mono); font-weight: 500; font-size: 11px; letter-spa
     var s = document.getElementById("s-" + sec); s.classList.add("current");
     void s.offsetWidth; s.classList.add("in");
     panel.scrollTop = 0;
-    var i = ORDER.indexOf(sec), prev = ORDER[i - 1], next = ORDER[i + 1];
+    var P = SECTIONS[sec].parent, i = ORDER.indexOf(P || sec), prev = P ? P : ORDER[i - 1], next = ORDER[i + 1];
     nextNav.innerHTML = "";
-    if (prev) { var a = el("a", "btn", "Previous: " + SECTIONS[prev].name); a.href = "#" + prev; nextNav.appendChild(a); } else nextNav.appendChild(el("span"));
+    if (prev) { var a = el("a", "btn", (P ? "Back to: " : "Previous: ") + SECTIONS[prev].name); a.href = "#" + prev; nextNav.appendChild(a); } else nextNav.appendChild(el("span"));
     if (next) { var b = el("a", "btn solid", "Next sheet: " + SECTIONS[next].name); b.href = "#" + next; nextNav.appendChild(b); }
-    document.getElementById("hereNo").textContent = "Detail A · Sheet " + SECTIONS[sec].no;
+    document.getElementById("hereNo").textContent = "Detail A · Sheet " + (SECTIONS[sec].label || SECTIONS[sec].no);
     document.getElementById("hereName").textContent = SECTIONS[sec].name;
     var lg = document.getElementById("legend"); lg.innerHTML = "";
     (sec === "threads" ? [] : SECTIONS[sec].parts).forEach(function (id) { var li = el("li"); li.appendChild(el("i", null, byId[id].n)); li.appendChild(el("span", null, byId[id].part)); lg.appendChild(li); });
@@ -895,7 +985,7 @@ h3.sub { font-family: var(--mono); font-weight: 500; font-size: 11px; letter-spa
     current = r.sec;
     Array.prototype.forEach.call(document.querySelectorAll("[data-sec]"), function (a) {
       if (a.tagName !== "A") return;
-      if (a.dataset.sec === r.sec) a.setAttribute("aria-current", "true"); else a.removeAttribute("aria-current");
+      if (a.dataset.sec === r.sec || (r.sec && SECTIONS[r.sec].parent === a.dataset.sec)) a.setAttribute("aria-current", "true"); else a.removeAttribute("aria-current");
     });
     document.title = view === "cosmos" ? "Framing the Cosmos · Rami Daud" : r.sec ? SECTIONS[r.sec].name + " · Rami Daud" : "Rami Daud";
     var dwg = view === "cosmos" ? "RD-03" : r.sec ? "RD-" + SECTIONS[r.sec].no : "RD-00";
@@ -931,6 +1021,10 @@ h3.sub { font-family: var(--mono); font-weight: 500; font-size: 11px; letter-spa
     chipsEls.forEach(function (x) { x.setAttribute("aria-pressed", String(x === c)); });
     Array.prototype.forEach.call(document.querySelectorAll("#wlist li"), function (li) { var t = li.dataset.thread; li.hidden = f === "all" ? t === "midlife-survivors" : t !== f; });
   }); });
+  Array.prototype.forEach.call(document.querySelectorAll("video.autoloop"), function (v) {
+    function sync() { var on = document.getElementById("s-cosmos").classList.contains("current") && !reduce.matches; if (on) { var p = v.play(); if (p && p.catch) p.catch(function () {}); } else v.pause(); }
+    window.addEventListener("hashchange", function () { setTimeout(sync, 50); }); setTimeout(sync, 300);
+  });
   Array.prototype.forEach.call(document.querySelectorAll(".develop"), function (b) { b.addEventListener("click", function () {
     var on = b.getAttribute("aria-pressed") !== "true"; b.setAttribute("aria-pressed", String(on)); b.setAttribute("aria-label", on ? "Show the drawing" : "Show the photograph");
   }); });
