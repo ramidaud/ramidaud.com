@@ -394,6 +394,10 @@ h3.sub { font-family: var(--mono); font-weight: 500; font-size: 11px; letter-spa
 .record li { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: var(--s4); padding-block: 12px; border-bottom: 1px solid var(--rule); }
 .record b { font-family: var(--serif); font-weight: 400; font-size: 22px; display: block; line-height: 1.15; }
 .record p { margin: 4px 0 0; font-size: 14.5px; color: var(--ink-2); max-width: 64ch; }
+.portrait { margin: 0; display: grid; gap: 6px; align-content: start; }
+.portrait img { display: block; width: 100%; height: auto; border: 1px solid var(--rule); }
+.portrait figcaption { font-family: var(--mono); font-size: 10.5px; letter-spacing: .06em; color: var(--ink-2); }
+.portrait figcaption b { color: var(--red); font-weight: 500; }
 .bigline { font-family: var(--serif); font-size: 26px; line-height: 1.25; margin: 0; max-width: 34ch; }
 @media (max-width: 1100px) {
   .guides2, .qa, .rooms { grid-template-columns: 1fr; }
@@ -412,7 +416,7 @@ h3.sub { font-family: var(--mono); font-weight: 500; font-size: 11px; letter-spa
   .awards li, .record li { grid-template-columns: 1fr; gap: 2px; }
   .awards li span:last-child { grid-column: 1; }
   .subnav { top: -16px; }
-  #ab-bio .plate { aspect-ratio: 16 / 7; min-height: 0; }
+  .portrait { max-width: 300px; }
   .iotd2 details > :not(summary), .iotd2 details p { margin-left: 0; }
 }
 
@@ -688,7 +692,7 @@ h3.sub { font-family: var(--mono); font-weight: 500; font-size: 11px; letter-spa
     <p>About how people learn, how discoveries happen, and how images shape the way we understand the world.</p>
   </div>
   <div class="about" id="ab-bio">
-    <div data-fx="draw"><div class="plate"><span>Portrait of Rami with a camera · to come</span></div></div>
+    <figure class="portrait" data-fx="draw"><img src="../assets/img/rami-profile-wire.jpg" alt="Wireframe line drawing of Rami Daud in profile, bearded, drawn in blue mesh lines on graph paper." width="900" height="1124"><figcaption><b>Fig. 1</b> · Rami Daud, profile. Drawn from a studio portrait.</figcaption></figure>
     <div class="bio" data-fx="rise" style="--i:2">
       <p>I'm a photographer working at the intersection of visual storytelling, science communication, and documentary photography. I'm currently a Senior Photographer in University Communications and Marketing at Kent State University, where I create images that document campus life in all its range: student life, athletics, scientific research, portraits, and the institutional moments that mark a university's history.</p>
       <p>Before Kent State, I worked as a Digital Imaging Specialist at NASA's Glenn Research Center, where I supported photography and multimedia coverage of the Artemis program, SpaceX and Commercial Crew hardware testing, and a wide range of research and engineering initiatives. I helped plan and execute visual coverage for the 2017 “Eclipse Across America” initiative, and was one of NASA's representatives producing content for Instagram's IGTV during its beta phase.</p>
