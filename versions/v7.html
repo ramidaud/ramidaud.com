@@ -408,6 +408,14 @@ h3.sub { font-family: var(--mono); font-weight: 500; font-size: 11px; letter-spa
 @media (prefers-reduced-motion: reduce) { .portrait .develop img { transition: none; } }
 .portrait figcaption { font-family: var(--mono); font-size: 10.5px; letter-spacing: .06em; color: var(--ink-2); }
 .portrait figcaption b { color: var(--red); font-weight: 500; }
+.cases.one { grid-template-columns: 1fr; }
+.cases.one .case { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); column-gap: var(--s5); }
+.cases.one .case .case-img { grid-row: 1 / span 8; margin: calc(var(--s5) * -1) 0 calc(var(--s5) * -1) calc(var(--s5) * -1); border-bottom: 0; border-right: 1px solid var(--rule); aspect-ratio: auto; }
+.nownext { font-size: 14.5px; border-left: 2px solid var(--red); padding-left: var(--s3); color: var(--ink-2); }
+.nownext b { font-family: var(--mono); font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--red); margin-right: 6px; }
+.gamecard { background: var(--ink); color: var(--paper); display: grid; align-content: center; justify-items: start; padding: var(--s5); gap: 0; min-height: 320px; font-family: var(--serif); font-size: clamp(44px, 5vw, 76px); line-height: .9; }
+.gamecard i { font-style: normal; font-family: var(--mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); margin-top: var(--s3); }
+#pj-game .glance { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
 .bigline { font-family: var(--serif); font-size: 26px; line-height: 1.25; margin: 0; max-width: 34ch; }
 @media (max-width: 1100px) {
   .guides2, .qa, .rooms { grid-template-columns: 1fr; }
@@ -419,6 +427,9 @@ h3.sub { font-family: var(--mono); font-weight: 500; font-size: 11px; letter-spa
 }
 @media (max-width: 760px) {
   .rooms { grid-template-columns: 1fr; }
+  .cases.one .case { grid-template-columns: 1fr; }
+  .cases.one .case .case-img { grid-row: auto; margin: calc(var(--s5) * -1) calc(var(--s5) * -1) 0; border-right: 0; border-bottom: 1px solid var(--rule); aspect-ratio: 16 / 10; }
+  .gamecard { min-height: 200px; }
   .room img { aspect-ratio: 16 / 10; }
   .also { grid-template-columns: 1fr; }
   .wlist li { grid-template-columns: 1fr; gap: 4px; }
@@ -509,7 +520,7 @@ h3.sub { font-family: var(--mono); font-weight: 500; font-size: 11px; letter-spa
     <header class="topbar">
       <a class="wordmark" href="#camera">Rami Daud</a>
       <nav class="nav" aria-label="Main" id="topnav">
-        <a href="#projects" data-sec="projects">Projects</a><a href="#guides" data-sec="guides">Guides</a><a href="#writing" data-sec="writing">Writing</a><a href="#photography" data-sec="photography">Photography</a><a href="#about" data-sec="about">About</a><a href="#record" data-sec="record">Record</a>
+        <a href="#practice" data-sec="practice">AI in Practice</a><a href="#projects" data-sec="projects">Projects</a><a href="#writing" data-sec="writing">Writing</a><a href="#photography" data-sec="photography">Photography</a><a href="#about" data-sec="about">About</a><a href="#record" data-sec="record">Record</a>
         <button class="tbtn" id="themeBtn" type="button" aria-label="Switch to dark mode">Dark</button>
       </nav>
     </header>
@@ -549,63 +560,17 @@ h3.sub { font-family: var(--mono); font-weight: 500; font-size: 11px; letter-spa
       <main class="panel" id="panel" tabindex="-1" aria-live="polite">
 
         
-<section class="sheet" id="s-projects" data-sec="projects" aria-labelledby="workTitle">
+<section class="sheet" id="s-practice" data-sec="practice" aria-labelledby="practiceTitle">
   <div class="sheet-head" data-fx="slide">
-    <div class="sheet-no"><b>Sheet 02</b><span class="label">Projects · Case files · Parts 01, 06, 07</span></div>
-    <h2 id="workTitle" tabindex="-1">What I would bring to a communications team.</h2>
-    <p>Four case files: adopt, train, explain, evaluate. Each says what AI did and what a person checked.</p>
+    <div class="sheet-no"><b>Sheet 02</b><span class="label">AI in Practice · Parts 01, 02, 07</span></div>
+    <h2 id="practiceTitle" tabindex="-1">What I would bring to a communications team.</h2>
+    <p>Two guides any team can use, and the case studies that show how I evaluate a tool before a team adopts it. Each says what AI did and what a person checked.</p>
   </div>
-  <div class="cases">
-    <article class="case" data-fx="deal" style="--i:1">
-      <div class="kicker"><span class="partref"><i>01</i>Adopt</span><span class="status progress">In progress</span></div>
-      <h3>The Lightroom archive workflow</h3>
-      <span class="credit">Digital asset lead · Kent State UCM · fall 2026</span>
-      <p>Claude suggests. A photographer decides. Nothing reaches PhotoShelter without a human review.</p>
-      <ol class="flow" aria-label="Flight plan"><li><span>Lightroom</span></li><li><span>Claude</span></li><li class="gate"><span>Human gate</span></li><li><span>PhotoShelter</span></li></ol>
-      <dl class="prov"><dt>AI did</dt><dd>Suggests keywords and descriptions across the catalog.</dd><dt>Checked</dt><dd>A photographer approves, edits or rejects every suggestion. Time saved: not measured yet.</dd></dl>
-      <a class="more" href="../work/lightroom-archive/">Read the case file</a>
-    </article>
-    <article class="case" data-fx="deal" style="--i:2">
-      <div class="kicker"><span class="partref"><i>02</i>Train</span><span class="status progress">Designed</span></div>
-      <h3>Checking AI-generated quotes</h3>
-      <span class="credit">Designer · Kent State graduate coursework · 2026</span>
-      <p>A 90-minute workshop: communicators check an AI-written interview against a four-point standard, then write a verification plan. Paired with Prompt to Publish, a field guide for the whole team.</p>
-      <dl class="prov"><dt>AI did</dt><dd>Drafted portions of the kit.</dd><dt>Checked</dt><dd>Verified and rewritten by Rami. Not yet delivered, so no attendance or feedback numbers.</dd></dl>
-      <a class="more" href="../guides/checking-ai-quotes/">Open the kit</a>
-    </article>
-    <article class="case" data-fx="deal" style="--i:3">
-      <figure class="case-img"><img src="../assets/img/preview/corona.jpg" alt="The Sun's corona streaming around the Moon during totality, Aug. 21, 2017." loading="lazy" width="1090" height="720"></figure>
-      <div class="kicker"><span class="partref"><i>04</i>Explain</span><span class="status paused">Complete</span></div>
-      <h3>Eclipse Across America</h3>
-      <span class="credit">Sole photographer · NASA Glenn · Aug. 21, 2017</span>
-      <p>Six cameras, one photographer, about two and a half minutes of totality, and no second take. The next morning it was NASA Image of the Day.</p>
-      <dl class="prov"><dt>AI did</dt><dd>Nothing. That version had no generative tools.</dd><dt>Sources</dt><dd>NASA Group Achievement Award citation and NASA.gov Image of the Day.</dd></dl>
-      <a class="more" href="../work/eclipse-2017/">Read the case file</a>
-    </article>
-    <article class="case" data-fx="deal" style="--i:4">
-      <div class="kicker"><span class="partref"><i>07</i>Evaluate</span><span class="status progress">In progress</span></div>
-      <div class="bignum"><b>369</b><span>photographs</span><i aria-hidden="true">to</i><b class="r">1.8M</b><span>Gaussian splats</span></div>
-      <span class="credit">Photographer and process lead · personal R&amp;D · 2026</span>
-      <p>The TJ and Derek capture: 369 Nikon frames run through COLMAP into about 1.8 million splats, finished in Blender and Resolve. How a new tool earns a place in the workflow.</p>
-      <dl class="prov"><dt>Tools</dt><dd>COLMAP, Gaussian splatting, Blender, DaVinci Resolve.</dd><dt>Honest label</dt><dd>No render shown yet. One will be added from the real capture, not illustrated.</dd></dl>
-    </article>
-  </div>
-  <aside class="also" data-fx="rise" style="--i:6">
-    <span class="partref"><i>06</i>Also in Projects</span>
-    <div><b>Midlife Survivors</b><p>A browser game built with AI as co-developer, every tool credited in the devlog, version by version. 14 devlog entries since Oct 30, 2026.</p></div>
-    <a class="more" href="https://midlifesurvivors.com/" target="_blank" rel="noopener">Play the game<span class="sr"> (opens in a new window)</span></a>
-  </aside>
-</section>
-<section class="sheet" id="s-guides" data-sec="guides" aria-labelledby="guidesTitle">
-  <div class="sheet-head" data-fx="slide">
-    <div class="sheet-no"><b>Sheet 03</b><span class="label">Guides · Teaching · Part 02</span></div>
-    <h2 id="guidesTitle" tabindex="-1">Tools for teams adopting AI.</h2>
-    <p>How to direct these tools, how to check what they produce, and how to train people to do both. Use them, adapt them, run them with your own team.</p>
-  </div>
+  <h3 class="sub" data-fx="rise">Guides</h3>
   <div class="guides2">
     <article class="program" data-fx="unfold">
       <div>
-        <span class="partref"><i>02</i>Field guide · about 25 minutes</span>
+        <span class="partref"><i>02</i>Guide · Field guide · about 25 minutes</span>
         <h3>Prompt to Publish</h3>
         <p>What these tools are, how to direct them, how to verify them, and how to know when to put them down. Includes the Prompt Architecture Blueprint, a three-step verification protocol and eight principles.</p>
         <div class="btns"><a class="btn solid" href="../guides/prompt-to-publish/">Read the guide</a><a class="btn" href="../downloads/Rami-Daud_Prompt-to-Publish.pdf">PDF</a></div>
@@ -613,11 +578,30 @@ h3.sub { font-family: var(--mono); font-weight: 500; font-size: 11px; letter-spa
     </article>
     <article class="program" data-fx="unfold" style="--i:2">
       <div>
-        <span class="partref"><i>02</i>Workshop kit · 90 minutes</span>
+        <span class="partref"><i>02</i>Guide · Workshop kit · 90 minutes</span>
         <h3>Checking AI-generated quotes</h3>
         <p>A facilitator-ready session where pairs test an AI-generated interview against a four-point editorial standard and leave with a verification plan for every claim.</p>
         <div class="btns"><a class="btn solid" href="../guides/checking-ai-quotes/">Open the kit</a></div>
       </div>
+    </article>
+  </div>
+  <h3 class="sub" data-fx="rise" style="--i:2">Case studies</h3>
+  <div class="cases">
+    <article class="case" data-fx="deal" style="--i:3">
+      <div class="kicker"><span class="partref"><i>01</i>Case study · Adopt</span><span class="status progress">In progress</span></div>
+      <h3>The Lightroom archive workflow</h3>
+      <span class="credit">Digital asset lead · Kent State UCM · fall 2026</span>
+      <p>Claude suggests. A photographer decides. Nothing reaches PhotoShelter without a human review.</p>
+      <ol class="flow" aria-label="Flight plan"><li><span>Lightroom</span></li><li><span>Claude</span></li><li class="gate"><span>Human gate</span></li><li><span>PhotoShelter</span></li></ol>
+      <dl class="prov"><dt>AI did</dt><dd>Suggests keywords and descriptions across the catalog.</dd><dt>Checked</dt><dd>A photographer approves, edits or rejects every suggestion. Time saved: not measured yet.</dd></dl>
+      <a class="more" href="../work/lightroom-archive/">Read the case file</a>
+    </article>
+    <article class="case" data-fx="deal" style="--i:4">
+      <div class="kicker"><span class="partref"><i>07</i>Case study · Evaluate</span><span class="status progress">In progress</span></div>
+      <div class="bignum"><b>369</b><span>photographs</span><i aria-hidden="true">to</i><b class="r">1.8M</b><span>Gaussian splats</span></div>
+      <span class="credit">Photographer and process lead · personal R&amp;D · 2026</span>
+      <p>The TJ and Derek capture: 369 Nikon frames run through COLMAP into about 1.8 million splats, finished in Blender and Resolve. How a new tool earns a place in the workflow.</p>
+      <dl class="prov"><dt>Tools</dt><dd>COLMAP, Gaussian splatting, Blender, DaVinci Resolve.</dd><dt>Honest label</dt><dd>No render shown yet. One will be added from the real capture, not illustrated.</dd></dl>
     </article>
   </div>
   <section class="quiz" data-fx="rise" style="--i:3" aria-labelledby="quizTitle">
@@ -650,25 +634,44 @@ h3.sub { font-family: var(--mono); font-weight: 500; font-size: 11px; letter-spa
   </div>
   <p class="small-src">Both guides began as Kent State graduate coursework. Portions were drafted with AI, then verified, restructured and rewritten by Rami.</p>
 </section>
-<section class="sheet" id="s-writing" data-sec="writing" aria-labelledby="writingTitle">
+<section class="sheet" id="s-projects" data-sec="projects" aria-labelledby="projTitle">
   <div class="sheet-head" data-fx="slide">
-    <div class="sheet-no"><b>Sheet 04</b><span class="label">Writing · Parts 03, 05</span></div>
-    <h2 id="writingTitle" tabindex="-1">Every piece, wherever it lives.</h2>
-    <p>23 pieces across Substack, the devlog, this site and a journal. Newest first.</p>
+    <div class="sheet-no"><b>Sheet 03</b><span class="label">Projects · Parts 03, 06</span></div>
+    <h2 id="projTitle" tabindex="-1">Two long projects, both still growing.</h2>
+    <p>One is research on how space photographs shape what we believe. The other is a game built in public with AI as a collaborator.</p>
   </div>
-  <article class="feature">
+  <article class="feature" id="pj-cosmos">
     <div class="lens" data-fx="iris">
       <img src="../assets/img/preview/diamond-ring.jpg" alt="The diamond ring moment of a total solar eclipse." loading="lazy" width="1600" height="1068">
-      <span class="cap">Thread image by Rami Daud, not from the essays.</span>
+      <span class="cap">Diamond ring, Jefferson City, Mo., 2017. Photograph by Rami Daud.</span>
     </div>
     <div>
-      <span class="partref"><i>03</i>Lens · Thread sheet RD-03</span>
+      <span class="partref"><i>03</i>Lens · Project 01</span>
       <h3>Framing <em>the</em> Cosmos</h3>
       <p>How iconic space photographs shape what we believe. On Earthrise: “Its power came from re-scripting feeling before it delivered an argument.”</p>
       <ul class="essays"><li><span class="mono">Apr 10, 2026</span><a class="t" href="https://ramidaud.substack.com/p/the-loneliest-photograph-ever-taken" target="_blank" rel="noopener">The Loneliest Photograph Ever Taken<span class="sr"> (opens in a new window)</span></a></li><li><span class="mono">Apr 7, 2026</span><a class="t" href="https://ramidaud.substack.com/p/from-space-photo-to-environmental" target="_blank" rel="noopener">From Space Photo to Environmental Movement in 16 Months<span class="sr"> (opens in a new window)</span></a></li><li><span class="mono">Mar 15, 2026</span><a class="t" href="https://ramidaud.substack.com/p/the-accidental-masterpiece-how-earthrise" target="_blank" rel="noopener">The Accidental Masterpiece: How Earthrise Happened<span class="sr"> (opens in a new window)</span></a></li><li><span class="mono">Mar 8, 2026</span><a class="t" href="https://ramidaud.substack.com/p/framing-the-cosmos" target="_blank" rel="noopener">The Photograph That Changed Nothing (And Everything)<span class="sr"> (opens in a new window)</span></a></li></ul>
-      <div class="btns"><a class="btn solid" href="#framing-the-cosmos">Open sheet RD-03</a><a class="btn" href="https://ramidaud.substack.com/" target="_blank" rel="noopener">Substack<span class="sr"> (opens in a new window)</span></a></div>
+      <p class="nownext"><b>Now</b> Observing with a Seestar smart telescope: making the kind of images the essays study. Log to come. I have made one of these images before: <a href="../work/eclipse-2017/">Eclipse Across America</a>.</p>
+      <div class="btns"><a class="btn solid" href="#framing-the-cosmos">Open the project</a><a class="btn" href="https://ramidaud.substack.com/" target="_blank" rel="noopener">Substack<span class="sr"> (opens in a new window)</span></a></div>
     </div>
   </article>
+  <article class="feature mono-feature" id="pj-game" data-fx="rise" style="--i:3">
+    <div class="gamecard" aria-hidden="true"><span>MIDLIFE</span><span>SURVIVORS</span><i>Devlog 01 to 14</i></div>
+    <div>
+      <span class="partref"><i>06</i>Motor drive · Project 02</span>
+      <h3>Midlife Survivors</h3>
+      <p>A browser game built with AI as co-developer, every tool credited in the devlog, version by version.</p>
+      <dl class="glance"><div><dt>Devlog</dt><dd>14 entries</dd></div><div><dt>Started</dt><dd>Oct 30, 2026</dd></div><div><dt>Latest</dt><dd>Achievement Unlocked: Gaussian Splatting</dd></div></dl>
+      <div class="btns"><a class="btn solid" href="https://midlifesurvivors.com/" target="_blank" rel="noopener">Play the game<span class="sr"> (opens in a new window)</span></a><a class="btn" href="https://midlifesurvivors.com/devlog/" target="_blank" rel="noopener">Read the devlog<span class="sr"> (opens in a new window)</span></a></div>
+    </div>
+  </article>
+  <p class="small-src">Full project pages for both are in progress. Every essay and devlog entry is on the <a href="#writing">Writing</a> sheet.</p>
+</section>
+<section class="sheet" id="s-writing" data-sec="writing" aria-labelledby="writingTitle">
+  <div class="sheet-head" data-fx="slide">
+    <div class="sheet-no"><b>Sheet 04</b><span class="label">Writing · Part 05</span></div>
+    <h2 id="writingTitle" tabindex="-1">Every piece, wherever it lives.</h2>
+    <p>23 pieces across Substack, the devlog, this site and a journal. Newest first.</p>
+  </div>
   <div class="windex" data-fx="rise" style="--i:2">
     <div class="chips" role="group" aria-label="Filter by thread"><button type="button" class="chip" data-f="all" aria-pressed="true">All <span>23</span></button><button type="button" class="chip" data-f="framing-the-cosmos" aria-pressed="false">Framing the Cosmos <span>4</span></button><button type="button" class="chip" data-f="midlife-survivors" aria-pressed="false">Midlife Survivors <span>14</span></button><button type="button" class="chip" data-f="ai-practice" aria-pressed="false">AI in practice <span>2</span></button><button type="button" class="chip" data-f="photography" aria-pressed="false">Photography <span>2</span></button><button type="button" class="chip" data-f="research" aria-pressed="false">Research <span>1</span></button></div>
     <ol class="wlist" id="wlist"><li data-thread="ai-practice"><time class="mono" datetime="2026-11-17">Nov 17, 2026</time><span class="wt"><a href="../guides/prompt-to-publish/">Prompt to Publish: a field guide to AI for university communicators</a><span class="dek">What these tools are, how to direct them, how to verify them, and how to know when to put them down.</span><span class="wm">Guide · ramidaud.com</span></span><span class="wth">AI in practice</span></li><li data-thread="ai-practice"><time class="mono" datetime="2026-11-17">Nov 17, 2026</time><span class="wt"><a href="../guides/checking-ai-quotes/">Checking AI-generated quotes: a 90-minute workshop kit</a><span class="dek">A 90-minute session for communication teams. Pairs generate a mock expert interview, hold it to the same standard as any quoted material, and leave with a plan for verifying every claim.</span><span class="wm">Workshop kit · ramidaud.com</span></span><span class="wth">AI in practice</span></li><li data-thread="ms-roll" class="roll"><time class="mono" datetime="2026-11-11">Nov 11, 2026</time><span class="wt"><a href="https://midlifesurvivors.com/devlog/" target="_blank" rel="noopener">Midlife Survivors devlog<span class="sr"> (opens in a new window)</span></a><span class="dek">14 entries since Oct 30, 2026. Latest: Achievement Unlocked: Gaussian Splatting.</span><span class="wm"><button type="button" class="showdev" data-f="midlife-survivors">Show all 14 entries</button></span></span><span class="wth">Midlife Survivors</span></li><li data-thread="midlife-survivors" hidden><time class="mono" datetime="2026-11-11">Nov 11, 2026</time><span class="wt"><a href="https://midlifesurvivors.com/devlog/14-achievement-unlocked-gaussian-splatting/" target="_blank" rel="noopener">Achievement Unlocked: Gaussian Splatting.<span class="sr"> (opens in a new window)</span></a><span class="wm">Devlog · Devlog</span></span><span class="wth">Midlife Survivors</span></li><li data-thread="midlife-survivors" hidden><time class="mono" datetime="2026-11-07">Nov 7, 2026</time><span class="wt"><a href="https://midlifesurvivors.com/devlog/13-side-characters/" target="_blank" rel="noopener">Music is one of the most important side characters.<span class="sr"> (opens in a new window)</span></a><span class="wm">Devlog · Devlog</span></span><span class="wth">Midlife Survivors</span></li><li data-thread="midlife-survivors" hidden><time class="mono" datetime="2026-11-06">Nov 6, 2026</time><span class="wt"><a href="https://midlifesurvivors.com/devlog/12-everyone-is-in-the-game/" target="_blank" rel="noopener">Restless. Also, who&#x27;s actually playing?<span class="sr"> (opens in a new window)</span></a><span class="wm">Devlog · Devlog</span></span><span class="wth">Midlife Survivors</span></li><li data-thread="midlife-survivors" hidden><time class="mono" datetime="2026-11-04">Nov 4, 2026</time><span class="wt"><a href="https://midlifesurvivors.com/devlog/10-version-two/" target="_blank" rel="noopener">This is starting to feel real.<span class="sr"> (opens in a new window)</span></a><span class="wm">Devlog · Devlog · <a href="https://ramidaud.substack.com/p/10-version-two" target="_blank" rel="noopener">also on Substack<span class="sr"> (opens in a new window)</span></a></span></span><span class="wth">Midlife Survivors</span></li><li data-thread="midlife-survivors" hidden><time class="mono" datetime="2026-11-04">Nov 4, 2026</time><span class="wt"><a href="https://midlifesurvivors.com/devlog/11-where-community-is/" target="_blank" rel="noopener">If that&#x27;s where community is, that&#x27;s where I want to be.<span class="sr"> (opens in a new window)</span></a><span class="wm">Devlog · Devlog · <a href="https://ramidaud.substack.com/p/11-where-community-is" target="_blank" rel="noopener">also on Substack<span class="sr"> (opens in a new window)</span></a></span></span><span class="wth">Midlife Survivors</span></li><li data-thread="midlife-survivors" hidden><time class="mono" datetime="2026-11-03">Nov 3, 2026</time><span class="wt"><a href="https://midlifesurvivors.com/devlog/09-my-friends-work-here-now/" target="_blank" rel="noopener">My friends work here now.<span class="sr"> (opens in a new window)</span></a><span class="wm">Devlog · Devlog · <a href="https://ramidaud.substack.com/p/09-my-friends-work-here-now" target="_blank" rel="noopener">also on Substack<span class="sr"> (opens in a new window)</span></a></span></span><span class="wth">Midlife Survivors</span></li><li data-thread="midlife-survivors" hidden><time class="mono" datetime="2026-11-02">Nov 2, 2026</time><span class="wt"><a href="https://midlifesurvivors.com/devlog/08-promoted-four-times/" target="_blank" rel="noopener">I got promoted four times before lunch.<span class="sr"> (opens in a new window)</span></a><span class="wm">Devlog · Devlog · <a href="https://ramidaud.substack.com/p/08-promoted-four-times" target="_blank" rel="noopener">also on Substack<span class="sr"> (opens in a new window)</span></a></span></span><span class="wth">Midlife Survivors</span></li><li data-thread="midlife-survivors" hidden><time class="mono" datetime="2026-11-01">Nov 1, 2026</time><span class="wt"><a href="https://midlifesurvivors.com/devlog/03-office-with-some-history/" target="_blank" rel="noopener">The office has seen a few restructurings.<span class="sr"> (opens in a new window)</span></a><span class="wm">Devlog · Devlog · <a href="https://ramidaud.substack.com/p/03-office-with-some-history" target="_blank" rel="noopener">also on Substack<span class="sr"> (opens in a new window)</span></a></span></span><span class="wth">Midlife Survivors</span></li><li data-thread="midlife-survivors" hidden><time class="mono" datetime="2026-11-01">Nov 1, 2026</time><span class="wt"><a href="https://midlifesurvivors.com/devlog/04-midlife-is-hard/" target="_blank" rel="noopener">I could beat my own game standing still. So I hired a robot.<span class="sr"> (opens in a new window)</span></a><span class="wm">Devlog · Devlog · <a href="https://ramidaud.substack.com/p/04-midlife-is-hard" target="_blank" rel="noopener">also on Substack<span class="sr"> (opens in a new window)</span></a></span></span><span class="wth">Midlife Survivors</span></li><li data-thread="midlife-survivors" hidden><time class="mono" datetime="2026-11-01">Nov 1, 2026</time><span class="wt"><a href="https://midlifesurvivors.com/devlog/05-buy-the-dev-a-coffee/" target="_blank" rel="noopener">There&#x27;s a coffee button now. It feels weird.<span class="sr"> (opens in a new window)</span></a><span class="wm">Devlog · Devlog · <a href="https://ramidaud.substack.com/p/05-buy-the-dev-a-coffee" target="_blank" rel="noopener">also on Substack<span class="sr"> (opens in a new window)</span></a></span></span><span class="wth">Midlife Survivors</span></li><li data-thread="midlife-survivors" hidden><time class="mono" datetime="2026-11-01">Nov 1, 2026</time><span class="wt"><a href="https://midlifesurvivors.com/devlog/06-the-office-got-bigger/" target="_blank" rel="noopener">The office got bigger. Somebody lost a binder.<span class="sr"> (opens in a new window)</span></a><span class="wm">Devlog · Devlog · <a href="https://ramidaud.substack.com/p/06-the-office-got-bigger" target="_blank" rel="noopener">also on Substack<span class="sr"> (opens in a new window)</span></a></span></span><span class="wth">Midlife Survivors</span></li><li data-thread="midlife-survivors" hidden><time class="mono" datetime="2026-11-01">Nov 1, 2026</time><span class="wt"><a href="https://midlifesurvivors.com/devlog/07-around-the-desk/" target="_blank" rel="noopener">My office got jokes. Then my enemies got smarter.<span class="sr"> (opens in a new window)</span></a><span class="wm">Devlog · Devlog · <a href="https://ramidaud.substack.com/p/07-around-the-desk" target="_blank" rel="noopener">also on Substack<span class="sr"> (opens in a new window)</span></a></span></span><span class="wth">Midlife Survivors</span></li><li data-thread="midlife-survivors" hidden><time class="mono" datetime="2026-10-31">Oct 31, 2026</time><span class="wt"><a href="https://midlifesurvivors.com/devlog/02-three-different-strides/" target="_blank" rel="noopener">The office has people in it now. And they walk.<span class="sr"> (opens in a new window)</span></a><span class="wm">Devlog · Devlog · <a href="https://ramidaud.substack.com/p/02-three-different-strides" target="_blank" rel="noopener">also on Substack<span class="sr"> (opens in a new window)</span></a></span></span><span class="wth">Midlife Survivors</span></li><li data-thread="midlife-survivors" hidden><time class="mono" datetime="2026-10-30">Oct 30, 2026</time><span class="wt"><a href="https://midlifesurvivors.com/devlog/01-never-made-a-game/" target="_blank" rel="noopener">I&#x27;ve never made a game. Here&#x27;s a green dollar sign chasing a square.<span class="sr"> (opens in a new window)</span></a><span class="wm">Devlog · Devlog · <a href="https://ramidaud.substack.com/p/01-never-made-a-game" target="_blank" rel="noopener">also on Substack<span class="sr"> (opens in a new window)</span></a></span></span><span class="wth">Midlife Survivors</span></li><li data-thread="photography"><time class="mono" datetime="2026-05-06">May 6, 2026</time><span class="wt"><a href="https://ramidaud.substack.com/p/my-favorite-photos-from-april" target="_blank" rel="noopener">My Favorite Photos from April<span class="sr"> (opens in a new window)</span></a><span class="dek">Fire, water, waders, and a fashion show.</span><span class="wm">Photo roundup · Substack</span></span><span class="wth">Photography</span></li><li data-thread="framing-the-cosmos"><time class="mono" datetime="2026-04-10">Apr 10, 2026</time><span class="wt"><a href="https://ramidaud.substack.com/p/the-loneliest-photograph-ever-taken" target="_blank" rel="noopener">The Loneliest Photograph Ever Taken<span class="sr"> (opens in a new window)</span></a><span class="wm">Essay · Substack</span></span><span class="wth">Framing the Cosmos</span></li><li data-thread="framing-the-cosmos"><time class="mono" datetime="2026-04-07">Apr 7, 2026</time><span class="wt"><a href="https://ramidaud.substack.com/p/from-space-photo-to-environmental" target="_blank" rel="noopener">From Space Photo to Environmental Movement in 16 Months<span class="sr"> (opens in a new window)</span></a><span class="wm">Essay · Substack</span></span><span class="wth">Framing the Cosmos</span></li><li data-thread="framing-the-cosmos"><time class="mono" datetime="2026-03-15">Mar 15, 2026</time><span class="wt"><a href="https://ramidaud.substack.com/p/the-accidental-masterpiece-how-earthrise" target="_blank" rel="noopener">The Accidental Masterpiece: How Earthrise Happened<span class="sr"> (opens in a new window)</span></a><span class="wm">Essay · Substack</span></span><span class="wth">Framing the Cosmos</span></li><li data-thread="photography"><time class="mono" datetime="2026-03-10">Mar 10, 2026</time><span class="wt"><a href="https://ramidaud.substack.com/p/what-i-found-when-i-started-paying" target="_blank" rel="noopener">What I Found When I Started Paying Attention<span class="sr"> (opens in a new window)</span></a><span class="wm">Essay · Substack</span></span><span class="wth">Photography</span></li><li data-thread="framing-the-cosmos"><time class="mono" datetime="2026-03-08">Mar 8, 2026</time><span class="wt"><a href="https://ramidaud.substack.com/p/framing-the-cosmos" target="_blank" rel="noopener">The Photograph That Changed Nothing (And Everything)<span class="sr"> (opens in a new window)</span></a><span class="dek">Earthrise became a symbol of planetary unity. Its power came from re-scripting feeling before it delivered an argument.</span><span class="wm">Essay · Substack</span></span><span class="wth">Framing the Cosmos</span></li><li data-thread="research"><time class="mono" datetime="2021-06-01">2021</time><span class="wt"><a href="https://www.sciencedirect.com/science/article/pii/S2352409X2100184X" target="_blank" rel="noopener">The Nelson stone tool cache, North-Central Ohio, U.S.A.: Assessing its cultural affiliation<span class="sr"> (opens in a new window)</span></a><span class="wm">Paper · Journal of Archaeological Science: Reports, vol. 37</span></span><span class="wth">Research</span></li></ol>
@@ -680,6 +683,18 @@ h3.sub { font-family: var(--mono); font-weight: 500; font-size: 11px; letter-spa
     <h2 id="photoTitle" tabindex="-1">Twenty years of pictures, in three rooms so far.</h2>
     <p>NASA, the night sky and a university, plus freelance work for the Associated Press, AFP, Cleveland Magazine and The Toledo Blade.</p>
   </div>
+  <div class="cases one">
+    <article class="case" data-fx="deal" style="--i:3">
+      <figure class="case-img"><img src="../assets/img/preview/corona.jpg" alt="The Sun's corona streaming around the Moon during totality, Aug. 21, 2017." loading="lazy" width="1090" height="720"></figure>
+      <div class="kicker"><span class="partref"><i>04</i>Featured story · NASA</span><span class="status paused">Complete</span></div>
+      <h3>Eclipse Across America</h3>
+      <span class="credit">Sole photographer · NASA Glenn · Aug. 21, 2017</span>
+      <p>Six cameras, one photographer, about two and a half minutes of totality, and no second take. The next morning it was NASA Image of the Day.</p>
+      <dl class="prov"><dt>AI did</dt><dd>Nothing. That version had no generative tools.</dd><dt>Sources</dt><dd>NASA Group Achievement Award citation and NASA.gov Image of the Day.</dd></dl>
+      <a class="more" href="../work/eclipse-2017/">Read the case file</a>
+    </article>
+  </div>
+  <h3 class="sub" data-fx="rise" style="--i:1">Galleries</h3>
   <div class="rooms">
     <a class="room" href="#photography" data-fx="develop" style="--i:0"><img src="../assets/img/preview/remove-before-flight.jpg" alt="A red Remove Before Flight tag hanging from foil-wrapped spacecraft hardware at NASA Glenn." loading="lazy" width="1355" height="1600"><b>NASA</b><span>Artemis, Commercial Crew and the 2017 eclipse. Seven frames ran as NASA Image of the Day.</span></a>
     <a class="room" href="#photography" data-fx="develop" style="--i:2"><img src="../assets/img/preview/star-trails.jpg" alt="Star trails circling the North Star above a silhouetted weather vane." loading="lazy" width="1086" height="723"><b>Night Sky</b><span>Ohio dark skies, eclipses and time-lapses.</span></a>
@@ -779,23 +794,23 @@ h3.sub { font-family: var(--mono); font-weight: 500; font-size: 11px; letter-spa
 
   /* ================= content ================= */
   var SECTIONS = {
-    projects: { name: "Projects", no: "02", parts: ["archive", "game", "splat"] },
-    guides: { name: "Guides", no: "03", parts: ["guide"] },
-    writing: { name: "Writing", no: "04", parts: ["cosmos", "field"] },
+    practice: { name: "AI in Practice", no: "02", parts: ["archive", "guide", "splat"] },
+    projects: { name: "Projects", no: "03", parts: ["cosmos", "game"] },
+    writing: { name: "Writing", no: "04", parts: ["field"] },
     photography: { name: "Photography", no: "05", parts: ["photo"] },
     about: { name: "About", no: "06", parts: ["about"] },
     record: { name: "Record", no: "07", parts: ["about"] },
     threads: { name: "Bill of materials", no: "08", parts: ["archive", "guide", "cosmos", "photo", "field", "game", "splat", "about"] }
   };
-  var ORDER = ["projects", "guides", "writing", "photography", "about", "record", "threads"];
+  var ORDER = ["practice", "projects", "writing", "photography", "about", "record", "threads"];
   var THREADS = [
-    { n: "01", id: "archive", part: "Film magazine", sec: "projects", title: "Lightroom archive", long: "Lightroom archive workflow", latest: "Case file published: thousands of images worked through", date: "2026-11-17", status: "In progress" },
-    { n: "02", id: "guide", part: "Finder hood", sec: "guides", title: "Prompt to Publish", long: "Prompt to Publish", latest: "Workshop kit: Checking AI-generated quotes", date: "2026-11-17", status: "Active" },
-    { n: "03", id: "cosmos", part: "Lens", sec: "writing", title: "Framing the Cosmos", long: "Framing the Cosmos", latest: "Part 4: The Loneliest Photograph Ever Taken", date: "2026-04-10", status: "Active", href: "#framing-the-cosmos" },
+    { n: "01", id: "archive", part: "Film magazine", sec: "practice", title: "Lightroom archive", long: "Lightroom archive workflow", latest: "Case file published: thousands of images worked through", date: "2026-11-17", status: "In progress" },
+    { n: "02", id: "guide", part: "Finder hood", sec: "practice", title: "Prompt to Publish", long: "Prompt to Publish", latest: "Workshop kit: Checking AI-generated quotes", date: "2026-11-17", status: "Active" },
+    { n: "03", id: "cosmos", part: "Lens", sec: "projects", title: "Framing the Cosmos", long: "Framing the Cosmos", latest: "Part 4: The Loneliest Photograph Ever Taken", date: "2026-04-10", status: "Active", href: "#framing-the-cosmos" },
     { n: "04", id: "photo", part: "Shutter release grip", sec: "photography", title: "Photography", long: "Photography", latest: "My Favorite Photos from April", date: "2026-05-06", status: "In progress" },
     { n: "05", id: "field", part: "Réseau plate", sec: "writing", title: "Field Notes", long: "Field Notes and research", latest: "Nelson stone tool cache paper, 2021; Field Notes in development", date: "2026-11-17", status: "In progress" },
     { n: "06", id: "game", part: "Motor drive", sec: "projects", title: "Midlife Survivors", long: "Midlife Survivors", latest: "Memo 14: Achievement Unlocked, Gaussian Splatting", date: "2026-11-11", status: "Active" },
-    { n: "07", id: "splat", part: "Frame counter", sec: "projects", title: "Gaussian splatting", long: "Gaussian splatting", latest: "TJ and Derek capture: 369 frames, about 1.8M splats", date: "2026-11-17", status: "In progress" },
+    { n: "07", id: "splat", part: "Frame counter", sec: "practice", title: "Gaussian splatting", long: "Gaussian splatting", latest: "TJ and Derek capture: 369 frames, about 1.8M splats", date: "2026-11-17", status: "In progress" },
     { n: "08", id: "about", part: "Body", sec: "about", title: "About and CV", long: "About and CV", latest: "Bio, recognition and full record on the About sheet", date: "2026-11-17", status: "Active" }
   ];
   var CASES = [
@@ -852,7 +867,7 @@ h3.sub { font-family: var(--mono); font-weight: 500; font-size: 11px; letter-spa
   var panel = document.getElementById("panel"), nextNav = document.getElementById("nextNav");
   var view = "home", mode = "cover", current = null, onRoute = function () {};
   function parse() {
-    var h = location.hash.replace("#", ""); if (h === "work") h = "projects";
+    var h = location.hash.replace("#", ""); if (h === "work") h = "projects"; if (h === "guides" || h === "ai-in-practice") h = "practice";
     if (h === "framing-the-cosmos") return { view: "cosmos", sec: null };
     if (SECTIONS[h]) return { view: "home", sec: h };
     return { view: "home", sec: null };
@@ -899,13 +914,13 @@ h3.sub { font-family: var(--mono); font-weight: 500; font-size: 11px; letter-spa
   function openPart(id) { var t = byId[id]; go(t.href ? t.href.slice(1) : t.sec); }
 
   /* from the cover, a scroll or swipe opens the first sheet */
-  window.addEventListener("wheel", function (e) { if (view === "home" && mode === "cover" && e.deltaY > 12) go("projects"); }, { passive: true });
+  window.addEventListener("wheel", function (e) { if (view === "home" && mode === "cover" && e.deltaY > 12) go("practice"); }, { passive: true });
   var ty = null;
   window.addEventListener("touchstart", function (e) { ty = e.touches[0].clientY; }, { passive: true });
-  window.addEventListener("touchend", function (e) { if (ty != null && view === "home" && mode === "cover" && ty - e.changedTouches[0].clientY > 50) go("projects"); ty = null; }, { passive: true });
+  window.addEventListener("touchend", function (e) { if (ty != null && view === "home" && mode === "cover" && ty - e.changedTouches[0].clientY > 50) go("practice"); ty = null; }, { passive: true });
   window.addEventListener("keydown", function (e) {
     if (view !== "home" || mode !== "cover" || e.target === document.getElementById("stage")) return;
-    if (e.key === "PageDown" || e.key === "ArrowDown" || (e.key === " " && e.target === document.body)) { e.preventDefault(); go("projects"); }
+    if (e.key === "PageDown" || e.key === "ArrowDown" || (e.key === " " && e.target === document.body)) { e.preventDefault(); go("practice"); }
   });
 
 
