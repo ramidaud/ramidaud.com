@@ -1,12 +1,13 @@
-/* Framing the Cosmos: shared behavior. Theme toggle, using the same "rd-theme" key as the rest of the site. */
+/* Framing the Cosmos story pages: theme toggle, using the same "rd-theme" key and button as Version 7. */
 (function () {
   var root = document.documentElement;
   root.classList.add("js");
-  function isDark() { return root.getAttribute("data-theme") === "dark"; }
-  var btn = document.querySelector(".theme-btn");
+  var btn = document.querySelector(".tbtn");
   if (!btn) return;
+  function isDark() { return root.getAttribute("data-theme") === "dark"; }
   function label() {
-    btn.setAttribute("aria-pressed", isDark() ? "true" : "false");
+    btn.textContent = isDark() ? "Light" : "Dark";
+    btn.setAttribute("aria-label", isDark() ? "Switch to light mode" : "Switch to dark mode");
   }
   label();
   btn.addEventListener("click", function () {
