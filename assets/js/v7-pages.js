@@ -45,4 +45,22 @@
   }
 
   document.querySelectorAll("[data-year]").forEach(function (el) { el.textContent = new Date().getFullYear(); });
+
+  /* Phones: Detail A grows on tap and shrinks when you're done with it */
+  var slot = document.querySelector(".camslot"), panel = document.querySelector(".panel");
+  if (slot && panel) {
+    var grow = document.createElement("button"), from = 0;
+    grow.type = "button"; grow.className = "grow";
+    grow.setAttribute("aria-expanded", "false"); grow.setAttribute("aria-label", "Enlarge the camera");
+    slot.appendChild(grow);
+    var setBig = function (on) {
+      if (document.body.classList.contains("cam-big") === on) return;
+      document.body.classList.toggle("cam-big", on);
+      grow.setAttribute("aria-expanded", on ? "true" : "false");
+      grow.setAttribute("aria-label", on ? "Shrink the camera" : "Enlarge the camera");
+      if (on) from = panel.scrollTop;
+    };
+    grow.addEventListener("click", function () { setBig(!document.body.classList.contains("cam-big")); });
+    panel.addEventListener("scroll", function () { if (Math.abs(panel.scrollTop - from) > 60) setBig(false); }, { passive: true });
+  }
 })();
