@@ -153,8 +153,8 @@ body[data-mode="set"] .bottombar, body[data-view="cosmos"] .bottombar { display:
 @keyframes drip { from { background-position: 0 100%; } to { background-position: 0 0; } }
 .titleblock { justify-self: end; display: grid; grid-template-columns: repeat(4, auto); border: 1px solid var(--ink); background: var(--card); font-family: var(--mono); font-size: 9px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); }
 .titleblock > * { padding: 3px 7px; border-bottom: 1px solid var(--rule); border-right: 1px solid var(--rule); white-space: nowrap; }
-.titleblock > :nth-child(4n) { border-right: 0; }
-.titleblock > :nth-last-child(-n+4) { border-bottom: 0; }
+.titleblock { overflow: hidden; }
+.titleblock > * { margin: 0 -1px -1px 0; } /* every cell draws its right and bottom rule; the outer edge clips the last ones */
 .titleblock b { color: var(--ink); font-weight: 500; }
 .titleblock .wide { grid-column: span 3; }
 .titleblock .stamp { color: var(--red); }
@@ -977,7 +977,7 @@ h3.sub { font-family: var(--mono); font-weight: 500; font-size: 11px; letter-spa
         <span>Dwg no.</span><b id="tbDwg">RD-00</b><span>Rev</span><b>G · v7</b>
         <span>Title</span><b class="wide" id="tbTitle">Camera, lunar surface type, exploded assembly</b>
         <span>Parts</span><b>08</b><span>Scale</span><b>Not to scale</b>
-        <span>Drawn</span><b>R. Daud</b><span>Checked</span><b class="stamp">By a person</b>
+        <span>Drawn</span><b class="wide">R. Daud</b>
         <span>Medium</span><b>three.js r128</b><span>Status</span><b>Issued</b>
         <span>Date</span><b>18 Nov 2026</b><span>Sheet</span><b id="tbSheet">1 of 8</b>
       </div>
