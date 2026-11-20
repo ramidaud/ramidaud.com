@@ -72,6 +72,10 @@ html:not(.js) .ui { position: static; }
 .nav { display: flex; gap: 2px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
 .nav a, .tbtn { font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; text-decoration: none; min-height: 44px; min-width: 44px; display: inline-flex; align-items: center; justify-content: center; padding: 0 10px; border-radius: 2px; color: var(--ink); background: transparent; border: 0; cursor: pointer; }
 .nav a:hover, .tbtn:hover { color: var(--red); }
+/* the theme switch reads as a control, not a menu item: a pill with a half-filled contrast mark, set apart from the links */
+.tbtn { min-height: 34px; padding: 0 12px 0 10px; margin-left: var(--s3); gap: 7px; border: 1px solid var(--ink); border-radius: 999px; align-self: center; }
+.tbtn::before { content: ""; width: 11px; height: 11px; border-radius: 50%; border: 1px solid currentColor; background: linear-gradient(90deg, currentColor 50%, transparent 50%); flex: none; }
+.tbtn:hover { background: var(--ink); color: var(--paper); }
 .nav a[aria-current="true"] { color: var(--red); box-shadow: inset 0 -2px 0 var(--red); }
 
 /* the main grid: left column + right column, shared by cover and set */
@@ -317,7 +321,7 @@ html.js .sheet:not(.in) .ap path { transition: none; transform: rotate(-38deg) s
 .flow { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; font-family: var(--mono); font-size: 10.5px; letter-spacing: .08em; text-transform: uppercase; }
 .flow li { display: inline-flex; align-items: center; gap: 6px; }
 .flow li span { border: 1px solid var(--line); color: var(--line); padding: 3px 8px; }
-.flow li + li::before { content: "92"; color: var(--ink-2); }
+.flow li + li::before { content: "\2192"; color: var(--ink-2); }
 .flow li.gate span { border-color: var(--red); color: var(--red); }
 .bignum { display: grid; grid-template-columns: auto auto; gap: 0 12px; align-items: baseline; justify-content: start; }
 .bignum b { font-family: var(--serif); font-weight: 400; font-size: 64px; line-height: .95; }
@@ -368,7 +372,8 @@ html.js .sheet:not(.in) .ap path { transition: none; transform: rotate(-38deg) s
 .room b { font-family: var(--serif); font-weight: 400; font-size: 28px; line-height: 1; }
 .room:hover b { color: var(--red); }
 .room span { font-size: 14px; color: var(--ink-2); }
-h3.sub { font-family: var(--mono); font-weight: 500; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-2); margin: var(--s4) 0 0; padding-bottom: var(--s2); border-bottom: 2px solid var(--ink); }
+/* the bold level: section heads in Plex Sans semibold, between the serif headlines and the body (Instrument Serif has no bold) */
+h3.sub { font-family: var(--sans); font-weight: 600; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink); margin: var(--s4) 0 0; padding-bottom: var(--s2); border-bottom: 2px solid var(--ink); }
 .frames2 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--s3); }
 .ph { margin: 0; display: grid; gap: 6px; }
 .ph img { aspect-ratio: 3 / 2; border: 1px solid var(--rule); }
@@ -484,6 +489,11 @@ h3.sub { font-family: var(--mono); font-weight: 500; font-size: 11px; letter-spa
 .charstage { position: relative; margin: 0; min-height: 360px; border-right: 1px solid var(--rule); background: color-mix(in srgb, var(--card) 70%, transparent); display: grid; grid-template-rows: minmax(0, 1fr) auto; }
 .charstage canvas { display: block; width: 100%; height: 100%; min-height: 320px; cursor: grab; touch-action: pan-y; }
 .charstage canvas:active { cursor: grabbing; }
+/* a still of the characters shows until the 3D models have drawn (or if WebGL can't run) */
+.charstage > canvas, .charstage > .charstill { grid-row: 1; grid-column: 1; }
+.charstill { width: 100%; height: 100%; min-height: 320px; object-fit: contain; pointer-events: none; }
+.charstill.dk, :root[data-theme="dark"] .charstill.lt, .charstage.live .charstill { display: none; }
+:root[data-theme="dark"] .charstage:not(.live) .charstill.dk { display: block; }
 .charstage figcaption { display: grid; grid-template-columns: 1fr 1fr; text-align: center; font-family: var(--mono); font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--red); padding: 8px 0 12px; }
 .charhint { position: absolute; top: 10px; left: 12px; font-family: var(--mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-2); }
 .ms-key { margin: 0; display: grid; gap: 6px; }
@@ -750,7 +760,7 @@ h3.sub { font-family: var(--mono); font-weight: 500; font-size: 11px; letter-spa
     </div>
   </article>
   <article class="feature mono-feature" id="pj-game" data-fx="rise" style="--i:3">
-    <figure class="charstage"><canvas id="charCanvas" role="img" aria-label="Turning wireframe 3D models of two Midlife Survivors characters: Medical Bill, a boxy figure in a nurse cap holding a clipboard, and the 9-5er, a wild-haired figure in glasses holding a steaming mug."></canvas><figcaption><span>Medical Bill</span><span>The 9-5er</span></figcaption><span class="charhint">Drag to turn</span></figure>
+    <figure class="charstage"><img class="charstill lt" src="assets/ms/characters-still-light.jpg" width="738" height="1002" alt=""><img class="charstill dk" src="assets/ms/characters-still-dark.jpg" width="738" height="1002" alt=""><canvas id="charCanvas" role="img" aria-label="Turning wireframe 3D models of two Midlife Survivors characters: Medical Bill, a boxy figure in a nurse cap holding a clipboard, and the 9-5er, a wild-haired figure in glasses holding a steaming mug."></canvas><figcaption><span>Medical Bill</span><span>The 9-5er</span></figcaption><span class="charhint">Drag to turn</span></figure>
     <div>
       <span class="partref"><i>06</i>Motor drive · Project 02</span>
       <h3>Midlife Survivors</h3>
@@ -822,7 +832,7 @@ h3.sub { font-family: var(--mono); font-weight: 500; font-size: 11px; letter-spa
       <h3 class="sub">Connected work</h3>
       <p><b>I have made one of these images before.</b> In 2017 I was the sole photographer on NASA Glenn's coverage of the total eclipse, and the diamond ring ran as NASA Image of the Day. <a href="work/eclipse-2017/">Eclipse Across America</a></p>
       <p><b>Where the camera came from.</b> The camera drawing on this site is based on the lunar-surface cameras of the Apollo era. <a href="#framing-the-cosmos">See the Apollo scene</a></p>
-      <div class="btns"><a class="btn solid" href="framing-the-cosmos/ftc-005-you-probably-wont-get-it/">Read Part 5</a><a class="btn" href="https://ramidaud.substack.com/" target="_blank" rel="noopener">Substack<span class="sr"> (opens in a new window)</span></a><a class="btn" href="#writing">All writing</a><a class="btn" href="#projects">Back to Projects</a></div>
+      <div class="btns"><a class="btn solid" href="framing-the-cosmos/ftc-005-you-probably-wont-get-it/">Read Part 5</a><a class="btn" href="https://ramidaud.substack.com/" target="_blank" rel="noopener">Substack<span class="sr"> (opens in a new window)</span></a><a class="btn" href="#writing">All writing</a></div>
     </div>
   </div>
 </section>
@@ -869,7 +879,7 @@ h3.sub { font-family: var(--mono); font-weight: 500; font-size: 11px; letter-spa
     <h3 class="sub">First week of play</h3>
     <dl class="glance"><div><dt>Players</dt><dd>44</dd></div><div><dt>Runs</dt><dd>274</dd></div><div><dt>Enemies defeated</dt><dd>750,939</dd></div><div><dt>Best age reached</dt><dd>81.5</dd></div><div><dt>Top killer</dt><dd>The Bill</dd></div></dl>
     <p class="small-src">Anonymous play stats as of Nov 3, 2026, counted without cookies or names. Most runs were on phones.</p>
-    <div class="btns"><a class="btn solid" href="https://midlifesurvivors.com/" target="_blank" rel="noopener">Play the game<span class="sr"> (opens in a new window)</span></a><a class="btn" href="#writing">All devlog memos</a><a class="btn" href="#projects">Back to Projects</a></div>
+    <div class="btns"><a class="btn solid" href="https://midlifesurvivors.com/" target="_blank" rel="noopener">Play the game<span class="sr"> (opens in a new window)</span></a><a class="btn" href="#writing">All devlog memos</a></div>
   </div>
 </section>
 <section class="sheet" id="s-writing" data-sec="writing" aria-labelledby="writingTitle">
@@ -1157,7 +1167,7 @@ h3.sub { font-family: var(--mono); font-weight: 500; font-size: 11px; letter-spa
         var m = { fill: new THREE.MeshBasicMaterial({ polygonOffset: true, polygonOffsetFactor: 1, polygonOffsetUnits: 1 }),
                   edge: new THREE.LineBasicMaterial(), wire: new THREE.LineBasicMaterial({ transparent: true, opacity: .13 }) };
         var o = new THREE.Group(); o.add(new THREE.Mesh(g, m.fill)); o.add(new THREE.LineSegments(new THREE.EdgesGeometry(g, 30), m.edge)); o.add(new THREE.LineSegments(new THREE.WireframeGeometry(g), m.wire));
-        var holder = new THREE.Group(); holder.position.x = x; holder.add(o); S.add(holder); figs.push(holder); mats.push(m); paint(); ready++; draw();
+        var holder = new THREE.Group(); holder.position.x = x; holder.add(o); S.add(holder); figs.push(holder); mats.push(m); paint(); ready++; draw(); if (ready === 2) cv.parentNode.classList.add("live");
       });
     }
     load("assets/models/medical-bill.bin", -.36); load("assets/models/nine-to-fiver.bin", .38);
