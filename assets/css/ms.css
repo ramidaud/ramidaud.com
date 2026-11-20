@@ -281,3 +281,18 @@ details.data td.n { text-align: right; }
   .chart svg .bar { fill: CanvasText; }
   .cast .pick .fill, .floor .fps .t i { background: CanvasText; }
 }
+
+/* ---------- The story so far (moved from the old 03B sheet) ---------- */
+.story { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule); }
+.story li { display: grid; grid-template-columns: 110px minmax(0, 1fr); gap: var(--s4); padding: var(--s4) 0; border-bottom: 1px solid var(--rule); align-items: start; }
+.story li:has(figure) { grid-template-columns: 110px minmax(0, 1fr) minmax(0, .9fr); }
+.story li > .mono { font: 400 11px var(--mono); color: var(--red); letter-spacing: .06em; padding-top: 8px; }
+.story b { font: 400 28px/1.1 var(--serif); display: block; }
+.story p { margin: 6px 0 0; font-size: 15px; color: var(--ink-2); max-width: 60ch; }
+.story .more { display: inline-flex; align-items: center; min-height: 32px; margin-top: 4px; font: 400 11px var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--red); }
+.story figure { margin: 0; border: 1px solid var(--ink); background: var(--film); }
+.story figure img { width: 100%; display: block; }
+@media (max-width: 760px) {
+  .story li, .story li:has(figure) { grid-template-columns: minmax(0, 1fr); gap: 6px; }
+  .story li > .mono { padding-top: 0; }
+}
