@@ -368,10 +368,13 @@ html.js .sheet:not(.in) .ap path { transition: none; transform: rotate(-38deg) s
 .rooms { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s4); }
 .room { display: grid; gap: var(--s2); text-decoration: none; align-content: start; }
 .room img { aspect-ratio: 4 / 5; border: 1px solid var(--rule); transition: filter .3s; }
-.room:hover img { filter: brightness(1.08); }
+a.room:hover img { filter: brightness(1.08); }
 .room b { font-family: var(--serif); font-weight: 400; font-size: 28px; line-height: 1; }
-.room:hover b { color: var(--red); }
+a.room:hover b { color: var(--red); }
 .room span { font-size: 14px; color: var(--ink-2); }
+.room.soon { position: relative; }
+.room.soon img { filter: saturate(.85); }
+.room.soon .stamp { position: absolute; top: 10px; left: 10px; font-style: normal; font-family: var(--mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; background: var(--paper); color: var(--ink); border: 1px solid var(--ink); padding: 4px 8px; }
 /* the bold level: section heads in Plex Sans semibold, between the serif headlines and the body (Instrument Serif has no bold) */
 h3.sub { font-family: var(--sans); font-weight: 600; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink); margin: var(--s4) 0 0; padding-bottom: var(--s2); border-bottom: 2px solid var(--ink); }
 .frames2 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--s3); }
@@ -862,7 +865,7 @@ h3.sub { font-family: var(--sans); font-weight: 600; font-size: 13px; letter-spa
       <p class="bigline">Midlife works like a bullet hell. So I made one.</p>
       <p>You walk, your weapons fire on their own, and the bills, robocalls and donuts close in. A run goes from 40 to your Retirement Party at 65, about 19 minutes. Full Life mode goes to 100, where Death waits. It runs in a browser and most people play it on their phones.</p>
       <dl class="glance"><div><dt>First build</dt><dd>Oct 30, 2026</dd></div><div><dt>Builds</dt><dd>391 by Nov 16</dd></div><div><dt>Version</dt><dd>V. 2.46.2</dd></div><div><dt>Devlog</dt><dd>18 memos</dd></div></dl>
-      <div class="btns"><a class="btn solid" href="https://midlifesurvivors.com/" target="_blank" rel="noopener">Play the game<span class="sr"> (opens in a new window)</span></a><a class="btn" href="https://midlifesurvivors.com/devlog/" target="_blank" rel="noopener">Read the devlog<span class="sr"> (opens in a new window)</span></a></div>
+      <div class="btns"><a class="btn solid" href="midlife-survivors/">Open the showpiece</a><a class="btn" href="https://midlifesurvivors.com/" target="_blank" rel="noopener">Play the game<span class="sr"> (opens in a new window)</span></a><a class="btn" href="https://midlifesurvivors.com/devlog/" target="_blank" rel="noopener">Read the devlog<span class="sr"> (opens in a new window)</span></a></div>
     </div>
   </div>
 
@@ -892,7 +895,7 @@ h3.sub { font-family: var(--sans); font-weight: 600; font-size: 13px; letter-spa
     <h3 class="sub">First week of play</h3>
     <dl class="glance"><div><dt>Players</dt><dd>44</dd></div><div><dt>Runs</dt><dd>274</dd></div><div><dt>Enemies defeated</dt><dd>750,939</dd></div><div><dt>Best age reached</dt><dd>81.5</dd></div><div><dt>Top killer</dt><dd>The Bill</dd></div></dl>
     <p class="small-src">Anonymous play stats as of Nov 3, 2026, counted without cookies or names. Most runs were on phones.</p>
-    <div class="btns"><a class="btn solid" href="https://midlifesurvivors.com/" target="_blank" rel="noopener">Play the game<span class="sr"> (opens in a new window)</span></a><a class="btn" href="#writing">All devlog memos</a></div>
+    <div class="btns"><a class="btn solid" href="https://midlifesurvivors.com/" target="_blank" rel="noopener">Play the game<span class="sr"> (opens in a new window)</span></a><a class="btn" href="midlife-survivors/">Live play stats</a><a class="btn" href="#writing">All devlog memos</a></div>
   </div>
 </section>
 <section class="sheet" id="s-writing" data-sec="writing" aria-labelledby="writingTitle">
@@ -925,9 +928,9 @@ h3.sub { font-family: var(--sans); font-weight: 600; font-size: 13px; letter-spa
   </div>
   <h3 class="sub" data-fx="rise" style="--i:1">Galleries</h3>
   <div class="rooms">
-    <a class="room" href="#photography" data-fx="develop" style="--i:0"><img src="assets/img/preview/remove-before-flight.jpg" alt="A red Remove Before Flight tag hanging from foil-wrapped spacecraft hardware at NASA Glenn." loading="lazy" width="1355" height="1600"><b>NASA</b><span>Artemis, Commercial Crew and the 2017 eclipse. Seven frames ran as NASA Image of the Day.</span></a>
-    <a class="room" href="#photography" data-fx="develop" style="--i:2"><img src="assets/img/preview/star-trails.jpg" alt="Star trails circling the North Star above a silhouetted weather vane." loading="lazy" width="1086" height="723"><b>Night Sky</b><span>Ohio dark skies, eclipses and time-lapses.</span></a>
-    <a class="room" href="#photography" data-fx="develop" style="--i:4"><img src="assets/img/preview/students.jpg" alt="Students walking on campus in autumn light." loading="lazy" width="1086" height="724"><b>Campus Stories</b><span>Kent State, made with the people who live it.</span></a>
+    <div class="room soon" data-fx="develop" style="--i:0"><img src="assets/img/preview/remove-before-flight.jpg" alt="A red Remove Before Flight tag hanging from foil-wrapped spacecraft hardware at NASA Glenn." loading="lazy" width="1355" height="1600"><i class="stamp">Coming soon</i><b>NASA</b><span>Artemis, Commercial Crew and the 2017 eclipse. Seven frames ran as NASA Image of the Day.</span></div>
+    <div class="room soon" data-fx="develop" style="--i:2"><img src="assets/img/preview/star-trails.jpg" alt="Star trails circling the North Star above a silhouetted weather vane." loading="lazy" width="1086" height="723"><i class="stamp">Coming soon</i><b>Night Sky</b><span>Ohio dark skies, eclipses and time-lapses.</span></div>
+    <div class="room soon" data-fx="develop" style="--i:4"><img src="assets/img/preview/students.jpg" alt="Students walking on campus in autumn light." loading="lazy" width="1086" height="724"><i class="stamp">Coming soon</i><b>Campus Stories</b><span>Kent State, made with the people who live it.</span></div>
   </div>
   <h3 class="sub" data-fx="rise" style="--i:5">Selected frames · 2016 to 2024</h3>
   <div class="frames2">
