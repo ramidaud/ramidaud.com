@@ -1,0 +1,38 @@
+/* FTC-005 art direction: a night at the observatory. The opener is film black in both themes,
+   with gold labels and red used only as lines. The reading column follows the site theme. */
+
+.hero { background: var(--film); color: #efebe2; padding-bottom: var(--s7); --label: var(--gold); }
+.hero .kicker, .hero .byline { color: var(--gold); }
+.hero .head { padding-bottom: var(--s6); }
+.hero .reel { margin: 0 auto; padding: 0 clamp(16px, 4vw, 48px); }
+.hero .reel video { width: 100%; background: #000; }
+
+/* Fig. 2: leader line to the Pleiades */
+.leader-wrap { position: relative; }
+.leader { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.leader line { stroke: var(--red); stroke-width: 4; }
+.leader circle { fill: var(--film); stroke: var(--red); stroke-width: 4; }
+.leader text { font: 500 26px var(--mono); fill: var(--gold); }
+.leader-label { position: absolute; right: 54.4%; top: 9.2%; background: var(--film); color: var(--gold); font: 500 10px var(--mono); letter-spacing: .14em; text-transform: uppercase; padding: 3px 7px; }
+.fig-cap .k { display: inline-grid; place-items: center; width: 1.7em; height: 1.7em; border: 1px solid var(--red); border-radius: 50%; letter-spacing: 0; margin: 0 .3em 0 .4em; }
+
+/* Fig. 3: the eyepiece and its focus knob */
+.eyepiece .ep-row { display: grid; grid-template-columns: minmax(0, 340px) 1fr; gap: var(--s6); align-items: center; }
+.ep-view { aspect-ratio: 1; border-radius: 50%; overflow: hidden; background: #000; border: 10px solid var(--film); outline: 1px solid var(--rule); }
+.ep-view img { width: 100%; height: 100%; object-fit: cover; }
+.ep-ctl { display: none; }
+.eyepiece.live .ep-ctl { display: block; }
+.ep-ctl label { display: block; margin: 0 0 var(--s2); }
+.ep-ctl input[type=range] { width: 100%; max-width: 320px; min-height: 44px; accent-color: var(--red); }
+.ep-hint { font-size: 15px; color: var(--ink-2); margin: var(--s2) 0 0; }
+.eyepiece.live .ep-view img { animation: seeing 3.2s ease-in-out infinite alternate; }
+@keyframes seeing { 0% { transform: translate(0, 0) scale(1.01); } 50% { transform: translate(.6px, -.4px) scale(1.012); } 100% { transform: translate(-.5px, .5px) scale(1.01); } }
+
+@media (max-width: 640px) {
+  .eyepiece .ep-row { grid-template-columns: 1fr; justify-items: center; }
+  .ep-view { width: min(78vw, 320px); }
+  .leader-label { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { .eyepiece.live .ep-view img { animation: none; } }
+
+.hero + .essay { padding-top: var(--s7); }
