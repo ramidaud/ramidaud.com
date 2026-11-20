@@ -55,7 +55,13 @@
 .legacy .index-card .label { color: var(--red); }
 .legacy .index-card .t { font-family: var(--serif); font-size: 30px; line-height: 1.05; }
 .legacy .index-card .d { font-size: 14px; color: var(--ink-soft); }
+.legacy .log-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 12px 24px; padding-top: 34px; padding-bottom: 12px; border-bottom: 2px solid var(--ink); }
+.legacy .log-head h2 { margin: 0; font-family: var(--mono); font-weight: 600; font-size: 13px; letter-spacing: .1em; text-transform: uppercase; }
 .legacy .filters { display: flex; flex-wrap: wrap; gap: 8px; }
+.legacy .chip-btn { font-family: var(--mono); font-size: 12px; letter-spacing: .04em; text-transform: uppercase; background: transparent; color: var(--ink); border: 1px solid var(--ink); padding: 0 14px; min-height: 44px; cursor: pointer; }
+.legacy .chip-btn span { color: var(--stamp); margin-left: 4px; }
+.legacy .chip-btn[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+.legacy .chip-btn[aria-pressed="true"] span { color: #b9b1a0; }
 .legacy .thread-blurb { min-height: 1.6em; margin: 14px 0 0; font-family: var(--serif); font-style: italic; font-size: 20px; color: var(--ink-soft); }
 .legacy .year { font-family: var(--mono); font-size: 12px; letter-spacing: .12em; color: var(--red); margin: 28px 0 0; }
 .legacy .logrows { list-style: none; margin: 0; padding: 0; }
