@@ -141,3 +141,13 @@ html:not(.js) .tbtn { display: none; }
   body.cam-big .sheets { border-left: 0; }
   body.cam-big .sheets a { height: 72px; }
 }
+
+/* "Where to next": every inner page ends by pointing somewhere useful */
+.keep { border-top: 1px solid var(--ink); margin-top: var(--s5); padding-top: var(--s3); }
+.keep > .label { display: block; margin-bottom: var(--s2); }
+.keep ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--s2); }
+.keep a { display: grid; gap: 4px; min-height: 44px; height: 100%; box-sizing: border-box; padding: 12px 14px; border: 1px solid var(--ink); background: var(--card); color: var(--ink); text-decoration: none; }
+.keep a b { font-family: var(--serif); font-weight: 400; font-size: 20px; line-height: 1.15; }
+.keep a span { font-size: 13.5px; line-height: 1.45; color: var(--ink-2); }
+.keep a:hover b, .keep a:focus-visible b { color: var(--red); }
+.keep a:hover { border-color: var(--red); }
