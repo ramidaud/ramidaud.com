@@ -663,6 +663,9 @@ h3.sub { font-family: var(--sans); font-weight: 600; font-size: 13px; letter-spa
   .sheets { -webkit-mask-image: linear-gradient(90deg, #000 82%, transparent); mask-image: linear-gradient(90deg, #000 82%, transparent); }
   .sheets.at-end { -webkit-mask-image: none; mask-image: none; }
   body[data-view="cosmos"] .fx { z-index: -1; }
+  #s-about .about .bio { order: -1; }
+  #s-about .about .portrait { max-width: 280px; }
+  #s-photography .case .case-img { order: 99; margin: var(--s2) calc(var(--s5) * -1) calc(var(--s5) * -1); border-top: 1px solid var(--rule); border-bottom: 0; }
   body[data-view="cosmos"] .cosmos-copy { position: relative; z-index: 3; background: linear-gradient(var(--paper) calc(100% - 120px), transparent calc(100% - 70px)); padding-bottom: 28px; pointer-events: auto; }
   body[data-view="cosmos"] .cosmos-copy .btn:not(.solid) { background: var(--paper); }
 }
@@ -731,7 +734,7 @@ h3.sub { font-family: var(--sans); font-weight: 600; font-size: 13px; letter-spa
   <div class="sheet-head" data-fx="slide">
     <div class="sheet-no"><b>Sheet 02</b><span class="label">AI in Practice · Parts 01, 02, 07</span></div>
     <h2 id="practiceTitle" tabindex="-1">What I would bring to a communications team.</h2>
-    <p>Two guides any team can use, and the case studies that show how I evaluate a tool before a team adopts it. Each says what AI did and what a person checked.</p>
+    <p>Case studies that show how I evaluate a tool before a team adopts it, then two guides any team can use. Each says what AI did and what a person checked.</p>
   </div>
   <h3 class="sub" data-fx="rise">Case studies</h3>
   <div class="cases">
@@ -1119,7 +1122,7 @@ h3.sub { font-family: var(--sans); font-weight: 600; font-size: 13px; letter-spa
     var lg = document.getElementById("legend"); lg.innerHTML = "";
     (sec === "threads" ? [] : SECTIONS[sec].parts).forEach(function (id) { var li = el("li"); li.appendChild(el("i", null, byId[id].n)); li.appendChild(el("span", null, byId[id].part)); lg.appendChild(li); });
     if (sec === "threads") lg.appendChild(el("li", "all", "All eight parts"));
-    setTimeout(function () { var cur = document.querySelector('#sheetList a[aria-current="true"]'), sl = document.getElementById("sheetList"); if (cur && sl && sl.scrollWidth > sl.clientWidth) sl.scrollLeft = Math.max(0, cur.offsetLeft - 8); markEnd(sl); }, 60);
+    setTimeout(function () { var cur = document.querySelector('#sheetList a[aria-current="true"]'), sl = document.getElementById("sheetList"); if (cur && sl && sl.scrollWidth > sl.clientWidth) sl.scrollLeft = Math.max(0, cur.getBoundingClientRect().left - sl.getBoundingClientRect().left + sl.scrollLeft - 8); markEnd(sl); }, 60);
   }
   function route(instant) {
     var r = parse(), prevView = view, prevMode = mode;

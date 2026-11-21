@@ -168,5 +168,5 @@ html:not(.js) .tbtn { display: none; }
   .sheets.at-end { -webkit-mask-image: none; mask-image: none; }
 }
 /* Wide tables in the guides: say that they scroll */
-.scroll-cue { display: none; font-family: var(--mono); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--red); margin: 6px 0; }
-@media (max-width: 760px) { .scroll-cue { display: block; } }
+.scroll-cue, .legacy p.scroll-cue { display: none; font: 400 10px/1.4 var(--mono) !important; letter-spacing: .12em; text-transform: uppercase; color: var(--red); margin: 6px 0 !important; max-width: none; }
+@media (max-width: 760px) { .scroll-cue, .legacy p.scroll-cue { display: block; } }

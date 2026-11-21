@@ -71,7 +71,7 @@
   if (sl) {
     var mark = function () { sl.classList.toggle("at-end", sl.scrollLeft + sl.clientWidth >= sl.scrollWidth - 4); };
     var cur = sl.querySelector('a[aria-current="true"], a[aria-current="page"]');
-    if (cur && sl.scrollWidth > sl.clientWidth) sl.scrollLeft = Math.max(0, cur.offsetLeft - 8);
+    if (cur && sl.scrollWidth > sl.clientWidth) sl.scrollLeft = Math.max(0, cur.getBoundingClientRect().left - sl.getBoundingClientRect().left + sl.scrollLeft - 8);
     mark(); sl.addEventListener("scroll", mark, { passive: true });
   }
   Array.prototype.forEach.call(document.querySelectorAll(".panel table"), function (tb) {
