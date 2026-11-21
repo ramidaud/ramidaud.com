@@ -659,6 +659,11 @@ h3.sub { font-family: var(--sans); font-weight: 600; font-size: 13px; letter-spa
   .bio p a, .ai-role a, .small-src a, td.up a { display: inline-block; padding: 11px 0; margin: -11px 0; }
   .subnav a { min-height: 44px; display: inline-flex; align-items: center; }
 }
+/* Embed mode (inner pages' Detail A): only the drawing shows; the frame fills the iframe */
+html.embed, html.embed body { background: transparent !important; overflow: hidden; }
+html.embed .app::before, html.embed .border, html.embed .zones, html.embed .skip { display: none !important; }
+html.embed .ui { display: none !important; }
+html.embed .stage { cursor: grab; }
 /* Review fixes: phone menu on the cover, a hint that the sheet tabs scroll, 44px theme target */
 .cover-menu { display: none; }
 .tbtn { position: relative; }
@@ -1059,6 +1064,18 @@ h3.sub { font-family: var(--sans); font-weight: 600; font-size: 13px; letter-spa
     threads: { name: "Bill of materials", no: "08", parts: ["archive", "guide", "cosmos", "photo", "field", "game", "splat", "about"] }
   };
   var ORDER = ["practice", "projects", "writing", "photography", "about", "record", "threads"];
+  /* Embed mode: inner pages show this same live camera as their Detail A, in an iframe:
+     ?embed=1&parts=game highlights those parts, and clicking a part opens it in the whole tab. */
+  var EMBED = /[?&]embed=1\b/.test(location.search);
+  if (EMBED) {
+    document.documentElement.classList.add("embed");
+    var ep = (location.search.match(/[?&]parts=([a-z,]+)/) || [])[1];
+    SECTIONS.embed = { name: "", no: "", parts: ep ? ep.split(",") : ["cosmos", "game"] };
+    window.addEventListener("storage", function (e) {
+      if (e.key !== "rd-theme") return;
+      if (e.newValue === "dark") document.documentElement.setAttribute("data-theme", "dark"); else document.documentElement.removeAttribute("data-theme");
+    });
+  }
   var THREADS = [
     { n: "01", id: "archive", part: "Film magazine", sec: "practice", href: "#practice/case-lightroom", title: "Lightroom archive", long: "Lightroom archive workflow", latest: "Case file published: thousands of images worked through", date: "2026-11-17", status: "In progress" },
     { n: "02", id: "guide", part: "Finder hood", sec: "practice", href: "#practice/guide-p2p", title: "Prompt to Publish", long: "Prompt to Publish", latest: "Workshop kit: Checking AI-generated quotes", date: "2026-11-17", status: "Active" },
@@ -1110,6 +1127,7 @@ h3.sub { font-family: var(--sans); font-weight: 600; font-size: 13px; letter-spa
   var panel = document.getElementById("panel"), nextNav = document.getElementById("nextNav");
   var view = "home", mode = "cover", current = null, onRoute = function () {};
   function parse() {
+    if (EMBED) return { view: "home", sec: "embed" };
     var h = location.hash.replace("#", ""), anchor = null;
     if (h.indexOf("/") > 0) { anchor = h.slice(h.indexOf("/") + 1); h = h.slice(0, h.indexOf("/")); }
     if (h === "work") h = "projects"; if (h === "guides" || h === "ai-in-practice") h = "practice";
@@ -1141,7 +1159,7 @@ h3.sub { font-family: var(--sans); font-weight: 600; font-size: 13px; letter-spa
     view = r.view; mode = r.sec ? "set" : "cover";
     document.body.dataset.view = view; document.body.dataset.mode = mode;
     var stg = document.getElementById("stage"); if (stg) stg.tabIndex = mode === "set" ? -1 : 0;
-    if (r.sec && r.sec !== current) showSheet(r.sec);
+    if (r.sec && r.sec !== current && !EMBED) showSheet(r.sec);
     current = r.sec;
     Array.prototype.forEach.call(document.querySelectorAll("[data-sec]"), function (a) {
       if (a.tagName !== "A") return;
@@ -1153,7 +1171,7 @@ h3.sub { font-family: var(--sans); font-weight: 600; font-size: 13px; letter-spa
     document.getElementById("tbTitle").textContent = view === "cosmos" ? "Part 03 in use, Apollo 11 surface walk" : "Camera, lunar surface type, exploded assembly";
     document.getElementById("tbSheet").textContent = view === "cosmos" ? "Thread sheet" : r.sec ? SECTIONS[r.sec].no.replace(/^0/, "") + " of 8" : "1 of 8";
     onRoute(prevView, prevMode, instant);
-    if (!instant) {
+    if (!instant && !EMBED) {
       var target = view === "cosmos" ? "h-cosmos" : r.sec ? null : "h-home";
       if (target) document.getElementById(target).focus({ preventScroll: true });
       else { var h2 = document.querySelector("#s-" + r.sec + " h2"); if (h2) h2.focus({ preventScroll: true }); }
@@ -1171,7 +1189,10 @@ h3.sub { font-family: var(--sans); font-weight: 600; font-size: 13px; letter-spa
   }
   window.addEventListener("hashchange", function () { route(false); });
   function go(hash) { if (location.hash === "#" + hash) route(false); else location.hash = hash; }
-  function openPart(id) { var t = byId[id]; if (t.href && t.href.charAt(0) !== "#") { location.href = t.href; return; } go(t.href ? t.href.slice(1) : t.sec); }
+  function openPart(id) {
+    var t = byId[id];
+    if (EMBED) { var base = location.href.split(/[?#]/)[0], to = t.href ? (t.href.charAt(0) === "#" ? base + t.href : new URL(t.href, base).href) : base + "#" + t.sec; (window.top || window).location.href = to; return; }
+    if (t.href && t.href.charAt(0) !== "#") { location.href = t.href; return; } go(t.href ? t.href.slice(1) : t.sec); }
 
   /* from the cover, a scroll or swipe opens the first sheet */
   window.addEventListener("wheel", function (e) { if (view === "home" && mode === "cover" && e.deltaY > 12) go("practice"); }, { passive: true });
@@ -1395,21 +1416,26 @@ h3.sub { font-family: var(--sans); font-weight: 600; font-size: 13px; letter-spa
 
   /* ---------- state ---------- */
   var Eoff = 0, yawOff = 0, pitchOff = 0, Z = 0, Ztarget = 0, ZDUR = 2.2, S = 0, Starget = 0, SDUR = 0.95, pulseAt = -1e9;
+  var CAMKEY = "rd-cam", savedAt = 0;
+  function saveCam() { try { sessionStorage.setItem(CAMKEY, JSON.stringify({ c: clock, y: yawOff, p: pitchOff, e: Eoff, t: Date.now() })); } catch (err) {} }
+  window.addEventListener("pagehide", saveCam);
   var sceneTgt = V(2, -7, -18), tgt = new T.Vector3(), camPos = new T.Vector3();
   var W = 1, H = 1, narrow = false, hero = { cx: 0, cy: 0, A: 300 }, slot = { cx: 0, cy: 0, A: 200 }, colors = {}, dirty = true;
   var active = null, hot = null, paused = false, cycleAt = 0, cycleIdx = -1, CYCLE = 2.8, clock = 0, R = 5.2;
+  try { var sv = JSON.parse(sessionStorage.getItem(CAMKEY) || "null"); if (sv && Date.now() - sv.t < 30 * 60 * 1000) { clock = sv.c + Math.min(2, (Date.now() - sv.t) / 1000); yawOff = sv.y; pitchOff = sv.p; Eoff = sv.e; } } catch (err) {}
   function ease(t) { return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
   function smooth(a, b, x) { var t = Math.max(0, Math.min(1, (x - a) / (b - a))); return t * t * (3 - 2 * t); }
   function lerp(a, b, t) { return a + (b - a) * t; }
   function layout(e) { Object.keys(parts).forEach(function (k) { parts[k].userData.pieces.forEach(function (pc) { pc.o.position.copy(pc.base).addScaledVector(pc.dir, e); }); }); model.position.set(0, -0.2 * e, -0.7 * e); }
 
   function fit() {
-    W = window.innerWidth; H = window.innerHeight || 1; narrow = W < 760;
+    W = window.innerWidth; H = window.innerHeight || 1; narrow = !EMBED && W < 760;
     renderer.setSize(W, H, false); cam.aspect = W / H;
     var copy = document.querySelector(".cover-copy").getBoundingClientRect();
     if (narrow) { var cb = Math.max(copy.bottom, H * 0.3), bot = H - 140; hero = { cx: W * 0.5, cy: (cb + bot) / 2, A: Math.min(W * 0.9, Math.max(160, bot - cb)) }; }
     else hero = { cx: W * 0.665, cy: H * 0.5, A: Math.min(W * 0.5, H * 0.72) };
     var r = camslot.getBoundingClientRect();
+    if (EMBED) { slot = { cx: W / 2, cy: H / 2 + 6, A: Math.min(W, H) * 0.8 }; dirty = true; return; }
     slot = { cx: r.left + r.width / 2 - (narrow ? 0 : 14), cy: r.top + r.height / 2, A: Math.min(r.width, r.height) * (narrow ? 0.95 : 0.78) };
     dirty = true;
   }
@@ -1493,7 +1519,7 @@ h3.sub { font-family: var(--sans); font-weight: 600; font-size: 13px; letter-spa
     var on = mode === "set" && view === "home" && S === 1 && !narrow && current && current !== "threads";
     dleads.classList.toggle("on", !!on);
     if (!on) return;
-    var ids = SECTIONS[current].parts, r = camslot.getBoundingClientRect();
+    var ids = SECTIONS[current].parts, r = EMBED ? { right: W, top: 0 } : camslot.getBoundingClientRect();
     if (dlKey !== current) { dlKey = current; dleads.innerHTML = ""; ids.forEach(function () { ["path", "circle", "circle", "text"].forEach(function (t, k) { var n = document.createElementNS(NS, t); if (t === "circle") n.setAttribute("class", k === 1 ? "d" : "b"); dleads.appendChild(n); }); }); }
     var kids = dleads.childNodes;
     ids.forEach(function (id, i) {
@@ -1546,7 +1572,7 @@ h3.sub { font-family: var(--sans); font-weight: 600; font-size: 13px; letter-spa
     Ztarget = view === "cosmos" ? 1 : 0;
     Starget = view === "home" && mode === "set" ? 1 : 0;
     if (mode === "set" || view === "cosmos") { setCallout(null, false); hot = null; }
-    if (mode === "set") pulseAt = performance.now();
+    if (mode === "set" && !EMBED) pulseAt = performance.now();
     if (view === "home" && mode === "cover") cycleAt = performance.now() + (prevView === "cosmos" ? ZDUR * 1000 : SDUR * 1000) + 300;
     if (instant || reduce.matches) { Z = Ztarget; S = Starget; }
     setTimeout(fit, 30);
@@ -1573,6 +1599,7 @@ h3.sub { font-family: var(--sans); font-weight: 600; font-size: 13px; letter-spa
       if (mode === "cover" && !paused && !hot && S === 0 && now > cycleAt) { cycleIdx = (cycleIdx + 1) % THREADS.length; setActive(THREADS[cycleIdx].id); cycleAt = now + CYCLE * 1000; }
       dirty = true;
     } else { yaw = frozen.yaw; pitch = frozen.pitch; e = frozen.e; }
+    if (now - savedAt > 250) { savedAt = now; saveCam(); }
     if (!dirty) return;
     var z = ease(Z);
     layout(e * (1 - z));

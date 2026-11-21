@@ -34,3 +34,9 @@
     panel.addEventListener("scroll", function () { if (Math.abs(panel.scrollTop - from) > 60) setBig(false); }, { passive: true });
   }
 })();
+
+/* Live Detail A camera, shared with the home page */
+(function () {
+  var me = document.currentScript && document.currentScript.src; if (!me) return;
+  var s = document.createElement("script"); s.src = me.replace(/[^/]+\.js(\?.*)?$/, "detail-live.js"); document.body.appendChild(s);
+})();
