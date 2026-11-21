@@ -1,0 +1,27 @@
+/* FTC-003 art direction: the archive. Newsprint headings, captions set like a clipping file,
+   and a sixteen-month calendar from Earthrise to Earth Day. */
+.col figure img { width: 100%; height: auto; display: block; }
+.col figure { border: 1px solid var(--ink); background: var(--card); padding: 10px; }
+.col figure .fig-cap { margin: 8px 2px 0; }
+.col figure.lead { margin-top: 0; }
+.ftc-archive .col h2 { font: 400 clamp(28px, 2.8vw, 38px)/1.1 var(--serif); border-top: 3px double var(--ink); padding-top: var(--s3); }
+.cal { border: 0 !important; background: none !important; padding: 0 !important; margin: var(--s6) 0; }
+.cal ol { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(17, minmax(0, 1fr)); border: 1px solid var(--ink); background: var(--card); }
+.cal ol li { position: relative; min-height: 64px; padding: 6px 3px; border-left: 1px solid var(--rule); display: grid; align-content: start; justify-items: center; }
+.cal ol li:first-child { border-left: 0; }
+.cal .m { font: 500 10px var(--mono); letter-spacing: .06em; text-transform: uppercase; }
+.cal .y { font: 400 9px var(--mono); color: var(--ink-2); }
+.cal ol li.ev { background: color-mix(in srgb, var(--red) 10%, var(--card)); }
+.cal ol li.ev::after { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--red); margin-top: 6px; }
+.cal .e { display: none; }
+.cal-list { list-style: none; margin: var(--s3) 0 0; padding: 0; font-size: 15px; }
+.cal-list li { display: grid; grid-template-columns: 88px minmax(0, 1fr); gap: var(--s3); padding: 6px 0; border-bottom: 1px solid var(--rule); }
+.cal-list b { font: 500 11px var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--red); }
+.sources { border-top: 1px solid var(--rule); margin-top: var(--s6); padding-top: var(--s3); font-size: 14px; color: var(--ink-2); }
+.sources h2 { font: 600 13px var(--sans) !important; letter-spacing: .08em; text-transform: uppercase; border: 0 !important; padding: 0 !important; margin: 0 0 var(--s2) !important; }
+.sources ul { padding-left: 18px; margin: 0; } .sources li { margin: 4px 0; }
+@media (max-width: 760px) {
+  .cal ol { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+  .cal ol li:nth-child(6n + 1) { border-left: 0; }
+  .cal ol li { border-top: 1px solid var(--rule); }
+}
