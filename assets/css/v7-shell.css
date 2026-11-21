@@ -141,3 +141,32 @@ html:not(.js) .tbtn { display: none; }
   body.cam-big .sheets { border-left: 0; }
   body.cam-big .sheets a { height: 72px; }
 }
+
+/* "Where to next": every inner page ends by pointing somewhere useful */
+.keep { border-top: 1px solid var(--ink); margin-top: var(--s5); padding-top: var(--s3); }
+.keep > .label { display: block; margin-bottom: var(--s2); }
+.keep ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--s2); }
+.keep a { display: grid; gap: 4px; min-height: 44px; height: 100%; box-sizing: border-box; padding: 12px 14px; border: 1px solid var(--ink); background: var(--card); color: var(--ink); text-decoration: none; }
+.keep a b { font-family: var(--serif); font-weight: 400; font-size: 20px; line-height: 1.15; }
+.keep a span { font-size: 13.5px; line-height: 1.45; color: var(--ink-2); }
+.keep a:hover b, .keep a:focus-visible b { color: var(--red); }
+.keep a:hover { border-color: var(--red); }
+
+/* "In 30 seconds" strip at the top of a case file */
+.tldr { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin: 20px 0 0; border: 1px solid var(--ink); background: var(--card); }
+.tldr div { padding: 12px 14px; border-left: 1px solid var(--rule); }
+.tldr div:first-child { border-left: 0; }
+.tldr dt { font-family: var(--mono); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--red); }
+.tldr dd { margin: 4px 0 0; font-size: 14.5px; line-height: 1.45; }
+@media (max-width: 760px) { .tldr { grid-template-columns: minmax(0, 1fr); } .tldr div { border-left: 0; border-top: 1px solid var(--rule); } .tldr div:first-child { border-top: 0; } }
+
+/* Review fixes: 44px theme target, and a hint that the sheet tabs scroll on phones */
+.tbtn { position: relative; }
+.tbtn::after { content: ""; position: absolute; inset: -6px -2px; }
+@media (max-width: 760px) {
+  .sheets { -webkit-mask-image: linear-gradient(90deg, #000 82%, transparent); mask-image: linear-gradient(90deg, #000 82%, transparent); }
+  .sheets.at-end { -webkit-mask-image: none; mask-image: none; }
+}
+/* Wide tables in the guides: say that they scroll */
+.scroll-cue, .legacy p.scroll-cue { display: none; font: 400 10px/1.4 var(--mono) !important; letter-spacing: .12em; text-transform: uppercase; color: var(--red); margin: 6px 0 !important; max-width: none; }
+@media (max-width: 760px) { .scroll-cue, .legacy p.scroll-cue { display: block; } }

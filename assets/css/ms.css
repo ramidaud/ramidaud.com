@@ -224,7 +224,7 @@ details.data td.n { text-align: right; }
 
 .credits { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--s5); }
 .credits dl { margin: 0; border: 1px solid var(--ink); background: var(--card); }
-.credits dl div { display: grid; grid-template-columns: 120px 1fr; gap: 10px; padding: 9px 14px; border-top: 1px solid var(--rule); font-size: 14px; }
+.credits dl div { display: grid; grid-template-columns: 132px 1fr; gap: 10px; padding: 9px 14px; border-top: 1px solid var(--rule); font-size: 14px; }
 .credits dl div:first-child { border-top: 0; }
 .credits dt { font: 400 10.5px var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--ink-2); padding-top: 2px; }
 .credits dd { margin: 0; }

@@ -64,3 +64,20 @@
     panel.addEventListener("scroll", function () { if (Math.abs(panel.scrollTop - from) > 60) setBig(false); }, { passive: true });
   }
 })();
+
+/* Phones: show the current sheet tab, fade the tab row until its end, and label wide tables that scroll. */
+(function () {
+  var sl = document.querySelector(".sheets");
+  if (sl) {
+    var mark = function () { sl.classList.toggle("at-end", sl.scrollLeft + sl.clientWidth >= sl.scrollWidth - 4); };
+    var cur = sl.querySelector('a[aria-current="true"], a[aria-current="page"]');
+    if (cur && sl.scrollWidth > sl.clientWidth) sl.scrollLeft = Math.max(0, cur.getBoundingClientRect().left - sl.getBoundingClientRect().left + sl.scrollLeft - 8);
+    mark(); sl.addEventListener("scroll", mark, { passive: true });
+  }
+  Array.prototype.forEach.call(document.querySelectorAll(".panel table"), function (tb) {
+    var box = tb.parentElement;
+    if (!box || box.scrollWidth <= box.clientWidth + 2 || getComputedStyle(box).overflowX === "visible") return;
+    var cue = document.createElement("p"); cue.className = "scroll-cue"; cue.textContent = "Swipe the table sideways to see every column";
+    box.parentElement.insertBefore(cue, box);
+  });
+})();
