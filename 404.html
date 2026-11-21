@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Page not found · Rami Daud</title>
+<meta name="robots" content="noindex">
+<script>try{if(localStorage.getItem("rd-theme")==="dark")document.documentElement.setAttribute("data-theme","dark")}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=IBM+Plex+Sans:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+<style>
+  :root { --paper: #efebe2; --card: #f8f5ee; --ink: #1d1b18; --ink-2: #5a554c; --red: #a3301a; --rule: #cfc8b8; }
+  :root[data-theme="dark"] { --paper: #0c1220; --card: #1a2744; --ink: #ece6d6; --ink-2: #a9b3c6; --red: #e8705a; --rule: #2c3a5a; }
+  * { box-sizing: border-box; }
+  body { margin: 0; min-height: 100vh; display: grid; place-items: center; padding: 24px; background: var(--paper); color: var(--ink); font: 400 17px/1.6 "IBM Plex Sans", system-ui, sans-serif; }
+  main { max-width: 560px; border: 1px solid var(--ink); background: var(--card); padding: clamp(24px, 5vw, 44px); }
+  .label { font: 400 11px "IBM Plex Mono", monospace; letter-spacing: .14em; text-transform: uppercase; color: var(--red); }
+  h1 { font: 400 clamp(40px, 7vw, 60px)/1 "Instrument Serif", serif; margin: 12px 0 16px; }
+  h1 em { color: var(--red); }
+  p { color: var(--ink-2); margin: 0 0 20px; }
+  ul { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule); }
+  li a { display: flex; justify-content: space-between; align-items: center; min-height: 48px; border-bottom: 1px solid var(--rule); color: var(--ink); text-decoration: none; font: 400 22px "Instrument Serif", serif; }
+  li a span { font: 400 11px "IBM Plex Mono", monospace; color: var(--red); letter-spacing: .1em; }
+  li a:hover, li a:focus-visible { color: var(--red); }
+  a:focus-visible { outline: 2px solid var(--red); outline-offset: 2px; }
+</style>
+</head>
+<body>
+<main>
+  <span class="label">Sheet missing · 404</span>
+  <h1>This page isn't <em>in the set.</em></h1>
+  <p>The site moved and some old addresses changed. One of these will get you where you were going.</p>
+  <ul>
+    <li><a data-to="">The camera <span>Home</span></a></li>
+    <li><a data-to="#practice">AI in Practice <span>02</span></a></li>
+    <li><a data-to="#projects">Projects <span>03</span></a></li>
+    <li><a data-to="#writing">Writing <span>04</span></a></li>
+    <li><a data-to="#photography">Photography <span>05</span></a></li>
+    <li><a data-to="#about">About <span>06</span></a></li>
+  </ul>
+</main>
+<script>
+  // Works on ramidaud.com and on the github.io preview address.
+  var base = location.hostname.slice(-10) === "github.io" ? "/ramidaud.com/" : "/";
+  Array.prototype.forEach.call(document.querySelectorAll("[data-to]"), function (a) { a.href = base + a.getAttribute("data-to"); });
+</script>
+</body>
+</html>
