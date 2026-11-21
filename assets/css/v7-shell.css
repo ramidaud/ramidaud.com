@@ -159,3 +159,14 @@ html:not(.js) .tbtn { display: none; }
 .tldr dt { font-family: var(--mono); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--red); }
 .tldr dd { margin: 4px 0 0; font-size: 14.5px; line-height: 1.45; }
 @media (max-width: 760px) { .tldr { grid-template-columns: minmax(0, 1fr); } .tldr div { border-left: 0; border-top: 1px solid var(--rule); } .tldr div:first-child { border-top: 0; } }
+
+/* Review fixes: 44px theme target, and a hint that the sheet tabs scroll on phones */
+.tbtn { position: relative; }
+.tbtn::after { content: ""; position: absolute; inset: -6px -2px; }
+@media (max-width: 760px) {
+  .sheets { -webkit-mask-image: linear-gradient(90deg, #000 82%, transparent); mask-image: linear-gradient(90deg, #000 82%, transparent); }
+  .sheets.at-end { -webkit-mask-image: none; mask-image: none; }
+}
+/* Wide tables in the guides: say that they scroll */
+.scroll-cue { display: none; font-family: var(--mono); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--red); margin: 6px 0; }
+@media (max-width: 760px) { .scroll-cue { display: block; } }

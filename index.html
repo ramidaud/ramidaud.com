@@ -652,6 +652,20 @@ h3.sub { font-family: var(--sans); font-weight: 600; font-size: 13px; letter-spa
   .bom td.st { grid-column: 3; grid-row: 1; }
   .iotd .peek { display: none; }
 }
+/* Review fixes: phone menu on the cover, a hint that the sheet tabs scroll, 44px theme target */
+.cover-menu { display: none; }
+.tbtn { position: relative; }
+.tbtn::after { content: ""; position: absolute; inset: -6px -2px; }
+@media (max-width: 760px) {
+  .cover-menu { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 1px solid var(--ink); border-left: 1px solid var(--rule); margin-top: var(--s2); pointer-events: auto; position: relative; z-index: 3; background: color-mix(in srgb, var(--paper) 88%, transparent); }
+  .cover-menu a { display: flex; align-items: center; gap: 8px; min-height: 44px; padding: 4px 10px; border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); font-family: var(--serif); font-size: 18px; color: var(--ink); text-decoration: none; }
+  .cover-menu a span { font-family: var(--mono); font-size: 10px; color: var(--red); }
+  .sheets { -webkit-mask-image: linear-gradient(90deg, #000 82%, transparent); mask-image: linear-gradient(90deg, #000 82%, transparent); }
+  .sheets.at-end { -webkit-mask-image: none; mask-image: none; }
+  body[data-view="cosmos"] .fx { z-index: -1; }
+  body[data-view="cosmos"] .cosmos-copy { position: relative; z-index: 3; background: linear-gradient(var(--paper) calc(100% - 120px), transparent calc(100% - 70px)); padding-bottom: 28px; pointer-events: auto; }
+  body[data-view="cosmos"] .cosmos-copy .btn:not(.solid) { background: var(--paper); }
+}
 </style>
 <script>document.documentElement.classList.add("js");</script>
 </head>
@@ -682,6 +696,7 @@ h3.sub { font-family: var(--sans); font-weight: 600; font-size: 13px; letter-spa
         <h1 id="h-home" tabindex="-1">I help communication teams use AI <em>without losing</em> the human in the story.</h1>
         <p class="lede">A visuals-first storyteller, using AI and real data to craft story experiences audiences haven't had before.</p>
         <p class="who"><a href="#about">Senior Photographer, Kent State University · 4 years at NASA Glenn · Informal AI lead for my communications team</a></p>
+        <nav class="cover-menu" aria-label="Sheets"><a href="#practice"><span>02</span>AI in Practice</a><a href="#projects"><span>03</span>Projects</a><a href="#writing"><span>04</span>Writing</a><a href="#photography"><span>05</span>Photography</a><a href="#about"><span>06</span>About</a><a href="#record"><span>07</span>Record</a></nav>
         <p class="fallback" id="fallback" hidden>The 3D drawing can't run in this browser. Every section is in the menu.</p>
       </div>
 
@@ -1088,6 +1103,8 @@ h3.sub { font-family: var(--sans); font-weight: 600; font-size: 13px; letter-spa
     if (SECTIONS[h]) return { view: "home", sec: h, anchor: anchor };
     return { view: "home", sec: null };
   }
+  function markEnd(sl) { if (sl) sl.classList.toggle("at-end", sl.scrollLeft + sl.clientWidth >= sl.scrollWidth - 4); }
+  (function () { var sl = document.getElementById("sheetList"); if (sl) sl.addEventListener("scroll", function () { markEnd(sl); }, { passive: true }); })();
   function showSheet(sec) {
     Array.prototype.forEach.call(panel.querySelectorAll(".sheet"), function (s) { s.classList.remove("current", "in"); });
     var s = document.getElementById("s-" + sec); s.classList.add("current");
@@ -1102,11 +1119,13 @@ h3.sub { font-family: var(--sans); font-weight: 600; font-size: 13px; letter-spa
     var lg = document.getElementById("legend"); lg.innerHTML = "";
     (sec === "threads" ? [] : SECTIONS[sec].parts).forEach(function (id) { var li = el("li"); li.appendChild(el("i", null, byId[id].n)); li.appendChild(el("span", null, byId[id].part)); lg.appendChild(li); });
     if (sec === "threads") lg.appendChild(el("li", "all", "All eight parts"));
+    setTimeout(function () { var cur = document.querySelector('#sheetList a[aria-current="true"]'), sl = document.getElementById("sheetList"); if (cur && sl && sl.scrollWidth > sl.clientWidth) sl.scrollLeft = Math.max(0, cur.offsetLeft - 8); markEnd(sl); }, 60);
   }
   function route(instant) {
     var r = parse(), prevView = view, prevMode = mode;
     view = r.view; mode = r.sec ? "set" : "cover";
     document.body.dataset.view = view; document.body.dataset.mode = mode;
+    var stg = document.getElementById("stage"); if (stg) stg.tabIndex = mode === "set" ? -1 : 0;
     if (r.sec && r.sec !== current) showSheet(r.sec);
     current = r.sec;
     Array.prototype.forEach.call(document.querySelectorAll("[data-sec]"), function (a) {
@@ -1494,7 +1513,7 @@ h3.sub { font-family: var(--sans); font-weight: 600; font-size: 13px; letter-spa
   window.addEventListener("pointercancel", function () { drag = null; });
   window.addEventListener("pointerup", function (e) {
     if (!drag || e.pointerId !== drag.id) return;
-    if (!drag.moved) { var id = pickAt(e.clientX, e.clientY); if (id) { if (drag.type === "mouse" || hot === id) { setHot(null); openPart(id); } else setHot(id); } else if (drag.type !== "mouse") setHot(null); }
+    if (!drag.moved) { var id = pickAt(e.clientX, e.clientY); if (id) { setHot(null); openPart(id); } else if (drag.type !== "mouse") setHot(null); }
     drag = null;
   });
   stage.addEventListener("keydown", function (e) {
