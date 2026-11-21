@@ -64,7 +64,10 @@ html:not(.js) .tbtn { display: none; }
 .dv-head { display: flex; justify-content: space-between; align-items: baseline; gap: var(--s3); padding: 8px 12px; border-bottom: 1px solid var(--rule); font-family: var(--mono); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-2); }
 .dv-head b { font-family: var(--serif); font-weight: 400; font-size: 22px; letter-spacing: 0; text-transform: none; color: var(--ink); }
 .dv-view { position: relative; min-height: 0; overflow: hidden; display: block; text-decoration: none; }
-.dv-view img { width: 100%; height: 100%; object-fit: cover; object-position: center 40%; }
+.dv-view { background: #f4f1e8; }
+:root[data-theme="dark"] .dv-view { background: #131e34; }
+/* contain, not cover: a wide or tall slot must never crop the part callout off the drawing */
+.dv-view img { width: 100%; height: 100%; object-fit: contain; object-position: center; }
 .dv-view .dk { display: none; }
 :root[data-theme="dark"] .dv-view .lt { display: none; }
 :root[data-theme="dark"] .dv-view .dk { display: block; }

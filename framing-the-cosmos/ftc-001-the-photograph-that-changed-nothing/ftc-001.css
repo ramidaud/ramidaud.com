@@ -1,0 +1,21 @@
+/* FTC-001 art direction: the series premise. Earthrise leads across the full panel width,
+   section heads read like drawing-set callouts, and "What's coming" becomes a live index of the series. */
+.col figure.lead { margin: 0 calc(-1 * var(--pad)) var(--s6); max-width: none; width: calc(100% + 2 * var(--pad)); }
+.ftc-premise .col { max-width: none; }
+.ftc-premise .col > :not(figure):not(.coming):not(.tb):not(.series):not(.sources) { max-width: var(--measure); }
+.col figure img { width: 100%; height: auto; display: block; }
+.col figure.lead img { max-height: 78vh; object-fit: cover; }
+.col figure.lead .fig-cap { padding: 0 var(--pad); }
+.ftc-premise .col h2 { font: 500 12px var(--mono); letter-spacing: .16em; text-transform: uppercase; color: var(--red); display: flex; align-items: center; gap: 12px; margin-top: var(--s7); }
+.ftc-premise .col h2::before { content: ""; width: 28px; height: 1px; background: var(--red); }
+.wc-note { color: var(--ink-2); font-style: italic; }
+.coming { list-style: none; margin: var(--s3) 0 var(--s6); padding: 0; border-top: 2px solid var(--ink); max-width: var(--measure); }
+.coming a { display: grid; grid-template-columns: 84px minmax(0, 1fr); gap: var(--s3); align-items: baseline; min-height: 48px; padding: 10px 0; border-bottom: 1px solid var(--rule); text-decoration: none; color: var(--ink); }
+.coming .code { font: 400 11px var(--mono); color: var(--ink-2); }
+.coming b { font: 400 22px/1.2 var(--serif); }
+.coming a:hover b { color: var(--red); }
+.sources { max-width: var(--measure); border-top: 1px solid var(--rule); margin-top: var(--s6); padding-top: var(--s3); font-size: 14px; color: var(--ink-2); }
+.sources h2 { font: 600 13px var(--sans) !important; letter-spacing: .08em !important; text-transform: uppercase; color: var(--ink) !important; margin: 0 0 var(--s2) !important; }
+.sources h2::before { display: none !important; }
+.sources ul { padding-left: 18px; margin: 0; } .sources li { margin: 4px 0; }
+@media (max-width: 760px) { .coming a { grid-template-columns: 1fr; gap: 2px; } }

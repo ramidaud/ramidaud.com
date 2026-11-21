@@ -194,7 +194,7 @@
       var v = vals[i], h = v ? Math.max(2, ph * v / max) : 0, x = L + i * bw + gap / 2, w = bw - gap, y = T + ph - h, r = Math.min(4, w / 2, h);
       var mm = memoDays[key(d)] || [];
       var tipTxt = "<b>" + md(d) + "</b>" + v + (v === 1 ? " release" : " releases") + " logged" + (mm.length ? "<br>Memo: " + esc(mm.map(function (m) { return m.title; }).join(" / ")) : "");
-      o += '<g><rect class="hit" x="' + (L + i * bw) + '" y="' + T + '" width="' + bw + '" height="' + (ph + 22) + '" data-tip="' + esc(tipTxt) + '" tabindex="0" data-dy="' + (y - T) + '"/>';
+      o += '<g><rect class="hit" x="' + (L + i * bw) + '" y="' + T + '" width="' + bw + '" height="' + (ph + 22) + '" data-tip="' + esc(tipTxt) + '" data-dy="' + (y - T) + '"/>';
       if (h) o += '<path class="bar" d="M' + x + "," + (T + ph) + "V" + (y + r) + "Q" + x + "," + y + " " + (x + r) + "," + y + "H" + (x + w - r) + "Q" + (x + w) + "," + y + " " + (x + w) + "," + (y + r) + "V" + (T + ph) + 'Z"/>';
       o += "</g>";
       if (mm.length) o += '<rect class="memo" x="' + (x + w / 2 - 4) + '" y="' + (T + ph + 6) + '" width="8" height="8" transform="rotate(45 ' + (x + w / 2) + " " + (T + ph + 10) + ')"/>';
@@ -224,14 +224,14 @@
     bins.forEach(function (b0, i) {
       var v = vals[i], x = sx(b0) + 1, w = sx(b0 + 5) - sx(b0) - 2, h = v ? Math.max(2, ph * v / max) : 0, y = T + ph - h, r = Math.min(4, w / 2, h);
       var lab = b0 === 85 ? "85 and up" : b0 + " to " + (b0 + 4.9);
-      o += '<g><rect class="hit" x="' + sx(b0) + '" y="' + T + '" width="' + (sx(b0 + 5) - sx(b0)) + '" height="' + ph + '" tabindex="0" data-dy="' + (y - T) + '" data-tip="' + esc("<b>Age " + lab + "</b>" + v + " entries, " + Math.round(v / total * 100) + "% of the board") + '"/>';
+      o += '<g><rect class="hit" x="' + sx(b0) + '" y="' + T + '" width="' + (sx(b0 + 5) - sx(b0)) + '" height="' + ph + '" data-dy="' + (y - T) + '" data-tip="' + esc("<b>Age " + lab + "</b>" + v + " entries, " + Math.round(v / total * 100) + "% of the board") + '"/>';
       if (h) o += '<path class="bar' + (b0 >= 65 ? " dim" : "") + '" d="M' + x + "," + (T + ph) + "V" + (y + r) + "Q" + x + "," + y + " " + (x + r) + "," + y + "H" + (x + w - r) + "Q" + (x + w) + "," + y + " " + (x + w) + "," + (y + r) + "V" + (T + ph) + 'Z"/>';
       o += "</g>";
     });
     BOSSES.forEach(function (bo, i) {
       var x = sx(bo.age), row = i % rows, ty = 14 + row * 15;
       o += '<line class="bossline" x1="' + x + '" x2="' + x + '" y1="' + (ty + 4) + '" y2="' + (T + ph) + '"/>';
-      o += '<text class="bosscode" x="' + x + '" y="' + ty + '" text-anchor="middle" tabindex="0" data-tip="' + esc("<b>Age " + bo.age + "</b>" + bo.name) + '" data-dy="0">' + bo.code + "</text>";
+      o += '<text class="bosscode" x="' + x + '" y="' + ty + '" text-anchor="middle" data-tip="' + esc("<b>Age " + bo.age + "</b>" + bo.name) + '" data-dy="0">' + bo.code + "</text>";
     });
     for (var a = 40; a <= 90; a += 5) o += '<text x="' + sx(a) + '" y="' + (H - 8) + '" text-anchor="middle">' + a + "</text>";
     o += '<line class="base" x1="' + L + '" x2="' + (W - R) + '" y1="' + (T + ph) + '" y2="' + (T + ph) + '"/></svg>';

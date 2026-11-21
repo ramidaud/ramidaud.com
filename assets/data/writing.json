@@ -328,34 +328,52 @@
     {
       "date": "2026-04-10",
       "title": "The Loneliest Photograph Ever Taken",
-      "url": "https://ramidaud.substack.com/p/the-loneliest-photograph-ever-taken",
-      "venue": "Substack",
+      "url": "framing-the-cosmos/ftc-004-the-loneliest-photograph-ever-taken/",
+      "venue": "ramidaud.com",
       "thread": "framing-the-cosmos",
       "type": "Essay",
       "tags": [
         "Pale Blue Dot"
+      ],
+      "also": [
+        {
+          "venue": "Substack",
+          "url": "https://ramidaud.substack.com/p/the-loneliest-photograph-ever-taken"
+        }
       ]
     },
     {
       "date": "2026-04-07",
       "title": "From Space Photo to Environmental Movement in 16 Months",
-      "url": "https://ramidaud.substack.com/p/from-space-photo-to-environmental",
-      "venue": "Substack",
+      "url": "framing-the-cosmos/ftc-003-from-space-photo-to-environmental-movement/",
+      "venue": "ramidaud.com",
       "thread": "framing-the-cosmos",
       "type": "Essay",
       "tags": [
         "Earthrise"
+      ],
+      "also": [
+        {
+          "venue": "Substack",
+          "url": "https://ramidaud.substack.com/p/from-space-photo-to-environmental"
+        }
       ]
     },
     {
       "date": "2026-03-15",
       "title": "The Accidental Masterpiece: How Earthrise Happened",
-      "url": "https://ramidaud.substack.com/p/the-accidental-masterpiece-how-earthrise",
-      "venue": "Substack",
+      "url": "framing-the-cosmos/ftc-002-the-accidental-masterpiece/",
+      "venue": "ramidaud.com",
       "thread": "framing-the-cosmos",
       "type": "Essay",
       "tags": [
         "Earthrise"
+      ],
+      "also": [
+        {
+          "venue": "Substack",
+          "url": "https://ramidaud.substack.com/p/the-accidental-masterpiece-how-earthrise"
+        }
       ]
     },
     {
@@ -370,15 +388,21 @@
     {
       "date": "2026-03-08",
       "title": "The Photograph That Changed Nothing (And Everything)",
-      "url": "https://ramidaud.substack.com/p/framing-the-cosmos",
-      "venue": "Substack",
+      "url": "framing-the-cosmos/ftc-001-the-photograph-that-changed-nothing/",
+      "venue": "ramidaud.com",
       "thread": "framing-the-cosmos",
       "type": "Essay",
       "tags": [
         "Earthrise"
       ],
       "featured": true,
-      "dek": "Earthrise became a symbol of planetary unity. Its power came from re-scripting feeling before it delivered an argument."
+      "dek": "Earthrise became a symbol of planetary unity. Its power came from re-scripting feeling before it delivered an argument.",
+      "also": [
+        {
+          "venue": "Substack",
+          "url": "https://ramidaud.substack.com/p/framing-the-cosmos"
+        }
+      ]
     },
     {
       "date": "2026-06-01",

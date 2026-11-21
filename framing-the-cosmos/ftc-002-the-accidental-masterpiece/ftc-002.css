@@ -1,0 +1,17 @@
+/* FTC-002 art direction: the cockpit, minute by minute. The onboard recording runs as a mono
+   transcript, the lunar surface stays black and white, and Earthrise is the first full color. */
+.col figure img { width: 100%; height: auto; display: block; }
+.col figure.lead { margin-top: 0; }
+figure.bw img { filter: grayscale(1) contrast(1.05); }
+.transcript { margin: var(--s6) 0; background: var(--film); color: #e9e3d2; padding: var(--s4) var(--s5); border-left: 3px solid var(--red); }
+.transcript .fig-cap { color: var(--gold); margin: 0 0 var(--s3); }
+.transcript dl { margin: 0; display: grid; gap: 10px; }
+.transcript .tr-row { display: grid; grid-template-columns: 74px minmax(0, 1fr); gap: var(--s3); align-items: baseline; }
+.transcript dt { font: 500 11px var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--gold); }
+.transcript dd { margin: 0; font: 400 16px/1.5 var(--mono); }
+.transcript a { color: inherit; }
+.col h3 { font: 500 12px var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--red); margin: var(--s6) 0 var(--s3); }
+.sources { border-top: 1px solid var(--rule); margin-top: var(--s6); padding-top: var(--s3); font-size: 14px; color: var(--ink-2); }
+.sources h2 { font: 600 13px var(--sans); letter-spacing: .08em; text-transform: uppercase; margin: 0 0 var(--s2); }
+.sources ul { padding-left: 18px; margin: 0; } .sources li { margin: 4px 0; }
+@media (max-width: 760px) { .transcript { padding: var(--s3); } .transcript .tr-row { grid-template-columns: 1fr; gap: 0; } }
