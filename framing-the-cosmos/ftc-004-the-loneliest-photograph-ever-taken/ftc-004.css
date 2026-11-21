@@ -7,7 +7,7 @@ body.ftc-dark .story .sheet-head { border-color: #efebe2; }
 .col figure img { width: 100%; height: auto; display: block; }
 .col figure.lead { margin-top: 0; }
 .void { height: 120vh; position: relative; margin: 0 calc(-1 * var(--pad)); }
-.void span { position: absolute; left: var(--pad); top: 45%; font: 400 10.5px var(--mono); letter-spacing: .18em; text-transform: uppercase; color: #6f6a5c; }
+.void span { position: absolute; left: var(--pad); top: 45%; font: 400 10.5px var(--mono); letter-spacing: .18em; text-transform: uppercase; color: #938d7d; }
 .void::before { content: ""; position: absolute; left: calc(var(--pad) + 4px); top: 12%; bottom: 12%; width: 1px; background: linear-gradient(transparent, #3a362d 20%, #3a362d 80%, transparent); }
 figure.dot { margin: 0 auto var(--s6); max-width: 760px; }
 .pull { border-left-color: #e8705a; }

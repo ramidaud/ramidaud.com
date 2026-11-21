@@ -174,7 +174,7 @@ details.data td.n { text-align: right; }
 .floor .nums div { border: 1px solid rgba(245,237,216,.25); padding: 8px 10px; }
 .floor .nums b { display: block; font: 400 34px/1 var(--hud); color: #f5edd8; font-weight: 400; }
 .floor .nums span { font: 400 10px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: #b8ae96; }
-.floor h4 { margin: 0 0 6px; font: 400 10px var(--mono); letter-spacing: .14em; text-transform: uppercase; color: #b8ae96; }
+.floor h4, .floor .fl-h { margin: 0 0 6px; font: 400 10px var(--mono); letter-spacing: .14em; text-transform: uppercase; color: #b8ae96; }
 .floor ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
 .floor .killers li { display: grid; grid-template-columns: 40px 1fr auto; gap: 10px; align-items: center; font-size: 14px; }
 .floor .killers .foe { --k: .8333; }
