@@ -70,9 +70,15 @@
   var sl = document.querySelector(".sheets");
   if (sl) {
     var mark = function () { sl.classList.toggle("at-end", sl.scrollLeft + sl.clientWidth >= sl.scrollWidth - 4); };
-    var cur = sl.querySelector('a[aria-current="true"], a[aria-current="page"]');
-    if (cur && sl.scrollWidth > sl.clientWidth) sl.scrollLeft = Math.max(0, cur.getBoundingClientRect().left - sl.getBoundingClientRect().left + sl.scrollLeft - 8);
-    mark(); sl.addEventListener("scroll", mark, { passive: true });
+    var place = function () {
+      var cur = sl.querySelector('a[aria-current="true"], a[aria-current="page"]');
+      if (cur && sl.scrollWidth > sl.clientWidth) sl.scrollLeft = Math.max(0, cur.getBoundingClientRect().left - sl.getBoundingClientRect().left + sl.scrollLeft - 8);
+      mark();
+    };
+    // Place it now, and again once fonts and images have settled the widths.
+    place(); window.addEventListener("load", place);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(place);
+    sl.addEventListener("scroll", mark, { passive: true });
   }
   Array.prototype.forEach.call(document.querySelectorAll(".panel table"), function (tb) {
     var box = tb.parentElement;

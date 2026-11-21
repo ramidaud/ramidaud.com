@@ -652,6 +652,13 @@ h3.sub { font-family: var(--sans); font-weight: 600; font-size: 13px; letter-spa
   .bom td.st { grid-column: 3; grid-row: 1; }
   .iotd .peek { display: none; }
 }
+.strip-cap { display: block; font-family: var(--mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-2); margin-bottom: 6px; }
+.bom .more-link, td.up .more-link { color: var(--red); }
+/* Phones: inline links on the committee path get 44px of tap height without changing the line */
+@media (max-width: 760px) {
+  .bio p a, .ai-role a, .small-src a, td.up a { display: inline-block; padding: 11px 0; margin: -11px 0; }
+  .subnav a { min-height: 44px; display: inline-flex; align-items: center; }
+}
 /* Review fixes: phone menu on the cover, a hint that the sheet tabs scroll, 44px theme target */
 .cover-menu { display: none; }
 .tbtn { position: relative; }
@@ -716,7 +723,7 @@ h3.sub { font-family: var(--sans); font-weight: 600; font-size: 13px; letter-spa
         <span class="src">Sources: NASA Apollo Lunar Surface Journal; Hasselblad; NPR, July 2019. Generic drawings, not a portrait or a product replica.</span>
         <div class="btns">
           <a class="btn" href="#camera"><svg viewBox="0 0 34 26" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="7" y="7" width="15" height="15" rx="1.5"/><rect x="2" y="8" width="5" height="13"/><rect x="9" y="3" width="11" height="4"/><circle cx="27" cy="14.5" r="5"/><path d="M22 11.5h1.5M22 17.5h1.5"/></svg>Back to the camera</a>
-          <a class="btn solid" href="#cosmos">Open the project</a>
+          <a class="btn solid" href="#cosmos">Explore the essay series</a>
         </div>
       </div>
 
@@ -743,9 +750,9 @@ h3.sub { font-family: var(--sans); font-weight: 600; font-size: 13px; letter-spa
       <h3>The Lightroom archive workflow</h3>
       <span class="credit">Digital asset lead · Kent State UCM · fall 2026</span>
       <p>Claude suggests. A photographer decides. Nothing reaches PhotoShelter without a human review.</p>
+      <div class="btns"><a class="btn solid" href="work/lightroom-archive/">Read the case file</a></div>
       <ol class="flow" aria-label="Flight plan"><li><span>Lightroom</span></li><li><span>Claude</span></li><li class="gate"><span>Human gate</span></li><li><span>PhotoShelter</span></li></ol>
       <dl class="prov"><dt>AI did</dt><dd>Suggests keywords and descriptions across the catalog.</dd><dt>Checked</dt><dd>A photographer approves, edits or rejects every suggestion. Time saved: not measured yet.</dd></dl>
-      <a class="more" href="work/lightroom-archive/">Read the case file</a>
     </article>
     <article class="case" id="case-splat" tabindex="-1" data-fx="deal" style="--i:2">
       <div class="kicker"><span class="partref"><i>07</i>Case study · Evaluate</span><span class="status progress">In progress</span></div>
@@ -823,7 +830,7 @@ h3.sub { font-family: var(--sans); font-weight: 600; font-size: 13px; letter-spa
       <dl class="glance"><div><dt>Essays</dt><dd>5 parts</dd></div><div><dt>Telescope images</dt><dd>6 so far</dd></div><div><dt>Since</dt><dd>Mar 2026</dd></div></dl>
       <p class="latest"><b>Latest</b><a href="framing-the-cosmos/ftc-005-you-probably-wont-get-it/">Part 5: You Probably Won’t Get It Until You See It</a></p>
       <p class="shows"><b>What it shows</b>How a picture changes what people believe. That is most of the job when you ask people to trust something new.</p>
-      <div class="btns"><a class="btn solid" href="#cosmos">Open the project</a><a class="btn" href="https://ramidaud.substack.com/" target="_blank" rel="noopener">Substack<span class="sr"> (opens in a new window)</span></a></div>
+      <div class="btns"><a class="btn solid" href="#cosmos">Explore the essay series</a><a class="btn" href="https://ramidaud.substack.com/" target="_blank" rel="noopener">Substack<span class="sr"> (opens in a new window)</span></a></div>
     </div>
   </article>
   <article class="pj mono-feature" id="pj-game" data-fx="rise" style="--i:2">
@@ -835,7 +842,7 @@ h3.sub { font-family: var(--sans); font-weight: 600; font-size: 13px; letter-spa
       <dl class="glance" id="pjLive"><div><dt>Builds</dt><dd data-k="build">391</dd></div><div><dt>Runs played</dt><dd data-k="runs">547</dd></div><div><dt>Players</dt><dd data-k="players">95</dd></div></dl>
       <p class="latest"><b>Latest</b><a data-k="memo" href="https://midlifesurvivors.com/devlog/14-achievement-unlocked-gaussian-splatting/" target="_blank" rel="noopener">Memo 14: Achievement Unlocked: Gaussian Splatting.<span class="sr"> (opens in a new window)</span></a></p>
       <p class="shows"><b>What it shows</b>How I size up AI tools: ship something real every day, credit every tool, and write down what broke.</p>
-      <div class="btns"><a class="btn solid" href="midlife-survivors/">Open the project</a><a class="btn" href="https://midlifesurvivors.com/" target="_blank" rel="noopener">Play the game<span class="sr"> (opens in a new window)</span></a></div>
+      <div class="btns"><a class="btn solid" href="midlife-survivors/">Explore the game and its devlog</a><a class="btn" href="https://midlifesurvivors.com/" target="_blank" rel="noopener">Play the game<span class="sr"> (opens in a new window)</span></a></div>
       <p class="livenote" id="pjLiveNote">Numbers as of Nov 20</p>
     </div>
   </article>
@@ -847,6 +854,7 @@ h3.sub { font-family: var(--sans); font-weight: 600; font-size: 13px; letter-spa
     <div class="sheet-no"><b>Sheet 03A</b><span class="label">Projects · Framing the Cosmos · Part 03, Lens</span></div>
     <h2 id="cosmosTitle" tabindex="-1">Framing <em>the</em> Cosmos</h2>
     <p>How iconic space photographs shape what we believe, and, since October, what it takes to make one.</p>
+    <div class="btns"><a class="btn solid" href="framing-the-cosmos/ftc-005-you-probably-wont-get-it/">Read Part 5, the newest essay</a></div>
   </div>
   <div class="ftc-hero">
     <figure class="ftc-reel" data-fx="iris">
@@ -931,8 +939,8 @@ h3.sub { font-family: var(--sans); font-weight: 600; font-size: 13px; letter-spa
       <h3>Eclipse Across America</h3>
       <span class="credit">Sole photographer · NASA Glenn · Aug. 21, 2017</span>
       <p>Six cameras, one photographer, about two and a half minutes of totality, and no second take. The next morning it was NASA Image of the Day.</p>
+      <div class="btns"><a class="btn solid" href="work/eclipse-2017/">Read the case file</a><a class="btn" href="work/lightroom-archive/">How I explain AI work now</a></div>
       <dl class="prov"><dt>AI did</dt><dd>Nothing. That version had no generative tools.</dd><dt>Sources</dt><dd>NASA Group Achievement Award citation and NASA.gov Image of the Day.</dd></dl>
-      <a class="more" href="work/eclipse-2017/">Read the case file</a>
     </article>
   </div>
   <h3 class="sub" data-fx="rise" style="--i:1">Galleries</h3>
@@ -977,6 +985,7 @@ h3.sub { font-family: var(--sans); font-weight: 600; font-size: 13px; letter-spa
     <div class="sheet-no"><b>Sheet 07</b><span class="label">Record · Part 08, Body</span></div>
     <h2 id="recordTitle" tabindex="-1">The full record.</h2>
     <p>Now: Senior Photographer at Kent State University since 2019 and my team’s informal AI lead. Before that, four years at NASA Glenn. Below: recognition, seven NASA Images of the Day, a peer-reviewed paper and more than twenty years of work.</p>
+    <div class="btns"><a class="btn" href="work/lightroom-archive/">See the Kent State AI case</a></div>
   </div>
   <nav class="subnav" aria-label="On this sheet"><a href="#ab-rec" data-jump>Recognition</a><a href="#ab-nasa" data-jump>NASA Image of the Day</a><a href="#ab-pub" data-jump>Publication</a><a href="#ab-record" data-jump>Experience</a><a href="#ab-edu" data-jump>Education</a><a href="downloads/Rami-Daud-Resume.pdf">Resume PDF</a></nav>
   <section class="block" id="ab-rec"><h3 class="sub">Recognition</h3><ul class="awards"><li><span class="mono">2026</span><b>CASE Circle of Excellence, Gold</b><span>Publications: Student Recruitment · Viewbook with Archetypes · UCM team award, photography</span></li><li><span class="mono">2026</span><b>CASE Circle of Excellence, Bronze</b><span>Photography: Portraits · Kent State Works series</span></li><li><span class="mono">2026</span><b>CASE District V, Best of District (4 awards)</b><span>Entering the Mind of the Master Chief: Photography · Kent State Works: Portrait Photography · Viewbook with Archetypes · Savannah Bananas, October 2025 Magazine: Storytelling · UCM team awards</span></li><li><span class="mono">2026</span><b>Cleveland Rocks Awards, Cleveland PRSA (2 Gold)</b><span>Gold for Publication, 2026 Recruitment Viewbook · Gold for Campaign, Marcus Lehto Campaign · UCM team awards</span></li><li><span class="mono">2020</span><b>Silver ADDY Award</b><span>Still Photography (Color) · Portrait of Kent State University President Todd Diacon for Kent State Magazine</span></li><li><span class="mono">2019</span><b>NASA Glenn Center Operations Directorate Peer Achievement Award</b><span>Operational excellence and teamwork</span></li><li><span class="mono">2019</span><b>2018 NASA Videographer of the Year Award (Team)</b><span>Production category, 2nd place · For the Benefit of All</span></li><li><span class="mono">2018</span><b>NASA Honor Award for Group Achievement</b><span>Planning and execution of NASA&#x27;s nationwide 2017 Solar Eclipse broadcast event</span></li><li><span class="mono">2018</span><b>NASA Significant Achievement Award</b><span>Social media project Reinventing the Wheel</span></li><li><span class="mono">2018</span><b>APEX Grand Award for Electronic Media</b><span>Reinventing the Wheel</span></li><li><span class="mono">2018</span><b>Communicator Award of Excellence</b><span>Digital Media · Reinventing the Wheel</span></li><li><span class="mono">2016 to 2017</span><b>APEX Awards of Excellence</b><span>Science communication and digital storytelling projects including Meet the Makers, #BeAnAstronaut, and Baseball in the Ballistic Impact Lab</span></li></ul>
@@ -1005,7 +1014,7 @@ h3.sub { font-family: var(--sans); font-weight: 600; font-size: 13px; letter-spa
 
     <div class="bottombar">
       <div class="index">
-        <div class="strip" id="strip" role="group" aria-label="Parts 01 to 08"></div>
+        <span class="strip-cap" aria-hidden="true">Pick a part to open its sheet</span><div class="strip" id="strip" role="group" aria-label="Parts 01 to 08. Pick a part to open its sheet."></div>
         <button class="pause" id="pauseBtn" type="button" aria-pressed="false">Pause labels</button>
       </div>
       <a class="cue" id="cue" href="#practice"><span>Start with AI in Practice</span><i aria-hidden="true"></i></a>
@@ -1052,10 +1061,10 @@ h3.sub { font-family: var(--sans); font-weight: 600; font-size: 13px; letter-spa
     { n: "02", id: "guide", part: "Finder hood", sec: "practice", href: "#practice/guide-p2p", title: "Prompt to Publish", long: "Prompt to Publish", latest: "Workshop kit: Checking AI-generated quotes", date: "2026-11-17", status: "Active" },
     { n: "03", id: "cosmos", part: "Lens", sec: "cosmos", title: "Framing the Cosmos", long: "Framing the Cosmos", latest: "Part 5: You Probably Won’t Get It Until You See It", date: "2026-11-20", status: "Active", href: "#cosmos" },
     { n: "04", id: "photo", part: "Shutter release grip", sec: "photography", title: "Photography", long: "Photography", latest: "My Favorite Photos from April", date: "2026-05-06", status: "In progress" },
-    { n: "05", id: "field", part: "Réseau plate", sec: "writing", title: "Research", long: "Research", latest: "Nelson stone tool cache paper, Journal of Archaeological Science: Reports, 2021", date: "2021-06-01", status: "Published" },
+    { n: "05", id: "field", part: "Réseau plate", sec: "writing", href: "#writing/research", title: "Research", long: "Research", latest: "Nelson stone tool cache paper, Journal of Archaeological Science: Reports, 2021", date: "2021-06-01", status: "Published" },
     { n: "06", id: "game", part: "Motor drive", sec: "survivors", title: "Midlife Survivors", long: "Midlife Survivors", latest: "Memo 14: Achievement Unlocked: Gaussian Splatting.", date: "2026-11-11", status: "Active", href: "midlife-survivors/" },
     { n: "07", id: "splat", part: "Frame counter", sec: "practice", href: "#practice/case-splat", title: "Gaussian splatting", long: "Gaussian splatting", latest: "TJ and Derek capture: 369 frames, about 1.8M splats", date: "2026-11-17", status: "In progress" },
-    { n: "08", id: "about", part: "Body", sec: "about", title: "About and CV", long: "About and CV", latest: "Bio and contact on About; full record and CV on Record", date: "2026-11-17", status: "Active" }
+    { n: "08", id: "about", part: "Body", sec: "about", title: "About and CV", long: "About and CV", latest: "Bio and contact on About.", more: { href: "#record", text: "Full record and CV on Record" }, date: "2026-11-17", status: "Active" }
   ];
   var byId = {}; THREADS.forEach(function (t) { byId[t.id] = t; });
   var MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
@@ -1069,7 +1078,7 @@ h3.sub { font-family: var(--sans); font-weight: 600; font-size: 13px; letter-spa
     tr.appendChild(el("td", null, t.n));
     var td = el("td"), a = el("a"); a.href = t.href || ("#" + t.sec); a.appendChild(el("span", "t", t.long)); a.appendChild(el("span", "pn", "Part " + t.n + " · " + t.part)); td.appendChild(a); tr.appendChild(td);
     tr.appendChild(el("td", "grp credit", SECTIONS[t.sec].name));
-    var up = el("td", "up"); up.appendChild(document.createTextNode(t.latest)); var tm = el("time", null, fmtDate(t.date)); tm.dateTime = t.date; up.appendChild(tm); tr.appendChild(up);
+    var up = el("td", "up"); up.appendChild(document.createTextNode(t.latest)); if (t.more) { up.appendChild(document.createTextNode(" ")); var ma = el("a", "more-link", t.more.text); ma.href = t.more.href; up.appendChild(ma); } var tm = el("time", null, fmtDate(t.date)); tm.dateTime = t.date; up.appendChild(tm); tr.appendChild(up);
     var st = el("td", "st"); st.appendChild(el("span", "status " + statusClass(t.status), t.status)); tr.appendChild(st);
     bomEl.appendChild(tr);
   });
@@ -1147,6 +1156,8 @@ h3.sub { font-family: var(--sans); font-weight: 600; font-size: 13px; letter-spa
       else { var h2 = document.querySelector("#s-" + r.sec + " h2"); if (h2) h2.focus({ preventScroll: true }); }
     }
     if (r.anchor) {
+      var chip = document.querySelector('.chip[data-f="' + r.anchor + '"]');
+      if (chip && chip.getAttribute("aria-pressed") !== "true") chip.click();
       var an = document.getElementById(r.anchor);
       if (an && panel.contains(an)) setTimeout(function () {
         var top = an.getBoundingClientRect().top - panel.getBoundingClientRect().top + panel.scrollTop - 16;

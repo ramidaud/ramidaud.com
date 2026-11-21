@@ -142,7 +142,7 @@
       line.classList.toggle("is-live", anyLive);
       $("#live-status").textContent = anyLive ? "Live data · checked " + ago(st.checked || Date.now()) : "Showing the Nov 20 snapshot · live sources unreachable";
     }
-    $$("[data-src]").forEach(function (el) { var k = el.getAttribute("data-src"); el.textContent = st.src[k] === "live" ? "live" : st.src[k] === "error" ? "unreachable, using snapshot" : "snapshot"; });
+    $$("[data-src]").forEach(function (el) { var k = el.getAttribute("data-src"); el.textContent = st.src[k] === "live" ? "live" : "Nov 20 snapshot"; });
   }
 
   /* ---------- tooltip ---------- */
