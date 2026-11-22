@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<base href="./">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Rami Daud · Human-first AI for communication teams</title>
 <meta name="description" content="Rami Daud helps communication teams use AI without losing the human in the story. A visuals-first storyteller using AI and real data to craft new story experiences.">
@@ -682,7 +683,8 @@ html.embed .stage { cursor: grab; }
   body[data-view="cosmos"] .cosmos-copy .btn:not(.solid) { background: var(--paper); }
 }
 </style>
-<script>document.documentElement.classList.add("js");</script>
+<script>document.documentElement.classList.add("js");window.RD_SHELL=true;</script>
+<link rel="stylesheet" href="assets/css/shell-pages.css">
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32.png">
 <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
@@ -1016,6 +1018,7 @@ html.embed .stage { cursor: grab; }
           </table>
         </section>
 
+        <section class="sheet" id="s-page" data-sec="page" aria-label="Page"></section>
         <nav class="next" id="nextNav" aria-label="Sheet to sheet"></nav>
       </main>
     </div>
@@ -1047,6 +1050,7 @@ html.embed .stage { cursor: grab; }
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="assets/js/pj-live.js" defer></script>
+<script src="assets/js/v7-pages.js" defer></script>
 <script>
 (function () {
   "use strict";
@@ -1061,7 +1065,8 @@ html.embed .stage { cursor: grab; }
     photography: { name: "Photography", no: "05", parts: ["photo"] },
     about: { name: "About", no: "06", parts: ["about"] },
     record: { name: "Record", no: "07", parts: ["about"] },
-    threads: { name: "Bill of materials", no: "08", parts: ["archive", "guide", "cosmos", "photo", "field", "game", "splat", "about"] }
+    threads: { name: "Bill of materials", no: "08", parts: ["archive", "guide", "cosmos", "photo", "field", "game", "splat", "about"] },
+    page: { name: "", no: "03", parts: [], parent: null } /* filled in by openPage() for the inner page on show */
   };
   var ORDER = ["practice", "projects", "writing", "photography", "about", "record", "threads"];
   /* Embed mode: inner pages show this same live camera as their Detail A, in an iframe:
@@ -1082,7 +1087,7 @@ html.embed .stage { cursor: grab; }
     { n: "03", id: "cosmos", part: "Lens", sec: "cosmos", title: "Framing the Cosmos", long: "Framing the Cosmos", latest: "Part 5: You Probably Won’t Get It Until You See It", date: "2026-11-20", status: "Active", href: "#cosmos" },
     { n: "04", id: "photo", part: "Shutter release grip", sec: "photography", title: "Photography", long: "Photography", latest: "My Favorite Photos from April", date: "2026-05-06", status: "In progress" },
     { n: "05", id: "field", part: "Réseau plate", sec: "writing", href: "#writing/research", title: "Research", long: "Research", latest: "Nelson stone tool cache paper, Journal of Archaeological Science: Reports, 2021", date: "2021-06-01", status: "Published" },
-    { n: "06", id: "game", part: "Motor drive", sec: "survivors", title: "Midlife Survivors", long: "Midlife Survivors", latest: "Memo 14: Achievement Unlocked: Gaussian Splatting.", date: "2026-11-11", status: "Active", href: "midlife-survivors/" },
+    { n: "06", id: "game", part: "Motor drive", sec: "survivors", href: "midlife-survivors/", title: "Midlife Survivors", long: "Midlife Survivors", latest: "Memo 14: Achievement Unlocked: Gaussian Splatting.", date: "2026-11-11", status: "Active", href: "midlife-survivors/" },
     { n: "07", id: "splat", part: "Frame counter", sec: "practice", href: "#practice/case-splat", title: "Gaussian splatting", long: "Gaussian splatting", latest: "TJ and Derek capture: 369 frames, about 1.8M splats", date: "2026-11-17", status: "In progress" },
     { n: "08", id: "about", part: "Body", sec: "about", title: "About and CV", long: "About and CV", latest: "Bio and contact on About.", more: { href: "#record", text: "Full record and CV on Record" }, date: "2026-11-17", status: "Active" }
   ];
@@ -1128,10 +1133,11 @@ html.embed .stage { cursor: grab; }
   var view = "home", mode = "cover", current = null, onRoute = function () {};
   function parse() {
     if (EMBED) return { view: "home", sec: "embed" };
+    var pp = pagePath(); if (pp) return { view: "home", sec: "page", page: pp };
     var h = location.hash.replace("#", ""), anchor = null;
     if (h.indexOf("/") > 0) { anchor = h.slice(h.indexOf("/") + 1); h = h.slice(0, h.indexOf("/")); }
     if (h === "work") h = "projects"; if (h === "guides" || h === "ai-in-practice") h = "practice";
-    if (h === "survivors" || h === "midlife-survivors") { location.replace("midlife-survivors/"); return { view: "home", sec: "projects" }; }
+    if (h === "survivors" || h === "midlife-survivors") return { view: "home", sec: "page", page: BASE + "midlife-survivors/", redirect: true };
     if (h === "framing-the-cosmos") return { view: "cosmos", sec: null };
     if (SECTIONS[h]) return { view: "home", sec: h, anchor: anchor };
     return { view: "home", sec: null };
@@ -1154,24 +1160,32 @@ html.embed .stage { cursor: grab; }
     if (sec === "threads") lg.appendChild(el("li", "all", "All eight parts"));
     setTimeout(function () { var cur = document.querySelector('#sheetList a[aria-current="true"]'), sl = document.getElementById("sheetList"); if (cur && sl && sl.scrollWidth > sl.clientWidth) sl.scrollLeft = Math.max(0, cur.getBoundingClientRect().left - sl.getBoundingClientRect().left + sl.scrollLeft - 8); markEnd(sl); }, 60);
   }
-  function route(instant) {
-    var r = parse(), prevView = view, prevMode = mode;
-    view = r.view; mode = r.sec ? "set" : "cover";
-    document.body.dataset.view = view; document.body.dataset.mode = mode;
-    var stg = document.getElementById("stage"); if (stg) stg.tabIndex = mode === "set" ? -1 : 0;
-    if (r.sec && r.sec !== current && !EMBED) showSheet(r.sec);
-    current = r.sec;
+  function chrome(r) {
     Array.prototype.forEach.call(document.querySelectorAll("[data-sec]"), function (a) {
       if (a.tagName !== "A") return;
       if (a.dataset.sec === r.sec || (r.sec && SECTIONS[r.sec].parent === a.dataset.sec)) a.setAttribute("aria-current", "true"); else a.removeAttribute("aria-current");
     });
-    document.title = view === "cosmos" ? "Framing the Cosmos · Rami Daud" : r.sec ? SECTIONS[r.sec].name + " · Rami Daud" : "Rami Daud";
+    document.title = view === "cosmos" ? "Framing the Cosmos · Rami Daud" : r.sec === "page" ? (SECTIONS.page.title || document.title) : r.sec ? SECTIONS[r.sec].name + " · Rami Daud" : "Rami Daud";
     var dwg = view === "cosmos" ? "RD-03" : r.sec ? "RD-" + SECTIONS[r.sec].no : "RD-00";
     document.getElementById("tbDwg").textContent = dwg;
     document.getElementById("tbTitle").textContent = view === "cosmos" ? "Part 03 in use, Apollo 11 surface walk" : "Camera, lunar surface type, exploded assembly";
     document.getElementById("tbSheet").textContent = view === "cosmos" ? "Thread sheet" : r.sec ? SECTIONS[r.sec].no.replace(/^0/, "") + " of 8" : "1 of 8";
+  }
+  function route(instant) {
+    var r = parse(), prevView = view, prevMode = mode;
+    if (r.redirect) history.replaceState(history.state, "", r.page);
+    lastKey = location.pathname + location.search + location.hash;
+    view = r.view; mode = r.sec ? "set" : "cover";
+    document.body.dataset.view = view; document.body.dataset.mode = mode; document.body.dataset.sec = r.sec || "";
+    var stg = document.getElementById("stage"); if (stg) stg.tabIndex = mode === "set" ? -1 : 0;
+    if (current === "page" && r.sec !== "page") leavePage();
+    if (r.sec === "page") { if (!EMBED) openPage(r.page); }
+    else if (r.sec && r.sec !== current && !EMBED) showSheet(r.sec);
+    current = r.sec;
+    chrome(r);
     onRoute(prevView, prevMode, instant);
-    if (!instant && !EMBED) {
+    if (r.sec !== "page" && !EMBED) restoreScroll();
+    if (!instant && !EMBED && r.sec !== "page") {
       var target = view === "cosmos" ? "h-cosmos" : r.sec ? null : "h-home";
       if (target) document.getElementById(target).focus({ preventScroll: true });
       else { var h2 = document.querySelector("#s-" + r.sec + " h2"); if (h2) h2.focus({ preventScroll: true }); }
@@ -1187,12 +1201,219 @@ html.embed .stage { cursor: grab; }
       }, instant ? 0 : 420);
     }
   }
-  window.addEventListener("hashchange", function () { route(false); });
-  function go(hash) { if (location.hash === "#" + hash) route(false); else location.hash = hash; }
+  function onNav() { if (location.pathname + location.search + location.hash !== lastKey) route(false); }
+  window.addEventListener("hashchange", onNav);
+  window.addEventListener("popstate", onNav);
+  function go(hash) { if (pagePath()) { nav(BASE + "#" + hash); return; } if (location.hash === "#" + hash) route(false); else { saveScroll(); location.hash = hash; } }
   function openPart(id) {
     var t = byId[id];
     if (EMBED) { var base = location.href.split(/[?#]/)[0], to = t.href ? (t.href.charAt(0) === "#" ? base + t.href : new URL(t.href, base).href) : base + "#" + t.sec; (window.top || window).location.href = to; return; }
-    if (t.href && t.href.charAt(0) !== "#") { location.href = t.href; return; } go(t.href ? t.href.slice(1) : t.sec); }
+    if (t.href && t.href.charAt(0) !== "#") { var u = new URL(t.href, document.baseURI); if (isPagePath(u.pathname)) nav(u.pathname); else location.href = u.href; return; }
+    go(t.href ? t.href.slice(1) : t.sec); }
+
+  /* ================= inner pages, inside the sheet =================
+     Midlife Survivors, the Framing the Cosmos stories, the guides, the case files and Contact are their own
+     HTML files, so they still work on their own (from search, Substack or a shared link). Opened from here,
+     they load into #s-page instead of replacing this page: the camera, frame and sheet list stay where they
+     are, the camera turns to the page's parts, and only the panel changes, the same as moving between sheets.
+     Real addresses are kept with history.pushState, so links, back and forward behave normally. */
+  var lastKey = "";
+  var BASE = new URL("./", document.baseURI).pathname;
+  var PAGE_RE = /^(midlife-survivors|contact|guides(\/[a-z0-9-]+)?|work\/[a-z0-9-]+|framing-the-cosmos\/ftc-[a-z0-9-]+)\/$/;
+  var ALIAS = { camera: 1, work: 1, guides: 1, "ai-in-practice": 1, survivors: 1, "midlife-survivors": 1, "framing-the-cosmos": 1 };
+  var STUBS = { "writing/": "#writing", "about/": "#about", "cv/": "#record", "framing-the-cosmos/": "#cosmos", "recent-work/": "#photography", "nasa/": "#photography" };
+  var SKIP_JS = /\/assets\/js\/(v7-pages|ftc|detail-live)\.js(\?|$)/;   // the home page already does what these do
+  var SKIP_CSS = /\/assets\/css\/v7-shell\.css(\?|$)|fonts\.googleapis\.com/;
+  var pagePanel = document.getElementById("s-page");
+  var pageUrl = null, pageToken = 0, pageCache = {}, pageCss = [], pageBodyCls = [], pageUndo = [];
+  var NUM2ID = {}; THREADS.forEach(function (t) { NUM2ID[t.n] = t.id; });
+
+  function relPath(p) { return p.indexOf(BASE) === 0 ? p.slice(BASE.length) : null; }
+  function isHomePath(p) { var r = relPath(p); return r === "" || r === "index.html"; }
+  function isPagePath(p) { var r = relPath(p); return r != null && PAGE_RE.test(r); }
+  function isRouteHash(h) { h = h.replace(/^#/, "").split("/")[0]; return !h || (h !== "page" && !!SECTIONS[h]) || !!ALIAS[h]; }
+  function pagePath() { return !EMBED && isPagePath(location.pathname) ? location.pathname : null; }
+
+  function saveScroll() { try { history.replaceState(Object.assign({}, history.state, { st: panel.scrollTop }), ""); } catch (e) {} }
+  function restoreScroll() { var st = history.state && history.state.st; if (st != null) panel.scrollTop = st; }
+  function nav(url) { saveScroll(); history.pushState({}, "", url); route(false); }
+  if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+
+  function jumpTo(id) {
+    var t = document.getElementById(id); if (!t || !panel.contains(t)) return;
+    var top = t.getBoundingClientRect().top - panel.getBoundingClientRect().top + panel.scrollTop - 16;
+    panel.scrollTo({ top: Math.max(0, top), behavior: reduce.matches ? "auto" : "smooth" });
+    if (t.tabIndex < 0 && !t.hasAttribute("tabindex")) t.setAttribute("tabindex", "-1");
+    t.focus({ preventScroll: true });
+  }
+
+  /* Fetch a page once; keep the text so every visit parses a fresh copy. Warm its stylesheets too. */
+  function fetchPage(path) {
+    if (!pageCache[path]) {
+      pageCache[path] = fetch(path, { credentials: "same-origin" }).then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); });
+      pageCache[path].then(function (html) {
+        var d = new DOMParser().parseFromString(html, "text/html");
+        Array.prototype.forEach.call(d.querySelectorAll('head link[rel="stylesheet"]'), function (l) { var h = new URL(l.getAttribute("href"), location.origin + path).href; if (!SKIP_CSS.test(h)) fetch(h).catch(function () {}); });
+      }, function () { delete pageCache[path]; });
+    }
+    return pageCache[path];
+  }
+  function warm(e) {
+    var a = e.target.closest ? e.target.closest("a[href]") : null; if (!a || (a.target && a.target !== "_self")) return;
+    try { var u = new URL(a.href); if (u.origin === location.origin && isPagePath(u.pathname)) fetchPage(u.pathname); } catch (x) {}
+  }
+  if (!EMBED) { document.addEventListener("pointerover", warm, { passive: true }); document.addEventListener("focusin", warm); }
+
+  /* Relative addresses in the page are relative to the page, not to this one */
+  function absolutize(root, base) {
+    function fix(v) { return /^(data:|mailto:|tel:|javascript:|blob:)/i.test(v) ? v : new URL(v, base).href; }
+    Array.prototype.forEach.call(root.querySelectorAll("[src],[href],[poster],[action],[srcset],[style*='url(']"), function (n) {
+      ["src", "poster", "action"].forEach(function (k) { var v = n.getAttribute(k); if (v) n.setAttribute(k, fix(v)); });
+      var h = n.getAttribute("href");
+      if (h && (h.charAt(0) !== "#" || /^(A|AREA)$/.test(n.tagName))) n.setAttribute("href", fix(h));
+      var ss = n.getAttribute("srcset");
+      if (ss) n.setAttribute("srcset", ss.split(",").map(function (part) { var b = part.trim().split(/\s+/); b[0] = fix(b[0]); return b.join(" "); }).join(", "));
+      var st = n.getAttribute("style");
+      if (st && st.indexOf("url(") > -1) n.setAttribute("style", st.replace(/url\((['"]?)([^'")]+)\1\)/g, function (m, q, v) { return "url(" + q + fix(v) + q + ")"; }));
+    });
+  }
+
+  function loadCss(hrefs, inline) {
+    var keep = [], waits = [];
+    pageCss.forEach(function (n) { if (n.tagName === "LINK" && hrefs.indexOf(n.href) > -1) keep.push(n); else n.remove(); });
+    pageCss = keep.slice();
+    hrefs.forEach(function (h) {
+      if (keep.some(function (n) { return n.href === h; })) return;
+      var l = document.createElement("link"); l.rel = "stylesheet"; l.href = h; l.dataset.page = "";
+      waits.push(new Promise(function (res) { l.onload = l.onerror = res; setTimeout(res, 3000); }));
+      document.head.appendChild(l); pageCss.push(l);
+    });
+    inline.forEach(function (css) { var s = document.createElement("style"); s.dataset.page = ""; s.textContent = css; document.head.appendChild(s); pageCss.push(s); });
+    return Promise.all(waits);
+  }
+
+  function runScripts(list, into) {
+    return list.reduce(function (p, old) {
+      return p.then(function () {
+        return new Promise(function (res) {
+          var s = document.createElement("script");
+          Array.prototype.forEach.call(old.attributes, function (a) { if (a.name !== "defer" && a.name !== "async") s.setAttribute(a.name, a.value); });
+          if (old.src) { s.async = false; s.onload = s.onerror = function () { res(); }; } else s.textContent = old.textContent;
+          into.appendChild(s);
+          if (!old.src) res();
+        });
+      });
+    }, Promise.resolve());
+  }
+
+  /* The page arrives the way a sheet does: its head slides in, the next blocks rise */
+  function addFx(sec) {
+    var box = sec;
+    for (var k = 0; k < 3 && box.children.length === 1; k++) box = box.children[0];
+    Array.prototype.filter.call(box.children, function (c) { return !/^(SCRIPT|STYLE|TEMPLATE)$/.test(c.tagName); }).slice(0, 5).forEach(function (c, i) {
+      if (c.hasAttribute("data-fx")) return;
+      c.setAttribute("data-fx", i === 0 ? "slide" : "rise"); c.style.setProperty("--i", i);
+    });
+  }
+
+  function clearPage() {
+    pageUndo.forEach(function (f) { try { f(); } catch (e) {} }); pageUndo = [];
+    Array.prototype.forEach.call(pagePanel.querySelectorAll("video, audio"), function (m) { try { m.pause(); } catch (e) {} });
+    pagePanel.innerHTML = "";
+    pageBodyCls.forEach(function (c) { document.body.classList.remove(c); }); pageBodyCls = [];
+  }
+  function leavePage() {
+    pageToken++; pageUrl = null; clearPage();
+    pageCss.forEach(function (n) { n.remove(); }); pageCss = [];
+    panel.classList.remove("loading");
+    SECTIONS.page.parts = [];
+  }
+
+  function openPage(path) {
+    if (path === pageUrl) { if (location.hash) jumpTo(location.hash.slice(1)); return; }
+    var token = ++pageToken, slow = setTimeout(function () { panel.classList.add("loading"); }, 150);
+    fetchPage(path).then(function (html) {
+      if (token !== pageToken) return;
+      var base = location.origin + path, d = new DOMParser().parseFromString(html, "text/html");
+      var main = d.querySelector("main.panel");
+      if (!main) throw new Error("not a sheet page");
+
+      /* what the page says about itself: its sheet number, name, parts and parent sheet */
+      var head = d.querySelector(".camslot .dv-head"), lab = head ? (head.querySelector("span") || {}).textContent || "" : "";
+      var label = (lab.match(/Sheet\s+([0-9]{2}[A-Z]?)/) || [])[1] || "03";
+      var cur = d.querySelector('.sheets a[aria-current="true"], .nav a[aria-current="true"]');
+      var parent = cur ? new URL(cur.getAttribute("href"), base).hash.slice(1) : null;
+      var parts = Array.prototype.map.call(d.querySelectorAll(".camslot .dv-legend i"), function (i) { return NUM2ID[i.textContent.trim()]; }).filter(Boolean);
+      SECTIONS.page = { name: head && head.querySelector("b") ? head.querySelector("b").textContent : d.title, no: label.slice(0, 2), label: label, parts: parts, parent: SECTIONS[parent] ? parent : null, title: d.title };
+
+      var css = Array.prototype.map.call(d.querySelectorAll('head link[rel="stylesheet"]'), function (l) { return new URL(l.getAttribute("href"), base).href; }).filter(function (h) { return !SKIP_CSS.test(h); });
+      var inlineCss = Array.prototype.map.call(d.querySelectorAll("head style"), function (s) { return s.textContent; });
+
+      /* scripts: page scripts run again on every visit; data blocks travel with the content */
+      var runs = [], data = [];
+      Array.prototype.forEach.call(d.body.querySelectorAll("script"), function (s) {
+        var type = (s.getAttribute("type") || "").toLowerCase();
+        if (type && type !== "text/javascript" && type !== "module") { if (type === "application/json") data.push(s); else s.remove(); return; }
+        s.remove();
+        if (s.src && SKIP_JS.test(new URL(s.getAttribute("src"), base).href)) return;
+        if (s.getAttribute("src")) s.setAttribute("src", new URL(s.getAttribute("src"), base).href);
+        runs.push(s);
+      });
+      absolutize(main, base);
+
+      return loadCss(css, inlineCss).then(function () {
+        if (token !== pageToken) return;
+        clearTimeout(slow); panel.classList.remove("loading");
+        clearPage();
+        pageUrl = path;
+        pageBodyCls = Array.prototype.slice.call(d.body.classList);
+        pageBodyCls.forEach(function (c) { document.body.classList.add(c); });
+        while (main.firstChild) pagePanel.appendChild(main.firstChild);
+        data.forEach(function (s) { pagePanel.appendChild(s); });
+        addFx(pagePanel);
+        current = "page"; showSheet("page");
+        chrome({ sec: "page" });
+        dlKey = ""; if (typeof pulseAt !== "undefined") pulseAt = performance.now();
+        try { emphasize(); } catch (e) {}
+        var enh = function () { if (window.rdEnhance && token === pageToken) pageUndo.push(window.rdEnhance(pagePanel)); };
+        if (window.rdEnhance) enh(); else window.addEventListener("load", enh, { once: true });
+        var h1 = pagePanel.querySelector("h1");
+        if (h1) { if (!h1.hasAttribute("tabindex")) h1.setAttribute("tabindex", "-1"); h1.focus({ preventScroll: true }); }
+        if (location.hash) setTimeout(function () { jumpTo(location.hash.slice(1)); }, 60); else restoreScroll();
+        return runScripts(runs, pagePanel);
+      });
+    }).catch(function () {
+      clearTimeout(slow);
+      if (token === pageToken) location.replace(location.href);   // let the browser load it on its own
+    });
+  }
+
+  /* Links: inner pages and home sheets open in place; everything else behaves as normal */
+  if (!EMBED) document.addEventListener("click", function (e) {
+    if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    var a = e.target.closest ? e.target.closest("a[href]") : null; if (!a) return;
+    if ((a.target && a.target !== "_self") || a.hasAttribute("download")) return;
+    var raw = a.getAttribute("href") || "", u;
+    try { u = new URL(a.href); } catch (x) { return; }
+    if (u.origin !== location.origin) return;
+    /* a plain "#id" for something on this sheet (the skip link, a footnote): just go there */
+    if (raw.charAt(0) === "#" && raw.length > 1 && !isRouteHash(raw) && document.getElementById(raw.slice(1))) {
+      if (pagePath()) { e.preventDefault(); jumpTo(raw.slice(1)); }
+      return;
+    }
+    if (isHomePath(u.pathname)) {
+      if (!pagePath() && u.pathname === location.pathname) { saveScroll(); return; }   // a sheet, as before
+      e.preventDefault(); nav(BASE + u.hash); return;
+    }
+    var stub = STUBS[relPath(u.pathname)];   // old addresses that now forward to a sheet
+    if (stub) { e.preventDefault(); nav(BASE + stub); return; }
+    if (isPagePath(u.pathname)) {
+      e.preventDefault();
+      if (u.pathname === location.pathname) { if (u.hash) jumpTo(u.hash.slice(1)); else panel.scrollTo({ top: 0, behavior: reduce.matches ? "auto" : "smooth" }); return; }
+      nav(u.pathname + u.hash);
+    }
+  });
+
 
   /* from the cover, a scroll or swipe opens the first sheet */
   window.addEventListener("wheel", function (e) { if (view === "home" && mode === "cover" && e.deltaY > 12) go("practice"); }, { passive: true });
@@ -1520,7 +1741,7 @@ html.embed .stage { cursor: grab; }
     dleads.classList.toggle("on", !!on);
     if (!on) return;
     var ids = SECTIONS[current].parts, r = EMBED ? { right: W, top: 0 } : camslot.getBoundingClientRect();
-    if (dlKey !== current) { dlKey = current; dleads.innerHTML = ""; ids.forEach(function () { ["path", "circle", "circle", "text"].forEach(function (t, k) { var n = document.createElementNS(NS, t); if (t === "circle") n.setAttribute("class", k === 1 ? "d" : "b"); dleads.appendChild(n); }); }); }
+    if (dlKey !== current + ids.join()) { dlKey = current + ids.join(); dleads.innerHTML = ""; ids.forEach(function () { ["path", "circle", "circle", "text"].forEach(function (t, k) { var n = document.createElementNS(NS, t); if (t === "circle") n.setAttribute("class", k === 1 ? "d" : "b"); dleads.appendChild(n); }); }); }
     var kids = dleads.childNodes;
     ids.forEach(function (id, i) {
       var q = project(id), bx = r.right - 22, by = r.top + 26 + i * 34;

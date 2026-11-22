@@ -1,6 +1,49 @@
 /* Inner pages inside the Version 7 sheet: theme toggle (same "rd-theme" key and button as the home page),
    copy buttons on prompt blocks, the contents list that follows the reader, and the footer year. */
-(function () {
+/* Content enhancers, shared with the home page: when an inner page is opened inside the home sheet,
+   index.html calls window.rdEnhance(section) on the new content. Returns a cleanup function. */
+window.rdEnhance = function (scope) {
+  var undo = [];
+  scope.querySelectorAll(".copy-block").forEach(function (block) {
+    var pre = block.querySelector("pre");
+    if (!pre || !navigator.clipboard || block.querySelector(".copy-btn")) return;
+    var b = document.createElement("button");
+    b.type = "button"; b.className = "copy-btn"; b.textContent = "Copy";
+    b.addEventListener("click", function () {
+      navigator.clipboard.writeText(pre.textContent.trim()).then(function () { b.textContent = "Copied"; }, function () { b.textContent = "Select and copy"; });
+      setTimeout(function () { b.textContent = "Copy"; }, 1600);
+    });
+    block.appendChild(b);
+  });
+
+  var toc = scope.querySelectorAll('.toc a[href^="#"]');
+  if (toc.length && "IntersectionObserver" in window) {
+    var map = {};
+    toc.forEach(function (a) { map[a.getAttribute("href").slice(1)] = a; });
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        toc.forEach(function (a) { a.removeAttribute("aria-current"); });
+        var a = map[e.target.id]; if (a) a.setAttribute("aria-current", "true");
+      });
+    }, { root: document.querySelector(".panel"), rootMargin: "-20% 0px -70% 0px" });
+    Object.keys(map).forEach(function (id) { var el = document.getElementById(id); if (el) io.observe(el); });
+    undo.push(function () { io.disconnect(); });
+  }
+
+  scope.querySelectorAll("[data-year]").forEach(function (el) { el.textContent = new Date().getFullYear(); });
+
+  Array.prototype.forEach.call(scope.querySelectorAll("table"), function (tb) {
+    var box = tb.parentElement;
+    if (!box || box.scrollWidth <= box.clientWidth + 2 || getComputedStyle(box).overflowX === "visible") return;
+    if (box.previousElementSibling && box.previousElementSibling.classList.contains("scroll-cue")) return;
+    var cue = document.createElement("p"); cue.className = "scroll-cue"; cue.textContent = "Swipe the table sideways to see every column";
+    box.parentElement.insertBefore(cue, box);
+  });
+  return function () { undo.forEach(function (f) { f(); }); };
+};
+if (window.RD_SHELL) { /* inside the home sheet: the home page owns the theme button, Detail A and the sheet tabs */ }
+else (function () {
   var root = document.documentElement;
   root.classList.add("js");
 
@@ -18,33 +61,8 @@
     label();
   });
 
-  document.querySelectorAll(".copy-block").forEach(function (block) {
-    var pre = block.querySelector("pre");
-    if (!pre || !navigator.clipboard) return;
-    var b = document.createElement("button");
-    b.type = "button"; b.className = "copy-btn"; b.textContent = "Copy";
-    b.addEventListener("click", function () {
-      navigator.clipboard.writeText(pre.textContent.trim()).then(function () { b.textContent = "Copied"; }, function () { b.textContent = "Select and copy"; });
-      setTimeout(function () { b.textContent = "Copy"; }, 1600);
-    });
-    block.appendChild(b);
-  });
-
-  var toc = document.querySelectorAll('.toc a[href^="#"]');
-  if (toc.length && "IntersectionObserver" in window) {
-    var map = {};
-    toc.forEach(function (a) { map[a.getAttribute("href").slice(1)] = a; });
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (!e.isIntersecting) return;
-        toc.forEach(function (a) { a.removeAttribute("aria-current"); });
-        var a = map[e.target.id]; if (a) a.setAttribute("aria-current", "true");
-      });
-    }, { root: document.querySelector(".panel"), rootMargin: "-20% 0px -70% 0px" });
-    Object.keys(map).forEach(function (id) { var el = document.getElementById(id); if (el) io.observe(el); });
-  }
-
-  document.querySelectorAll("[data-year]").forEach(function (el) { el.textContent = new Date().getFullYear(); });
+  var panelEl = document.querySelector(".panel");
+  if (panelEl) window.rdEnhance(panelEl);
 
   /* Phones: Detail A grows on tap and shrinks when you're done with it */
   var slot = document.querySelector(".camslot"), panel = document.querySelector(".panel");
@@ -65,8 +83,8 @@
   }
 })();
 
-/* Phones: show the current sheet tab, fade the tab row until its end, and label wide tables that scroll. */
-(function () {
+/* Phones: show the current sheet tab and fade the tab row until its end. */
+if (!window.RD_SHELL) (function () {
   var sl = document.querySelector(".sheets");
   if (sl) {
     var mark = function () { sl.classList.toggle("at-end", sl.scrollLeft + sl.clientWidth >= sl.scrollWidth - 4); };
@@ -80,16 +98,10 @@
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(place);
     sl.addEventListener("scroll", mark, { passive: true });
   }
-  Array.prototype.forEach.call(document.querySelectorAll(".panel table"), function (tb) {
-    var box = tb.parentElement;
-    if (!box || box.scrollWidth <= box.clientWidth + 2 || getComputedStyle(box).overflowX === "visible") return;
-    var cue = document.createElement("p"); cue.className = "scroll-cue"; cue.textContent = "Swipe the table sideways to see every column";
-    box.parentElement.insertBefore(cue, box);
-  });
 })();
 
 /* Live Detail A camera, shared with the home page */
-(function () {
+if (!window.RD_SHELL) (function () {
   var me = document.currentScript && document.currentScript.src; if (!me) return;
   var s = document.createElement("script"); s.src = me.replace(/[^/]+\.js(\?.*)?$/, "detail-live.js"); document.body.appendChild(s);
 })();
