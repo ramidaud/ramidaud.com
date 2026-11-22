@@ -425,8 +425,11 @@
   refreshAll();
   var btn = $("#refresh"); if (btn) btn.addEventListener("click", refreshAll);
   // The leaderboard is the part that actually moves: check it every minute while the page is visible.
-  setInterval(function () { if (document.visibilityState === "visible") loadBoard().then(function () { st.checked = Date.now(); board(); runs(); picks(); tiles(); }); }, 60000);
-  setInterval(function () { tiles(); board(); }, 30000);
+  // Stop refreshing once the page is gone (the home sheet swaps pages without reloading).
+  var msRoot = $(".ms"), timers = [];
+  function every(ms, fn) { var id = setInterval(function () { if (!document.contains(msRoot)) { timers.forEach(clearInterval); return; } fn(); }, ms); timers.push(id); }
+  every(60000, function () { if (document.visibilityState === "visible") loadBoard().then(function () { st.checked = Date.now(); board(); runs(); picks(); tiles(); }); });
+  every(30000, function () { tiles(); board(); });
 
   // Redraw charts at their real width so the text stays readable.
   var lastW = 0;

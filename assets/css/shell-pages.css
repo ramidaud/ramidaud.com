@@ -1,0 +1,64 @@
+/* Inner pages opened inside the home sheet (index.html loads them into #s-page without a reload).
+   The frame, menu and Detail A come from the home page; these are the content rules from v7-shell.css
+   that inner pages rely on and the home page doesn't already have. Keep in step with v7-shell.css. */
+
+html.js #s-page.current { display: block; }
+:where(#s-page) img, :where(#s-page) video { display: block; max-width: 100%; height: auto; }
+:where(#s-page) .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+body[data-sec="page"] #nextNav { display: none; }
+
+/* sheet head, as on inner pages */
+:where(#s-page) .sheet-head { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: var(--s2) var(--s5); align-items: end; padding-bottom: var(--s4); border-bottom: 2px solid var(--ink); }
+:where(#s-page) .sheet-no { grid-column: 1 / -1; display: flex; gap: var(--s3); align-items: baseline; flex-wrap: wrap; }
+:where(#s-page) .sheet-no b { font-family: var(--mono); font-weight: 500; font-size: 11px; letter-spacing: .14em; color: var(--red); }
+@media (max-width: 1100px) { :where(#s-page) .sheet-head { grid-template-columns: 1fr; } }
+
+/* "Where to next": every inner page ends by pointing somewhere useful */
+.keep { border-top: 1px solid var(--ink); margin-top: var(--s5); padding-top: var(--s3); }
+.keep > .label { display: block; margin-bottom: var(--s2); }
+.keep ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--s2); }
+.keep a { display: grid; gap: 4px; min-height: 44px; height: 100%; box-sizing: border-box; padding: 12px 14px; border: 1px solid var(--ink); background: var(--card); color: var(--ink); text-decoration: none; }
+.keep a b { font-family: var(--serif); font-weight: 400; font-size: 20px; line-height: 1.15; }
+.keep a span { font-size: 13.5px; line-height: 1.45; color: var(--ink-2); }
+.keep a:hover b, .keep a:focus-visible b { color: var(--red); }
+.keep a:hover { border-color: var(--red); }
+
+/* "In 30 seconds" strip at the top of a case file */
+.tldr { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin: 20px 0 0; border: 1px solid var(--ink); background: var(--card); }
+.tldr div { padding: 12px 14px; border-left: 1px solid var(--rule); }
+.tldr div:first-child { border-left: 0; }
+.tldr dt { font-family: var(--mono); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--red); }
+.tldr dd { margin: 4px 0 0; font-size: 14.5px; line-height: 1.45; }
+@media (max-width: 760px) { .tldr { grid-template-columns: minmax(0, 1fr); } .tldr div { border-left: 0; border-top: 1px solid var(--rule); } .tldr div:first-child { border-top: 0; } }
+
+/* Wide tables in the guides: say that they scroll */
+.scroll-cue, .legacy p.scroll-cue { display: none; font: 400 10px/1.4 var(--mono) !important; letter-spacing: .12em; text-transform: uppercase; color: var(--red); margin: 6px 0 !important; max-width: none; }
+@media (max-width: 760px) { .scroll-cue, .legacy p.scroll-cue { display: block; } }
+
+
+/* Loading a page: a thin progress line along the top of the panel */
+.panel.loading::before { content: ""; position: sticky; top: calc(-1 * var(--s5)); display: block; height: 2px; margin: calc(-1 * var(--s5)) calc(-1 * clamp(20px, 3vw, 44px)) var(--s5); background: linear-gradient(90deg, var(--red) 0 30%, transparent 30%); background-size: 300% 100%; animation: pageload 1s linear infinite; z-index: 5; }
+@keyframes pageload { from { background-position: 100% 0; } to { background-position: -50% 0; } }
+@media (prefers-reduced-motion: reduce) { .panel.loading::before { animation: none; } }
+
+/* Home buttons sit on a card fill; inner pages draw them hollow */
+:where(#s-page) .btn { background: transparent; }
+
+/* Inner pages use a few names the home page also uses for its own parts. Inside #s-page, undo the home
+   page's version so each page looks exactly as it does on its own. Low specificity on purpose:
+   the page's own stylesheet still wins. */
+:root { --film: #16140f; }
+:where(#s-page) h1, :where(#s-page) h2 { font-family: revert; font-weight: revert; font-size: revert; line-height: revert; margin: revert; letter-spacing: revert; text-wrap: revert; max-width: revert; }
+:where(#s-page) h1 em { color: revert; }
+:where(#s-page) .sheet-head p { margin: revert; color: revert; max-width: revert; font-size: revert; justify-self: revert; }
+:where(#s-page) .stage { position: revert; inset: auto; z-index: auto; touch-action: auto; cursor: auto; }
+:where(#s-page) .tip { position: revert; left: auto; top: auto; font-family: revert; font-size: revert; letter-spacing: revert; text-transform: revert; background: revert; color: revert; padding: revert; opacity: revert; transition: revert; }
+:where(#s-page) .who { margin: revert; max-width: revert; font-family: revert; font-size: revert; line-height: revert; letter-spacing: revert; text-transform: revert; }
+:where(#s-page) .who a { color: revert; text-decoration: revert; border-bottom: revert; padding-bottom: revert; }
+:where(#s-page) .src { font-family: revert; font-size: revert; color: revert; letter-spacing: revert; }
+:where(#s-page) .ver { margin-top: revert; font-size: revert; color: revert; }
+:where(#s-page) .steps { list-style: revert; margin: revert; padding: revert; display: revert; grid-template-columns: revert; border-top: revert; border-left: revert; counter-reset: revert; }
+:where(#s-page) .steps li { counter-increment: revert; padding: revert; border-right: revert; border-bottom: revert; display: revert; gap: revert; }
+:where(#s-page) .steps li b { font-family: revert; font-weight: revert; font-size: revert; }
+:where(#s-page) .steps li b::before { content: none; }
+:where(#s-page) .steps li span { font-size: revert; color: revert; }
