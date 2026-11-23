@@ -126,14 +126,14 @@ h1 em { color: var(--red); }
 .dv-view::after { right: 8px; bottom: 8px; border-width: 0 1px 1px 0; }
 .dv-legend { list-style: none; margin: 0; padding: 6px 12px; border-top: 1px solid var(--rule); display: flex; flex-wrap: wrap; gap: 4px 14px; min-height: 34px; align-items: center; }
 .dv-legend li { display: inline-flex; gap: 6px; align-items: center; font-family: var(--mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); }
-.dv-legend i { font-style: normal; width: 20px; height: 20px; border-radius: 50%; background: var(--red); color: var(--card); display: grid; place-items: center; font-size: 9px; }
+.dv-legend i { font-style: normal; min-width: 20px; padding: 0 5px; height: 20px; border-radius: 10px; background: var(--red); color: var(--card); display: grid; place-items: center; font-size: 9px; }
 .sheets { list-style: none; margin: 0; padding: 0; pointer-events: auto; }
 .sheets a { display: grid; grid-template-columns: 30px minmax(0, 1fr) auto; gap: var(--s2); align-items: center; min-height: 40px; padding: 4px 12px; border-bottom: 1px solid var(--rule); text-decoration: none; }
 .sheets li:last-child a { border-bottom: 0; }
 .sheets a span:first-child { font-family: var(--mono); font-size: 11px; color: var(--ink-2); }
 .sheets a b { font-family: var(--serif); font-weight: 400; font-size: 20px; line-height: 1.1; }
 .sheets a i { font-style: normal; display: flex; gap: 3px; }
-.sheets a i span { font-family: var(--mono); font-size: 9px; width: 20px; height: 20px; border-radius: 50%; border: 1px solid var(--line); color: var(--line); display: grid; place-items: center; }
+.sheets a i span { font-family: var(--mono); font-size: 9px; min-width: 20px; padding: 0 5px; height: 20px; border-radius: 10px; border: 1px solid var(--line); color: var(--line); display: grid; place-items: center; }
 .sheets a:hover b { color: var(--red); }
 .sheets a[aria-current="true"] { background: var(--card); box-shadow: inset 3px 0 0 var(--red); }
 .sheets a[aria-current="true"] b { color: var(--red); }
@@ -197,7 +197,7 @@ html:not(.js) .fx { display: none; }
 .dleads path { fill: none; stroke: var(--red); stroke-width: 1; }
 .dleads circle.b { fill: var(--red); }
 .dleads circle.d { fill: var(--card); stroke: var(--red); }
-.dleads text { fill: var(--card); font-family: var(--mono); font-size: 9px; text-anchor: middle; dominant-baseline: central; }
+.dleads text { fill: var(--card); font-family: var(--mono); font-size: 8px; text-anchor: middle; dominant-baseline: central; }
 @keyframes wipe { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
 @keyframes line { from { transform: scaleX(0); } to { transform: scaleX(1); } }
 
@@ -215,7 +215,7 @@ h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(32px, 3.2vw, 
 .status { font-family: var(--mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; padding: 3px 8px; border: 1px solid currentColor; border-radius: 2px; white-space: nowrap; justify-self: start; }
 .status.active { color: var(--red); } .status.progress { color: var(--ink); } .status.paused { color: var(--ink-2); }
 .partref { display: inline-flex; gap: var(--s2); align-items: center; font-family: var(--mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-2); }
-.partref i { font-style: normal; width: 24px; height: 24px; border-radius: 50%; border: 1px solid var(--line); color: var(--line); display: grid; place-items: center; font-size: 10px; }
+.partref i { font-style: normal; min-width: 24px; padding: 0 6px; height: 24px; border-radius: 12px; border: 1px solid var(--line); color: var(--line); display: grid; place-items: center; font-size: 9px; }
 .todo { color: var(--ink-2); font-style: italic; }
 .plate { position: relative; aspect-ratio: 4 / 3; border: 1px solid var(--rule); background: var(--card); overflow: hidden; }
 .plate::before { content: ""; position: absolute; inset: 0; background: var(--cross); opacity: .7;
@@ -722,7 +722,7 @@ html.embed .stage { cursor: grab; }
 
       <!-- thread sheet RD-03 -->
       <div class="cosmos-copy">
-        <span class="label">Sheet RD-03 · Part 03, Lens</span>
+        <span class="label">Sheet RD-03 · P03, Lens</span>
         <h1 id="h-cosmos" tabindex="-1">Framing the Cosmos</h1>
         <p class="lede">Essays on how iconic space photographs shaped what the public believes, from Earthrise to the Pale Blue Dot.</p>
         <ol class="cfacts">
@@ -749,14 +749,14 @@ html.embed .stage { cursor: grab; }
         
 <section class="sheet" id="s-practice" data-sec="practice" aria-labelledby="practiceTitle">
   <div class="sheet-head" data-fx="slide">
-    <div class="sheet-no"><b>Sheet 02</b><span class="label">AI in Practice · Parts 01, 02, 07</span></div>
+    <div class="sheet-no"><b>Sheet 02</b><span class="label">AI in Practice · P01, P02, P07</span></div>
     <h2 id="practiceTitle" tabindex="-1">What I would bring to a communications team.</h2>
     <p>Case studies that show how I evaluate a tool before a team adopts it, then two guides any team can use. Each says what AI did and what a person checked.</p>
   </div>
   <h3 class="sub" data-fx="rise">Case studies</h3>
   <div class="cases">
     <article class="case" id="case-lightroom" tabindex="-1" data-fx="deal" style="--i:1">
-      <div class="kicker"><span class="partref"><i>01</i>Case study · Adopt</span><span class="status progress">In progress</span></div>
+      <div class="kicker"><span class="partref"><i>P01</i>Case study · Adopt</span><span class="status progress">In progress</span></div>
       <h3>The Lightroom archive workflow</h3>
       <span class="credit">Digital asset lead · Kent State UCM · fall 2026</span>
       <p>Claude suggests. A photographer decides. Nothing reaches PhotoShelter without a human review.</p>
@@ -765,7 +765,7 @@ html.embed .stage { cursor: grab; }
       <dl class="prov"><dt>AI did</dt><dd>Suggests keywords and descriptions across the catalog.</dd><dt>Checked</dt><dd>A photographer approves, edits or rejects every suggestion. Time saved: not measured yet.</dd></dl>
     </article>
     <article class="case" id="case-splat" tabindex="-1" data-fx="deal" style="--i:2">
-      <div class="kicker"><span class="partref"><i>07</i>Case study · Evaluate</span><span class="status progress">In progress</span></div>
+      <div class="kicker"><span class="partref"><i>P07</i>Case study · Evaluate</span><span class="status progress">In progress</span></div>
       <div class="bignum"><b>369</b><span>photographs</span><i aria-hidden="true">to</i><b class="r">1.8M</b><span>Gaussian splats</span></div>
       <span class="credit">Photographer and process lead · personal R&amp;D · 2026</span>
       <p>The TJ and Derek capture: 369 Nikon frames run through COLMAP into about 1.8 million splats, finished in Blender and Resolve. How a new tool earns a place in the workflow.</p>
@@ -778,7 +778,7 @@ html.embed .stage { cursor: grab; }
   <div class="guides2">
     <article class="program" id="guide-p2p" tabindex="-1" data-fx="unfold" style="--i:3">
       <div>
-        <span class="partref"><i>02</i>Guide · Field guide · about 25 minutes</span>
+        <span class="partref"><i>P02</i>Guide · Field guide · about 25 minutes</span>
         <h3>Prompt to Publish</h3>
         <p>What these tools are, how to direct them, how to verify them, and how to know when to put them down. Includes the Prompt Architecture Blueprint, a three-step verification protocol and eight principles.</p>
         <div class="btns"><a class="btn solid" href="guides/prompt-to-publish/">Read the guide</a><a class="btn" href="downloads/Rami-Daud_Prompt-to-Publish.pdf">PDF</a></div>
@@ -786,7 +786,7 @@ html.embed .stage { cursor: grab; }
     </article>
     <article class="program" id="guide-quotes" tabindex="-1" data-fx="unfold" style="--i:4">
       <div>
-        <span class="partref"><i>02</i>Guide · Workshop kit · 90 minutes</span>
+        <span class="partref"><i>P02</i>Guide · Workshop kit · 90 minutes</span>
         <h3>Checking AI-generated quotes</h3>
         <p>A facilitator-ready session where pairs test an AI-generated interview against a four-point editorial standard and leave with a verification plan for every claim.</p>
         <div class="btns"><a class="btn solid" href="guides/checking-ai-quotes/">Open the kit</a></div>
@@ -826,7 +826,7 @@ html.embed .stage { cursor: grab; }
 </section>
 <section class="sheet" id="s-projects" data-sec="projects" aria-labelledby="projTitle">
   <div class="sheet-head" data-fx="slide">
-    <div class="sheet-no"><b>Sheet 03</b><span class="label">Projects · Parts 03, 06</span></div>
+    <div class="sheet-no"><b>Sheet 03</b><span class="label">Projects · P03, P06</span></div>
     <h2 id="projTitle" tabindex="-1">Two obsessions, built in public.</h2>
     <p>Nobody assigned these. I make them on nights and weekends because I can’t leave them alone, and I write down everything, mistakes included.</p>
   </div>
@@ -834,7 +834,7 @@ html.embed .stage { cursor: grab; }
   <article class="pj" id="pj-cosmos" data-fx="rise" style="--i:1">
     <figure class="vis lens"><img src="assets/img/preview/diamond-ring.jpg" alt="The diamond ring moment of a total solar eclipse." loading="lazy" width="1600" height="1068"><figcaption class="cap">Diamond ring, Jefferson City, Mo., 2017. Photograph by Rami Daud.</figcaption></figure>
     <div class="pj-body">
-      <span class="partref"><i>03</i>Lens · Project 01</span>
+      <span class="partref"><i>P03</i>Lens · Project 01</span>
       <h3>Framing <em>the</em> Cosmos</h3>
       <p class="pitch">How iconic space photographs shape what we believe, from someone who spent four years making them at NASA.</p>
       <dl class="glance"><div><dt>Essays</dt><dd>5 parts</dd></div><div><dt>Telescope images</dt><dd>6 so far</dd></div><div><dt>Since</dt><dd>Mar 2026</dd></div></dl>
@@ -846,7 +846,7 @@ html.embed .stage { cursor: grab; }
   <article class="pj mono-feature" id="pj-game" data-fx="rise" style="--i:2">
     <figure class="vis charstage"><img class="charstill lt" src="assets/ms/characters-still-light.jpg" width="738" height="1002" alt=""><img class="charstill dk" src="assets/ms/characters-still-dark.jpg" width="738" height="1002" alt=""><canvas id="charCanvas" role="img" aria-label="Turning wireframe 3D models of two Midlife Survivors characters: Medical Bill, a boxy figure in a nurse cap holding a clipboard, and the 9-5er, a wild-haired figure in glasses holding a steaming mug."></canvas><figcaption><span>Medical Bill</span><span>The 9-5er</span></figcaption><span class="charhint">Drag to turn</span></figure>
     <div class="pj-body">
-      <span class="partref"><i>06</i>Motor drive · Project 02</span>
+      <span class="partref"><i>P06</i>Motor drive · Project 02</span>
       <h3>Midlife Survivors</h3>
       <p class="pitch">A free browser game about getting from 40 to 65 in one piece, built with AI tools and credited version by version.</p>
       <dl class="glance" id="pjLive"><div><dt>Builds</dt><dd data-k="build">391</dd></div><div><dt>Runs played</dt><dd data-k="runs">547</dd></div><div><dt>Players</dt><dd data-k="players">95</dd></div></dl>
@@ -861,7 +861,7 @@ html.embed .stage { cursor: grab; }
 </section>
 <section class="sheet" id="s-cosmos" data-sec="cosmos" aria-labelledby="cosmosTitle">
   <div class="sheet-head" data-fx="slide">
-    <div class="sheet-no"><b>Sheet 03A</b><span class="label">Projects · Framing the Cosmos · Part 03, Lens</span></div>
+    <div class="sheet-no"><b>Sheet 03A</b><span class="label">Projects · Framing the Cosmos · P03, Lens</span></div>
     <h2 id="cosmosTitle" tabindex="-1">Framing <em>the</em> Cosmos</h2>
     <p>How iconic space photographs shape what we believe, and, since October, what it takes to make one.</p>
     <div class="btns"><a class="btn solid" href="framing-the-cosmos/ftc-005-you-probably-wont-get-it/">Read Part 5, the newest essay</a></div>
@@ -872,7 +872,7 @@ html.embed .stage { cursor: grab; }
       <figcaption>Andromeda, 1,012 x 30 s. Fly-in effect added in post.</figcaption>
     </figure>
     <div class="ftc-intro" data-fx="rise" style="--i:2">
-      <span class="partref"><i>03</i>Project 01 · since March 2026</span>
+      <span class="partref"><i>P03</i>Project 01 · since March 2026</span>
       <p class="bigline">The project started as essays about other people's photographs. Now it includes my own.</p>
       <p>The essays ask how pictures like Earthrise changed what the public believed. Since Oct. 23, 2026, I have also been making deep-sky images with a rented ZWO Seestar S30 Pro at Starfront Observatories near Rockwood, Texas, under Bortle 1 skies, run remotely from Kent, Ohio. No backyard, no telescope of my own, no travel.</p>
       <dl class="glance"><div><dt>Essays</dt><dd>5, the newest on this site</dd></div><div><dt>First night</dt><dd>Oct 23, 2026</dd></div><div><dt>Finished images</dt><dd>6 deep-sky, 1 Moon composite</dd></div><div><dt>Longest stack</dt><dd>8 h 26 min, Andromeda</dd></div></dl>
@@ -927,7 +927,7 @@ html.embed .stage { cursor: grab; }
 </section>
 <section class="sheet" id="s-writing" data-sec="writing" aria-labelledby="writingTitle">
   <div class="sheet-head" data-fx="slide">
-    <div class="sheet-no"><b>Sheet 04</b><span class="label">Writing · Part 05</span></div>
+    <div class="sheet-no"><b>Sheet 04</b><span class="label">Writing · P05</span></div>
     <h2 id="writingTitle" tabindex="-1">Every piece, wherever it lives.</h2>
     <p>24 pieces across Substack, the devlog, this site and a journal. Newest first.</p>
   </div>
@@ -938,14 +938,14 @@ html.embed .stage { cursor: grab; }
 </section>
 <section class="sheet" id="s-photography" data-sec="photography" aria-labelledby="photoTitle">
   <div class="sheet-head" data-fx="slide">
-    <div class="sheet-no"><b>Sheet 05</b><span class="label">Photography · Part 04</span></div>
+    <div class="sheet-no"><b>Sheet 05</b><span class="label">Photography · P04</span></div>
     <h2 id="photoTitle" tabindex="-1">Twenty years of pictures, in three rooms so far.</h2>
     <p>NASA, the night sky and a university, plus freelance work for the Associated Press, AFP, Cleveland Magazine and The Toledo Blade.</p>
   </div>
   <div class="cases one">
     <article class="case" data-fx="deal" style="--i:3">
       <figure class="case-img"><img src="assets/img/preview/corona.jpg" alt="The Sun's corona streaming around the Moon during totality, Aug. 21, 2017." loading="lazy" width="1090" height="720"></figure>
-      <div class="kicker"><span class="partref"><i>04</i>Featured story · NASA</span><span class="status paused">Complete</span></div>
+      <div class="kicker"><span class="partref"><i>P04</i>Featured story · NASA</span><span class="status paused">Complete</span></div>
       <h3>Eclipse Across America</h3>
       <span class="credit">Sole photographer · NASA Glenn · Aug. 21, 2017</span>
       <p>Six cameras, one photographer, about two and a half minutes of totality, and no second take. The next morning it was NASA Image of the Day.</p>
@@ -971,7 +971,7 @@ html.embed .stage { cursor: grab; }
 </section>
 <section class="sheet" id="s-about" data-sec="about" aria-labelledby="aboutTitle">
   <div class="sheet-head" data-fx="slide">
-    <div class="sheet-no"><b>Sheet 06</b><span class="label">About · Part 08, Body</span></div>
+    <div class="sheet-no"><b>Sheet 06</b><span class="label">About · P08, Body</span></div>
     <h2 id="aboutTitle" tabindex="-1">Much of my work is driven by curiosity.</h2>
     <p>About how people learn, how discoveries happen, and how images shape the way we understand the world.</p>
   </div>
@@ -992,7 +992,7 @@ html.embed .stage { cursor: grab; }
 </section>
 <section class="sheet" id="s-record" data-sec="record" aria-labelledby="recordTitle">
   <div class="sheet-head" data-fx="slide">
-    <div class="sheet-no"><b>Sheet 07</b><span class="label">Record · Part 08, Body</span></div>
+    <div class="sheet-no"><b>Sheet 07</b><span class="label">Record · P08, Body</span></div>
     <h2 id="recordTitle" tabindex="-1">The full record.</h2>
     <p>Now: Senior Photographer at Kent State University since 2019 and my team’s informal AI lead. Before that, four years at NASA Glenn. Below: recognition, seven NASA Images of the Day, a peer-reviewed paper and more than twenty years of work.</p>
     <div class="btns"><a class="btn" href="work/lightroom-archive/">See the Kent State AI case</a></div>
@@ -1043,7 +1043,7 @@ html.embed .stage { cursor: grab; }
 
 <div class="fx" id="fx" aria-hidden="true">
   <svg class="leaders" id="leaders"><path id="leaderPath" pathLength="1" d="M0 0"/><circle id="leaderDot" r="3.5"/></svg>
-  <div class="callout" id="callout"><span class="bn" id="cBn">01</span><span class="pt" id="cPt">Film magazine</span><span class="pg" id="cPg">Lightroom archive</span><span class="sec" id="cSec">Work</span></div>
+  <div class="callout" id="callout"><span class="bn" id="cBn">P01</span><span class="pt" id="cPt">Film magazine</span><span class="pg" id="cPg">Lightroom archive</span><span class="sec" id="cSec">Work</span></div>
   <div class="tip" id="tip"></div>
   <svg class="dleads" id="dleads"></svg>
 </div>
@@ -1100,8 +1100,8 @@ html.embed .stage { cursor: grab; }
   var bomEl = document.getElementById("bomRows");
   THREADS.forEach(function (t, i) {
     var tr = el("tr"); tr.dataset.fx = "type"; tr.style.setProperty("--i", i);
-    tr.appendChild(el("td", null, t.n));
-    var td = el("td"), a = el("a"); a.href = t.href || ("#" + t.sec); a.appendChild(el("span", "t", t.long)); a.appendChild(el("span", "pn", "Part " + t.n + " · " + t.part)); td.appendChild(a); tr.appendChild(td);
+    tr.appendChild(el("td", null, "P" + t.n));
+    var td = el("td"), a = el("a"); a.href = t.href || ("#" + t.sec); a.appendChild(el("span", "t", t.long)); a.appendChild(el("span", "pn", "P" + t.n + " · " + t.part)); td.appendChild(a); tr.appendChild(td);
     tr.appendChild(el("td", "grp credit", SECTIONS[t.sec].name));
     var up = el("td", "up"); up.appendChild(document.createTextNode(t.latest)); if (t.more) { up.appendChild(document.createTextNode(" ")); var ma = el("a", "more-link", t.more.text); ma.href = t.more.href; up.appendChild(ma); } var tm = el("time", null, fmtDate(t.date)); tm.dateTime = t.date; up.appendChild(tm); tr.appendChild(up);
     var st = el("td", "st"); st.appendChild(el("span", "status " + statusClass(t.status), t.status)); tr.appendChild(st);
@@ -1111,7 +1111,7 @@ html.embed .stage { cursor: grab; }
   ORDER.forEach(function (k) {
     var S = SECTIONS[k], li = el("li"), a = el("a"); a.href = "#" + k; a.dataset.sec = k;
     a.appendChild(el("span", null, S.no)); a.appendChild(el("b", null, S.name));
-    var i = el("i"); if (k !== "threads") S.parts.forEach(function (id) { i.appendChild(el("span", null, byId[id].n)); }); a.appendChild(i);
+    var i = el("i"); if (k !== "threads") S.parts.forEach(function (id) { i.appendChild(el("span", null, "P" + byId[id].n)); }); a.appendChild(i);
     li.appendChild(a); listEl.appendChild(li);
   });
 
@@ -1156,7 +1156,7 @@ html.embed .stage { cursor: grab; }
     document.getElementById("hereNo").textContent = "Detail A · Sheet " + (SECTIONS[sec].label || SECTIONS[sec].no);
     document.getElementById("hereName").textContent = SECTIONS[sec].name;
     var lg = document.getElementById("legend"); lg.innerHTML = "";
-    (sec === "threads" ? [] : SECTIONS[sec].parts).forEach(function (id) { var li = el("li"); li.appendChild(el("i", null, byId[id].n)); li.appendChild(el("span", null, byId[id].part)); lg.appendChild(li); });
+    (sec === "threads" ? [] : SECTIONS[sec].parts).forEach(function (id) { var li = el("li"); li.appendChild(el("i", null, "P" + byId[id].n)); li.appendChild(el("span", null, byId[id].part)); lg.appendChild(li); });
     if (sec === "threads") lg.appendChild(el("li", "all", "All eight parts"));
     setTimeout(function () { var cur = document.querySelector('#sheetList a[aria-current="true"]'), sl = document.getElementById("sheetList"); if (cur && sl && sl.scrollWidth > sl.clientWidth) sl.scrollLeft = Math.max(0, cur.getBoundingClientRect().left - sl.getBoundingClientRect().left + sl.scrollLeft - 8); markEnd(sl); }, 60);
   }
@@ -1168,7 +1168,7 @@ html.embed .stage { cursor: grab; }
     document.title = view === "cosmos" ? "Framing the Cosmos · Rami Daud" : r.sec === "page" ? (SECTIONS.page.title || document.title) : r.sec ? SECTIONS[r.sec].name + " · Rami Daud" : "Rami Daud";
     var dwg = view === "cosmos" ? "RD-03" : r.sec ? "RD-" + SECTIONS[r.sec].no : "RD-00";
     document.getElementById("tbDwg").textContent = dwg;
-    document.getElementById("tbTitle").textContent = view === "cosmos" ? "Part 03 in use, Apollo 11 surface walk" : "Camera, lunar surface type, exploded assembly";
+    document.getElementById("tbTitle").textContent = view === "cosmos" ? "P03 in use, Apollo 11 surface walk" : "Camera, lunar surface type, exploded assembly";
     document.getElementById("tbSheet").textContent = view === "cosmos" ? "Thread sheet" : r.sec ? SECTIONS[r.sec].no.replace(/^0/, "") + " of 8" : "1 of 8";
   }
   function route(instant) {
@@ -1343,7 +1343,7 @@ html.embed .stage { cursor: grab; }
       var label = (lab.match(/Sheet\s+([0-9]{2}[A-Z]?)/) || [])[1] || "03";
       var cur = d.querySelector('.sheets a[aria-current="true"], .nav a[aria-current="true"]');
       var parent = cur ? new URL(cur.getAttribute("href"), base).hash.slice(1) : null;
-      var parts = Array.prototype.map.call(d.querySelectorAll(".camslot .dv-legend i"), function (i) { return NUM2ID[i.textContent.trim()]; }).filter(Boolean);
+      var parts = Array.prototype.map.call(d.querySelectorAll(".camslot .dv-legend i"), function (i) { return NUM2ID[i.textContent.trim().replace(/^P/, "")]; }).filter(Boolean);
       SECTIONS.page = { name: head && head.querySelector("b") ? head.querySelector("b").textContent : d.title, no: label.slice(0, 2), label: label, parts: parts, parent: SECTIONS[parent] ? parent : null, title: d.title };
 
       var css = Array.prototype.map.call(d.querySelectorAll('head link[rel="stylesheet"]'), function (l) { return new URL(l.getAttribute("href"), base).href; }).filter(function (h) { return !SKIP_CSS.test(h); });
@@ -1492,7 +1492,7 @@ html.embed .stage { cursor: grab; }
   /* ================= part strip ================= */
   var stripEl = document.getElementById("strip");
   var stripBtns = THREADS.map(function (t) {
-    var b = el("button", null, t.n); b.type = "button"; b.dataset.id = t.id;
+    var b = el("button", null, "P" + t.n); b.type = "button"; b.dataset.id = t.id;
     b.setAttribute("aria-label", "Part " + t.n + ", " + t.part + ": " + t.title + ", in " + SECTIONS[t.sec].name);
     stripEl.appendChild(b); return b;
   });
@@ -1709,7 +1709,7 @@ html.embed .stage { cursor: grab; }
     if (id === shown) { leaders.classList.toggle("hot", isHot); if (isHot && !callout.classList.contains("hot")) { void callout.offsetWidth; callout.classList.add("hot"); } else if (!isHot) callout.classList.remove("hot"); return; }
     var instant = isHot || !shown || reduce.matches;
     leaders.classList.remove("on", "hot"); callout.classList.remove("on", "hot");
-    function show() { shown = id; if (!id) return; var t = byId[id]; cBn.textContent = t.n; cPt.textContent = t.part; cPg.textContent = t.title; cSec.textContent = "Open · " + SECTIONS[t.sec].name; placeCallout(); void callout.offsetWidth; leaders.classList.add("on"); callout.classList.add("on"); if (isHot) { leaders.classList.add("hot"); callout.classList.add("hot"); } }
+    function show() { shown = id; if (!id) return; var t = byId[id]; cBn.textContent = "P" + t.n; cPt.textContent = t.part; cPg.textContent = t.title; cSec.textContent = "Open · " + SECTIONS[t.sec].name; placeCallout(); void callout.offsetWidth; leaders.classList.add("on"); callout.classList.add("on"); if (isHot) { leaders.classList.add("hot"); callout.classList.add("hot"); } }
     if (instant) show(); else swapTimer = setTimeout(show, 280);
   }
   var tmpV = new T.Vector3(), cV = new T.Vector3();
@@ -1717,7 +1717,7 @@ html.embed .stage { cursor: grab; }
   function placeCallout() {
     var vis = shown && view === "home" && Z === 0 && S === 0 && mode === "cover";
     leaders.style.opacity = callout.style.opacity = vis ? "" : "0";
-    if (hot && mode === "set" && S > 0.98) { var q = project(hot); tip.textContent = byId[hot].n + " · " + byId[hot].title; tip.style.transform = "translate(" + (q.x + 12).toFixed(0) + "px," + (q.y - 30).toFixed(0) + "px)"; tip.classList.add("on"); } else tip.classList.remove("on");
+    if (hot && mode === "set" && S > 0.98) { var q = project(hot); tip.textContent = "P" + byId[hot].n + " · " + byId[hot].title; tip.style.transform = "translate(" + (q.x + 12).toFixed(0) + "px," + (q.y - 30).toFixed(0) + "px)"; tip.classList.add("on"); } else tip.classList.remove("on");
     placeDetailLeads();
     if (!vis) return;
     var a = project(shown), px = a.x, py = a.y;
@@ -1747,8 +1747,8 @@ html.embed .stage { cursor: grab; }
       var q = project(id), bx = r.right - 22, by = r.top + 26 + i * 34;
       kids[i * 4].setAttribute("d", "M" + q.x.toFixed(1) + " " + q.y.toFixed(1) + " L" + (bx - 26) + " " + by.toFixed(1) + " L" + (bx - 10) + " " + by.toFixed(1));
       kids[i * 4 + 1].setAttribute("cx", q.x.toFixed(1)); kids[i * 4 + 1].setAttribute("cy", q.y.toFixed(1)); kids[i * 4 + 1].setAttribute("r", 3);
-      kids[i * 4 + 2].setAttribute("cx", bx); kids[i * 4 + 2].setAttribute("cy", by.toFixed(1)); kids[i * 4 + 2].setAttribute("r", 10);
-      kids[i * 4 + 3].setAttribute("x", bx); kids[i * 4 + 3].setAttribute("y", by.toFixed(1)); kids[i * 4 + 3].textContent = byId[id].n;
+      kids[i * 4 + 2].setAttribute("cx", bx); kids[i * 4 + 2].setAttribute("cy", by.toFixed(1)); kids[i * 4 + 2].setAttribute("r", 12);
+      kids[i * 4 + 3].setAttribute("x", bx); kids[i * 4 + 3].setAttribute("y", by.toFixed(1)); kids[i * 4 + 3].textContent = "P" + byId[id].n;
     });
   }
   function setActive(id) { active = id; if (!hot) setCallout(id, false); emphasize(); }
