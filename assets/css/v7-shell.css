@@ -75,7 +75,7 @@ html:not(.js) .tbtn { display: none; }
 .dv-view:hover .back { background: var(--ink); color: var(--paper); }
 .dv-legend { list-style: none; margin: 0; padding: 6px 12px; border-top: 1px solid var(--rule); display: flex; flex-wrap: wrap; gap: 4px 14px; min-height: 34px; align-items: center; }
 .dv-legend li { display: inline-flex; gap: 6px; align-items: center; font-family: var(--mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); }
-.dv-legend i { font-style: normal; width: 20px; height: 20px; border-radius: 50%; background: var(--red); color: var(--card); display: grid; place-items: center; font-size: 9px; }
+.dv-legend i { font-style: normal; min-width: 20px; padding: 0 5px; height: 20px; border-radius: 10px; background: var(--red); color: var(--card); display: grid; place-items: center; font-size: 9px; }
 .sheets { list-style: none; margin: 0; padding: 0; }
 .sheets a { display: grid; grid-template-columns: 30px minmax(0, 1fr) auto; gap: var(--s2); align-items: center; min-height: 40px; padding: 4px 12px; border-bottom: 1px solid var(--rule); text-decoration: none; }
 .sheets li:last-child a { border-bottom: 0; }

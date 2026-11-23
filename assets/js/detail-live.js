@@ -9,8 +9,8 @@
   var me = document.currentScript && document.currentScript.src;
   var base = me ? me.replace(/assets\/js\/detail-live\.js.*$/, "") : "/";
   var MAP = { "01": "archive", "02": "guide", "03": "cosmos", "04": "photo", "05": "field", "06": "game", "07": "splat", "08": "about" };
-  var ids = Array.prototype.map.call(document.querySelectorAll(".dv-legend i"), function (i) { return MAP[i.textContent.trim()]; }).filter(Boolean);
-  var nums = Array.prototype.map.call(document.querySelectorAll(".dv-legend i"), function (i) { return i.textContent.trim(); });
+  var ids = Array.prototype.map.call(document.querySelectorAll(".dv-legend i"), function (i) { return MAP[i.textContent.trim().replace(/^P/, "")]; }).filter(Boolean);
+  var nums = Array.prototype.map.call(document.querySelectorAll(".dv-legend i"), function (i) { return i.textContent.trim().replace(/^P/, ""); });
 
   var box = document.createElement("div");
   box.className = "dv-view live";
