@@ -17,5 +17,5 @@ figure.dot { margin: 0 auto var(--s6); max-width: 760px; }
 body.ftc-dark .tb, body.ftc-dark .keep a { background: #1e1b15; }
 body.ftc-dark .btn.solid { background: #efebe2; color: #16140f; border-color: #efebe2; }
 body.ftc-dark .btn { color: #efebe2; border-color: #efebe2; }
-@media (max-width: 760px) { .void { height: 90vh; margin: 0 calc(-1 * var(--s1) - 6px); } }
+@media (max-width: 760px) { .void { height: 90vh; margin: 0 calc(-1 * var(--s1)); } }
 @media (prefers-reduced-motion: reduce) { .void { height: 40vh; } }
