@@ -22,6 +22,18 @@
       el.classList.remove("seen", "late");
       io.observe(el);
     });
+    /* Never leave a freshly opened sheet blank waiting on the observer (iOS Safari can be slow to report
+       inside the scrolling panel): whatever is already on screen shows on the next frames, and again shortly after. */
+    requestAnimationFrame(function () { requestAnimationFrame(function () { kick(sheet); }); });
+    setTimeout(function () { kick(sheet); }, 900);
+  }
+  function kick(sheet) {
+    if (!sheet.classList.contains("in")) return;
+    var vh = window.innerHeight || document.documentElement.clientHeight;
+    Array.prototype.forEach.call(sheet.querySelectorAll("[data-fx]:not(.seen), [data-reveal]:not(.seen)"), function (el) {
+      var r = el.getBoundingClientRect();
+      if (r.bottom > 0 && r.top < vh * 0.9 && (r.width || r.height)) { el.classList.add("seen"); io.unobserve(el); }
+    });
   }
   var mo = new MutationObserver(function (ms) {
     ms.forEach(function (m) {
