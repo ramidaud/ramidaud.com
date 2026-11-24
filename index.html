@@ -828,6 +828,36 @@ html.js .quiz:not(.picked) .qa::after { content: "Tap the one you think is real"
 html.js .quiz:not(.picked) .qa-answer { display: none; }
 @media (prefers-reduced-motion: reduce) { .qa-tag { transition: none; } }
 @media (max-width: 640px) { .qa-tag { position: static; order: 3; align-self: flex-start; margin-top: 8px; } .quiz:not(.picked) .qa-tag { display: none; } }
+
+/* ================= bold pass: type scale and color roles ================= */
+:root { --machine: #7d5c12; --human: var(--red); }
+:root[data-theme="dark"] { --machine: #d8b35a; }
+.sheet-head { position: relative; grid-template-columns: minmax(0, 1fr); gap: var(--s3); padding-bottom: var(--s5); border-bottom-width: 3px; isolation: isolate; }
+.sheet-head[data-no]::before { content: attr(data-no); position: absolute; right: -.04em; top: -.18em; z-index: -1; font: 400 clamp(120px, 16vw, 260px)/1 var(--serif); letter-spacing: -.04em; color: transparent; -webkit-text-stroke: 1px color-mix(in srgb, var(--ink) 22%, transparent); pointer-events: none; }
+.sheet-head h2 { font-size: clamp(46px, 5.6vw, 96px); line-height: .94; letter-spacing: -.022em; max-width: 18ch; }
+.sheet-head h2 em { color: var(--red); font-style: italic; }
+.sheet-head p { justify-self: start; max-width: 52ch; font-size: 17px; line-height: 1.55; color: var(--ink); }
+.sheet-head p.key { font: 500 11.5px/1.5 var(--mono); letter-spacing: .08em; text-transform: uppercase; display: flex; gap: 6px 18px; flex-wrap: wrap; }
+.k-ai, .k-hu { display: inline-flex; align-items: center; gap: 8px; }
+.k-ai::before, .k-hu::before { content: ""; width: 22px; height: 4px; }
+.k-ai { color: var(--machine); } .k-ai::before { background: var(--machine); }
+.k-hu { color: var(--red); } .k-hu::before { background: var(--red); }
+/* tool = gold, person = red, everywhere the work is described */
+.prov dt:nth-of-type(1) { color: var(--machine); }
+.prov dt:nth-of-type(2) { color: var(--red); }
+.flow li:nth-child(2) span { border-color: var(--machine); color: var(--machine); }
+.flight-steps li:nth-child(2).now b, .flight-steps li:nth-child(2).now .fs-n { color: var(--machine); }
+.flight-demo[data-view="draft"] .fs-state { color: var(--machine); }
+.flight-demo[data-view="draft"] .gate-kw li { border-color: color-mix(in srgb, var(--machine) 55%, transparent); }
+.qa-pick[data-real="false"] .qa-tag { color: var(--machine); }
+.qa-pick[data-real="true"] .qa-tag { color: var(--red); }
+.co-label .sub { color: var(--red); }
+.bignum b.r { color: var(--machine); }
+/* one bold field: the pull quote runs full width in film black */
+.pullq { background: var(--film, #16140f); color: #f1eadb; border: 0; margin-inline: calc(-1 * clamp(20px, 3vw, 44px)); padding: clamp(40px, 6vw, 88px) clamp(20px, 3vw, 44px); }
+.pullq span + span { color: #e8705a; }
+.pullq::after { content: "Drawn R. Daud \00b7  Checked by a person"; display: block; margin-top: var(--s5); font: 500 11px/1 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: #d8b35a; }
+@media (max-width: 760px) { .pullq { margin-inline: calc(-1 * var(--s1)); } .sheet-head[data-no]::before { font-size: 140px; } }
 </style>
 <script>document.documentElement.classList.add("js");window.RD_SHELL=true;</script>
 <link rel="stylesheet" href="assets/css/shell-pages.css">
@@ -894,10 +924,11 @@ html.js .quiz:not(.picked) .qa-answer { display: none; }
 
         
 <section class="sheet" id="s-practice" data-sec="practice" aria-labelledby="practiceTitle">
-  <div class="sheet-head" data-fx="slide">
+  <div class="sheet-head" data-no="02" data-fx="slide">
     <div class="sheet-no"><b>Sheet 02</b><span class="label">AI in Practice · P01, P02, P07</span></div>
-    <h2 id="practiceTitle" tabindex="-1">What I would bring to a communications team.</h2>
+    <h2 id="practiceTitle" tabindex="-1">What I would bring to a <em>communications team.</em></h2>
     <p>Case studies that show how I evaluate a tool before a team adopts it, then two guides any team can use. Each says what AI did and what a person checked.</p>
+    <p class="key"><span class="k-ai">Gold marks what a tool did.</span> <span class="k-hu">Red marks where a person decided.</span></p>
   </div>
   <figure class="opener" data-reveal aria-labelledby="openerCap">
     <div class="opener-frame">
@@ -1027,9 +1058,9 @@ html.js .quiz:not(.picked) .qa-answer { display: none; }
   <p class="small-src">Both guides began as Kent State graduate coursework. Portions were drafted with AI, then verified, restructured and rewritten by Rami.</p>
 </section>
 <section class="sheet" id="s-projects" data-sec="projects" aria-labelledby="projTitle">
-  <div class="sheet-head" data-fx="slide">
+  <div class="sheet-head" data-no="03" data-fx="slide">
     <div class="sheet-no"><b>Sheet 03</b><span class="label">Projects · P03, P06</span></div>
-    <h2 id="projTitle" tabindex="-1">Two obsessions, built in public.</h2>
+    <h2 id="projTitle" tabindex="-1">Two obsessions, <em>built in public.</em></h2>
     <p>Nobody assigned these. I make them on nights and weekends because I can’t leave them alone, and I write down everything, mistakes included.</p>
   </div>
   <div class="pj-pair">
@@ -1062,7 +1093,7 @@ html.js .quiz:not(.picked) .qa-answer { display: none; }
   <p class="small-src">Both projects have their own pages. Every essay and devlog entry is on the <a href="#writing">Writing</a> sheet.</p>
 </section>
 <section class="sheet" id="s-cosmos" data-sec="cosmos" aria-labelledby="cosmosTitle">
-  <div class="sheet-head" data-fx="slide">
+  <div class="sheet-head" data-no="03A" data-fx="slide">
     <div class="sheet-no"><b>Sheet 03A</b><span class="label">Projects · Framing the Cosmos · P03, Lens</span></div>
     <h2 id="cosmosTitle" tabindex="-1">Framing <em>the</em> Cosmos</h2>
     <p>How iconic space photographs shape what we believe, and, since October, what it takes to make one.</p>
@@ -1128,9 +1159,9 @@ html.js .quiz:not(.picked) .qa-answer { display: none; }
   </div>
 </section>
 <section class="sheet" id="s-writing" data-sec="writing" aria-labelledby="writingTitle">
-  <div class="sheet-head" data-fx="slide">
+  <div class="sheet-head" data-no="04" data-fx="slide">
     <div class="sheet-no"><b>Sheet 04</b><span class="label">Writing · P05</span></div>
-    <h2 id="writingTitle" tabindex="-1">Every piece, wherever it lives.</h2>
+    <h2 id="writingTitle" tabindex="-1">Every piece, <em>wherever it lives.</em></h2>
     <p>24 pieces across Substack, the devlog, this site and a journal. Newest first.</p>
   </div>
   <div class="windex" data-fx="rise" style="--i:2">
@@ -1139,9 +1170,9 @@ html.js .quiz:not(.picked) .qa-answer { display: none; }
   </div>
 </section>
 <section class="sheet" id="s-photography" data-sec="photography" aria-labelledby="photoTitle">
-  <div class="sheet-head" data-fx="slide">
+  <div class="sheet-head" data-no="05" data-fx="slide">
     <div class="sheet-no"><b>Sheet 05</b><span class="label">Photography · P04</span></div>
-    <h2 id="photoTitle" tabindex="-1">Twenty years of pictures, in three rooms so far.</h2>
+    <h2 id="photoTitle" tabindex="-1">Twenty years of pictures, <em>in three rooms so far.</em></h2>
     <p>NASA, the night sky and a university, plus freelance work for the Associated Press, AFP, Cleveland Magazine and The Toledo Blade.</p>
   </div>
   <div class="cases one">
@@ -1172,9 +1203,9 @@ html.js .quiz:not(.picked) .qa-answer { display: none; }
   <p class="small-src">Human Moments and Wide Open Horizons (working titles) open when their photos are chosen. Latest roundup: <a href="https://ramidaud.substack.com/p/my-favorite-photos-from-april" target="_blank" rel="noopener">My Favorite Photos from April<span class="sr"> (opens in a new window)</span></a>.</p>
 </section>
 <section class="sheet" id="s-about" data-sec="about" aria-labelledby="aboutTitle">
-  <div class="sheet-head" data-fx="slide">
+  <div class="sheet-head" data-no="06" data-fx="slide">
     <div class="sheet-no"><b>Sheet 06</b><span class="label">About · P08, Body</span></div>
-    <h2 id="aboutTitle" tabindex="-1">Much of my work is driven by curiosity.</h2>
+    <h2 id="aboutTitle" tabindex="-1">Much of my work is driven by <em>curiosity.</em></h2>
     <p>About how people learn, how discoveries happen, and how images shape the way we understand the world.</p>
   </div>
   <div class="about" id="ab-bio">
@@ -1193,9 +1224,9 @@ html.js .quiz:not(.picked) .qa-answer { display: none; }
     <div class="btns"><a class="btn solid" href="contact/">Send a message</a><a class="btn" href="mailto:ramidaud@me.com">ramidaud@me.com</a><a class="btn" href="https://www.linkedin.com/in/ramidaudphoto/" target="_blank" rel="noopener">LinkedIn<span class="sr"> (opens in a new window)</span></a><a class="btn" href="https://www.instagram.com/ramidaud/" target="_blank" rel="noopener">Instagram<span class="sr"> (opens in a new window)</span></a><a class="btn" href="https://ramidaud.substack.com/" target="_blank" rel="noopener">Substack<span class="sr"> (opens in a new window)</span></a><a class="btn" href="https://midlifesurvivors.com/" target="_blank" rel="noopener">Midlife Survivors<span class="sr"> (opens in a new window)</span></a></div></section>
 </section>
 <section class="sheet" id="s-record" data-sec="record" aria-labelledby="recordTitle">
-  <div class="sheet-head" data-fx="slide">
+  <div class="sheet-head" data-no="07" data-fx="slide">
     <div class="sheet-no"><b>Sheet 07</b><span class="label">Record · P08, Body</span></div>
-    <h2 id="recordTitle" tabindex="-1">The full record.</h2>
+    <h2 id="recordTitle" tabindex="-1">The full <em>record.</em></h2>
     <p>Now: Senior Photographer at Kent State University since 2019 and my team’s informal AI lead. Before that, four years at NASA Glenn. Below: recognition, seven NASA Images of the Day, a peer-reviewed paper and more than twenty years of work.</p>
     <div class="btns"><a class="btn" href="work/lightroom-archive/">See the Kent State AI case</a></div>
   </div>
@@ -1209,9 +1240,9 @@ html.js .quiz:not(.picked) .qa-answer { display: none; }
   <section class="block" id="ab-edu"><h3 class="sub">Education</h3><ol class="record"><li><span class="mono">In progress</span><div><b>MS, Emerging Media and Technology</b><span class="credit">Kent State University</span><p>Completing a research project on photography and the public understanding of science.</p></div></li><li><span class="mono">05/2026</span><div><b>Bachelor of Integrated Studies</b><span class="credit">Kent State University</span></div></li></ol></section>
 </section>
         <section class="sheet" id="s-threads" data-sec="threads" aria-labelledby="bomTitle">
-          <div class="sheet-head" data-fx="slide">
+          <div class="sheet-head" data-no="08" data-fx="slide">
             <div class="sheet-no"><b>Sheet 08</b><span class="label">Bill of materials · All parts</span></div>
-            <h2 id="bomTitle" tabindex="-1">Every part, where it lives, and how it's moving.</h2>
+            <h2 id="bomTitle" tabindex="-1">Every part, where it lives, <em>and how it's moving.</em></h2>
             <p>The camera's parts list doubles as the index of the site.</p>
           </div>
           <table class="bom">
