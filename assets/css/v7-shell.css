@@ -194,3 +194,10 @@ html.rv .rv-i:not(.rv-on) { opacity: 0; transform: translateY(18px); }
 html.rv .rv-i img, html.rv img.rv-i { transition: filter 1.3s ease .15s; }
 html.rv .rv-i:not(.rv-on) img, html.rv img.rv-i:not(.rv-on) { filter: brightness(.18) contrast(.6); }
 @media (prefers-reduced-motion: reduce) { html.rv .rv-i { opacity: 1 !important; transform: none !important; } }
+
+/* color roles, shared with the home page: gold = what a tool did, red = where a person decided */
+:root { --machine: #7d5c12; }
+:root[data-theme="dark"] { --machine: #d8b35a; }
+.ai { color: var(--machine); text-decoration: underline; text-decoration-color: color-mix(in srgb, var(--machine) 45%, transparent); text-decoration-thickness: 2px; text-underline-offset: 3px; }
+.hu { color: var(--red); text-decoration: underline; text-decoration-color: color-mix(in srgb, var(--red) 45%, transparent); text-decoration-thickness: 2px; text-underline-offset: 3px; }
+.made::after, .credit-line::after { content: "Gold: what a tool did \00b7  Red: where a person decided"; display: block; margin-top: 10px; font: 500 10.5px/1.4 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--ink-2); }

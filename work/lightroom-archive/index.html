@@ -27,6 +27,14 @@
 .run-col.ok { background: var(--card); }
 .run-col h3 { font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; margin: 0 0 10px; color: var(--ink-faint); }
 .run-col.ok h3 { color: var(--red); }
+.run-col.ai-col h3 { color: var(--machine); }
+.run-col.ai-col .kw li:not(.no) { border-color: color-mix(in srgb, var(--machine) 55%, transparent); }
+.legacy .summary dt { color: var(--ink-2); }
+.legacy .summary dt.ai-dt { color: var(--machine); }
+.legacy .summary dt.hu-dt { color: var(--red); }
+.flight li.ai-step p { color: var(--machine); }
+.legacy .flight li.ai-step { border: 2px solid var(--machine); }
+.legacy .flight li.ai-step::before { content: counter(f, decimal-leading-zero) " \00b7  TOOL"; color: var(--machine); }
 .run-col p { font-size: 15px; line-height: 1.55; margin: 0 0 10px; }
 .run-col .empty { font-family: var(--mono); font-size: 13px; color: var(--ink-faint); }
 .kw { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
@@ -90,7 +98,7 @@
         <p class="label kicker" style="margin-top:36px">Flight plan</p>
         <ol class="flight">
           <li><p>Shoot lands in Lightroom Classic</p></li>
-          <li><p>Claude suggests keywords and descriptions</p></li>
+          <li class="ai-step"><p>Claude suggests keywords and descriptions</p></li>
           <li class="gate"><p>A photographer approves, edits or rejects</p></li>
           <li><p>Published to PhotoShelter and Smart Galleries</p></li>
         </ol>
@@ -104,8 +112,8 @@
         <h2 id="sum-h">MISSION SUMMARY</h2>
         <dl>
           <dt>SCALE</dt><dd>Thousands of images so far</dd>
-          <dt>TOOLS</dt><dd>Lightroom Classic, Claude, PhotoShelter, Airtable</dd>
-          <dt>HUMAN</dt><dd>Reviews every change</dd>
+          <dt class="ai-dt">TOOLS</dt><dd>Lightroom Classic, Claude, PhotoShelter, Airtable</dd>
+          <dt class="hu-dt">HUMAN</dt><dd>Reviews every change</dd>
           <dt>MEASURE</dt><dd>Time saved, once part of regular filing</dd>
           <dt>WEIGHED</dt><dd>Against PhotoShelter's own AI and its cost</dd>
           <dt>STATUS</dt><dd>In progress</dd>
@@ -125,7 +133,7 @@
           <p class="empty">Caption: none<br>Keywords: none</p>
           <p class="run-note">As it sat in the catalog, read directly from Lightroom.</p>
         </div>
-        <div class="run-col">
+        <div class="run-col ai-col">
           <h3>02 · Claude suggested</h3>
           <p>&ldquo;<s>Visitors take turns</s> at the telescope under red light inside the Kent State University observatory dome on Nov. 18, 2026.&rdquo;</p>
           <ul class="kw"><li>Kent State University</li><li>observatory</li><li>telescope</li><li>astronomy</li><li>stargazing</li><li>night</li><li>red light</li><li>dome</li><li class="no">visitors</li><li class="no">public viewing</li></ul>
@@ -167,7 +175,7 @@
   
         </div>
         <nav class="keep" aria-label="Where to next"><span class="label">Where to next</span><ul><li><a href="../../guides/prompt-to-publish/"><b>Prompt to Publish</b><span>The field guide behind this workflow: direct the tool, verify the output.</span></a></li><li><a href="../../guides/checking-ai-quotes/"><b>Checking AI-generated quotes</b><span>A 90-minute workshop that puts the same human gate in front of a team.</span></a></li><li><a href="../../#record"><b>My role at Kent State</b><span>Senior Photographer since 2019, and the team’s informal AI lead.</span></a></li><li><a href="../../contact/"><b>Bring this to your team</b><span>Workshops, talks and AI adoption for communication teams.</span></a></li></ul></nav>
-        <aside class="made" aria-label="How this page was made"><span class="label">How this page was made</span><p>Facts from Rami. Copy drafted with Claude from Rami's notes and edited by Rami. Evaluation criteria and measures drafted with Claude for Rami to confirm. The example photo is real: its before state and approved metadata were read from and written to Lightroom on Nov 24, 2026.</p></aside>
+        <aside class="made" aria-label="How this page was made"><span class="label">How this page was made</span><p><span class="hu">Facts from Rami.</span> <span class="ai">Copy drafted with Claude from Rami's notes</span> <span class="hu">and edited by Rami.</span> <span class="ai">Evaluation criteria and measures drafted with Claude</span> <span class="hu">for Rami to confirm.</span> The example photo is real: its before state and approved metadata were read from and written to Lightroom on Nov 24, 2026.</p></aside>
         <nav class="next" aria-label="Sheets">
           <a class="btn" href="../../#practice">Back to: AI in Practice</a>
         </nav>
