@@ -309,22 +309,54 @@
   });
 
   /* ---------- playtest floor ---------- */
+  function killerList(list) {
+    return (list || []).map(function (k) {
+      var f = FOES[String(k.name).toLowerCase()];
+      return "<li>" + (f ? '<span class="foe" style="background-image:url(' + PX + "enemy-" + f + '.png)" role="img" aria-label="' + esc(k.name) + '"></span>' : '<span class="ph" aria-hidden="true">?</span>') + "<span>" + esc(k.name) + (k.age ? ' <small style="color:#b8ae96">age ' + esc(k.age) + "</small>" : "") + "</span><b>" + k.n + "</b></li>";
+    }).join("");
+  }
+  function fpsList(list) {
+    return (list || []).map(function (l) {
+      return "<li><span>" + esc(l.dev) + "</span><b>" + l.fps + ' fps</b><span class="t" aria-hidden="true"><i style="width:' + Math.min(100, l.fps / 120 * 100) + '%"></i></span></li>';
+    }).join("");
+  }
   function floor() {
-    var r = st.report, el = $("#floor"); if (!el) return;
+    var r = st.report, a = st.all, el = $("#floor"); if (!el) return;
+    var allBtn = $('#floor .ftabs [data-span="all"]');
+    if (allBtn) allBtn.hidden = !a;
+    /* Quiet day: open on all time unless someone picked a tab. */
+    var span = st.span || (a && !(r.dayRuns > 0) ? "all" : "day");
+    if (span === "all" && !a) span = "day";
+    $$("#floor .ftabs button").forEach(function (b) { var on = b.getAttribute("data-span") === span; b.setAttribute("aria-selected", String(on)); b.tabIndex = on ? 0 : -1; });
+    if (span === "all") {
+      var since = new Date(a.since + "T12:00:00Z");
+      $("#floor-title").textContent = "Play stats: since " + since.toLocaleDateString("en-US", { month: "short", day: "numeric" });
+      $("#floor-head").textContent = n(a.retired) + " of " + n(a.runs) + " runs made it to retirement. Half of everyone was done by " + a.median_age + ".";
+      $("#f-runs").textContent = n(a.runs);
+      $("#f-players").textContent = n(a.players);
+      $("#f-median").textContent = a.median_min != null ? a.median_min + "m" : "-";
+      $("#f-killers").innerHTML = killerList(a.killers) || "<li><span></span><span>No deaths logged.</span></li>";
+      $("#f-fps").innerHTML = fpsList(a.lag) || "<li><span>No frame-rate data.</span></li>";
+      $("#floor-src").textContent = "Every run since tracking began, the developer's own devices left out. Updated " + ago(Date.parse(a.updated)) + " by the morning stats task.";
+      return;
+    }
     $("#floor-title").textContent = r.title || "Play stats";
     $("#floor-head").textContent = r.headline || "";
     $("#f-runs").textContent = r.dayRuns != null ? r.dayRuns : "-";
     $("#f-players").textContent = r.dayPlayers != null ? r.dayPlayers : "-";
     $("#f-median").textContent = r.median != null ? r.median + "m" : "-";
-    $("#f-killers").innerHTML = (r.killers || []).map(function (k) {
-      var f = FOES[k.name.toLowerCase()];
-      return "<li>" + (f ? '<span class="foe" style="background-image:url(' + PX + "enemy-" + f + '.png)" role="img" aria-label="' + esc(k.name) + '"></span>' : '<span class="ph" aria-hidden="true">?</span>') + "<span>" + esc(k.name) + (k.age ? ' <small style="color:#b8ae96">age ' + esc(k.age) + "</small>" : "") + "</span><b>" + k.n + "</b></li>";
-    }).join("") || "<li><span></span><span>No deaths logged.</span></li>";
-    $("#f-fps").innerHTML = (r.lag || []).map(function (l) {
-      return "<li><span>" + esc(l.dev) + "</span><b>" + l.fps + ' fps</b><span class="t" aria-hidden="true"><i style="width:' + Math.min(100, l.fps / 120 * 100) + '%"></i></span></li>';
-    }).join("") || "<li><span>No frame-rate data.</span></li>";
+    $("#f-killers").innerHTML = killerList(r.killers) || "<li><span></span><span>No deaths logged.</span></li>";
+    $("#f-fps").innerHTML = fpsList(r.lag) || "<li><span>No frame-rate data.</span></li>";
     $("#floor-src").textContent = st.src.report === "live" ? "Live from the bot's report in the game repo, read " + ago(st.t.report) + "." : "From the Nov 20 report. The live copy could not be reached.";
   }
+  $$("#floor .ftabs button").forEach(function (b) {
+    b.addEventListener("click", function () { st.span = b.getAttribute("data-span"); floor(); });
+    b.addEventListener("keydown", function (e) {
+      if (e.key !== "ArrowLeft" && e.key !== "ArrowRight") return;
+      var all = $$("#floor .ftabs button").filter(function (x) { return !x.hidden; }), i = all.indexOf(b), nx = all[(i + 1) % all.length];
+      nx.focus(); nx.click();
+    });
+  });
 
   /* ---------- changelog ---------- */
   function changelog() {
@@ -372,6 +404,11 @@
       .then(function (md) { var p = parseReport(md); if (!p.runs) throw new Error("unparsed"); st.report = p; st.src.report = "live"; st.t.report = Date.now(); })
       .catch(function () { st.src.report = "error"; });
   }
+  function loadAllTime() {
+    return fetch(RAW + "reports/site-stats.json?t=" + Date.now(), { cache: "no-store" }).then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function (j) { if (j && j.runs) { st.all = j; st.t.all = Date.now(); } })
+      .catch(function () {});
+  }
   function loadFilter() {
     return repoJS("src/data/name-filter.js", function (w) { return w.nameOk; }).then(function (f) { if (typeof f === "function") st.nameOk = f; }).catch(function () {});
   }
@@ -403,7 +440,7 @@
   function refreshAll() {
     if (busy) return; busy = true;
     var btn = $("#refresh"); if (btn) btn.textContent = "Checking";
-    loadFilter().then(function () { return Promise.all([loadRepo(), loadReport(), loadBoard(), loadCommits()]); }).then(function () {
+    loadFilter().then(function () { return Promise.all([loadRepo(), loadReport(), loadBoard(), loadCommits(), loadAllTime()]); }).then(function () {
       st.checked = Date.now(); renderAll(); busy = false; if (btn) btn.textContent = "Refresh";
     });
   }
