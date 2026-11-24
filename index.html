@@ -922,6 +922,24 @@ html.js .quiz:not(.picked) .qa-answer { display: none; }
 @media (min-width: 901px) and (max-width: 1100px) { #h-home { font-size: clamp(30px, min(3.4vw, 4.9vh), 66px); } .cover-cta .btn { padding-inline: 12px; } }
 .cover-cta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; pointer-events: auto; position: relative; z-index: 2; }
 .cover-cta .btn { min-height: 44px; white-space: nowrap; }
+/* ===== Red line indicators: each red marker swells once when it appears, then settles =====
+   Nav and sheet tabs: whenever a link becomes current. Side rules (pull quotes, notes, now/next):
+   when they scroll into view (marks set by motion.js / reveal.js). The swell is an inset shadow,
+   so nothing around it moves. Without @property support the lines simply stay still. */
+@property --mark-x { syntax: "<length>"; inherits: false; initial-value: 0px; }
+@keyframes rd-thick { 0% { --mark-x: 0px; } 35% { --mark-x: 4px; } 100% { --mark-x: 0px; } }
+.nav a[aria-current="true"], .nav a[aria-current="page"] { box-shadow: inset 0 calc(-2px - var(--mark-x)) 0 var(--red); animation: rd-thick .9s var(--ease) .15s; }
+.sheets a[aria-current="true"] { box-shadow: inset calc(3px + var(--mark-x)) 0 0 var(--red); animation: rd-thick .9s var(--ease) .15s; }
+@media (max-width: 760px) { .sheets a[aria-current="true"] { box-shadow: inset 0 calc(-3px - var(--mark-x)) 0 var(--red); } }
+.mark-in { box-shadow: inset var(--mark-x) 0 0 var(--red); animation: rd-thick 1s var(--ease) .2s; }
+
+/* ===== The nameplate: the a and i in "Rami" catch a gold glint now and then, a quiet hint at AI ===== */
+.wm { white-space: nowrap; }
+.wm-ai { background: linear-gradient(100deg, var(--ink) 0 40%, var(--machine) 50%, var(--ink) 60% 100%) 100% 0 / 400% 100% no-repeat; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; animation: rd-glint 11s ease-in-out 2.5s infinite; }
+.wm-ai + .wm-ai, .wm-ai ~ .wm-ai { animation-delay: 2.68s; }
+.wordmark:hover .wm-ai { -webkit-text-fill-color: currentColor; }
+@keyframes rd-glint { 0%, 84% { background-position: 100% 0; } 96%, 100% { background-position: 0% 0; } }
+@media (prefers-reduced-motion: reduce) { .wm-ai { animation: none; -webkit-text-fill-color: currentColor; background: none; } }
 </style>
 <script>document.documentElement.classList.add("js");window.RD_SHELL=true;</script>
 <link rel="stylesheet" href="assets/css/shell-pages.css">
@@ -943,7 +961,7 @@ html.js .quiz:not(.picked) .qa-answer { display: none; }
 
   <div class="ui">
     <header class="topbar">
-      <a class="wordmark" href="#camera">Rami Daud</a>
+      <a class="wordmark" href="#camera"><span class="wm">R<span class="wm-ai">a</span>m<span class="wm-ai">i</span> Daud</span></a>
       <nav class="nav" aria-label="Main" id="topnav">
         <a href="#practice" data-sec="practice">AI in Practice</a><a href="#projects" data-sec="projects">Projects</a><a href="#writing" data-sec="writing">Writing</a><a href="#photography" data-sec="photography">Photography</a><a href="#about" data-sec="about">About</a><a href="#record" data-sec="record">Record</a>
         <button class="tbtn" id="themeBtn" type="button" aria-label="Switch to dark mode">Dark</button>

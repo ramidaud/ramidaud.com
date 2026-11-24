@@ -16,7 +16,13 @@
       io.unobserve(t);
     });
   }, { rootMargin: "0px 0px -10% 0px", threshold: 0 });
+  /* Red side rules (pull quotes, notes, now/next lines) swell once as they come into view. Styles: .mark-in */
+  var MARKS = ".pull, .note, .ai-role, .nownext, .pj .shows, .ftc-essays blockquote";
+  var mio = new IntersectionObserver(function (es) {
+    es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("mark-in"); mio.unobserve(e.target); } });
+  }, { rootMargin: "0px 0px -12% 0px", threshold: 0.6 });
   function arm(sheet) {
+    Array.prototype.forEach.call(sheet.querySelectorAll(MARKS), function (el) { el.classList.remove("mark-in"); mio.observe(el); });
     opened = performance.now();
     Array.prototype.forEach.call(sheet.querySelectorAll("[data-fx], [data-reveal]"), function (el) {
       el.classList.remove("seen", "late");

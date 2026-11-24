@@ -29,3 +29,13 @@
     if (!document.querySelector(".rv-i.rv-on")) document.documentElement.classList.remove("rv");
   }, 2500);
 })();
+
+/* Red side rules (pull quotes, notes, now/next lines) swell once as they come into view. Styles: .mark-in */
+(function () {
+  if (!("IntersectionObserver" in window) || window.RD_SHELL) return;   // inside the sheet, motion.js does this
+  if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("mark-in"); io.unobserve(e.target); } });
+  }, { rootMargin: "0px 0px -12% 0px", threshold: 0.6 });
+  Array.prototype.forEach.call(document.querySelectorAll(".pull, .note, .ai-role, .nownext, .pj .shows, .ftc-essays blockquote"), function (el) { io.observe(el); });
+})();
