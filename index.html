@@ -318,6 +318,17 @@ html.js .sheet:not(.in) [data-fx="draw"] { clip-path: inset(0 100% 0 0); }
 html.js .sheet:not(.in) [data-fx="rise"] { opacity: 0; transform: translateY(24px); }
 .ap path { transition: transform 1.2s var(--ease) .5s; transform-origin: 100px 100px; }
 html.js .sheet:not(.in) .ap path { transition: none; transform: rotate(-38deg) scale(1.35); }
+/* scroll-triggered: hidden until each element reaches the view (motion.js adds .seen) */
+html.fxio .sheet [data-fx="slide"]:not(.seen) { opacity: 0; transform: translateX(-28px); }
+html.fxio .sheet [data-fx="deal"]:not(.seen) { opacity: 0; transform: translateY(56px) rotate(-1.6deg); }
+html.fxio .sheet [data-fx="unfold"]:not(.seen) { clip-path: inset(0 0 100% 0); }
+html.fxio .sheet [data-fx="iris"]:not(.seen) { clip-path: circle(0% at 50% 50%); }
+html.fxio .sheet [data-fx="develop"]:not(.seen) { opacity: .25; filter: brightness(.15) contrast(.5); }
+html.fxio .sheet [data-fx="type"]:not(.seen) { opacity: 0; transform: translateX(14px); }
+html.fxio .sheet [data-fx="draw"]:not(.seen) { clip-path: inset(0 100% 0 0); }
+html.fxio .sheet [data-fx="rise"]:not(.seen) { opacity: 0; transform: translateY(24px); }
+html.fxio .sheet [data-fx].late { transition-delay: calc(var(--i, 0) * 40ms + 40ms); }
+
 
 
 /* ===== v7: real content ===== */
@@ -716,6 +727,36 @@ html.embed .stage { cursor: grab; }
 @keyframes gate-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
 .gate-demo .gate-note { margin: var(--s2) 0 0; font-size: 12.5px; line-height: 1.5; color: var(--ink-2); }
 @media (prefers-reduced-motion: reduce) { .gate-kw li, .gate-demo[data-view="approved"] .gate-kw .add { transition: none; animation: none; } }
+.opener { margin: 0; position: relative; view-timeline-name: --opener; }
+.opener-frame { position: relative; aspect-ratio: 2 / 1; overflow: clip; border: 1px solid var(--ink); background: #1a0a06; }
+.opener-move { --drift: -25%; position: absolute; left: 0; top: 0; width: 100%; aspect-ratio: 3 / 2; will-change: transform; }
+.opener-move img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.opener-move svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+.co-line { fill: none; stroke: #f5edd8; stroke-width: 2.2; vector-effect: non-scaling-stroke; stroke-dasharray: 1; stroke-dashoffset: 0; transition: stroke-dashoffset 1.1s var(--ease); }
+.co-dot { fill: none; stroke: #f5edd8; stroke-width: 2; vector-effect: non-scaling-stroke; transform-box: fill-box; transform-origin: center; transition: transform .5s var(--ease), opacity .3s; }
+.co-label { position: absolute; transform: translate(-50%, -100%); background: var(--paper); color: var(--ink); border: 1px solid var(--ink); padding: 6px 9px; font: 500 10.5px/1.35 var(--mono); letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; transition: opacity .5s, transform .6s var(--ease); }
+.co-label b { display: block; font: 400 19px/1.1 var(--serif); letter-spacing: 0; text-transform: none; }
+.co-label.r { transform: translate(0, -100%); } .co-label.l { transform: translate(-100%, -100%); }
+.opener figcaption { display: flex; justify-content: space-between; gap: var(--s3); flex-wrap: wrap; margin-top: 8px; font: 10.5px/1.5 var(--mono); letter-spacing: .06em; color: var(--ink-2); }
+.opener figcaption span:first-child { color: var(--red); text-transform: uppercase; letter-spacing: .12em; }
+html.fxio .opener:not(.seen) .co-line { stroke-dashoffset: 1; }
+html.fxio .opener:not(.seen) .co-dot { transform: scale(0); opacity: 0; }
+html.fxio .opener:not(.seen) .co-label { opacity: 0; }
+html.fxio .opener:not(.seen) .co-label.r { transform: translate(-12px, -100%); } html.fxio .opener:not(.seen) .co-label.l { transform: translate(calc(-100% + 12px), -100%); }
+html.fxio .opener:not(.seen) .co-label.c { transform: translate(-50%, calc(-100% + 12px)); }
+.opener .co-line:nth-of-type(2), .opener .co-dot:nth-of-type(2) { transition-delay: .35s; }
+.opener .co-line:nth-of-type(3), .opener .co-dot:nth-of-type(3) { transition-delay: .7s; }
+.opener .co-label { transition-delay: calc(var(--k) * .35s + .8s); }
+@supports (view-timeline-name: --a) {
+  html.fxio .opener-move { animation: opener-drift linear both; animation-timeline: --opener; animation-range: cover 0% cover 100%; }
+  @keyframes opener-drift { from { transform: translateY(0) scale(1.02); } to { transform: translateY(var(--drift)) scale(1.02); } }
+}
+@media (max-width: 760px) {
+  .opener-frame { aspect-ratio: 16 / 10; }
+  .opener-move { --drift: -6%; }
+  .co-label { font-size: 9px; padding: 4px 6px; } .co-label b { font-size: 15px; }
+  .co-label .sub { display: none; }
+}
 </style>
 <script>document.documentElement.classList.add("js");window.RD_SHELL=true;</script>
 <link rel="stylesheet" href="assets/css/shell-pages.css">
@@ -787,6 +828,25 @@ html.embed .stage { cursor: grab; }
     <h2 id="practiceTitle" tabindex="-1">What I would bring to a communications team.</h2>
     <p>Case studies that show how I evaluate a tool before a team adopts it, then two guides any team can use. Each says what AI did and what a person checked.</p>
   </div>
+  <figure class="opener" data-reveal aria-labelledby="openerCap">
+    <div class="opener-frame">
+      <div class="opener-move">
+        <img src="assets/img/ai-work/dsc0250-observatory.jpg" alt="TJ at a large telescope inside the red-lit Kent State University Observatory dome as Derek looks on." width="1600" height="1067">
+        <svg viewBox="0 0 1600 1067" preserveAspectRatio="none" aria-hidden="true">
+          <path class="co-line" pathLength="1" d="M720 540 L720 300 L640 300"/>
+          <path class="co-line" pathLength="1" d="M1110 800 L1110 420 L1180 420"/>
+          <path class="co-line" pathLength="1" d="M470 700 L470 470 L330 470"/>
+          <circle class="co-dot" cx="720" cy="540" r="14"/>
+          <circle class="co-dot" cx="1110" cy="800" r="14"/>
+          <circle class="co-dot" cx="470" cy="700" r="14"/>
+        </svg>
+        <span class="co-label l" style="left:40%;top:28.1%;--k:0"><b>Meade LX200</b><span class="sub">Model confirmed by me</span></span>
+        <span class="co-label r" style="left:73.75%;top:39.4%;--k:1"><b>Derek</b><span class="sub">Named by me</span></span>
+        <span class="co-label l" style="left:20.6%;top:44%;--k:2"><b>TJ</b><span class="sub">Named by me</span></span>
+      </div>
+    </div>
+    <figcaption id="openerCap"><span>The tool&rsquo;s draft called them &ldquo;visitors&rdquo;</span><span>Kent State University Observatory, Nov. 18, 2026 · Photograph by Rami Daud</span></figcaption>
+  </figure>
   <section class="capstrip" data-fx="rise" aria-labelledby="capTitle">
     <h3 class="sub" id="capTitle">What I do with AI, and where to see it</h3>
     <p>I test tools on real communications work before I ask anyone else to use them. Each part links to the work that shows it.</p>
@@ -1912,5 +1972,6 @@ html.embed .stage { cursor: grab; }
   });
 })();
 </script>
+<script src="assets/js/motion.js" defer></script>
 </body>
 </html>
