@@ -757,6 +757,59 @@ html.fxio .opener:not(.seen) .co-label.c { transform: translate(-50%, calc(-100%
   .co-label { font-size: 9px; padding: 4px 6px; } .co-label b { font-size: 15px; }
   .co-label .sub { display: none; }
 }
+.flight-link { font-size: 14px; color: var(--ink); text-underline-offset: 3px; min-height: 44px; display: inline-flex; align-items: center; }
+.flight { position: relative; margin-top: var(--s4); }
+.flight-pin { position: sticky; top: 0; background: var(--paper); border: 1px solid var(--ink); padding: var(--s4); display: grid; gap: var(--s3); align-content: start; }
+.flight-top h3 { margin: 4px 0 0; font: 400 clamp(26px, 3vw, 38px)/1.05 var(--serif); }
+.flight-body { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: var(--s4); align-items: start; }
+.flight-steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; border-top: 1px solid var(--rule); }
+.flight-steps li { border-bottom: 1px solid var(--rule); }
+.flight-steps button { all: unset; box-sizing: border-box; cursor: pointer; display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 2px 10px; width: 100%; padding: 12px 6px; min-height: 44px; opacity: .38; transition: opacity .35s, background .35s; }
+.flight-steps button:focus-visible { outline: 2px solid var(--focus); outline-offset: -2px; }
+.flight-steps .fs-n { grid-row: span 2; font: 500 11px/1.6 var(--mono); color: var(--ink-2); }
+.flight-steps b { font: 400 21px/1.1 var(--serif); }
+.flight-steps .fs-d { font-size: 13.5px; line-height: 1.45; color: var(--ink-2); max-height: 0; overflow: hidden; transition: max-height .45s var(--ease); }
+.flight-steps .done button { opacity: .7; }
+.flight-steps .now button { opacity: 1; background: var(--card); }
+.flight-steps .now .fs-d { max-height: 6em; }
+.flight-steps .gate.now b, .flight-steps .gate.now .fs-n { color: var(--red); }
+.flight-demo { position: relative; }
+.flight-demo > div { position: relative; }
+.flight-demo .fs-state { color: var(--ink-2); }
+.flight-demo[data-view="approved"] .fs-state { color: var(--red); }
+.gate-demo[data-view="empty"] .gate-kw li { display: none; }
+.gate-demo[data-view="empty"] .gate-cap { color: var(--ink-2); font-style: italic; }
+.fs-stamp { position: absolute; right: 0; top: -6px; background: var(--card); font: 500 12px/1 var(--mono); letter-spacing: .16em; text-transform: uppercase; color: var(--red); border: 2px solid var(--red); padding: 8px 10px; transform: rotate(-6deg) scale(1.6); opacity: 0; transition: transform .35s cubic-bezier(.3,1.6,.5,1), opacity .2s; pointer-events: none; }
+.flight-demo[data-step="3"] .fs-stamp { opacity: 1; transform: rotate(-6deg) scale(1); }
+.flight-bar { height: 2px; background: var(--rule); }
+.flight-bar i { display: block; height: 100%; width: 100%; background: var(--red); transform-origin: 0 50%; transform: scaleX(var(--p, 1)); }
+.pullq { margin: var(--s6) 0 var(--s4); font: 400 clamp(38px, 5.6vw, 84px)/1 var(--serif); letter-spacing: -.01em; display: grid; gap: 4px; padding: var(--s4) 0; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink); overflow: clip; }
+.pullq span { display: block; transition: transform 1.1s cubic-bezier(.2,.7,.2,1), opacity .9s; }
+.pullq span + span { color: var(--red); font-style: italic; text-align: right; transition-delay: .25s; }
+html.fxio .pullq:not(.seen) span:first-child { transform: translateX(-14%); opacity: 0; }
+html.fxio .pullq:not(.seen) span + span { transform: translateX(14%); opacity: 0; }
+.orbit { margin: 0; position: relative; background: #000; border: 1px solid var(--rule); }
+.orbit canvas { display: block; width: 100%; height: auto; aspect-ratio: 720 / 466; }
+.orbit::after { content: ""; position: absolute; inset: auto 0 0 0; height: 30%; background: linear-gradient(transparent, #000); pointer-events: none; }
+.orbit-hint { position: absolute; left: 10px; bottom: 8px; z-index: 1; color: #f5edd8; transition: opacity .6s; }
+.orbit.moved .orbit-hint { opacity: 0; }
+.orbit-src { margin: 0; }
+.orbit-src img { display: block; width: 100%; height: auto; border: 1px solid var(--rule); }
+.orbit-src figcaption { font: 10.5px/1.5 var(--mono); letter-spacing: .04em; color: var(--ink-2); margin-top: 6px; }
+@media (max-width: 900px) {
+  .flight-body { grid-template-columns: 1fr; gap: var(--s3); }
+  .flight-pin { padding: var(--s3); }
+  .flight-steps { grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 0; }
+  .flight-steps li { border-bottom: 0; border-top: 2px solid var(--rule); }
+  .flight-steps .now { border-top-color: var(--red); }
+  .flight-steps button { grid-template-columns: 1fr; padding: 8px 4px; }
+  .flight-steps .fs-n { grid-row: auto; }
+  .flight-steps b { font-size: 15px; }
+  .flight-steps .fs-d { display: none; }
+  .flight-demo .gate-cap { font-size: 16px; min-height: 0; }
+  .flight-demo > img { aspect-ratio: 16 / 6; }
+  .fs-stamp { display: none; }
+}
 </style>
 <script>document.documentElement.classList.add("js");window.RD_SHELL=true;</script>
 <link rel="stylesheet" href="assets/css/shell-pages.css">
@@ -865,28 +918,43 @@ html.fxio .opener:not(.seen) .co-label.c { transform: translate(-50%, calc(-100%
       <span class="credit">Digital asset lead · Kent State UCM · fall 2026</span>
       <p>Claude suggests. A photographer decides. Nothing reaches PhotoShelter without a human review.</p>
       <div class="btns"><a class="btn solid" href="work/lightroom-archive/">Read the case file</a></div>
-      <div class="gate-demo" data-view="draft">
-        <img src="assets/img/ai-work/dsc0250-observatory.jpg" alt="Two people under red light inside the Kent State observatory dome, beside a large telescope." width="1600" height="1067" loading="lazy">
-        <div>
-          <div class="gate-sw" role="group" aria-label="Metadata version"><button type="button" data-v="draft" aria-pressed="true">Claude&rsquo;s draft</button><button type="button" data-v="approved" aria-pressed="false">Approved</button></div>
-          <p class="gate-cap" aria-live="polite" data-draft="&ldquo;Visitors take turns at the telescope under red light inside the Kent State University observatory dome.&rdquo;" data-approved="&ldquo;TJ at the Meade LX200 inside the Kent State University Observatory dome as Derek looks on.&rdquo;">&ldquo;Visitors take turns at the telescope under red light inside the Kent State University observatory dome.&rdquo;</p>
-          <ul class="gate-kw" aria-label="Keywords"><li class="swap">Kent State University</li><li class="add" style="--d:1">Kent State University Observatory</li><li class="swap">observatory</li><li class="add" style="--d:2">Meade LX200</li><li>telescope</li><li>astronomy</li><li class="add" style="--d:3">astronomy club</li><li class="swap">stargazing</li><li class="add" style="--d:4">Moon</li><li>night</li><li>red light</li><li class="swap">dome</li><li class="add" style="--d:5">observatory dome</li><li class="no">visitors</li><li class="no">public viewing</li><li class="add" style="--d:6">Derek</li><li class="add" style="--d:7">TJ</li><li class="add" style="--d:8">Framing the Cosmos</li></ul>
-          <p class="gate-note">One real photo, Nov 24, 2026. A person caught &ldquo;visitors&rdquo;: it was an astronomy club night.</p>
-        </div>
-      </div>
+      <a class="flight-link" href="#practice/flight">Watch one real photo go through it <span aria-hidden="true">&darr;</span></a>
       <ol class="flow" aria-label="Flight plan"><li><span>Lightroom</span></li><li><span>Claude</span></li><li class="gate"><span>Human gate</span></li><li><span>PhotoShelter</span></li></ol>
       <dl class="prov"><dt>AI did</dt><dd>Suggests keywords and descriptions across the catalog.</dd><dt>Checked</dt><dd>A photographer approves, edits or rejects every suggestion. Time saved: not measured yet.</dd></dl>
     </article>
     <article class="case" id="case-splat" tabindex="-1" data-fx="deal" style="--i:2">
       <div class="kicker"><span class="partref"><i>P07</i>Case study · Evaluate</span><span class="status progress">In progress</span></div>
-      <figure class="splat-pair"><img src="assets/img/ai-work/splat-369-frames.jpg" alt="Contact sheet of 48 of the 369 photographs: two men standing back to back on a campus sidewalk, photographed from every angle in a circle." width="1600" height="866" loading="lazy"><img src="assets/img/ai-work/splat-render-clean.jpg" alt="The trained 3D scene rendered in Blender: the same two men on the sidewalk, with green camera outlines circling them where each photo was taken." width="900" height="1600" loading="lazy"><figcaption>Left: 48 of the 369 photographs. Right: the trained scene, cleaned in Blender.</figcaption></figure>
+      <figure class="orbit" data-frames="60" data-src="assets/img/ai-work/orbit/f{n}.jpg">
+        <canvas width="720" height="466" role="img" aria-label="The trained 3D scene of TJ and Derek on a campus sidewalk. Scrolling turns the camera around them."></canvas>
+        <span class="orbit-hint label" aria-hidden="true">Scroll to turn the camera</span>
+      </figure>
+      <figure class="orbit-src"><img src="assets/img/ai-work/splat-369-frames.jpg" alt="Contact sheet of 48 of the 369 photographs: TJ and Derek standing back to back, photographed from every angle in a circle." width="1600" height="866" loading="lazy"><figcaption>Above: the trained scene, 60 frames of a working render. Below: 48 of the 369 photographs it was built from.</figcaption></figure>
       <div class="bignum"><b>369</b><span>photographs</span><i aria-hidden="true">to</i><b class="r">1.8M</b><span>Gaussian splats</span></div>
       <span class="credit">Photographer and process lead · personal R&amp;D · 2026</span>
       <p>The TJ and Derek capture: 369 Nikon frames run through COLMAP into about 1.8 million splats, finished in Blender and Resolve. How a new tool earns a place in the workflow.</p>
-      <dl class="prov"><dt>Tools</dt><dd>COLMAP, Gaussian splatting, Blender, DaVinci Resolve.</dd><dt>Honest label</dt><dd>Both images are from the real capture. The render is a working frame from Nov 13, 2026, not a final.</dd></dl>
+      <dl class="prov"><dt>Tools</dt><dd>COLMAP, Gaussian splatting, Blender, DaVinci Resolve.</dd><dt>Honest label</dt><dd>Everything shown is from the real capture. The orbit is 60 frames of a working render from Nov 12, 2026, not a final.</dd></dl>
       <div class="btns"><a class="btn" href="https://midlifesurvivors.com/devlog/14-achievement-unlocked-gaussian-splatting/" target="_blank" rel="noopener">Read the devlog memo<span class="sr"> (opens in a new window)</span></a></div>
     </article>
   </div>
+  <section class="flight" id="flight" tabindex="-1" aria-labelledby="flightTitle">
+    <div class="flight-pin">
+      <div class="flight-top"><span class="label">Case file 01 · one real photo, step by step</span><h3 id="flightTitle">Where a person steps in</h3></div>
+      <div class="flight-body">
+        <ol class="flight-steps" aria-label="Workflow steps"><li><button type="button" data-step="0"><span class="fs-n">01</span><b>Lightroom</b><span class="fs-d">The photo lands in the catalog with no caption and no keywords.</span></button></li><li><button type="button" data-step="1"><span class="fs-n">02</span><b>Claude</b><span class="fs-d">Claude drafts a caption and ten keywords in seconds.</span></button></li><li class="gate"><button type="button" data-step="2"><span class="fs-n">03</span><b>Human gate</b><span class="fs-d">I check the draft against my notes. &ldquo;Visitors&rdquo; is wrong. Names and the telescope go in.</span></button></li><li><button type="button" data-step="3"><span class="fs-n">04</span><b>Back to the catalog</b><span class="fs-d">Only the approved version is written to Lightroom. For UCM work, PhotoShelter comes next.</span></button></li></ol>
+        <div class="gate-demo flight-demo" data-view="approved" data-step="3">
+          <img src="assets/img/ai-work/dsc0250-observatory.jpg" alt="Two people under red light inside the Kent State observatory dome, beside a large telescope." width="1600" height="1067" loading="lazy">
+          <div>
+            <span class="fs-state label" aria-live="polite">Approved · written to Lightroom</span>
+            <p class="gate-cap" data-empty="No caption. No keywords." data-draft="&ldquo;Visitors take turns at the telescope under red light inside the Kent State University observatory dome.&rdquo;" data-approved="&ldquo;TJ at the Meade LX200 inside the Kent State University Observatory dome as Derek looks on.&rdquo;">&ldquo;TJ at the Meade LX200 inside the Kent State University Observatory dome as Derek looks on.&rdquo;</p>
+            <ul class="gate-kw" aria-label="Keywords"><li class="swap">Kent State University</li><li class="add" style="--d:1">Kent State University Observatory</li><li class="swap">observatory</li><li class="add" style="--d:2">Meade LX200</li><li>telescope</li><li>astronomy</li><li class="add" style="--d:3">astronomy club</li><li class="swap">stargazing</li><li class="add" style="--d:4">Moon</li><li>night</li><li>red light</li><li class="swap">dome</li><li class="add" style="--d:5">observatory dome</li><li class="no">visitors</li><li class="no">public viewing</li><li class="add" style="--d:6">Derek</li><li class="add" style="--d:7">TJ</li><li class="add" style="--d:8">Framing the Cosmos</li></ul>
+            <span class="fs-stamp" aria-hidden="true">Approved</span>
+          </div>
+        </div>
+      </div>
+      <div class="flight-bar" aria-hidden="true"><i></i></div>
+    </div>
+  </section>
+  <p class="pullq" data-reveal><span>The tool suggests.</span> <span>A person decides.</span></p>
   <p class="small-src">Case file 03, <a href="work/eclipse-2017/">Eclipse Across America</a>, sits on the Photography sheet. It ends with what that day taught me about explaining complex work.</p>
   <h3 class="sub" data-fx="rise">Guides <a class="sub-more" href="guides/">All guides on one page</a></h3>
   <div class="guides2">
