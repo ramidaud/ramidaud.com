@@ -6,6 +6,9 @@ html.js #s-page.current { display: block; }
 :where(#s-page) img, :where(#s-page) video { display: block; max-width: 100%; height: auto; }
 :where(#s-page) .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 body[data-sec="page"] #nextNav { display: none; }
+/* Inside the sheet the phone panel pads 4px a side, so a full-bleed block pulls back exactly that much.
+   (ftc.css adds 6px more for the standalone page's frame, which made essays 12px too wide here.) */
+@media (max-width: 760px) { #s-page .night { margin-left: calc(-1 * var(--s1)); margin-right: calc(-1 * var(--s1)); } }
 
 /* sheet head, as on inner pages */
 :where(#s-page) .sheet-head { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: var(--s2) var(--s5); align-items: end; padding-bottom: var(--s4); border-bottom: 2px solid var(--ink); }
