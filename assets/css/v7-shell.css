@@ -202,42 +202,55 @@ html.rv .rv-i:not(.rv-on) img, html.rv img.rv-i:not(.rv-on) { filter: brightness
 .hu { color: var(--red); text-decoration: underline; text-decoration-color: color-mix(in srgb, var(--red) 45%, transparent); text-decoration-thickness: 2px; text-underline-offset: 3px; }
 .made::after, .credit-line::after { content: "Gold: what a tool did \00b7  Red: where a person decided"; display: block; margin-top: 10px; font: 500 10.5px/1.4 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--ink-2); }
 
-/* ===== Red line indicators: each red marker swells when it appears, then eases back =====
-   Nav and sheet tabs: whenever a link becomes current. Side rules (notes, now/next): when they scroll
-   into view. Pull quotes: the rule springs thick and the quote bounces into place beside it.
-   The swell is an inset shadow on a registered --mark-x, so the line grows inward and nothing else moves.
+/* ===== Red line indicators: the line floods its whole space red, holds, then draws back to the line =====
+   Nav and sheet tabs: whenever a link becomes current (fills from the underline up, or from the side marker
+   across). Side rules (pull quotes, notes, now/next): once as they scroll into view, filling from the rule
+   across; pull quotes also bounce into place. Text turns dark while the red passes over it, light once the
+   space is full, then back. The fill is a background layer on a registered --mark-p, so nothing moves.
    Without @property support the lines simply stay still. */
-@property --mark-x { syntax: "<length>"; inherits: false; initial-value: 0px; }
-@keyframes rd-thick {
-  0%   { --mark-x: 0px;  animation-timing-function: cubic-bezier(.22, .9, .3, 1); }
-  38%  { --mark-x: 8px;  animation-timing-function: cubic-bezier(.45, 0, .25, 1); }
-  100% { --mark-x: 0px; }
+@property --mark-p { syntax: "<percentage>"; inherits: false; initial-value: 0%; }
+@keyframes rd-fill {
+  0%   { --mark-p: 0%;   color: var(--mark-rest); animation-timing-function: cubic-bezier(.3, .7, .3, 1); }
+  8%   { color: var(--ink); }
+  32%  { --mark-p: 100%; color: var(--ink); }
+  38%  { color: var(--paper); }
+  62%  { --mark-p: 100%; color: var(--paper); animation-timing-function: cubic-bezier(.55, 0, .3, 1); }
+  68%  { color: var(--ink); }
+  92%  { color: var(--ink); }
+  100% { --mark-p: 0%;   color: var(--mark-rest); }
 }
-@keyframes rd-spring {
-  0%   { --mark-x: 0px;  translate: -28px 0; opacity: .25; animation-timing-function: cubic-bezier(.2, .8, .3, 1); }
-  30%  { --mark-x: 12px; translate: 7px 0;   opacity: 1;   animation-timing-function: cubic-bezier(.4, 0, .4, 1); }
-  48%  { --mark-x: 2px;  translate: -3px 0; }
-  64%  { --mark-x: 7px;  translate: 1.5px 0; }
-  80%  { --mark-x: 2px;  translate: -.5px 0; }
-  100% { --mark-x: 0px;  translate: 0 0; }
+@keyframes rd-fill-bounce {
+  0%   { --mark-p: 0%;   color: var(--mark-rest); translate: -28px 0; opacity: .3; animation-timing-function: cubic-bezier(.3, .7, .3, 1); }
+  8%   { color: var(--ink); }
+  18%  { translate: 8px 0; opacity: 1; }
+  26%  { translate: -4px 0; }
+  32%  { --mark-p: 100%; color: var(--ink); translate: 2px 0; }
+  38%  { color: var(--paper); translate: 0 0; }
+  62%  { --mark-p: 100%; color: var(--paper); animation-timing-function: cubic-bezier(.55, 0, .3, 1); }
+  68%  { color: var(--ink); }
+  92%  { color: var(--ink); }
+  100% { --mark-p: 0%;   color: var(--mark-rest); translate: 0 0; }
 }
-.nav a[aria-current="true"], .nav a[aria-current="page"] { box-shadow: inset 0 calc(-2px - var(--mark-x)) 0 var(--red); animation: rd-thick 1.6s .15s both; }
-.sheets a[aria-current="true"] { box-shadow: inset calc(3px + var(--mark-x)) 0 0 var(--red); animation: rd-thick 1.6s .15s both; }
-@media (max-width: 760px) { .sheets a[aria-current="true"] { box-shadow: inset 0 calc(-3px - var(--mark-x)) 0 var(--red); } }
-.mark-in { box-shadow: inset var(--mark-x) 0 0 var(--red); animation: rd-thick 1.6s .2s both; }
-.pull.mark-in, .ftc-essays blockquote.mark-in { animation: rd-spring 1.5s .1s both; }
+.nav a[aria-current="true"], .nav a[aria-current="page"] { --mark-rest: var(--red); box-shadow: inset 0 -2px 0 var(--red); background-image: linear-gradient(0deg, var(--red) var(--mark-p), transparent var(--mark-p)); animation: rd-fill 2.2s .35s backwards; }
+.sheets a[aria-current="true"] { --mark-rest: var(--red); color: var(--red); box-shadow: inset 3px 0 0 var(--red); background-image: linear-gradient(90deg, var(--red) var(--mark-p), transparent var(--mark-p)); animation: rd-fill 2.2s .35s backwards; }
+.sheets a[aria-current="true"] b, .sheets a[aria-current="true"] span { color: inherit; }
+@media (max-width: 760px) { .sheets a[aria-current="true"] { box-shadow: inset 0 -3px 0 var(--red); background-image: linear-gradient(0deg, var(--red) var(--mark-p), transparent var(--mark-p)); } }
+.mark-in { --mark-rest: var(--ink); background-image: linear-gradient(90deg, var(--red) var(--mark-p), transparent var(--mark-p)); animation: rd-fill 2.4s .2s backwards; }
+.pull.mark-in, .ftc-essays blockquote.mark-in { animation: rd-fill-bounce 2.6s .1s backwards; }
+/* while a side rule is filling, everything inside it follows the fill's text color; motion.js/reveal.js add .mark-done after */
+.mark-in:not(.mark-done) * { color: inherit !important; }
 
-/* ===== The nameplate: the a and i in "Rami" catch a gold glint now and then, a quiet hint at AI =====
-   A color change with a soft glow (not a gradient sweep, which Safari often fails to repaint). */
-:root { --glint: #c08a12; --glint-glow: rgba(216, 160, 40, .55); }
-:root[data-theme="dark"] { --glint: #f4c254; --glint-glow: rgba(244, 194, 84, .6); }
+/* ===== The nameplate: the a and i in "Rami" catch a blueprint-blue glint now and then, a quiet hint at AI =====
+   Blue is the camera drawing's line color, so it reads as part of the technical drawing, apart from red (people). */
+:root { --glint: #2f5fa0; --glint-glow: rgba(47, 95, 160, .55); }
+:root[data-theme="dark"] { --glint: #bcd8ff; --glint-glow: rgba(169, 196, 230, .85); }
 .wm { white-space: nowrap; }
-.wm-ai { animation: rd-glint 7s 1.2s infinite; }
-.wm-ai + .wm-ai, .wm-ai ~ .wm-ai { animation-delay: 1.45s; }
+.wm-ai { display: inline-block; transform-origin: 50% 80%; animation: rd-glint 6s 1s infinite; }
+.wm-ai + .wm-ai, .wm-ai ~ .wm-ai { animation-delay: 1.3s; }
 @keyframes rd-glint {
-  0%, 78%, 100% { color: var(--ink); text-shadow: 0 0 0 transparent; }
-  84% { color: var(--glint); text-shadow: 0 0 8px var(--glint-glow), 0 0 2px var(--glint-glow); }
-  92% { color: var(--glint); text-shadow: 0 0 3px var(--glint-glow); }
+  0%, 72%, 100% { color: var(--ink); text-shadow: 0 0 0 transparent; transform: none; }
+  78% { color: var(--glint); text-shadow: 0 0 14px var(--glint-glow), 0 0 3px var(--glint-glow); transform: translateY(-2px) scale(1.16); }
+  90% { color: var(--glint); text-shadow: 0 0 6px var(--glint-glow); transform: translateY(0) scale(1.04); }
 }
 .wordmark:hover .wm-ai { animation: none; }
 @media (prefers-reduced-motion: reduce) { .wm-ai { animation: none; } }

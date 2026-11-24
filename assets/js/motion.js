@@ -19,10 +19,10 @@
   /* Red side rules (pull quotes, notes, now/next lines) swell once as they come into view. Styles: .mark-in */
   var MARKS = ".pull, .note, .ai-role, .nownext, .pj .shows, .ftc-essays blockquote";
   var mio = new IntersectionObserver(function (es) {
-    es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("mark-in"); mio.unobserve(e.target); } });
+    es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("mark-in"); mio.unobserve(e.target); e.target.addEventListener("animationend", function done(ev) { if (ev.target !== e.target || ev.animationName.indexOf("rd-fill") !== 0) return; e.target.classList.add("mark-done"); e.target.removeEventListener("animationend", done); }); } });
   }, { rootMargin: "0px 0px -12% 0px", threshold: 0.6 });
   function arm(sheet) {
-    Array.prototype.forEach.call(sheet.querySelectorAll(MARKS), function (el) { el.classList.remove("mark-in"); mio.observe(el); });
+    Array.prototype.forEach.call(sheet.querySelectorAll(MARKS), function (el) { el.classList.remove("mark-in", "mark-done"); mio.observe(el); });
     opened = performance.now();
     Array.prototype.forEach.call(sheet.querySelectorAll("[data-fx], [data-reveal]"), function (el) {
       el.classList.remove("seen", "late");
