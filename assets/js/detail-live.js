@@ -5,6 +5,8 @@
   "use strict";
   var view = document.querySelector(".camslot .dv-view");
   if (!view || view.classList.contains("live")) return;
+  /* Phones and tablets keep the still: the live drawing loads the whole home page in a frame, which is too heavy for mobile Safari. */
+  if (window.matchMedia && (window.matchMedia("(max-width: 900px)").matches || window.matchMedia("(pointer: coarse)").matches)) return;
   try { var c = document.createElement("canvas"); if (!(c.getContext("webgl") || c.getContext("experimental-webgl"))) return; } catch (e) { return; }
   var me = document.currentScript && document.currentScript.src;
   var base = me ? me.replace(/assets\/js\/detail-live\.js.*$/, "") : "/";
