@@ -13,5 +13,5 @@ return {
     title = "Web Gallery",
     file = "WebGalleryServiceProvider.lua",
   },
-  VERSION = { major = 0, minor = 1, revision = 0, build = 1 },
+  VERSION = { major = 0, minor = 1, revision = 1, build = 2 },
 }

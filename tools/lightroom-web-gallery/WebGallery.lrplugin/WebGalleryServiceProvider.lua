@@ -223,12 +223,15 @@ function provider.processRenderedPhotos(functionContext, exportContext)
     if settings.wgRequireCaption and caption == "" then reason = "No caption yet. Add one in the Metadata panel, then publish again." end
     if not reason and settings.wgRequireAlt and alt == "" then reason = "No alt text yet. Add it in the Metadata panel, then publish again." end
 
+    -- Lightroom renders every photo in a publish; a plugin can't skip one once it has started.
+    -- So a held-back photo is rendered, its file is thrown away, and the photo is marked failed
+    -- with the reason. It stays in "Modified Photos to Re-Publish" until someone fixes it.
+    local ok, pathOrMessage = rendition:waitForRender()
     if reason then
-      rendition:skipRender()
+      if ok and pathOrMessage and LrFileUtils.exists(pathOrMessage) then LrFileUtils.delete(pathOrMessage) end
       rendition:uploadFailed(reason)
       held[#held + 1] = fileLabel ~= "" and fileLabel or ("photo " .. tostring(photo.localIdentifier))
     else
-      local ok, pathOrMessage = rendition:waitForRender()
       if ok then
         local t = captureTime(photo)
         local stamp = t and LrDate.timeToUserFormat(t, "%Y%m%d%H%M%S") or "00000000000000"

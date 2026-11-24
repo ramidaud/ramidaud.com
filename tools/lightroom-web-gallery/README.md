@@ -9,7 +9,7 @@ Each published collection becomes a folder of web-sized JPEGs and one `gallery.j
 
 No internet connection, no account, no live link into your catalog.
 
-Version 0.1 · By Rami Daud · Built with Claude · MIT license
+Version 0.1.1 · By Rami Daud · Built with Claude · MIT license
 
 ## Install (about 2 minutes)
 
