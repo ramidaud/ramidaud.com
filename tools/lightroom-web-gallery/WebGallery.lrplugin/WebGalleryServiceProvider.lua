@@ -119,13 +119,25 @@ local function field(photo, key)
   return ""
 end
 
+local function pluginProp(photo, key)
+  local ok, v = pcall(photo.getPropertyForPlugin, photo, _PLUGIN, key)
+  if ok and type(v) == "string" then return trim(v) end
+  return ""
+end
+
 local function altText(photo)
-  -- Lightroom Classic 13 added IPTC Alt Text. Try the known key names.
+  -- Lightroom Classic 13 added IPTC Alt Text. Try the known key names, then the approved Web Gallery field.
   for _, key in ipairs { "altTextAccessibility", "altText" } do
     local v = field(photo, key)
     if v ~= "" then return v end
   end
-  return ""
+  return pluginProp(photo, "wgAlt")
+end
+
+local function fileLabelOf(photo)
+  local ok, p = pcall(photo.getRawMetadata, photo, "path")
+  if ok and type(p) == "string" and p ~= "" then return LrPathUtils.leafName(p) end
+  return "photo " .. tostring(photo.localIdentifier)
 end
 
 local function keywordList(photo)
@@ -178,7 +190,7 @@ local function rebuildGallery(dir, collectionName)
     collection = collectionName,
     updated = LrDate.timeToW3CDate(LrDate.currentTime()),
     count = #items,
-    generator = "Publish to Web Gallery 0.1 (Lightroom Classic)",
+    generator = "Publish to Web Gallery 0.2 (Lightroom Classic)",
   }
   local headText = Json.encode(head)
   -- Splice the sidecar objects in as the "photos" array without re-parsing them.
@@ -217,10 +229,15 @@ function provider.processRenderedPhotos(functionContext, exportContext)
   for _, rendition in exportContext:renditions { stopIfCanceled = true } do
     local photo = rendition.photo
     local title, caption, alt = field(photo, "title"), field(photo, "caption"), altText(photo)
-    local fileLabel = field(photo, "fileName")
+    local fileLabel = fileLabelOf(photo)
+    local status = pluginProp(photo, "wgStatus")
 
     local reason = nil
-    if settings.wgRequireCaption and caption == "" then reason = "No caption yet. Add one in the Metadata panel, then publish again." end
+    if status == "rejected" then reason = "Marked Not for the web." end
+    if not reason and settings.wgRequireCaption and caption == "" then
+      reason = status == "drafted" and "A caption draft is waiting for your review. Approve it, then publish again."
+        or "No caption yet. Send it for drafts or write one, then publish again."
+    end
     if not reason and settings.wgRequireAlt and alt == "" then reason = "No alt text yet. Add it in the Metadata panel, then publish again." end
 
     -- Lightroom renders every photo in a publish; a plugin can't skip one once it has started.
@@ -230,7 +247,7 @@ function provider.processRenderedPhotos(functionContext, exportContext)
     if reason then
       if ok and pathOrMessage and LrFileUtils.exists(pathOrMessage) then LrFileUtils.delete(pathOrMessage) end
       rendition:uploadFailed(reason)
-      held[#held + 1] = fileLabel ~= "" and fileLabel or ("photo " .. tostring(photo.localIdentifier))
+      held[#held + 1] = fileLabel
     else
       if ok then
         local t = captureTime(photo)
@@ -251,6 +268,7 @@ function provider.processRenderedPhotos(functionContext, exportContext)
           credit = field(photo, "creator"),
           copyright = field(photo, "copyright"),
           checked = caption ~= "",
+          status = status ~= "" and status or nil,
         }
         writeFile(LrPathUtils.child(dir, base .. ".json"), "    " .. Json.encode(record, "    "))
         rendition:recordPublishedPhotoId(base)
@@ -269,7 +287,7 @@ function provider.processRenderedPhotos(functionContext, exportContext)
     local list = table.concat(held, ", ", 1, math.min(#held, 8)) .. (#held > 8 and (" and " .. (#held - 8) .. " more") or "")
     LrDialogs.message(
       collectionName .. ": " .. published .. " published, " .. #held .. " held back",
-      "These need a caption before they can go out: " .. list .. ". The gallery now has " .. count .. " photos.",
+      "These need an approved caption before they can go out: " .. list .. ".\n\nSelect them in the collection and use Library > Plug-in Extras > Web Gallery: Send selected for caption drafts. The gallery now has " .. count .. " photos.",
       "info"
     )
   end

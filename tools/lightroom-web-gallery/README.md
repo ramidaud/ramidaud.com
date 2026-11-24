@@ -9,7 +9,7 @@ Each published collection becomes a folder of web-sized JPEGs and one `gallery.j
 
 No internet connection, no account, no live link into your catalog.
 
-Version 0.1.1 · By Rami Daud · Built with Claude · MIT license
+Version 0.2 · By Rami Daud · Built with Claude · MIT license
 
 ## Install (about 2 minutes)
 
@@ -41,6 +41,22 @@ nasa/
   20170821134512-48211.jpg         the photo
   20170821134512-48211.json        its title, caption, alt text, date, keywords
 ```
+
+## Captions: drafts first, then your approval
+
+Most archives have photos without captions. Version 0.2 adds a loop for that:
+
+1. Select a batch (15 to 60 photos) and choose **Library > Plug-in Extras > Web Gallery: Send selected for caption drafts**.
+   Small proofs and what Lightroom knows (date, folder, file name, keywords) go to `_drafts/<date-time>/`.
+2. Ask an assistant to draft them (see the skill below). It writes `drafts.json` in that folder.
+3. **Web Gallery: Load caption drafts.** Drafts appear in new fields in the Metadata panel
+   (choose the **Web Gallery** preset at the top of the panel). Your real caption is untouched.
+4. Read each draft, fix anything wrong, then select the batch and choose **Web Gallery: Approve drafts for selected photos**.
+   Drafts become your real title, caption and keywords. A draft with **[?]** in it won't approve until you resolve it.
+5. Publish.
+
+**Gallery status** (Not started, Sent for drafts, Draft waiting for review, Approved, Not for the web) is searchable,
+so a smart collection like "Gallery status is Draft waiting for review" is your to-do list.
 
 ## Using it with Claude
 
