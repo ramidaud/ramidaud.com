@@ -85,6 +85,7 @@
         clearTimeout(timer);
         if (res.ok && res.d.success) {
           form.classList.add('sent');
+          if (window.RD && RD.track) RD.track('contact-sent', 'Contact form sent');
           status.className = 'form-status is-ok';
           status.textContent = 'Sent. Thank you, I’ll be in touch.';
           form.reset();

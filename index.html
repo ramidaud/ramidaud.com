@@ -1222,7 +1222,7 @@ html.js .quiz:not(.picked) .qa-answer { display: none; }
   </div>
   <section class="block" id="ab-contact"><h3 class="sub">Contact</h3>
     <p class="bigline">If you'd like to collaborate, discuss a project, or simply get in touch, I'm always interested in conversations about AI adoption and training for communication teams, photography, and science communication.</p>
-    <div class="btns"><a class="btn solid" href="contact/">Send a message</a><a class="btn" href="mailto:ramidaud@me.com">ramidaud@me.com</a><a class="btn" href="https://www.linkedin.com/in/ramidaudphoto/" target="_blank" rel="noopener">LinkedIn<span class="sr"> (opens in a new window)</span></a><a class="btn" href="https://www.instagram.com/ramidaud/" target="_blank" rel="noopener">Instagram<span class="sr"> (opens in a new window)</span></a><a class="btn" href="https://ramidaud.substack.com/" target="_blank" rel="noopener">Substack<span class="sr"> (opens in a new window)</span></a><a class="btn" href="https://midlifesurvivors.com/" target="_blank" rel="noopener">Midlife Survivors<span class="sr"> (opens in a new window)</span></a></div></section>
+    <div class="btns"><a class="btn solid" href="contact/">Send a message</a><a class="btn" href="mailto:ramidaud@me.com">ramidaud@me.com</a><a class="btn" href="https://www.linkedin.com/in/ramidaudphoto/" target="_blank" rel="noopener">LinkedIn<span class="sr"> (opens in a new window)</span></a><a class="btn" href="https://www.instagram.com/ramidaud/" target="_blank" rel="noopener">Instagram<span class="sr"> (opens in a new window)</span></a><a class="btn" href="https://ramidaud.substack.com/" target="_blank" rel="noopener">Substack<span class="sr"> (opens in a new window)</span></a><a class="btn" href="https://midlifesurvivors.com/" target="_blank" rel="noopener">Midlife Survivors<span class="sr"> (opens in a new window)</span></a></div><p class="small-src">This site counts visits with GoatCounter. No cookies, no personal data.</p></section>
 </section>
 <section class="sheet" id="s-record" data-sec="record" aria-labelledby="recordTitle">
   <div class="sheet-head" data-no="07" data-fx="slide">
@@ -2101,6 +2101,7 @@ html.js .quiz:not(.picked) .qa-answer { display: none; }
         if (q.classList.contains("picked")) return;
         q.classList.add("picked"); b.classList.add("chosen");
         var real = b.getAttribute("data-real") === "true";
+        if (window.RD && RD.track) RD.track(real ? "quiz-picked-real" : "quiz-picked-ai", real ? "Quote test: picked the real quote" : "Quote test: picked the AI quote");
         v.innerHTML = real ? "Right. <em>B is the real one.</em> It\u2019s plainer, and that\u2019s the tell." : "That\u2019s the generated one. <em>Polish is what these tools do best.</em>";
         if (ans) { ans.open = true; var s = ans.querySelector("summary"); if (s) s.textContent = "The answer"; }
         Array.prototype.forEach.call(q.querySelectorAll(".qa-pick"), function (o) { o.setAttribute("aria-disabled", "true"); });
@@ -2109,5 +2110,7 @@ html.js .quiz:not(.picked) .qa-answer { display: none; }
   });
 })();
 </script>
+<script src="/assets/js/stats.js"></script>
+<script data-goatcounter="https://ramidaud.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>

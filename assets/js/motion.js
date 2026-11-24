@@ -72,20 +72,21 @@ RD.onScroll = function (fn) {
   Array.prototype.forEach.call(document.querySelectorAll(".flight"), function (sec) {
     var pin = sec.querySelector(".flight-pin"), demo = sec.querySelector(".flight-demo");
     var cap = demo.querySelector(".gate-cap"), state = demo.querySelector(".fs-state");
-    var items = sec.querySelectorAll(".flight-steps li"), cur = -1, sized = 0;
+    var items = sec.querySelectorAll(".flight-steps li"), cur = -1, sized = 0, measuring = false;
     var dec = document.createElement("textarea");
     function size() {
       if (!pin.offsetHeight) return false;
       var sc = RD.scroller(sec), vh = RD.view(sc).h, w = window.innerWidth;
       var per = Math.round(vh * (w < 900 ? 0.42 : 0.5));
-      var keep = cur; pin.style.minHeight = ""; cur = -1; set(3);
+      var keep = cur; pin.style.minHeight = ""; cur = -1; measuring = true; set(3);
       var tall = pin.offsetHeight; pin.style.minHeight = tall + "px";
-      cur = -1; set(keep < 0 ? 0 : keep);
+      cur = -1; set(keep < 0 ? 0 : keep); measuring = false;
       sec.style.height = (tall + per * 4) + "px";
       sized = w; return true;
     }
     function set(i) {
       if (i === cur) return; cur = i;
+      if (i === 3 && !sec._done && !measuring) { sec._done = true; if (window.RD && RD.track) RD.track("flight-plan-finished", "Flight plan scrolled to the end"); }
       demo.setAttribute("data-view", VIEWS[i]); demo.setAttribute("data-step", String(i));
       dec.innerHTML = cap.getAttribute("data-" + VIEWS[i]); cap.textContent = dec.value;
       state.textContent = STATES[i];
