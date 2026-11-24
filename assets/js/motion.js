@@ -77,7 +77,7 @@ RD.onScroll = function (fn) {
     function size() {
       if (!pin.offsetHeight) return false;
       var sc = RD.scroller(sec), vh = RD.view(sc).h, w = window.innerWidth;
-      var per = Math.round(vh * (w < 900 ? 0.42 : 0.5));
+      var per = Math.round(vh * (w < 900 ? 0.24 : 0.28));
       var keep = cur; pin.style.minHeight = ""; cur = -1; measuring = true; set(3);
       var tall = pin.offsetHeight; pin.style.minHeight = tall + "px";
       cur = -1; set(keep < 0 ? 0 : keep); measuring = false;
