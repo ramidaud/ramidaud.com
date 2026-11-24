@@ -833,7 +833,7 @@ html.js .quiz:not(.picked) .qa-answer { display: none; }
 :root { --machine: #7d5c12; --human: var(--red); }
 :root[data-theme="dark"] { --machine: #d8b35a; }
 .sheet-head { position: relative; grid-template-columns: minmax(0, 1fr); gap: var(--s3); padding-bottom: var(--s5); border-bottom-width: 3px; isolation: isolate; }
-.sheet-head[data-no]::before { content: attr(data-no); position: absolute; right: -.04em; top: -.18em; z-index: -1; font: 400 clamp(120px, 16vw, 260px)/1 var(--serif); letter-spacing: -.04em; color: transparent; -webkit-text-stroke: 1px color-mix(in srgb, var(--ink) 22%, transparent); pointer-events: none; }
+.sheet-head[data-no]::before { content: attr(data-no); position: absolute; right: -.04em; top: -.18em; z-index: -1; font: 400 clamp(110px, 11.5vw, 200px)/1 var(--serif); letter-spacing: -.04em; color: transparent; -webkit-text-stroke: 1px color-mix(in srgb, var(--ink) 22%, transparent); pointer-events: none; }
 .sheet-head h2 { font-size: clamp(46px, 5.6vw, 96px); line-height: .94; letter-spacing: -.022em; max-width: 18ch; }
 .sheet-head h2 em { color: var(--red); font-style: italic; }
 .sheet-head p { justify-self: start; max-width: 52ch; font-size: 17px; line-height: 1.55; color: var(--ink); }
@@ -857,7 +857,8 @@ html.js .quiz:not(.picked) .qa-answer { display: none; }
 .pullq { background: var(--film, #16140f); color: #f1eadb; border: 0; margin-inline: calc(-1 * clamp(20px, 3vw, 44px)); padding: clamp(40px, 6vw, 88px) clamp(20px, 3vw, 44px); }
 .pullq span + span { color: #e8705a; }
 .pullq::after { content: "Drawn R. Daud \00b7  Checked by a person"; display: block; margin-top: var(--s5); font: 500 11px/1 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: #d8b35a; }
-@media (max-width: 760px) { .pullq { margin-inline: calc(-1 * var(--s1)); } .sheet-head[data-no]::before { font-size: 140px; } }
+@media (min-width: 761px) { .sheet-head[data-no] h2 { padding-right: clamp(100px, 10.5vw, 190px); max-width: none; } }
+@media (max-width: 760px) { .pullq { margin-inline: calc(-1 * var(--s1)); } .sheet-head[data-no]::before { display: none; } }
 </style>
 <script>document.documentElement.classList.add("js");window.RD_SHELL=true;</script>
 <link rel="stylesheet" href="assets/css/shell-pages.css">
