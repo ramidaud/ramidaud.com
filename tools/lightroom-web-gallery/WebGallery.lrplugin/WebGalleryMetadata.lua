@@ -4,8 +4,8 @@ return {
   metadataFieldsForPhotos = {
     {
       id = "wgStatus", title = "Gallery status", dataType = "enum", searchable = true, browsable = true,
+      -- Blank means not started. No nil entry: older Lightroom versions reject it.
       values = {
-        { value = nil, title = "Not started" },
         { value = "sent", title = "Sent for drafts" },
         { value = "drafted", title = "Draft waiting for review" },
         { value = "approved", title = "Approved" },

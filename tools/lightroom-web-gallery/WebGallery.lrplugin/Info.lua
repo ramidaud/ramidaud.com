@@ -19,5 +19,5 @@ return {
     { title = "Web Gallery: Load caption drafts...", file = "LoadDrafts.lua" },
     { title = "Web Gallery: Approve drafts for selected photos", file = "ApproveDrafts.lua" },
   },
-  VERSION = { major = 0, minor = 2, revision = 0, build = 3 },
+  VERSION = { major = 0, minor = 2, revision = 1, build = 4 },
 }
