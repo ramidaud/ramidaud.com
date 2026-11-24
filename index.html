@@ -922,24 +922,45 @@ html.js .quiz:not(.picked) .qa-answer { display: none; }
 @media (min-width: 901px) and (max-width: 1100px) { #h-home { font-size: clamp(30px, min(3.4vw, 4.9vh), 66px); } .cover-cta .btn { padding-inline: 12px; } }
 .cover-cta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; pointer-events: auto; position: relative; z-index: 2; }
 .cover-cta .btn { min-height: 44px; white-space: nowrap; }
-/* ===== Red line indicators: each red marker swells once when it appears, then settles =====
-   Nav and sheet tabs: whenever a link becomes current. Side rules (pull quotes, notes, now/next):
-   when they scroll into view (marks set by motion.js / reveal.js). The swell is an inset shadow,
-   so nothing around it moves. Without @property support the lines simply stay still. */
+/* ===== Red line indicators: each red marker swells when it appears, then eases back =====
+   Nav and sheet tabs: whenever a link becomes current. Side rules (notes, now/next): when they scroll
+   into view. Pull quotes: the rule springs thick and the quote bounces into place beside it.
+   The swell is an inset shadow on a registered --mark-x, so the line grows inward and nothing else moves.
+   Without @property support the lines simply stay still. */
 @property --mark-x { syntax: "<length>"; inherits: false; initial-value: 0px; }
-@keyframes rd-thick { 0% { --mark-x: 0px; } 35% { --mark-x: 4px; } 100% { --mark-x: 0px; } }
-.nav a[aria-current="true"], .nav a[aria-current="page"] { box-shadow: inset 0 calc(-2px - var(--mark-x)) 0 var(--red); animation: rd-thick .9s var(--ease) .15s; }
-.sheets a[aria-current="true"] { box-shadow: inset calc(3px + var(--mark-x)) 0 0 var(--red); animation: rd-thick .9s var(--ease) .15s; }
+@keyframes rd-thick {
+  0%   { --mark-x: 0px;  animation-timing-function: cubic-bezier(.22, .9, .3, 1); }
+  38%  { --mark-x: 8px;  animation-timing-function: cubic-bezier(.45, 0, .25, 1); }
+  100% { --mark-x: 0px; }
+}
+@keyframes rd-spring {
+  0%   { --mark-x: 0px;  translate: -28px 0; opacity: .25; animation-timing-function: cubic-bezier(.2, .8, .3, 1); }
+  30%  { --mark-x: 12px; translate: 7px 0;   opacity: 1;   animation-timing-function: cubic-bezier(.4, 0, .4, 1); }
+  48%  { --mark-x: 2px;  translate: -3px 0; }
+  64%  { --mark-x: 7px;  translate: 1.5px 0; }
+  80%  { --mark-x: 2px;  translate: -.5px 0; }
+  100% { --mark-x: 0px;  translate: 0 0; }
+}
+.nav a[aria-current="true"], .nav a[aria-current="page"] { box-shadow: inset 0 calc(-2px - var(--mark-x)) 0 var(--red); animation: rd-thick 1.6s .15s both; }
+.sheets a[aria-current="true"] { box-shadow: inset calc(3px + var(--mark-x)) 0 0 var(--red); animation: rd-thick 1.6s .15s both; }
 @media (max-width: 760px) { .sheets a[aria-current="true"] { box-shadow: inset 0 calc(-3px - var(--mark-x)) 0 var(--red); } }
-.mark-in { box-shadow: inset var(--mark-x) 0 0 var(--red); animation: rd-thick 1s var(--ease) .2s; }
+.mark-in { box-shadow: inset var(--mark-x) 0 0 var(--red); animation: rd-thick 1.6s .2s both; }
+.pull.mark-in, .ftc-essays blockquote.mark-in { animation: rd-spring 1.5s .1s both; }
 
-/* ===== The nameplate: the a and i in "Rami" catch a gold glint now and then, a quiet hint at AI ===== */
+/* ===== The nameplate: the a and i in "Rami" catch a gold glint now and then, a quiet hint at AI =====
+   A color change with a soft glow (not a gradient sweep, which Safari often fails to repaint). */
+:root { --glint: #c08a12; --glint-glow: rgba(216, 160, 40, .55); }
+:root[data-theme="dark"] { --glint: #f4c254; --glint-glow: rgba(244, 194, 84, .6); }
 .wm { white-space: nowrap; }
-.wm-ai { background: linear-gradient(100deg, var(--ink) 0 40%, var(--machine) 50%, var(--ink) 60% 100%) 100% 0 / 400% 100% no-repeat; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; animation: rd-glint 11s ease-in-out 2.5s infinite; }
-.wm-ai + .wm-ai, .wm-ai ~ .wm-ai { animation-delay: 2.68s; }
-.wordmark:hover .wm-ai { -webkit-text-fill-color: currentColor; }
-@keyframes rd-glint { 0%, 84% { background-position: 100% 0; } 96%, 100% { background-position: 0% 0; } }
-@media (prefers-reduced-motion: reduce) { .wm-ai { animation: none; -webkit-text-fill-color: currentColor; background: none; } }
+.wm-ai { animation: rd-glint 7s 1.2s infinite; }
+.wm-ai + .wm-ai, .wm-ai ~ .wm-ai { animation-delay: 1.45s; }
+@keyframes rd-glint {
+  0%, 78%, 100% { color: var(--ink); text-shadow: 0 0 0 transparent; }
+  84% { color: var(--glint); text-shadow: 0 0 8px var(--glint-glow), 0 0 2px var(--glint-glow); }
+  92% { color: var(--glint); text-shadow: 0 0 3px var(--glint-glow); }
+}
+.wordmark:hover .wm-ai { animation: none; }
+@media (prefers-reduced-motion: reduce) { .wm-ai { animation: none; } }
 </style>
 <script>document.documentElement.classList.add("js");window.RD_SHELL=true;</script>
 <link rel="stylesheet" href="assets/css/shell-pages.css">
