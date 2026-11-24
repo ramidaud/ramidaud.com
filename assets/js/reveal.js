@@ -24,4 +24,8 @@
     });
   }, { rootMargin: "0px 0px -8% 0px", threshold: 0 });
   items.forEach(function (el) { el.classList.add("rv-i"); io.observe(el); });
+  /* Safety net: if nothing has revealed after 2.5 s (an observer that never fires on some device), show everything. */
+  setTimeout(function () {
+    if (!document.querySelector(".rv-i.rv-on")) document.documentElement.classList.remove("rv");
+  }, 2500);
 })();

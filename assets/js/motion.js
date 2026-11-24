@@ -34,6 +34,11 @@
     mo.observe(s, { attributes: true, attributeFilter: ["class"] });
     if (s.classList.contains("in")) { s._armed = true; arm(s); }
   });
+  /* Safety net: if a sheet is open but nothing in it has revealed after 2.5 s, show everything. */
+  setTimeout(function () {
+    var open = document.querySelector(".sheet.in");
+    if (open && open.querySelector("[data-fx]") && !open.querySelector("[data-fx].seen")) root.classList.remove("fxio");
+  }, 2500);
 })();
 
 /* Shared helpers */
