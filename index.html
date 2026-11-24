@@ -682,6 +682,17 @@ html.embed .stage { cursor: grab; }
   body[data-view="cosmos"] .cosmos-copy { position: relative; z-index: 3; background: linear-gradient(var(--paper) calc(100% - 120px), transparent calc(100% - 70px)); padding-bottom: 28px; pointer-events: auto; }
   body[data-view="cosmos"] .cosmos-copy .btn:not(.solid) { background: var(--paper); }
 }
+.capstrip { display: grid; gap: var(--s3); margin-top: var(--s4); }
+.capstrip > p { margin: 0; color: var(--ink-2); max-width: 62ch; }
+.caps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid var(--rule); border-left: 1px solid var(--rule); }
+.cap { border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: var(--s4); display: grid; gap: var(--s2); align-content: start; background: var(--paper); }
+.cap h4 { margin: 0; font-family: var(--serif); font-weight: 400; font-size: 24px; line-height: 1.1; }
+.cap p { margin: 0; font-size: 14px; color: var(--ink-2); }
+.cap-tags { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.cap-tags li { font-family: var(--mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; border: 1px solid var(--rule); padding: 2px 6px; color: var(--ink-2); }
+.cap a.go { display: inline-flex; align-items: center; min-height: 44px; font-size: 14px; color: var(--ink); text-underline-offset: 3px; }
+@media (max-width: 1100px) { .caps { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 640px) { .caps { grid-template-columns: 1fr; } }
 </style>
 <script>document.documentElement.classList.add("js");window.RD_SHELL=true;</script>
 <link rel="stylesheet" href="assets/css/shell-pages.css">
@@ -753,6 +764,16 @@ html.embed .stage { cursor: grab; }
     <h2 id="practiceTitle" tabindex="-1">What I would bring to a communications team.</h2>
     <p>Case studies that show how I evaluate a tool before a team adopts it, then two guides any team can use. Each says what AI did and what a person checked.</p>
   </div>
+  <section class="capstrip" data-fx="rise" aria-labelledby="capTitle">
+    <h3 class="sub" id="capTitle">What I do with AI, and where to see it</h3>
+    <p>I test tools on real communications work before I ask anyone else to use them. Each part links to the work that shows it.</p>
+    <ol class="caps">
+      <li class="cap"><span class="partref"><i>01</i>Evaluate</span><h4>Test it on real work first</h4><p>I run a tool against an actual archive or assignment and record where it helped and where a person had to step in.</p><ul class="cap-tags"><li>Archive tests</li><li>Human review points</li></ul><a class="go" href="work/lightroom-archive/">Lightroom case file</a></li>
+      <li class="cap"><span class="partref"><i>02</i>Guide</span><h4>Write down what held up</h4><p>What survives testing goes into a field guide communicators can follow without me in the room.</p><ul class="cap-tags"><li>Field guide</li><li>Verification protocol</li></ul><a class="go" href="guides/prompt-to-publish/">Prompt to Publish</a></li>
+      <li class="cap"><span class="partref"><i>03</i>Train</span><h4>Teach people to check the output</h4><p>Trust comes from checking, so the training is about verifying what a tool produces, not just producing it.</p><ul class="cap-tags"><li>90-minute workshop</li><li>UPAA panel</li></ul><a class="go" href="guides/checking-ai-quotes/">Quote workshop kit</a></li>
+      <li class="cap"><span class="partref"><i>04</i>Support adoption</span><h4>Bring tools in at a pace people can absorb</h4><p>I share what works with colleagues one tool at a time, starting with the ones that save them real effort.</p><ul class="cap-tags"><li>Informal AI lead, UCM</li><li>Peer demos</li></ul><a class="go" href="#about">About my role</a></li>
+    </ol>
+  </section>
   <h3 class="sub" data-fx="rise">Case studies</h3>
   <div class="cases">
     <article class="case" id="case-lightroom" tabindex="-1" data-fx="deal" style="--i:1">
