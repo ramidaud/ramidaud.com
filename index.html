@@ -699,6 +699,23 @@ html.embed .stage { cursor: grab; }
 .quiz-fig { margin: var(--s3) 0 var(--s3); max-width: 560px; }
 .quiz-fig img { width: 100%; height: auto; display: block; border: 1px solid var(--rule); }
 .quiz-fig figcaption { font-family: var(--mono); font-size: 10.5px; letter-spacing: .04em; color: var(--ink-2); margin-top: 6px; }
+.gate-demo { border: 1px solid var(--rule); background: var(--card); display: grid; gap: var(--s3); padding: var(--s3); }
+.gate-demo > img { width: 100%; height: auto; aspect-ratio: 16 / 7; object-fit: cover; object-position: 50% 62%; display: block; }
+.gate-sw { display: inline-flex; border: 1px solid var(--ink); border-radius: 999px; padding: 2px; gap: 2px; }
+.gate-sw button { font: 500 10.5px/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; border: 0; background: transparent; color: var(--ink); padding: 0 12px; min-height: 32px; border-radius: 999px; cursor: pointer; white-space: nowrap; }
+.gate-sw button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+.gate-sw button:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.gate-demo .gate-cap { margin: var(--s2) 0; font-family: var(--serif); font-size: 19px; line-height: 1.3; min-height: 2.6em; }
+.gate-kw { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 5px; }
+.gate-kw li { font: 10.5px/1.6 var(--mono); border: 1px solid var(--rule); padding: 1px 6px; transition: opacity .35s var(--ease), transform .35s var(--ease), color .35s, border-color .35s, max-width .35s var(--ease); }
+.gate-demo[data-view="draft"] .gate-kw .add { display: none; }
+.gate-demo[data-view="approved"] .gate-kw .swap { display: none; }
+.gate-demo[data-view="approved"] .gate-kw .no { text-decoration: line-through; color: var(--red); border-color: var(--red); }
+.gate-demo[data-view="approved"] .gate-kw .add { border-color: var(--ink); animation: gate-in .45s var(--ease) both; }
+.gate-demo[data-view="approved"] .gate-kw .add:nth-child(n) { animation-delay: calc(var(--d, 0) * 40ms); }
+@keyframes gate-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+.gate-demo .gate-note { margin: var(--s2) 0 0; font-size: 12.5px; line-height: 1.5; color: var(--ink-2); }
+@media (prefers-reduced-motion: reduce) { .gate-kw li, .gate-demo[data-view="approved"] .gate-kw .add { transition: none; animation: none; } }
 </style>
 <script>document.documentElement.classList.add("js");window.RD_SHELL=true;</script>
 <link rel="stylesheet" href="assets/css/shell-pages.css">
@@ -788,6 +805,15 @@ html.embed .stage { cursor: grab; }
       <span class="credit">Digital asset lead · Kent State UCM · fall 2026</span>
       <p>Claude suggests. A photographer decides. Nothing reaches PhotoShelter without a human review.</p>
       <div class="btns"><a class="btn solid" href="work/lightroom-archive/">Read the case file</a></div>
+      <div class="gate-demo" data-view="draft">
+        <img src="assets/img/ai-work/dsc0250-observatory.jpg" alt="Two people under red light inside the Kent State observatory dome, beside a large telescope." width="1600" height="1067" loading="lazy">
+        <div>
+          <div class="gate-sw" role="group" aria-label="Metadata version"><button type="button" data-v="draft" aria-pressed="true">Claude&rsquo;s draft</button><button type="button" data-v="approved" aria-pressed="false">Approved</button></div>
+          <p class="gate-cap" aria-live="polite" data-draft="&ldquo;Visitors take turns at the telescope under red light inside the Kent State University observatory dome.&rdquo;" data-approved="&ldquo;TJ at the Meade LX200 inside the Kent State University Observatory dome as Derek looks on.&rdquo;">&ldquo;Visitors take turns at the telescope under red light inside the Kent State University observatory dome.&rdquo;</p>
+          <ul class="gate-kw" aria-label="Keywords"><li class="swap">Kent State University</li><li class="add" style="--d:1">Kent State University Observatory</li><li class="swap">observatory</li><li class="add" style="--d:2">Meade LX200</li><li>telescope</li><li>astronomy</li><li class="add" style="--d:3">astronomy club</li><li class="swap">stargazing</li><li class="add" style="--d:4">Moon</li><li>night</li><li>red light</li><li class="swap">dome</li><li class="add" style="--d:5">observatory dome</li><li class="no">visitors</li><li class="no">public viewing</li><li class="add" style="--d:6">Derek</li><li class="add" style="--d:7">TJ</li><li class="add" style="--d:8">Framing the Cosmos</li></ul>
+          <p class="gate-note">One real photo, Nov 24, 2026. A person caught &ldquo;visitors&rdquo;: it was an astronomy club night.</p>
+        </div>
+      </div>
       <ol class="flow" aria-label="Flight plan"><li><span>Lightroom</span></li><li><span>Claude</span></li><li class="gate"><span>Human gate</span></li><li><span>PhotoShelter</span></li></ol>
       <dl class="prov"><dt>AI did</dt><dd>Suggests keywords and descriptions across the catalog.</dd><dt>Checked</dt><dd>A photographer approves, edits or rejects every suggestion. Time saved: not measured yet.</dd></dl>
     </article>
@@ -1869,6 +1895,21 @@ html.embed .stage { cursor: grab; }
   recolor(); route(true); fit(); layout(0.42);
   cycleAt = performance.now() + 700;
   requestAnimationFrame(frame);
+})();
+</script>
+<script>
+(function () {
+  document.querySelectorAll(".gate-demo").forEach(function (box) {
+    var cap = box.querySelector(".gate-cap");
+    box.querySelectorAll(".gate-sw button").forEach(function (b) {
+      b.addEventListener("click", function () {
+        var v = b.getAttribute("data-v");
+        box.setAttribute("data-view", v);
+        box.querySelectorAll(".gate-sw button").forEach(function (o) { o.setAttribute("aria-pressed", String(o === b)); });
+        var t = document.createElement("textarea"); t.innerHTML = cap.getAttribute("data-" + v); cap.textContent = t.value;
+      });
+    });
+  });
 })();
 </script>
 </body>
