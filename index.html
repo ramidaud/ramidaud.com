@@ -5,7 +5,7 @@
 <base href="./">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Rami Daud · Human-first AI for communication teams</title>
-<meta name="description" content="Rami Daud helps communication teams use AI without losing the human in the story. A visuals-first storyteller using AI and real data to craft new story experiences.">
+<meta name="description" content="Rami Daud helps communication teams use AI without losing the human in the story. I test AI tools on real communications work, set the checks that keep people in charge, and help colleagues adopt what holds up.">
 <meta name="theme-color" content="#efebe2">
 <link rel="canonical" href="https://ramidaud.com/">
 <meta property="og:type" content="website">
@@ -715,6 +715,15 @@ html.embed .stage { cursor: grab; }
   body[data-view="cosmos"] .cosmos-copy { position: relative; z-index: 3; background: linear-gradient(var(--paper) calc(100% - 120px), transparent calc(100% - 70px)); padding-bottom: 28px; pointer-events: auto; }
   body[data-view="cosmos"] .cosmos-copy .btn:not(.solid) { background: var(--paper); }
 }
+.change { display: grid; gap: var(--s3); margin-top: var(--s4); }
+.change-lede { margin: 0; max-width: 62ch; font-family: var(--serif); font-size: 22px; line-height: 1.3; color: var(--ink); }
+.principles { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 1px solid var(--rule); border-left: 1px solid var(--rule); }
+.principles li { border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: var(--s4); background: var(--paper); font-size: 15px; color: var(--ink-2); }
+.principles b { display: block; color: var(--ink); font-family: var(--serif); font-weight: 400; font-size: 22px; line-height: 1.15; margin-bottom: var(--s2); }
+.owned { border-left: 3px solid var(--ink); padding: var(--s2) 0 var(--s2) var(--s4); max-width: 68ch; }
+.owned h4 { margin: 0 0 var(--s2); font-family: var(--sans); font-weight: 600; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; }
+.owned p { margin: 0; color: var(--ink-2); }
+@media (max-width: 640px) { .principles { grid-template-columns: 1fr; } .change-lede { font-size: 19px; } }
 .capstrip { display: grid; gap: var(--s3); margin-top: var(--s4); }
 .capstrip > p { margin: 0; color: var(--ink-2); max-width: 62ch; }
 .caps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid var(--rule); border-left: 1px solid var(--rule); }
@@ -1006,9 +1015,9 @@ html.js .quiz:not(.picked) .qa-answer { display: none; }
       <!-- cover sheet -->
       <div class="cover-copy">
         <h1 id="h-home" tabindex="-1">I help communication teams use AI <em>without losing</em> the human in the story.</h1>
-        <p class="lede">A visuals-first storyteller, using AI and real data to craft story experiences audiences haven't had before.</p>
+        <p class="lede">I test AI tools on real communications work, set the checks that keep people in charge, and help colleagues adopt what holds up. Twenty years behind a camera taught me what a story owes the people in it.</p>
         <div class="cover-cta"><a class="btn solid" href="#practice/quiz">Take the quote test</a><a class="btn" href="downloads/Rami-Daud-Resume.pdf" download>Résumé <span aria-hidden="true">(PDF)</span><span class="sr"> download</span></a></div>
-        <p class="who"><a href="#about">Senior Photographer, Kent State University · 4 years at NASA Glenn · Informal AI lead for my communications team</a></p>
+        <p class="who"><a href="#about">Senior Photographer and informal AI lead, University Communications and Marketing, Kent State University · Four years at NASA Glenn Research Center</a></p>
         <nav class="cover-menu" aria-label="Sheets"><a href="#practice"><span>02</span>AI in Practice</a><a href="#projects"><span>03</span>Projects</a><a href="#writing"><span>04</span>Writing</a><a href="#photography"><span>05</span>Photography</a><a href="#about"><span>06</span>About</a><a href="#record"><span>07</span>Record</a></nav>
         <p class="fallback" id="fallback" hidden>The 3D drawing can't run in this browser. Every section is in the menu.</p>
       </div>
@@ -1066,6 +1075,20 @@ html.js .quiz:not(.picked) .qa-answer { display: none; }
     </div>
     <figcaption id="openerCap"><span>The tool&rsquo;s draft called them &ldquo;visitors&rdquo;</span><span>Kent State University Observatory, Nov. 18, 2026 · Photograph by Rami Daud</span></figcaption>
   </figure>
+  <section class="change" data-fx="rise" aria-labelledby="changeTitle">
+    <h3 class="sub" id="changeTitle">How I lead change</h3>
+    <p class="change-lede">AI should make a communications team better at the work it already does. It shouldn't replace the people doing that work, and it shouldn't arrive as a mandate. Here's how I bring it in.</p>
+    <ul class="principles">
+      <li><b>Test on real work first.</b> I try a tool on my own assignments before asking anyone else to change how they work. If it doesn't hold up on deadline, I don't recommend it.</li>
+      <li><b>People stay in charge.</b> The tool suggests and a person decides. Every workflow I share marks the point where someone checks the output before it goes anywhere.</li>
+      <li><b>Start with the tedious parts.</b> Colleagues adopt what gives them time back, so I begin with metadata and transcription, not the creative work they care most about.</li>
+      <li><b>Compare before adding.</b> Sometimes the better answer is a feature we already pay for. I weigh a new tool against what we have, and I measure once it's part of the routine.</li>
+    </ul>
+    <div class="owned">
+      <h4>One decision I owned</h4>
+      <p>When I started on AI training for communicators, the expected version would have taught people to get more out of a chatbot. I went the other way. For a university newsroom, the real risk isn't slow writing. It's a quote that sounds right and isn't. So I designed <a href="guides/prompt-to-publish/">Prompt to Publish</a> and <a href="guides/checking-ai-quotes/">its workshop</a> around checking: a 90-minute session where communicators test AI-generated quotes against their sources, a knowledge check at the end, and a plan to measure whether people actually change how they verify. Trust comes from checking, so that's where the training starts.</p>
+    </div>
+  </section>
   <section class="capstrip" data-fx="rise" aria-labelledby="capTitle">
     <h3 class="sub" id="capTitle">What I do with AI, and where to see it</h3>
     <p>I test tools on real communications work before I ask anyone else to use them. Each part links to the work that shows it.</p>
@@ -1350,10 +1373,11 @@ html.js .quiz:not(.picked) .qa-answer { display: none; }
   <div class="about" id="ab-bio">
     <figure class="portrait" data-fx="draw"><button type="button" class="develop" aria-pressed="false" aria-label="Show the photograph"><img class="wire" src="assets/img/rami-profile-wire.jpg" alt="Wireframe line drawing of Rami Daud in profile, bearded, drawn in blue mesh lines on graph paper." width="900" height="1124"><img class="photo" src="assets/img/rami-profile-photo.jpg" alt="Studio portrait of Rami Daud in profile, in silhouette against a blue and pink gradient." width="900" height="1124" loading="lazy"></button><figcaption><b>Fig. 1</b> · <span class="cap-w">Rami Daud, profile. Drawn from a studio portrait. Hover or tap for the photograph.</span><span class="cap-p">The studio portrait the drawing was made from.</span></figcaption></figure>
     <div class="bio" data-fx="rise" style="--i:2">
-      <p>I'm a photographer working at the intersection of visual storytelling, science communication, and documentary photography. I'm currently a Senior Photographer in University Communications and Marketing at Kent State University, where I create images that document campus life in all its range: student life, athletics, scientific research, portraits, and the institutional moments that mark a university's history.</p>
-      <p>I'm also my team's informal AI lead. I try new tools on our real work before I ask anyone else to use them, and I write down what worked and what didn't. The rule I keep is simple: the tool suggests, a person decides. You can see it in practice in our <a href="work/lightroom-archive/">Lightroom archive workflow</a>, and in <a href="guides/prompt-to-publish/">Prompt to Publish</a>, the field guide I wrote for university communicators.</p>
-      <p>Before Kent State, I worked as a Digital Imaging Specialist at NASA's Glenn Research Center, where I supported photography and multimedia coverage of the Artemis program, SpaceX and Commercial Crew hardware testing, and a wide range of research and engineering initiatives. I helped plan and execute visual coverage for the 2017 “Eclipse Across America” initiative, and was one of NASA's representatives producing content for Instagram's IGTV during its beta phase.</p>
-      <p>That experience shaped how I think about photography as a tool for public understanding: photographs are most powerful when they invite curiosity rather than simply document facts. Whether I'm photographing a researcher in the lab, a student finding their footing, or a shared moment on campus, I'm trying to make the same kind of image: one that encourages someone to look a little more closely at the world around them.</p>
+      <p>I help communication teams adopt AI in ways that make their work stronger and keep people in charge of it.</p>
+      <p>At Kent State's University Communications and Marketing, I'm the senior photographer and, informally, the person colleagues come to about AI. Leadership gave me room to try tools on our real work, so that's where every recommendation starts. When something holds up, I write down how to use it, where a person has to check it, and when to leave it alone. Then I share it one colleague at a time, beginning with the tools that save the most effort. The meeting transcription tool I tested first is now part of a colleague's routine too.</p>
+      <p>Right now that work includes an <a href="work/lightroom-archive/">archive workflow</a> that uses Claude to strengthen metadata across thousands of UCM images, a <a href="guides/prompt-to-publish/">field guide</a> and <a href="guides/checking-ai-quotes/">workshop kit</a> on checking AI-generated quotes, and a talk at the UPAA symposium in June 2026 on how AI is changing the role of photographers and communications teams.</p>
+      <p>The foundation is twenty years of photography and video: four years as a digital imaging specialist at NASA Glenn Research Center on the Artemis and Commercial Crew programs, freelance work for the Associated Press, AFP and Cleveland Magazine, and <a href="#cosmos">Framing the Cosmos</a>, my writing on how space images shape what the public believes. That background is why I approach AI the way I do. I know how long it takes to earn an audience's trust in an image, and how fast it can go.</p>
+      <p>I'm working on an MS in Emerging Media and Technology at Kent State.</p>
       <dl class="glance"><div><dt>Now</dt><dd>Senior Photographer, Kent State UCM</dd></div><div><dt>Role</dt><dd>Informal AI lead for the team</dd></div><div><dt>Before</dt><dd>Digital Imaging Specialist, NASA Glenn</dd></div><div><dt>Camera</dt><dd>20+ years</dd></div><div><dt>NASA</dt><dd>7 Images of the Day</dd></div><div><dt>Studying</dt><dd>MS, Emerging Media and Technology</dd></div></dl>
       <div class="btns"><a class="btn solid" href="downloads/Rami-Daud-Resume.pdf">Download resume</a><a class="btn" href="#record">See the full record</a><a class="btn" href="contact/">Get in touch</a></div>
     </div>
