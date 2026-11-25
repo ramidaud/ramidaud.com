@@ -15,10 +15,9 @@
 .leader-label { position: absolute; left: 10.6%; top: 94.6%; background: var(--film); color: var(--gold); font: 500 10px var(--mono); letter-spacing: .14em; text-transform: uppercase; padding: 3px 7px; }
 .fig-cap .k { display: inline-grid; place-items: center; width: 1.7em; height: 1.7em; border: 1px solid #a3301a; border-radius: 50%; letter-spacing: 0; margin: 0 .3em 0 .4em; }
 
-/* DRAFT ONLY: placeholders for text still to come. Delete with the .todo blocks at publish. */
-.todo { border: 1px dashed var(--red); padding: var(--s4); margin: var(--s5) 0; font: 400 13px/1.6 var(--mono); color: var(--ink-2); }
-.todo b { display: block; color: var(--red); letter-spacing: .12em; text-transform: uppercase; margin-bottom: var(--s2); }
-.todo code { display: block; margin-top: var(--s2); white-space: pre-wrap; }
+/* Fig. 2: two photographs side by side */
+.pair-row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s3); }
+.pair-row img { display: block; width: 100%; height: auto; }
 
-@media (max-width: 760px) { .leader-label { display: none; } }
+@media (max-width: 760px) { .leader-label { display: none; } .pair-row { grid-template-columns: 1fr; } }
 .night figure.stars { margin-top: var(--s6); }

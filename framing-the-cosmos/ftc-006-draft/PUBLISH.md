@@ -4,10 +4,9 @@ The page is built and hidden (`noindex`, not linked from the home page, Writing 
 
 ## When the essay arrives
 
-- [ ] Replace the three `.todo` blocks in `index.html` with the essay (first half, second half, closing).
-- [ ] Add the pull quote once the speaker is confirmed (template in the second `.todo` block).
-- [ ] Delete the `.todo` rules at the bottom of `ftc-006.css`.
-- [ ] Replace every `[Title]` / `[Title to come]` in `index.html` (title, og:title, JSON-LD headline, h1, series list) and in the FTC-005 page (series list and "Where to next"). Italicize one phrase in the h1 with `<em>` if the title has one.
+- [x] Essay draft, photos (Figs. 2, 4, 5, 8) and the pull quote are in. Sync any later edits from the essay doc.
+- [ ] Confirm the working title "We Should Have Shot This" (set in the page and on FTC-005).
+- [ ] Confirm the AI paragraph in the second half matches how the work went.
 - [ ] Confirm the meta description (draft is in place).
 - [ ] Confirm the credit line wording and TJ's name in the Fig. 1 caption.
 - [ ] Confirm naming Abe (he is named in the Fig. 1 caption track).
