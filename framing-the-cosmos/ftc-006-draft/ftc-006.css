@@ -21,3 +21,7 @@
 
 @media (max-width: 760px) { .leader-label { display: none; } .pair-row { grid-template-columns: 1fr; } }
 .night figure.stars { margin-top: var(--s6); }
+
+/* Fig. 5: edge to edge across the panel */
+.night img.bleed { display: block; width: calc(100% + 2 * var(--pad)); max-width: none; margin-left: calc(-1 * var(--pad)); height: auto; }
+@media (max-width: 760px) { .night img.bleed { width: calc(100% + 2 * var(--s3)); margin-left: calc(-1 * var(--s3)); } }
