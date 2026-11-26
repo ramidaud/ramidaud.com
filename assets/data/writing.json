@@ -444,6 +444,20 @@
       "type": "Workshop kit",
       "tags": [],
       "dek": "A 90-minute session for communication teams. Pairs generate a mock expert interview, hold it to the same standard as any quoted material, and leave with a plan for verifying every claim."
+    },
+    {
+      "date": "2026-11-25",
+      "title": "Super or Not, Go Look",
+      "url": "framing-the-cosmos/ftc-006-super-or-not-go-look/",
+      "venue": "ramidaud.com",
+      "thread": "framing-the-cosmos",
+      "type": "Essay",
+      "tags": [
+        "Moon",
+        "Supermoon",
+        "Kent State Observatory"
+      ],
+      "dek": "A supermoon you can barely tell from any full Moon, my son’s first real look through a big telescope, and 1,515 frames to make one picture."
     }
   ]
 }

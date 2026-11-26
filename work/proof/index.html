@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Case file 02: Proof · Rami Daud</title>
+<meta name="description" content="How Rami Daud tested AI on his own photo workflow, turned every mistake it made into a rule, and shaped Proof, a Mac app that keeps a person in charge of every caption.">
+<meta name="theme-color" content="#efebe2">
+<link rel="canonical" href="https://ramidaud.com/work/proof/">
+<script>document.documentElement.classList.add("js");try{if(localStorage.getItem("rd-theme")==="dark")document.documentElement.setAttribute("data-theme","dark")}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Instrument+Serif:ital@0;1&display=swap">
+<link rel="stylesheet" href="../../assets/css/v7-shell.css">
+<link rel="stylesheet" href="../../assets/css/v7-pages.css">
+<link rel="icon" href="../../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/icons/favicon-32.png">
+<link rel="apple-touch-icon" href="../../assets/icons/apple-touch-icon.png">
+<style>
+/* Case file 02 · Proof. The app is dark, so its screens sit in darkroom bands (film black);
+   the story stays on paper. Gold = what a tool did, red = where a person decided (site rule). */
+.pf { --dk: #16140f; --dk-2: #221f18; --dk-ink: #f1ebdd; --dk-mute: #b9b09d; --amber: #f5b544; --safe: #ff5a3c; }
+.pf h1 { font-family: var(--serif); font-weight: 400; font-size: clamp(46px, 6vw, 92px); line-height: .94; letter-spacing: -.022em; margin: 10px 0 0; text-wrap: balance; }
+.pf h1 i { color: var(--red); }
+.pf h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(30px, 4vw, 48px); line-height: 1.02; letter-spacing: -.015em; margin: 6px 0 0; text-wrap: balance; }
+.pf h2 i { color: var(--red); }
+.pf p { max-width: 68ch; }
+.pf .dek { font-size: clamp(18px, 2vw, 21px); line-height: 1.5; margin: 18px 0 0; }
+.pf section { margin-top: clamp(48px, 7vw, 88px); }
+.pf .cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px 40px; margin-top: 22px; }
+.pf .cols p { margin: 0 0 14px; font-size: 16.5px; line-height: 1.65; }
+
+/* fact strip */
+.pf .facts { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); border-top: 2px solid var(--ink); border-bottom: 1px solid var(--rule); margin: 32px 0 0; }
+.pf .facts div { padding: 14px 14px 14px 0; }
+.pf .facts dt { font-family: var(--mono); font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-2); }
+.pf .facts dd { margin: 4px 0 0; font-family: var(--serif); font-size: clamp(28px, 3.2vw, 40px); line-height: 1; }
+
+/* darkroom bands and app frames */
+.pf .dark { background: var(--dk); color: var(--dk-ink); margin-inline: calc(-1 * clamp(20px, 3vw, 44px)); padding: clamp(24px, 4vw, 48px) clamp(20px, 3vw, 44px); }
+.pf .dark .label { color: var(--dk-mute); }
+.pf .dark h2 { color: var(--dk-ink); }
+.pf .dark h2 i { color: var(--safe); }
+.pf .win { position: relative; margin: 0; border-radius: 12px; overflow: hidden; background: #0e0d0a; box-shadow: 0 0 0 1px rgba(255,255,255,.09), 0 30px 60px -30px rgba(0,0,0,.8); }
+.pf .win::before { content: ""; display: block; height: 26px; background: #1d1b16 radial-gradient(circle at 14px 13px, #ff5f57 5px, transparent 5.5px), #1d1b16; background-image: radial-gradient(circle at 14px 13px, #ff5f57 4.5px, transparent 5px), radial-gradient(circle at 30px 13px, #febc2e 4.5px, transparent 5px), radial-gradient(circle at 46px 13px, #28c840 4.5px, transparent 5px); border-bottom: 1px solid rgba(255,255,255,.06); }
+.pf .win img, .pf .win video { display: block; width: 100%; height: auto; }
+.pf .win .todo { display: none; }
+.pf .win.missing img, .pf .win.missing video { display: none; }
+.pf .win.missing .todo { display: grid; place-content: center; gap: 6px; text-align: center; aspect-ratio: 16 / 10; padding: 20px; font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--dk-mute); background: repeating-linear-gradient(135deg, #15130f 0 14px, #191712 14px 28px); }
+.pf .win.missing .todo b { color: var(--amber); font-weight: 500; }
+.pf figcaption { font-family: var(--mono); font-size: 11.5px; letter-spacing: .04em; line-height: 1.5; margin-top: 10px; color: var(--ink-2); }
+.pf .dark figcaption { color: var(--dk-mute); }
+.pf .hero-shot { margin-top: 36px; }
+.pf .gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 24px; margin-top: 26px; }
+.pf .gallery .wide { grid-column: 1 / -1; }
+
+/* the four rules */
+.pf .rules { list-style: none; margin: 26px 0 0; padding: 0; display: grid; gap: 0; border-top: 1px solid var(--ink); }
+.pf .rule { display: grid; grid-template-columns: 56px minmax(0, 1fr) minmax(0, 1fr); gap: 8px 28px; padding: 22px 0; border-bottom: 1px solid var(--rule); }
+.pf .rule .n { font-family: var(--serif); font-size: 44px; line-height: .9; color: var(--ink-2); }
+.pf .rule h3 { grid-column: 2 / -1; margin: 0; font-family: var(--serif); font-weight: 400; font-size: clamp(24px, 2.6vw, 32px); line-height: 1.1; }
+.pf .rule .did, .pf .rule .dec { margin: 0; font-size: 15.5px; line-height: 1.6; }
+.pf .rule .did { grid-column: 2; }
+.pf .rule .tag { display: block; font-family: var(--mono); font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 4px; }
+.pf .rule .did .tag { color: var(--machine); }
+.pf .rule .dec .tag { color: var(--red); }
+.pf .key { font-size: 14px; color: var(--ink-2); }
+.pf .key .k-ai { color: var(--machine); }
+.pf .key .k-hu { color: var(--red); }
+.pf .principle { margin: 22px 0 0; font-family: var(--serif); font-size: clamp(22px, 2.6vw, 30px); line-height: 1.2; max-width: 30ch; }
+
+/* flow */
+.pf .flow2 { list-style: none; margin: 24px 0 0; padding: 0; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); counter-reset: s; border: 1px solid var(--ink); }
+.pf .flow2 li { counter-increment: s; padding: 14px 12px 16px; border-right: 1px solid var(--rule); font-size: 14px; line-height: 1.45; }
+.pf .flow2 li:last-child { border-right: 0; }
+.pf .flow2 li::before { content: counter(s, decimal-leading-zero); display: block; font-family: var(--mono); font-size: 10.5px; letter-spacing: .12em; color: var(--ink-2); margin-bottom: 6px; }
+.pf .flow2 b { display: block; font-family: var(--serif); font-weight: 400; font-size: 21px; line-height: 1.1; margin-bottom: 4px; }
+.pf .flow2 .pf-ai { background: color-mix(in srgb, var(--gold) 14%, transparent); }
+.pf .flow2 .pf-ai::before, .pf .flow2 .pf-ai b { color: var(--machine); }
+.pf .flow2 .pf-gate { outline: 2px solid var(--red); outline-offset: -2px; }
+.pf .flow2 .pf-gate::before, .pf .flow2 .pf-gate b { color: var(--red); }
+
+/* how we worked */
+.pf .pf-steps { margin: 22px 0 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
+.pf .pf-steps li { border-top: 2px solid var(--ink); padding-top: 12px; font-size: 15px; line-height: 1.55; }
+.pf .pf-steps b { display: block; font-family: var(--serif); font-weight: 400; font-size: 22px; line-height: 1.1; margin-bottom: 6px; }
+.pf .said { margin: 26px 0 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 10px; }
+.pf .said li { font-family: var(--serif); font-style: italic; font-size: 20px; line-height: 1.25; padding: 10px 14px; border: 1px solid var(--red); color: var(--red); background: var(--card); }
+
+/* pull quote */
+.pf .pf-pull { margin-top: clamp(48px, 7vw, 88px); }
+.pf .pf-pull blockquote { margin: 0; font-family: var(--serif); font-size: clamp(30px, 4.6vw, 58px); line-height: 1.04; letter-spacing: -.015em; max-width: 22ch; }
+.pf .pf-pull blockquote em { color: var(--safe); }
+.pf .pf-pull cite { display: block; margin-top: 16px; font-family: var(--mono); font-style: normal; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); }
+
+/* Pixel */
+.pf .pixel { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr); gap: 28px 40px; align-items: center; margin-top: 22px; }
+.pf .pixel img { display: block; width: 100%; height: auto; border-radius: 10px; }
+.pf .pixel ul { margin: 12px 0 0; padding-left: 18px; font-size: 15.5px; line-height: 1.6; }
+
+/* team lessons */
+.pf .lessons { list-style: none; margin: 22px 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 40px; }
+.pf .lessons li { padding: 16px 0; border-top: 1px solid var(--rule); font-size: 16px; line-height: 1.6; }
+.pf .lessons b { font-weight: 600; }
+.pf .status { margin-top: 26px; padding: 16px 18px; border-left: 3px solid var(--red); background: var(--card); font-size: 15.5px; line-height: 1.6; }
+
+@media (prefers-reduced-motion: reduce) { .pf video { animation: none; } }
+@media (max-width: 900px) {
+  .pf .facts { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .pf .flow2 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .pf .flow2 li:nth-child(3) { border-right: 0; }
+  .pf .flow2 li:nth-child(-n+3) { border-bottom: 1px solid var(--rule); }
+  .pf .pf-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 700px) {
+  .pf .cols, .pf .gallery, .pf .pixel, .pf .lessons { grid-template-columns: 1fr; }
+  .pf .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .pf .rule { grid-template-columns: 40px minmax(0, 1fr); }
+  .pf .rule .did, .pf .rule .dec { grid-column: 2; }
+  .pf .flow2 { grid-template-columns: 1fr; }
+  .pf .flow2 li { border-right: 0; border-bottom: 1px solid var(--rule); }
+  .pf .pf-steps { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#panel">Skip to content</a>
+<div class="app">
+  <div class="border" aria-hidden="true"></div>
+  <div class="zones top" aria-hidden="true"><span>8</span><span>7</span><span>6</span><span>5</span><span>4</span><span>3</span><span>2</span><span>1</span></div>
+  <div class="zones bot" aria-hidden="true"><span>8</span><span>7</span><span>6</span><span>5</span><span>4</span><span>3</span><span>2</span><span>1</span></div>
+  <div class="zones left" aria-hidden="true"><span>D</span><span>C</span><span>B</span><span>A</span></div>
+  <div class="zones right" aria-hidden="true"><span>D</span><span>C</span><span>B</span><span>A</span></div>
+  <div class="ui">
+    <header class="topbar">
+      <a class="wordmark" href="../../#camera"><span class="wm">R<span class="wm-ai">a</span>m<span class="wm-ai">i</span> Daud</span></a>
+      <nav class="nav" aria-label="Main"><a href="../../#practice" aria-current="true">AI in Practice</a><a href="../../#projects">Projects</a><a href="../../#writing">Writing</a><a href="../../#photography">Photography</a><a href="../../#about">About</a><a href="../../#record">Record</a><button class="tbtn" type="button" aria-label="Switch to dark mode">Dark</button></nav>
+    </header>
+    <div class="main">
+      <aside class="setcol" aria-label="Sheets">
+        <div class="camslot">
+          <div class="dv-head"><span>Detail A · Sheet 02</span><b>AI in Practice</b></div>
+          <a class="dv-view" href="../../#practice">
+            <img class="lt" src="../../assets/ftc/shell/detail-a-practice-light.jpg" width="896" height="836" alt="">
+            <img class="dk" src="../../assets/ftc/shell/detail-a-practice-dark.jpg" width="896" height="836" alt="">
+            <span class="back">Back to the camera</span>
+            <span class="sr">Back to AI in Practice</span>
+          </a>
+          <ul class="dv-legend"><li><i>P01</i><span>Film magazine</span></li><li><i>P02</i><span>Finder hood</span></li><li><i>P07</i><span>Frame counter</span></li></ul>
+        </div>
+        <ul class="sheets"><li><a href="../../#practice" aria-current="true"><span>02</span><b>AI in Practice</b><i><span>01</span><span>02</span><span>07</span></i></a></li><li><a href="../../#projects"><span>03</span><b>Projects</b><i><span>03</span><span>06</span></i></a></li><li><a href="../../#writing"><span>04</span><b>Writing</b><i><span>05</span></i></a></li><li><a href="../../#photography"><span>05</span><b>Photography</b><i><span>04</span></i></a></li><li><a href="../../#about"><span>06</span><b>About</b><i><span>08</span></i></a></li><li><a href="../../#record"><span>07</span><b>Record</b><i><span>08</span></i></a></li><li><a href="../../#threads"><span>08</span><b>Bill of materials</b></a></li></ul>
+      </aside>
+
+      <main class="panel" id="panel" tabindex="-1">
+        <div class="page-meta"><span>Case file 02 · Shape</span><span>Kent State UCM · Nov 2026 · status: private test</span></div>
+        <article class="pf legacy" id="main">
+
+          <header>
+            <p class="label kicker">Case file 02 · Proof</p>
+            <h1>The caption was <i>ridiculous.</i></h1>
+            <p class="dek">I tested AI on my own photo workflow, watched where it went wrong, and turned each mistake into a rule. Proof is the tool that came out of it, and the rules are the part I'd bring to any team.</p>
+            <dl class="facts" aria-label="The case in numbers">
+              <div><dt>Test shoot</dt><dd>399</dd></div>
+              <div><dt>Bursts found</dt><dd>130</dd></div>
+              <div><dt>Team keywords</dt><dd>1,971</dd></div>
+              <div><dt>Rounds of critique</dt><dd>8</dd></div>
+              <div><dt>Originals touched</dt><dd>0</dd></div>
+            </dl>
+          </header>
+
+          <div class="dark hero-shot">
+            <figure class="win" data-shot>
+              <video src="../../assets/img/proof/demo.mp4" poster="../../assets/img/proof/demo-poster.jpg" muted loop playsinline preload="metadata" aria-label="Proof in use: a folder of night photos opens, a burst is rated, a caption is drafted and approved, and Lightroom shows it."></video>
+              <div class="todo" aria-hidden="true"><b>Recording to come</b><span>demo.mp4 · folder to Lightroom, 90 seconds</span></div>
+            </figure>
+            <figcaption>Proof, from a folder of raw files to a caption in Lightroom. The caption was drafted on the Mac and approved by me before anything was written.</figcaption>
+          </div>
+
+          <section aria-labelledby="why-h">
+            <p class="label kicker">Why it exists</p>
+            <h2 id="why-h">Every shoot started from an <i>empty field.</i></h2>
+            <div class="cols">
+              <div>
+                <p>On the night of Nov. 18, I photographed the sky over the Kent State University Observatory and came home with 399 frames, shot as raw and JPEG pairs. That part I love. What comes next is the part every university photographer knows: culling, captions, alt text, keywords and credits, frame after frame.</p>
+                <p>Our systems already know most of the answers. The assignment base in Airtable knows the job, the date and the place. The style guide knows how a date should be written. None of that reached the field I was typing into.</p>
+              </div>
+              <div>
+                <p>Since mid-October I'd been using Claude with a third-party bridge into Lightroom Classic, and it was working: <a href="../lightroom-archive/">case file 01</a> tells that story. Then on Nov. 17 the bridge kept dropping its connection and wouldn't come back, with error messages in Japanese and no fix in sight.</p>
+                <p>That was where the evaluation turned. A tool that touches a university photo archive has to fail safely, keep a record of what it changed, and never write anything without a person approving it. So instead of recommending the bridge, I wrote down what a tool for us would have to do, and worked with Claude Code to get it built to those rules.</p>
+              </div>
+            </div>
+          </section>
+
+          <section aria-labelledby="rules-h">
+            <p class="label kicker">Where the AI went wrong</p>
+            <h2 id="rules-h">Four mistakes, <i>four rules.</i></h2>
+            <p class="key" style="margin-top:12px"><span class="k-ai">Gold marks what a tool did.</span> <span class="k-hu">Red marks where a person decided.</span></p>
+            <ol class="rules">
+              <li class="rule"><span class="n" aria-hidden="true">1</span><h3>It made things up</h3>
+                <p class="did"><span class="tag">Tool did</span>The first caption drafts filled every gap with invention. I called one &ldquo;kind of ridiculous,&rdquo; and I meant it.</p>
+                <p class="dec"><span class="tag">Rule now</span>Two steps: the model first lists only what it can see in the frame, then writes from those facts and the assignment. If it can't see it, it can't say it.</p></li>
+              <li class="rule"><span class="n" aria-hidden="true">2</span><h3>It named people who weren't there</h3>
+                <p class="did"><span class="tag">Tool did</span>Drafts pulled names from the assignment into photos those people never appeared in. That's not a typo. It's a misidentification with someone's name on it.</p>
+                <p class="dec"><span class="tag">Rule now</span>A name appears only after a person confirms it, and never in alt text. Faces are grouped on the Mac, in memory, for one shoot only.</p></li>
+              <li class="rule"><span class="n" aria-hidden="true">3</span><h3>It put &ldquo;Kent State&rdquo; everywhere</h3>
+                <p class="did"><span class="tag">Tool did</span>An early version worked the university's name into every caption, whether it belonged or not. Small, until it's on 400 photos.</p>
+                <p class="dec"><span class="tag">Rule now</span>A person controls it with one switch in the shoot brief, and outside work turns it off.</p></li>
+              <li class="rule"><span class="n" aria-hidden="true">4</span><h3>Its filter blocked harmless work</h3>
+                <p class="did"><span class="tag">Tool did</span>The on-device model's default filter refused harmless summaries for a daily briefing.</p>
+                <p class="dec"><span class="tag">Rule now</span>Use Apple's setting for transforming text the user supplies, so the model only reshapes what I give it and adds nothing of its own.</p></li>
+            </ol>
+            <p class="principle">The tool suggests, a person decides, and the decision point can't be skipped.</p>
+          </section>
+
+          <section aria-labelledby="flow-h">
+            <p class="label kicker">How a shoot moves through Proof</p>
+            <h2 id="flow-h">Six steps, <i>one gate.</i></h2>
+            <ol class="flow2">
+              <li><b>Folder</b>Raw files open in a grid built from each file's own preview.</li>
+              <li><b>Brief</b>Pixel asks about the job; Airtable fills in the rest.</li>
+              <li class="pf-ai"><b>Draft</b>Caption, alt text and keywords, drafted on the Mac.</li>
+              <li class="pf-gate"><b>Approve</b>A person edits or accepts. Nothing writes before this.</li>
+              <li><b>Sidecar</b>Written beside the photo, backed up, read back to confirm.</li>
+              <li><b>Lightroom</b>Reads the sidecar. A Green label hands off to PhotoShelter.</li>
+            </ol>
+            <div class="dark" style="margin-top:28px">
+              <div class="gallery">
+                <figure class="wide"><div class="win" data-shot><img src="../../assets/img/proof/grid.jpg" alt="Proof's grid of night-sky photos, grouped into burst stacks, with a filter bar along the top." width="2400" height="1500" loading="lazy"><div class="todo" aria-hidden="true"><b>Screenshot to come</b><span>grid.jpg · the observatory shoot in the grid</span></div></div>
+                  <figcaption>The grid. Frames shot within a second of each other stack into bursts, and previews come from inside each raw file, so 399 frames scroll without waiting.</figcaption></figure>
+                <figure><div class="win" data-shot><img src="../../assets/img/proof/brief.jpg" alt="A chat with Pixel asking about the event, with Airtable jobs from the same day offered as quick replies." width="1600" height="1000" loading="lazy"><div class="todo" aria-hidden="true"><b>Screenshot to come</b><span>brief.jpg · the shoot brief with Pixel</span></div></div>
+                  <figcaption>The brief. Pixel asks what the shoot was, and the matching Airtable job fills it in.</figcaption></figure>
+                <figure><div class="win" data-shot><img src="../../assets/img/proof/draft.jpg" alt="A photo in full view with an amber draft caption and alt text, and an Accept button." width="1600" height="1000" loading="lazy"><div class="todo" aria-hidden="true"><b>Screenshot to come</b><span>draft.jpg · an amber draft waiting for approval</span></div></div>
+                  <figcaption>The gate. Drafts show in amber and nothing is written until I edit or accept.</figcaption></figure>
+                <figure><div class="win" data-shot><img src="../../assets/img/proof/faces.jpg" alt="A photo in full view with one face picked out and a name field open, offering the two names from the shoot brief." width="1600" height="1000" loading="lazy"><div class="todo" aria-hidden="true"><b>Screenshot to come</b><span>faces.jpg · naming a face group</span></div></div>
+                  <figcaption>Names come from a person. Name a face once and Proof offers it for the rest of that shoot, nothing more.</figcaption></figure>
+                <figure><div class="win" data-shot><img src="../../assets/img/proof/lightroom.jpg" alt="Lightroom Classic's metadata panel showing the caption and keywords written by Proof." width="1600" height="1000" loading="lazy"><div class="todo" aria-hidden="true"><b>Screenshot to come</b><span>lightroom.jpg · the caption arriving in Lightroom</span></div></div>
+                  <figcaption>The proof of the round trip: Lightroom reads the caption and keywords from the sidecar, and the raw file is untouched.</figcaption></figure>
+              </div>
+            </div>
+          </section>
+
+          <section aria-labelledby="work-h">
+            <p class="label kicker">How I worked with the AI</p>
+            <h2 id="work-h">I never wrote the code. <i>I judged it.</i></h2>
+            <p style="margin-top:14px">I'm a photographer, not a software engineer. My job was the one I'd want anyone on a team to have with an AI tool: say clearly what good looks like, check the output against real work, and push back when it's wrong.</p>
+            <ol class="pf-steps">
+              <li><b>Plan first</b>The first instruction was to read my written spec, check my Mac and propose a plan in plain language. No code until I approved.</li>
+              <li><b>One thin path</b>The first version only had to open a folder, rate, caption and write safely, and it had to pass a round trip through Lightroom.</li>
+              <li><b>Real shoots</b>Most changes came from using it on my own photos and saying what felt off.</li>
+              <li><b>Self-checks</b>Claude Code ran its own builds, looked at its own screens and measured where the app was slow before handing anything back.</li>
+            </ol>
+            <ul class="said" aria-label="Things I said during the build">
+              <li>&ldquo;That caption is kind of ridiculous.&rdquo;</li>
+              <li>&ldquo;Feeling pretty dull and not very designerly.&rdquo;</li>
+              <li>&ldquo;Navigation with keyboard seems to be broken again.&rdquo;</li>
+              <li>&ldquo;Much simpler, cleaner, more sophisticated.&rdquo;</li>
+            </ul>
+            <div class="gallery" style="margin-top:32px">
+              <figure><img src="../../assets/img/proof/concept-overview.jpg" alt="An early concept screen for a shoot overview, with ingest, cull, caption and ready stages and a shot list check." width="1600" height="1000" loading="lazy" style="display:block;width:100%;height:auto;border:1px solid var(--rule)">
+                <figcaption>Before any code: a concept for the shoot overview, sketched with Claude from my spec. Sample data.</figcaption></figure>
+              <figure><img src="../../assets/img/proof/concept-cull.jpg" alt="An early concept screen for culling, showing a suggested best frame in a burst and why it was picked." width="1600" height="1000" loading="lazy" style="display:block;width:100%;height:auto;border:1px solid var(--rule)">
+                <figcaption>A concept for culling: every suggestion says why. Sample data.</figcaption></figure>
+              <figure class="wide"><div class="win" data-shot style="box-shadow:0 0 0 1px var(--rule)"><img src="../../assets/img/proof/directions.jpg" alt="Three app design directions laid side by side on a canvas." width="2400" height="1200" loading="lazy"><div class="todo" aria-hidden="true"><b>Screenshot to come</b><span>directions.jpg · the three design directions</span></div></div>
+                <figcaption>Design by comparison, not tweaking: three directions side by side. I picked one direction's structure with another's personality.</figcaption></figure>
+            </div>
+          </section>
+
+          <div class="dark pf-pull">
+            <blockquote><p style="margin:0">The AI could build almost anything I asked for. The hard part was knowing <em>which caption was wrong, and why.</em></p></blockquote>
+            <cite>Rami Daud · on building Proof</cite>
+          </div>
+
+          <section aria-labelledby="pixel-h">
+            <p class="label kicker">The human touch</p>
+            <h2 id="pixel-h">Meet <i>Pixel.</i></h2>
+            <div class="pixel">
+              <div>
+                <p>A photo tool doesn't need a mascot. But new AI tools can feel intimidating, and a little warmth goes a long way toward making one feel safe to try.</p>
+                <p>Pixel is safelight red for the darkroom, with green and blue edges that trail a beat behind, like a print slightly off register. He took more rounds of critique than any feature.</p>
+                <ul>
+                  <li>Watches the cursor and changes mood with the work</li>
+                  <li>Click for a tip, right-click for encouragement</li>
+                  <li>Drop a folder on him and he eats it, then opens it</li>
+                </ul>
+              </div>
+              <figure class="dark" style="margin:0;border-radius:12px;padding:18px"><img src="../../assets/img/proof/pixel-moods.jpg" alt="Six versions of Pixel, a red oval character with tall white eyes: idle, focused, happy with curved eyes, surprised, munching, and sleepy with flat eyes." width="1660" height="288" loading="lazy">
+                <figcaption>Idle, focused, happy, surprised, munching, sleepy.</figcaption></figure>
+            </div>
+          </section>
+
+          <section aria-labelledby="team-h">
+            <p class="label kicker">What it means for a team</p>
+            <h2 id="team-h">The lessons aren't <i>about photography.</i></h2>
+            <ul class="lessons">
+              <li><b>Start where the work already lives.</b> Proof earns trust by using the assignment records, the 1,971-term vocabulary and the style guide the team already keeps, not a new list someone has to maintain.</li>
+              <li><b>Build the checking in.</b> Every rule above exists because a draft looked right and wasn't. The human check should be the easy path, not an extra step.</li>
+              <li><b>Make the boring part disappear first.</b> Nobody became a photographer to type keywords. Giving people that time back is how a tool gets adopted without a mandate.</li>
+              <li><b>Decide where the AI runs.</b> The heavy work runs on the Mac. An optional cloud step sends only caption text, never a photo, and stays off for university work until our policy is settled.</li>
+            </ul>
+            <p class="status"><b>Where it stands.</b> Proof is in private testing as a v0.1 build. Next, I'm putting it in front of the UCM photo team and turning our shared ratings and vocabulary into Smart Galleries in PhotoShelter, so our best work reaches campus partners without anyone curating by hand. Time saved will be measured once colleagues use it; until then this page claims none.</p>
+          </section>
+
+        </article>
+        <nav class="keep" aria-label="Where to next"><span class="label">Where to next</span><ul><li><a href="../lightroom-archive/"><b>Case file 01: the Lightroom archive</b><span>Where this started: Claude suggesting metadata, a photographer deciding.</span></a></li><li><a href="../../guides/prompt-to-publish/"><b>Prompt to Publish</b><span>The field guide: direct the tool, verify the output.</span></a></li><li><a href="../../guides/checking-ai-quotes/"><b>Checking AI-generated quotes</b><span>The same human gate, taught to a team in 90 minutes.</span></a></li><li><a href="../../contact/"><b>Bring this to your team</b><span>Workshops, talks and AI adoption for communication teams.</span></a></li></ul></nav>
+        <aside class="made" aria-label="How this page was made"><span class="label">How this page was made</span><p><span class="hu">Facts and critique from Rami.</span> <span class="ai">Proof was built with Claude Code, and this page was drafted with Claude from Rami's build notes</span> <span class="hu">and edited by Rami.</span> Screens and recordings are from the real app; the two concept screens are marked as sample data.</p></aside>
+        <nav class="next" aria-label="Sheets">
+          <a class="btn" href="../../#practice">Back to: AI in Practice</a>
+        </nav>
+      </main>
+    </div>
+  </div>
+</div>
+<script src="../../assets/js/v7-pages.js"></script>
+<script>
+{
+  // Screens not captured yet show a labelled placeholder instead of a broken image.
+  const mark = el => el.closest('[data-shot]') && el.closest('[data-shot]').classList.add('missing');
+  document.querySelectorAll('[data-shot] img').forEach(img => { if (img.complete && img.naturalWidth === 0) mark(img); img.addEventListener('error', () => mark(img)); });
+  document.querySelectorAll('[data-shot] video').forEach(v => {
+    v.addEventListener('error', () => mark(v), true);
+    const src = v.getAttribute('src');
+    fetch(src, { method: 'HEAD' }).then(r => { if (!r.ok) mark(v); }).catch(() => mark(v));
+    // Play only while on screen, and never for people who ask for reduced motion.
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) { v.controls = true; return; }
+    const io = new IntersectionObserver(es => es.forEach(e => e.isIntersecting ? v.play().catch(() => {}) : v.pause()), { threshold: .35 });
+    io.observe(v);
+  });
+}
+</script>
+<script src="../../assets/js/reveal.js" defer></script>
+<script src="/assets/js/stats.js"></script>
+<script data-goatcounter="https://ramidaud.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>

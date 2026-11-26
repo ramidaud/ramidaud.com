@@ -20,7 +20,7 @@
 
 /* figures */
 figure { margin: var(--s6) 0; }
-.fig-cap { font: 400 10.5px/1.6 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--label); margin-top: var(--s2); }
+.fig-cap { font: 400 10.5px/1.6 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--label); margin-top: var(--s2); overflow-wrap: anywhere; }
 /* night photographs always sit on film black, whatever the theme; the band runs to the panel's edges */
 .night { background: var(--film); color: #efebe2; --label: var(--gold); margin: var(--s6) calc(-1 * var(--pad)); padding: var(--s5) var(--pad); }
 .night figure { margin: 0; }
@@ -55,7 +55,8 @@ figure { margin: var(--s6) 0; }
   .story { font-size: 17px; }
   .story .sheet-head .byline { justify-self: start; text-align: left; }
   :root { --pad: var(--s1); }
-  .night { margin-left: calc(-1 * var(--s1) - 6px); margin-right: calc(-1 * var(--s1) - 6px); padding: var(--s4) var(--s3); }
+  .night { margin-left: calc(-1 * var(--s1)); margin-right: calc(-1 * var(--s1)); padding: var(--s4) var(--s3); }
+  .panel { overflow-x: hidden; }
   .tb { grid-template-columns: 1fr; }
   .tb > * { border-right: 0; }
   .series li { grid-template-columns: 1fr; gap: 2px; }
