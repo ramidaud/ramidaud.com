@@ -208,6 +208,11 @@ html.rv .rv-i:not(.rv-on) img, html.rv img.rv-i:not(.rv-on) { filter: brightness
    across; pull quotes also bounce into place. Text turns dark while the red passes over it, light once the
    space is full, then back. The fill is a background layer on a registered --mark-p, so nothing moves.
    Without @property support the lines simply stay still. */
+@property --mark-x { syntax: "<length>"; inherits: false; initial-value: 0px; }
+@keyframes rd-thick {
+  0%   { --mark-x: 0px;  animation-timing-function: cubic-bezier(.22, .9, .3, 1); }
+  35%  { --mark-x: 11px; animation-timing-function: cubic-bezier(.45, 0, .25, 1); }
+  100% { --mark-x: 0px; }
 @property --mark-p { syntax: "<percentage>"; inherits: false; initial-value: 0%; }
 @keyframes rd-fill {
   0%   { --mark-p: 0%;   color: var(--mark-rest); animation-timing-function: cubic-bezier(.3, .7, .3, 1); }
@@ -231,6 +236,16 @@ html.rv .rv-i:not(.rv-on) img, html.rv img.rv-i:not(.rv-on) { filter: brightness
   92%  { color: var(--ink); }
   100% { --mark-p: 0%;   color: var(--mark-rest); translate: 0 0; }
 }
+.nav a[aria-current="true"], .nav a[aria-current="page"] { box-shadow: inset 0 calc(-2px - var(--mark-x)) 0 var(--red); animation: rd-thick 2s .35s both; }
+.sheets a[aria-current="true"] { box-shadow: inset calc(3px + var(--mark-x)) 0 0 var(--red); animation: rd-thick 2s .35s both; }
+@media (max-width: 760px) { .sheets a[aria-current="true"] { box-shadow: inset 0 calc(-3px - var(--mark-x)) 0 var(--red); } }
+.mark-in { box-shadow: inset var(--mark-x) 0 0 var(--red); animation: rd-thick 2s .2s both; }
+.pull.mark-in, .ftc-essays blockquote.mark-in { animation: rd-spring 1.5s .1s both; }
+
+/* ===== The nameplate: the a and i in "Rami" catch a gold glint now and then, a quiet hint at AI =====
+   A color change with a soft glow (not a gradient sweep, which Safari often fails to repaint). */
+:root { --glint: #e0a21c; --glint-glow: rgba(240, 180, 40, .75); }
+:root[data-theme="dark"] { --glint: #ffd36b; --glint-glow: rgba(255, 205, 90, .8); }
 .nav a[aria-current="true"], .nav a[aria-current="page"] { --mark-rest: var(--red); box-shadow: inset 0 -2px 0 var(--red); background-image: linear-gradient(0deg, var(--red) var(--mark-p), transparent var(--mark-p)); animation: rd-fill 2.2s .35s backwards; }
 .sheets a[aria-current="true"] { --mark-rest: var(--red); color: var(--red); box-shadow: inset 3px 0 0 var(--red); background-image: linear-gradient(90deg, var(--red) var(--mark-p), transparent var(--mark-p)); animation: rd-fill 2.2s .35s backwards; }
 .sheets a[aria-current="true"] b, .sheets a[aria-current="true"] span { color: inherit; }
