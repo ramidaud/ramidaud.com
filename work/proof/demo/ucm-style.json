@@ -1,0 +1,178 @@
+{
+  "name": "UCM style (Kent State University)",
+  "version": 1,
+  "about": "AP style with Kent State university style overriding it. Each rule: id, pattern (regular expression), message, optional fix. Rules without a fix are flagged only. Edit freely; Proof reloads this file when it changes.",
+  "rules": [
+    {
+      "id": "ksu",
+      "pattern": "\\bKSU\\b",
+      "message": "Avoid \"KSU.\" Use \"Kent State University\" on first reference, then \"Kent State\" or \"the university.\"",
+      "fix": "Kent State University",
+      "fixIfRepeated": "Kent State"
+    },
+    {
+      "id": "ampersand",
+      "pattern": " & ",
+      "message": "Use \"and,\" not \"&,\" except in the proper name of an outside organization.",
+      "fix": " and "
+    },
+    {
+      "id": "kent-campus",
+      "pattern": "\\bKent State campus\\b",
+      "message": "Say \"Kent Campus,\" never \"Kent State campus.\"",
+      "fix": "Kent Campus",
+      "caseInsensitive": true
+    },
+    {
+      "id": "kent-student-center",
+      "pattern": "\\bKent State Student Center\\b",
+      "message": "The building is the \"Kent Student Center.\"",
+      "fix": "Kent Student Center",
+      "caseInsensitive": true
+    },
+    {
+      "id": "freshman",
+      "pattern": "\\bfreshman\\b",
+      "message": "Kent State says \"first-year student,\" not \"freshman.\"",
+      "fix": "first-year student",
+      "caseInsensitive": true
+    },
+    {
+      "id": "freshmen",
+      "pattern": "\\bfreshmen\\b",
+      "message": "Kent State says \"first-year students,\" not \"freshmen.\"",
+      "fix": "first-year students",
+      "caseInsensitive": true
+    },
+    {
+      "id": "lady-flashes",
+      "pattern": "\\bLady Flashes\\b",
+      "message": "Teams are the Golden Flashes, then Flashes. Never \"Lady Flashes.\"",
+      "caseInsensitive": true
+    },
+    {
+      "id": "alum",
+      "pattern": "\\balums?\\b",
+      "message": "Use alumnus, alumna, alumni or graduate, never \"alum.\"",
+      "caseInsensitive": true
+    },
+    {
+      "id": "may-4th",
+      "pattern": "\\bMay 4th\\b",
+      "message": "Write \"May 4\" (May 4, 1970 on first reference), never \"May 4th.\"",
+      "fix": "May 4"
+    },
+    {
+      "id": "rec-center",
+      "pattern": "\\bRec\\b(?: Center)?",
+      "message": "Use \"Warren Student Recreation and Wellness Center,\" never \"Rec.\""
+    },
+    {
+      "id": "macc",
+      "pattern": "\\bMACC\\b",
+      "message": "Use \"Memorial Athletic and Convocation Center,\" then \"the center\" or \"MAC Center.\" Never \"MACC.\""
+    },
+    {
+      "id": "serial-comma",
+      "pattern": "[\\w'’-]+(?: [\\w'’-]+){0,3}, [\\w'’-]+(?: [\\w'’-]+){0,3}(,) (?:and|or)\\b",
+      "message": "UCM style drops the serial comma before \"and\" unless it's needed for clarity.",
+      "group": 1
+    },
+    {
+      "id": "ap-month-january",
+      "pattern": "\\bJanuary(?= \\d{1,2}\\b)",
+      "message": "AP abbreviates January with a specific date: \"Jan.\"",
+      "fix": "Jan."
+    },
+    {
+      "id": "ap-month-february",
+      "pattern": "\\bFebruary(?= \\d{1,2}\\b)",
+      "message": "AP abbreviates February with a specific date: \"Feb.\"",
+      "fix": "Feb."
+    },
+    {
+      "id": "ap-month-august",
+      "pattern": "\\bAugust(?= \\d{1,2}\\b)",
+      "message": "AP abbreviates August with a specific date: \"Aug.\"",
+      "fix": "Aug."
+    },
+    {
+      "id": "ap-month-september",
+      "pattern": "\\bSeptember(?= \\d{1,2}\\b)",
+      "message": "AP abbreviates September with a specific date: \"Sept.\"",
+      "fix": "Sept."
+    },
+    {
+      "id": "ap-month-october",
+      "pattern": "\\bOctober(?= \\d{1,2}\\b)",
+      "message": "AP abbreviates October with a specific date: \"Oct.\"",
+      "fix": "Oct."
+    },
+    {
+      "id": "ap-month-november",
+      "pattern": "\\bNovember(?= \\d{1,2}\\b)",
+      "message": "AP abbreviates November with a specific date: \"Nov.\"",
+      "fix": "Nov."
+    },
+    {
+      "id": "ap-month-december",
+      "pattern": "\\bDecember(?= \\d{1,2}\\b)",
+      "message": "AP abbreviates December with a specific date: \"Dec.\"",
+      "fix": "Dec."
+    },
+    {
+      "id": "ap-month-period",
+      "pattern": "\\b(Jan|Feb|Aug|Oct|Nov|Dec)(?= \\d{1,2}\\b)",
+      "message": "AP abbreviates this month with a period before a date.",
+      "fix": "$1."
+    },
+    {
+      "id": "ap-month-sept",
+      "pattern": "\\bSept(?= \\d{1,2}\\b)",
+      "message": "AP writes September as \"Sept.\" before a date.",
+      "fix": "Sept."
+    },
+    {
+      "id": "ap-month-sep",
+      "pattern": "\\bSep\\.?(?= \\d{1,2}\\b)",
+      "message": "AP writes September as \"Sept.\" before a date.",
+      "fix": "Sept."
+    },
+    {
+      "id": "ap-month-march",
+      "pattern": "\\bMar\\.?(?= \\d{1,2}\\b)",
+      "message": "AP spells out March, even with a date.",
+      "fix": "March"
+    },
+    {
+      "id": "ap-month-april",
+      "pattern": "\\bApr\\.?(?= \\d{1,2}\\b)",
+      "message": "AP spells out April, even with a date.",
+      "fix": "April"
+    },
+    {
+      "id": "ap-month-june",
+      "pattern": "\\bJun\\.?(?= \\d{1,2}\\b)",
+      "message": "AP spells out June, even with a date.",
+      "fix": "June"
+    },
+    {
+      "id": "ap-month-july",
+      "pattern": "\\bJul\\.?(?= \\d{1,2}\\b)",
+      "message": "AP spells out July, even with a date.",
+      "fix": "July"
+    },
+    {
+      "id": "date-ordinal",
+      "pattern": "(?<=\\b(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]{0,6}\\.? \\d{1,2})(?:st|nd|rd|th)\\b",
+      "message": "AP dates use numerals without st, nd, rd or th.",
+      "fix": ""
+    },
+    {
+      "id": "theater",
+      "pattern": "\\btheaters?\\b",
+      "message": "Kent State uses \"theatre\" unless an official name uses -er.",
+      "caseInsensitive": true
+    }
+  ]
+}

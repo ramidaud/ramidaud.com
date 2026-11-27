@@ -51,6 +51,9 @@
 .pf figcaption { font-family: var(--mono); font-size: 11.5px; letter-spacing: .04em; line-height: 1.5; margin-top: 10px; color: var(--ink-2); }
 .pf .dark figcaption { color: var(--dk-mute); }
 .pf .hero-shot { margin-top: 36px; }
+.pf .try { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; margin: 18px 0 0; max-width: none; color: var(--dk-mute); font-size: 15px; }
+.pf .try a { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 18px; border-radius: 999px; background: var(--safe); color: #16140f; font-family: var(--mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; text-decoration: none; }
+.pf .try a:hover { background: #ff7a5f; }
 .pf .gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 24px; margin-top: 26px; }
 .pf .gallery .wide { grid-column: 1 / -1; }
 
@@ -174,6 +177,7 @@
               <div class="todo" aria-hidden="true"><b>Recording to come</b><span>demo.mp4 · folder to Lightroom, 90 seconds</span></div>
             </figure>
             <figcaption>Proof, from a folder of raw files to a caption in Lightroom. The caption was drafted on the Mac and approved by me before anything was written.</figcaption>
+            <p class="try"><a href="demo/">Try it yourself <span aria-hidden="true">&rarr;</span></a> <span>A clickable demo with ten bursts from the observatory night. Rate a frame, check the draft against the style guide, approve it.</span></p>
           </div>
 
           <section aria-labelledby="why-h">
