@@ -32,6 +32,8 @@
   function check(text) {
     var hits = [];
     rules.forEach(function (x) {
+      // Outside work turns off Kent State's own rules; plain AP date style still applies.
+      if (!st.brief.kent && !/^(ap-|date-)/.test(x.r.id)) return;
       x.re.lastIndex = 0; var m;
       while ((m = x.re.exec(text))) {
         if (m[0] === "") { x.re.lastIndex++; continue; }
@@ -170,7 +172,7 @@
   $("rbar").addEventListener("click", function (e) { var b = e.target.closest("button"); if (b) setRating(+b.dataset.r); });
 
   // ---------- drafts ----------
-  var drafting = null;
+  var pending = {};   // frame id -> true while its draft is being "made"
   function draft(f, next) {
     var bu = S.bursts[f.b], old = st.text[f.id], v = next ? ((old ? old.v : 0) + 1) % bu.drafts.length : 0;
     var kw = S.baseKeywords.concat(bu.kw);
@@ -179,9 +181,9 @@
     if (!st.brief.kent) cap = cap.replace(/ at the (KSU|Kent State University) Observatory/, " at an observatory");
     st.text[f.id] = { cap: cap, alt: bu.alt, kw: kw, v: v };
     delete st.edited[f.id];
-    drafting = f.id; renderPanel();
+    pending[f.id] = true; renderPanel();
     setTimeout(function () {
-      drafting = null; if (st.cur === f) renderPanel(); renderFilters();
+      delete pending[f.id]; if (st.cur === f) renderPanel(); renderFilters();
       if (f.b === 0 && v === 0) say("slips", "Two blue marks in that caption: the style guide caught \"KSU\" and \"Nov 18.\" Fix them with one click, or type your own words and watch the checks run.");
       else say("draft1", "Drafts are amber until you edit them or press Accept. Nothing writes before that.");
     }, reduce ? 0 : 650);
@@ -210,7 +212,7 @@
     var t = st.text[f.id];
     $("noDraft").hidden = !!t; $("draftArea").hidden = !t;
     if (!t) return;
-    var busy = drafting === f.id;
+    var busy = !!pending[f.id];
     $("seen").innerHTML = S.bursts[f.b].seen.map(function (s) { return "<li>" + esc(s) + "</li>"; }).join("");
     if (document.activeElement !== $("cap")) $("cap").value = busy ? "Drafting on the Mac…" : t.cap;
     if (document.activeElement !== $("alt")) $("alt").value = busy ? "" : t.alt;
@@ -267,7 +269,7 @@
     ].join("\n");
   }
   function write() {
-    var f = st.cur; if (!f || !st.text[f.id] || drafting) return;
+    var f = st.cur; if (!f || !st.text[f.id] || pending[f.id]) return;
     var t = st.text[f.id]; t.cap = $("cap").value; t.alt = $("alt").value;
     st.written[f.id] = snap(f); st.edited[f.id] = true;
     renderPanel(); renderFilters();
