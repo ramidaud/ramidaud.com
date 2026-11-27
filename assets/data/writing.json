@@ -16,7 +16,7 @@
     },
     "ai-practice": {
       "label": "AI in practice",
-      "blurb": "Responsible AI for communication teams: guides, talks and case notes."
+      "blurb": "Responsible AI for communications teams: guides, talks and case notes."
     },
     "photography": {
       "label": "Photography",
@@ -443,7 +443,7 @@
       "thread": "ai-practice",
       "type": "Workshop kit",
       "tags": [],
-      "dek": "A 90-minute session for communication teams. Pairs generate a mock expert interview, hold it to the same standard as any quoted material, and leave with a plan for verifying every claim."
+      "dek": "A 90-minute session for communications teams. Pairs generate a mock expert interview, hold it to the same standard as any quoted material, and leave with a plan for verifying every claim."
     },
     {
       "date": "2026-11-25",
