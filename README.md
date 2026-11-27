@@ -17,6 +17,13 @@ Personal site for Rami Daud. Plain HTML, CSS and JS, hosted on GitHub Pages.
   - One small stylesheet next to each story for its own art direction.
   - Media in `assets/ftc/`.
 
+## Proof demo
+
+- `work/proof/demo/` is a clickable demo of Proof, linked from Case file 02. Plain HTML, CSS and JS, no network calls beyond fonts and stats.
+- `shoot.js` holds the sample shoot: bursts, "sharpest of" picks, sample drafts, alt text and keywords. Swap in real drafts from the Mac app there.
+- `ucm-style.json` is a copy of Proof's rule file (`rules/ucm-style.json` in the app). The demo runs it as-is, so copy it again when the rules change.
+- Frames live in `assets/proof-demo/` (1600 px plus 480 px thumbs, metadata stripped).
+
 ## Older inner pages
 
 `writing/`, `guides/`, `cv/`, `contact/` and `work/` still use the earlier design: `assets/css/e1.css`, `assets/css/e1-pages.css` and `assets/js/e1.js`.
