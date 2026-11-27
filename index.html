@@ -2085,8 +2085,8 @@ html.js .quiz:not(.picked) .qa-answer { display: none; }
     renderer.setSize(W, H, false); cam.aspect = W / H;
     var copy = document.querySelector(".cover-copy").getBoundingClientRect();
     if (narrow) { var cb = Math.max(copy.bottom, H * 0.3), bot = H - 140; hero = { cx: W * 0.5, cy: (cb + bot) / 2, A: Math.min(W * 0.9, Math.max(160, bot - cb)) }; }
-    document.body.classList.toggle("cam-off", narrow && (H - 140) - Math.max(copy.bottom, H * 0.3) < 180);
     else hero = { cx: W * 0.665, cy: H * 0.5, A: Math.min(W * 0.5, H * 0.72) };
+    document.body.classList.toggle("cam-off", narrow && (H - 140) - Math.max(copy.bottom, H * 0.3) < 180);
     var r = camslot.getBoundingClientRect();
     if (EMBED) { slot = { cx: W / 2, cy: H / 2 + 6, A: Math.min(W, H) * 0.8 }; dirty = true; return; }
     slot = { cx: r.left + r.width / 2 - (narrow ? 0 : 14), cy: r.top + r.height / 2, A: Math.max(8, Math.min(r.width, r.height) * (narrow ? 0.95 : 0.78)) };
