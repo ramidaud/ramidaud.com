@@ -22,6 +22,8 @@
 .ep-ctl input[type=range] { width: 100%; max-width: 300px; min-height: 44px; accent-color: var(--red); }
 .ep-hint { font-size: 15px; color: var(--ink-2); margin: var(--s2) 0 0; }
 .eyepiece.live .ep-view img { animation: seeing 3.2s ease-in-out infinite alternate; }
+/* The knob drives the blur directly. Beat the scroll reveal's slow, delayed filter transition (v7-shell.css) so the view follows the slider. */
+html.rv .eyepiece .ep-view img, .eyepiece .ep-view img { transition: filter .12s linear; }
 @keyframes seeing { 0% { transform: translate(0, 0) scale(1.01); } 50% { transform: translate(.6px, -.4px) scale(1.012); } 100% { transform: translate(-.5px, .5px) scale(1.01); } }
 
 @media (max-width: 760px) {
