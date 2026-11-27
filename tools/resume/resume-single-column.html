@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Rami Daud · Résumé (single column)</title>
+<style>
+@font-face { font-family: "Serif"; src: url(fonts/InstrumentSerif-Regular.ttf); }
+@font-face { font-family: "Serif"; font-style: italic; src: url(fonts/InstrumentSerif-Italic.ttf); }
+@font-face { font-family: "Sans"; src: url(fonts/PlexSans.ttf); font-weight: 100 900; }
+@font-face { font-family: "Sans"; font-style: italic; src: url(fonts/PlexSans-Italic.ttf); font-weight: 100 900; }
+@font-face { font-family: "Mono"; src: url(fonts/IBMPlexMono-Regular.ttf); font-weight: 400; }
+@font-face { font-family: "Mono"; src: url(fonts/IBMPlexMono-SemiBold.ttf); font-weight: 600; }
+@page { size: Letter; margin: 0; }
+:root { --paper: #f5f1e9; --ink: #1d1b18; --ink2: #4a4640; --mute: #77726a; --red: #b8322a; --rule: #cfc8bb; --card: #f8f5ee; }
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--paper); color: var(--ink); font-family: "Sans"; font-size: 9.6pt; line-height: 1.42; }
+.page { width: 8.5in; height: 11in; padding: 0.42in 0.5in 0.38in; position: relative; page-break-after: always; overflow: hidden; display: flex; flex-direction: column; }
+.page:last-child { page-break-after: auto; }
+.run { display: flex; justify-content: space-between; font-family: "Mono"; font-size: 6.8pt; letter-spacing: .14em; color: var(--mute); text-transform: uppercase; }
+.foot { margin-top: auto; border-top: 1px solid var(--ink); padding-top: 6px; }
+h1 { font-family: "Serif"; font-weight: 400; font-size: 40pt; line-height: 1; margin: 10px 0 4px; letter-spacing: -.01em; }
+.tag { font-family: "Serif"; font-size: 15.5pt; margin: 0 0 9px; }
+.tag em { color: var(--red); }
+.contact { border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink); padding: 5px 0; font-family: "Mono"; font-size: 7.4pt; display: flex; gap: 18px; }
+.contact b { color: var(--red); font-weight: 600; letter-spacing: .08em; margin-right: 4px; }
+.label { font-family: "Mono"; font-size: 6.8pt; letter-spacing: .14em; color: var(--red); text-transform: uppercase; margin: 0 0 4px; }
+.cols { display: grid; grid-template-columns: 1fr 2.05in; gap: 0.24in; margin-top: 12px; }
+.summary p { margin: 0; font-size: 10.2pt; line-height: 1.45; }
+h2 { font-family: "Serif"; font-weight: 400; font-size: 17pt; margin: 12px 0 0; padding-bottom: 3px; border-bottom: 1px solid var(--ink); }
+.job { display: grid; grid-template-columns: 0.95in 1fr; gap: 0 10px; padding-top: 8px; }
+.job + .job { border-top: 1px solid var(--rule); margin-top: 5px; }
+.when { font-family: "Mono"; font-size: 7pt; color: var(--red); line-height: 1.35; }
+.job h3 { margin: 0; font-size: 10pt; font-weight: 600; }
+.org { font-family: "Mono"; font-size: 7pt; color: var(--mute); margin: 1px 0 3px; }
+.grp { font-family: "Mono"; font-size: 6.6pt; letter-spacing: .12em; text-transform: uppercase; color: var(--ink); margin: 5px 0 1px; }
+ul { margin: 0; padding-left: 13px; }
+li { margin: 1.5px 0; }
+li::marker { color: var(--red); }
+aside { display: flex; flex-direction: column; gap: 9px; }
+.card { background: var(--card); border: 1px solid var(--rule); padding: 8px 10px; }
+.item { margin-top: 6px; }
+.item .k { font-family: "Mono"; font-size: 6.4pt; letter-spacing: .1em; color: var(--red); text-transform: uppercase; }
+.item b { display: block; font-weight: 600; font-size: 8.8pt; }
+.item p { margin: 0; font-size: 8pt; color: var(--ink2); line-height: 1.35; }
+.chips { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
+.chips span { font-family: "Mono"; font-size: 6.6pt; border: 1px solid var(--ink); padding: 1px 4px; }
+/* page 2 */
+h2.big { font-size: 17pt; margin-top: 14px; }
+table.rec { width: 100%; border-collapse: collapse; margin-top: 2px; }
+.rec td { padding: 4px 0; border-bottom: 1px dashed var(--rule); vertical-align: top; font-size: 8.4pt; }
+.rec td.y { font-family: "Mono"; font-size: 7pt; color: var(--red); width: 0.42in; padding-top: 5px; }
+.rec td.src { font-family: "Mono"; font-size: 6.6pt; color: var(--mute); text-align: right; width: 1.55in; padding-top: 5px; }
+.rec b { font-weight: 600; }
+.rec span { color: var(--ink2); }
+.intro { font-size: 8.4pt; color: var(--ink2); margin: 4px 0 2px; }
+.iotd { display: grid; grid-template-columns: 1fr 1fr; gap: 0 0.3in; }
+.iotd div { font-family: "Serif"; font-size: 10.5pt; padding: 3px 0; border-bottom: 1px dashed var(--rule); }
+.iotd i { font-family: "Mono"; font-style: normal; font-size: 6.8pt; color: var(--red); margin-right: 8px; }
+.three { display: grid; grid-template-columns: 1.15fr 1fr 0.8fr; gap: 0.24in; }
+.three h2 { margin-top: 14px; }
+.e { margin-top: 6px; }
+.e .when { display: block; }
+.e b { display: block; font-weight: 600; font-size: 8.6pt; }
+.e p { margin: 0; font-size: 8pt; color: var(--ink2); line-height: 1.35; }
+.e p.pub { color: var(--ink); font-family: "Serif"; font-size: 11pt; line-height: 1.15; margin: 3px 0; }
+/* single-column version for application systems */
+@page { size: Letter; margin: 0.45in 0.55in; }
+.page { width: auto; height: auto; padding: 0; overflow: visible; page-break-after: auto; display: block; }
+.run { display: none; }
+.cols { display: block; }
+aside { display: block; margin-top: 4px; }
+.card .label { break-after: avoid; }
+.card { background: none; border: none; padding: 0; margin-top: 10px; }
+.card .label { font-size: 12pt; font-family: "Serif"; letter-spacing: 0; text-transform: none; color: var(--ink); border-bottom: 1px solid var(--ink); padding-bottom: 3px; }
+.job, .item, .e, .rec tr { break-inside: avoid; }
+h2 { break-after: avoid; }
+.three { display: block; }
+.iotd { display: block; }
+html, body { background: #fff; }
+</style>
+</head>
+<body>
+
+<section class="page">
+  <div class="run"><span>Personnel file · RD-2026</span><span>Résumé · Page 1 of 2</span></div>
+  <h1>Rami Daud</h1>
+  <p class="tag">I help communication teams use AI <em>without losing the human in the story.</em></p>
+  <div class="contact"><span><b>EMAIL</b>ramidaud@me.com</span><span><b>WEB</b>ramidaud.com</span><span><b>LINKEDIN</b>in/ramidaudphoto</span><span><b>BASE</b>Kent, Ohio</span></div>
+
+  <div class="cols">
+    <main>
+      <div class="summary">
+        <p class="label">Summary</p>
+        <p>I help communication teams adopt AI in ways that make their work stronger and keep people in charge of it. As Kent State's senior photographer and informal AI lead, I test tools on real assignments, write the guidance and verification steps, and bring colleagues along one tool at a time. Twenty years of photography and video, four at NASA Glenn, taught me how trust in an image is earned.</p>
+      </div>
+
+      <h2>Experience</h2>
+
+      <div class="job">
+        <div class="when">08/2019<br>to present</div>
+        <div>
+          <h3>Senior Photographer</h3>
+          <div class="org">University Communications and Marketing · Kent State University</div>
+          <div class="grp">Informal AI lead for the team</div>
+          <ul>
+            <li>Facilitated one of three UCM working groups exploring how a central team could better serve each college; used AI to record meetings and turn decisions and open questions into next steps.</li>
+            <li>Turned a crash-prone Claude and Lightroom routine into Proof, a Mac app made with Claude Code that keeps the team to one rating, captioning and keywording standard and ties shoots to Airtable.</li>
+            <li>Wrote <i>Prompt to Publish</i>, a field guide for university communicators, and designed a 90-minute quote-verification workshop with a knowledge check and an adoption measure.</li>
+            <li>Introduced an AI meeting transcription tool a colleague now uses.</li>
+          </ul>
+          <div class="grp">Photography and team operations</div>
+          <ul>
+            <li>Photography, video, audio and motion graphics for university priorities, with designers, writers and marketing strategists.</li>
+            <li>Runs the team's digital asset workflow across PhotoShelter for Brands, Airtable and Lightroom Classic; supervises and mentors student photographers. Lead photographer for Kent State Works, a 2026 CASE Circle of Excellence Bronze.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="job">
+        <div class="when">07/2015<br>to 08/2019</div>
+        <div>
+          <h3>Photographer IV / Digital Imaging Specialist</h3>
+          <div class="org">NASA Glenn Research Center · Cleveland, Ohio</div>
+          <ul>
+            <li>Photography and multimedia for Artemis, SpaceX and Commercial Crew testing and research programs, including social series that explained research to the public.</li>
+            <li>Helped plan coverage of the 2017 Eclipse Across America initiative for NASA TV's coast-to-coast broadcast.</li>
+            <li>One of NASA's IGTV beta producers; seven NASA Images of the Day; NASA Honor and Significant Achievement awards.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="job">
+        <div class="when">01/2003<br>to present</div>
+        <div>
+          <h3>Owner and Photographer</h3>
+          <div class="org">Rami Daud Photography Inc.</div>
+          <ul><li>Freelance for the Associated Press, AFP, Cleveland Magazine and The Toledo Blade.</li></ul>
+        </div>
+      </div>
+    </main>
+
+    <aside>
+      <div class="card">
+        <p class="label">AI adoption and communication</p>
+        <div class="item"><span class="k">2026 · Field guide</span><b>Prompt to Publish</b><p>How these tools work, how to direct and verify them, and when to put them down.</p></div>
+        <div class="item"><span class="k">2026 · Workshop kit</span><b>Checking AI-generated quotes</b><p>A 90-minute session for communications staff, built on a four-point editorial standard.</p></div>
+        <div class="item"><span class="k">06/2026 · Panel</span><b>UPAA Symposium</b><p>How AI is changing the role of photographers and communications teams. Ann Arbor, Michigan.</p></div>
+        <div class="item"><span class="k">Ongoing · Devlog</span><b>Midlife Survivors</b><p>A public log testing AI tools on a creative project, with every tool credited.</p></div>
+      </div>
+      <div class="card">
+        <p class="label">Writing</p>
+        <div class="item" style="margin-top:2px"><b>Framing the Cosmos</b><p>Substack on how iconic space photographs shape public understanding of science.</p></div>
+      </div>
+      <div class="card">
+        <p class="label">Education</p>
+        <div class="item" style="margin-top:2px"><span class="k">In progress</span><b>MS, Emerging Media and Technology</b><p>Kent State University. Research on photography and the public understanding of science.</p></div>
+        <div class="item"><span class="k">05/2026</span><b>Bachelor of Integrative Studies</b><p>Kent State University</p></div>
+      </div>
+      <div class="card">
+        <p class="label">Tools</p>
+        <div class="chips"><span>Claude</span><span>Granola</span><span>Lightroom Classic</span><span>Photoshop</span><span>DaVinci Resolve Studio</span><span>PhotoShelter for Brands</span><span>Airtable</span></div>
+      </div>
+    </aside>
+  </div>
+
+  <div class="run foot"><span>Rami Daud</span><span>ramidaud.com</span></div>
+</section>
+
+<section class="page">
+  <div class="run"><span>Personnel file · RD-2026</span><span>Résumé · Page 2 of 2</span></div>
+
+  <h2 class="big">Recognition</h2>
+  <table class="rec">
+    <tr><td class="y">2026</td><td><b>CASE Circle of Excellence, Bronze</b> <span>· Photography: Portraits · Kent State Works series</span></td><td class="src">CASE</td></tr>
+    <tr><td class="y">2020</td><td><b>Silver ADDY, Still Photography (Color)</b> <span>· Portrait of President Todd Diacon for Kent State Magazine</span></td><td class="src">American Advertising Awards</td></tr>
+    <tr><td class="y">2019</td><td><b>Center Operations Directorate Peer Achievement Award</b> <span>· Sustained commitment to excellence</span></td><td class="src">NASA Glenn</td></tr>
+    <tr><td class="y">2019</td><td><b>2018 NASA Videographer of the Year (Team), 2nd place</b> <span>· Production category · "For the Benefit of All"</span></td><td class="src">NASA</td></tr>
+    <tr><td class="y">2018</td><td><b>NASA Honor Award for Group Achievement</b> <span>· Public and education engagement for NASA TV's 2017 solar eclipse event</span></td><td class="src">NASA</td></tr>
+    <tr><td class="y">2018</td><td><b>NASA Significant Achievement Award</b> <span>· Reinventing the Wheel, social media project on shape memory alloy research</span></td><td class="src">NASA</td></tr>
+    <tr><td class="y">2018</td><td><b>Grand Award for Electronic Media</b> <span>· Reinventing the Wheel</span></td><td class="src">APEX Awards</td></tr>
+    <tr><td class="y">2018</td><td><b>Communicator Award of Excellence, Digital</b> <span>· Reinventing the Wheel</span></td><td class="src">Communicator Awards · AIVA</td></tr>
+    <tr><td class="y">2017</td><td><b>Award of Excellence, Social Media</b> <span>· Baseball in the Ballistic Impact Lab · photography and video</span></td><td class="src">APEX Awards</td></tr>
+    <tr><td class="y">2017</td><td><b>Award of Excellence, Social Media</b> <span>· Meet the Makers web series</span></td><td class="src">APEX Awards</td></tr>
+    <tr><td class="y">2016</td><td><b>Award of Excellence, Social Media</b> <span>· #BeAnAstronaut series</span></td><td class="src">APEX Awards</td></tr>
+  </table>
+
+  <h2 class="big">NASA Image of the Day</h2>
+  <p class="intro">Seven photographs made at NASA Glenn Research Center were featured on NASA.gov.</p>
+  <div class="iotd">
+    <div><i>01</i>A Celestial Diamond Ring: Nature's Gift to Humanity</div>
+    <div><i>02</i>Electric Propulsion Testing at NASA Glenn</div>
+    <div><i>03</i>Aircraft Propulsion Model in NASA Wind Tunnel</div>
+    <div><i>04</i>Super Blood Moon Lunar Eclipse</div>
+    <div><i>05</i>NASA Blasts Orion Service Module with Giant Horns</div>
+    <div><i>06</i>Evaluating the Noise of Future Aircraft</div>
+    <div><i>07</i>Probing the Plume</div>
+  </div>
+
+  <div class="three">
+    <div>
+      <h2>Earlier experience</h2>
+      <div class="e"><span class="when">08/2012 to 08/2015</span><b>Event Specialist and Photographer</b><p>The Standard, Wedding and Events Group, Pittsburgh. Documentary and location-lit portrait coverage.</p></div>
+      <div class="e"><span class="when">11/2010 to 08/2011</span><b>Photography Intern</b><p>The Youngstown Vindicator. News, sports, features and portraits in stills and video; ran the photo desk several nights a week.</p></div>
+      <div class="e"><span class="when">05/2006 to 12/2008</span><b>Photography Intern</b><p>Medina County Gazette. Introduced multimedia production to a stills-only newsroom and built a multimedia site featured by the NPPA.</p></div>
+      <div class="e"><span class="when">2007 to 2008</span><b>Assistant to the University Photographer</b><p>Kent State University. Asset management, film scanning, retouching and archive metadata.</p></div>
+    </div>
+    <div>
+      <h2>Publication</h2>
+      <div class="e"><span class="when">J. Archaeological Science: Reports · 37 · 2021</span><p class="pub">The Nelson stone tool cache, North-Central Ohio, U.S.A.: Assessing its cultural affiliation</p><p>Co-author on a study of 164 bifaces from a cache found in Mount Vernon, Ohio.</p></div>
+    </div>
+    <div>
+      <h2>Team honors</h2>
+      <div class="e"><p>Kent State UCM campaigns I contributed to have earned Educational Advertising Awards, including Best of Show for the Student Viewbook.</p></div>
+    </div>
+  </div>
+
+  <div class="run foot"><span>Rami Daud · ramidaud@me.com</span><span>Full portfolio and writing at ramidaud.com</span></div>
+</section>
+</body>
+</html>
